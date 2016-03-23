@@ -33,8 +33,14 @@ public class Inicio extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jTextField1 = new javax.swing.JTextField();
         jPasswordField1 = new javax.swing.JPasswordField();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setLocation(new java.awt.Point(500, 125));
+        setMinimumSize(new java.awt.Dimension(400, 400));
+        getContentPane().setLayout(null);
 
         jButton1.setText("Ingresar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -42,40 +48,28 @@ public class Inicio extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
+        getContentPane().add(jButton1);
+        jButton1.setBounds(70, 230, 88, 50);
 
         jButton2.setText("Cancelar");
+        getContentPane().add(jButton2);
+        jButton2.setBounds(210, 230, 90, 50);
+        getContentPane().add(jTextField1);
+        jTextField1.setBounds(120, 110, 177, 29);
+        getContentPane().add(jPasswordField1);
+        jPasswordField1.setBounds(120, 160, 140, 28);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(99, 99, 99)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(107, 107, 107)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(105, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(69, 69, 69)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(80, 80, 80))
-        );
+        jLabel2.setText("Usuario: ");
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(40, 120, 60, 14);
+
+        jLabel3.setText("Contraseña:");
+        getContentPane().add(jLabel3);
+        jLabel3.setBounds(40, 170, 70, 14);
+
+        jLabel4.setIcon(new javax.swing.ImageIcon("C:\\Users\\Luis Diego\\Desktop\\Fondo\\green-abstract_00331881.jpg")); // NOI18N
+        getContentPane().add(jLabel4);
+        jLabel4.setBounds(0, 0, 410, 420);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -85,7 +79,7 @@ public class Inicio extends javax.swing.JFrame {
         String usuario= jTextField1.getText();
         String password= jPasswordField1.getText();
         if (usuario.equals("libertad") || password.equals("parque")) {
-            new Menu(this, rootPaneCheckingEnabled).setVisible(true);
+            new Menu().setVisible(true);
             dispose();   
         }else{
             JOptionPane.showMessageDialog(this, "Contraseña Incorrecta","El usuario o la contraseña son invalidos",JOptionPane.ERROR_MESSAGE);
@@ -132,6 +126,9 @@ public class Inicio extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
