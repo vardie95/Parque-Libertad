@@ -30,7 +30,6 @@ public class Inicio extends javax.swing.JFrame {
     private void initComponents() {
 
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
         jTextField1 = new javax.swing.JTextField();
         jPasswordField1 = new javax.swing.JPasswordField();
         jLabel2 = new javax.swing.JLabel();
@@ -49,15 +48,11 @@ public class Inicio extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton1);
-        jButton1.setBounds(70, 230, 88, 50);
-
-        jButton2.setText("Cancelar");
-        getContentPane().add(jButton2);
-        jButton2.setBounds(210, 230, 90, 50);
+        jButton1.setBounds(160, 230, 90, 30);
         getContentPane().add(jTextField1);
-        jTextField1.setBounds(120, 110, 177, 29);
+        jTextField1.setBounds(120, 110, 170, 29);
         getContentPane().add(jPasswordField1);
-        jPasswordField1.setBounds(120, 160, 140, 28);
+        jPasswordField1.setBounds(120, 160, 170, 28);
 
         jLabel2.setText("Usuario: ");
         getContentPane().add(jLabel2);
@@ -66,8 +61,6 @@ public class Inicio extends javax.swing.JFrame {
         jLabel3.setText("Contraseña:");
         getContentPane().add(jLabel3);
         jLabel3.setBounds(40, 170, 70, 14);
-
-        jLabel4.setIcon(new javax.swing.ImageIcon("C:\\Users\\Luis Diego\\Desktop\\Fondo\\green-abstract_00331881.jpg")); // NOI18N
         getContentPane().add(jLabel4);
         jLabel4.setBounds(0, 0, 410, 420);
 
@@ -125,7 +118,6 @@ public class Inicio extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

@@ -30,6 +30,7 @@ public class Menu extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        B_Atras = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -54,6 +55,15 @@ public class Menu extends javax.swing.JFrame {
         getContentPane().add(jButton3);
         jButton3.setBounds(110, 200, 103, 43);
 
+        B_Atras.setText("Atrás");
+        B_Atras.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                B_AtrasActionPerformed(evt);
+            }
+        });
+        getContentPane().add(B_Atras);
+        B_Atras.setBounds(10, 10, 70, 23);
+
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Imagen1.png"))); // NOI18N
         getContentPane().add(jLabel1);
         jLabel1.setBounds(-10, 0, 410, 340);
@@ -66,6 +76,12 @@ public class Menu extends javax.swing.JFrame {
         new MenuRegistro().setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void B_AtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_AtrasActionPerformed
+        // TODO add your handling code here:
+        dispose();
+        new Inicio().setVisible(true);
+    }//GEN-LAST:event_B_AtrasActionPerformed
 
     /**
      * @param args the command line arguments
@@ -103,6 +119,7 @@ public class Menu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton B_Atras;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;

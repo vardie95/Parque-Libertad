@@ -27,15 +27,16 @@ public class RegistroCurso extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jComboBox1 = new javax.swing.JComboBox<>();
+        jComboBox1 = new javax.swing.JComboBox<String>();
         jLabel1 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox<>();
-        jComboBox3 = new javax.swing.JComboBox<>();
+        jComboBox2 = new javax.swing.JComboBox<String>();
+        jComboBox3 = new javax.swing.JComboBox<String>();
         jFormattedTextField1 = new javax.swing.JFormattedTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        B_Atras = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -44,7 +45,7 @@ public class RegistroCurso extends javax.swing.JFrame {
         setResizable(false);
         getContentPane().setLayout(null);
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nombre" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Nombre" }));
         getContentPane().add(jComboBox1);
         jComboBox1.setBounds(130, 40, 164, 28);
 
@@ -52,11 +53,11 @@ public class RegistroCurso extends javax.swing.JFrame {
         getContentPane().add(jLabel1);
         jLabel1.setBounds(60, 40, 47, 28);
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Adultos" }));
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Adultos" }));
         getContentPane().add(jComboBox2);
         jComboBox2.setBounds(130, 100, 146, 31);
 
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "7:30 a 9:30" }));
+        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "7:30 a 9:30" }));
         jComboBox3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox3ActionPerformed(evt);
@@ -86,7 +87,16 @@ public class RegistroCurso extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton1);
-        jButton1.setBounds(130, 250, 110, 40);
+        jButton1.setBounds(240, 260, 80, 30);
+
+        B_Atras.setText("Atrás");
+        B_Atras.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                B_AtrasActionPerformed(evt);
+            }
+        });
+        getContentPane().add(B_Atras);
+        B_Atras.setBounds(10, 10, 70, 23);
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Imagen1.png"))); // NOI18N
         getContentPane().add(jLabel5);
@@ -102,6 +112,12 @@ public class RegistroCurso extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void B_AtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_AtrasActionPerformed
+        // TODO add your handling code here:
+        dispose();
+        new MenuRegistro().setVisible(true);
+    }//GEN-LAST:event_B_AtrasActionPerformed
 
     /**
      * @param args the command line arguments
@@ -139,6 +155,7 @@ public class RegistroCurso extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton B_Atras;
     private javax.swing.JButton jButton1;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;
