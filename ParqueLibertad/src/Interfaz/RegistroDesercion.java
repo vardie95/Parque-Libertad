@@ -9,12 +9,12 @@ package Interfaz;
  *
  * @author Luis Diego
  */
-public class RegistroActividad extends javax.swing.JFrame {
+public class RegistroDesercion extends javax.swing.JFrame {
 
     /**
      * Creates new form RegistroCurso
      */
-    public RegistroActividad() {
+    public RegistroDesercion() {
         initComponents();
     }
 
@@ -27,12 +27,14 @@ public class RegistroActividad extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        CB_Tipo = new javax.swing.JComboBox<String>();
-        L_Tipo = new javax.swing.JLabel();
-        L_Descripcion = new javax.swing.JLabel();
+        CB_Identificacion = new javax.swing.JComboBox<String>();
+        L_Identificacion = new javax.swing.JLabel();
+        CB_Curso = new javax.swing.JComboBox<String>();
+        L_Curso = new javax.swing.JLabel();
+        L_Motivo = new javax.swing.JLabel();
         B_Registrar = new javax.swing.JButton();
         B_Atras = new javax.swing.JButton();
-        Titulo_Registro_de_Actividad = new javax.swing.JLabel();
+        Titulo_Registro_de_Desercion = new javax.swing.JLabel();
         SP_Descripcion = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
         Fondo = new javax.swing.JLabel();
@@ -43,17 +45,25 @@ public class RegistroActividad extends javax.swing.JFrame {
         setResizable(false);
         getContentPane().setLayout(null);
 
-        CB_Tipo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Nombre" }));
-        getContentPane().add(CB_Tipo);
-        CB_Tipo.setBounds(110, 90, 164, 28);
+        CB_Identificacion.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "123456789" }));
+        getContentPane().add(CB_Identificacion);
+        CB_Identificacion.setBounds(130, 70, 164, 28);
 
-        L_Tipo.setText("Tipo:");
-        getContentPane().add(L_Tipo);
-        L_Tipo.setBounds(60, 90, 47, 28);
+        L_Identificacion.setText("Identificación:");
+        getContentPane().add(L_Identificacion);
+        L_Identificacion.setBounds(40, 70, 80, 28);
 
-        L_Descripcion.setText("Descripción:");
-        getContentPane().add(L_Descripcion);
-        L_Descripcion.setBounds(60, 150, 90, 28);
+        CB_Curso.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Adultos" }));
+        getContentPane().add(CB_Curso);
+        CB_Curso.setBounds(130, 120, 146, 31);
+
+        L_Curso.setText("Curso:");
+        getContentPane().add(L_Curso);
+        L_Curso.setBounds(70, 120, 40, 28);
+
+        L_Motivo.setText("Motivo:");
+        getContentPane().add(L_Motivo);
+        L_Motivo.setBounds(70, 160, 58, 28);
 
         B_Registrar.setText("Registrar");
         B_Registrar.addActionListener(new java.awt.event.ActionListener() {
@@ -73,17 +83,17 @@ public class RegistroActividad extends javax.swing.JFrame {
         getContentPane().add(B_Atras);
         B_Atras.setBounds(10, 10, 70, 23);
 
-        Titulo_Registro_de_Actividad.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        Titulo_Registro_de_Actividad.setText("Registro de Actividad");
-        getContentPane().add(Titulo_Registro_de_Actividad);
-        Titulo_Registro_de_Actividad.setBounds(100, 30, 180, 22);
+        Titulo_Registro_de_Desercion.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        Titulo_Registro_de_Desercion.setText("Registro de Deserción");
+        getContentPane().add(Titulo_Registro_de_Desercion);
+        Titulo_Registro_de_Desercion.setBounds(110, 20, 180, 22);
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
         SP_Descripcion.setViewportView(jTextArea1);
 
         getContentPane().add(SP_Descripcion);
-        SP_Descripcion.setBounds(60, 180, 210, 60);
+        SP_Descripcion.setBounds(70, 190, 210, 60);
 
         Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Imagen1.png"))); // NOI18N
         getContentPane().add(Fondo);
@@ -119,21 +129,23 @@ public class RegistroActividad extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(RegistroActividad.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegistroDesercion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(RegistroActividad.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegistroDesercion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(RegistroActividad.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegistroDesercion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(RegistroActividad.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegistroDesercion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new RegistroActividad().setVisible(true);
+                new RegistroDesercion().setVisible(true);
             }
         });
     }
@@ -141,12 +153,14 @@ public class RegistroActividad extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton B_Atras;
     private javax.swing.JButton B_Registrar;
-    private javax.swing.JComboBox<String> CB_Tipo;
+    private javax.swing.JComboBox<String> CB_Curso;
+    private javax.swing.JComboBox<String> CB_Identificacion;
     private javax.swing.JLabel Fondo;
-    private javax.swing.JLabel L_Descripcion;
-    private javax.swing.JLabel L_Tipo;
+    private javax.swing.JLabel L_Curso;
+    private javax.swing.JLabel L_Identificacion;
+    private javax.swing.JLabel L_Motivo;
     private javax.swing.JScrollPane SP_Descripcion;
-    private javax.swing.JLabel Titulo_Registro_de_Actividad;
+    private javax.swing.JLabel Titulo_Registro_de_Desercion;
     private javax.swing.JTextArea jTextArea1;
     // End of variables declaration//GEN-END:variables
 }

@@ -79,12 +79,12 @@ public class RegistroPersonas extends javax.swing.JFrame {
         RB_Pasaporte.setBackground(new java.awt.Color(255, 255, 255));
         RB_Pasaporte.setText("Pasaporte");
         getContentPane().add(RB_Pasaporte);
-        RB_Pasaporte.setBounds(118, 135, 75, 23);
+        RB_Pasaporte.setBounds(118, 135, 90, 23);
 
         RB_TIM.setBackground(new java.awt.Color(255, 255, 255));
         RB_TIM.setText("TIM");
         getContentPane().add(RB_TIM);
-        RB_TIM.setBounds(211, 135, 43, 23);
+        RB_TIM.setBounds(211, 135, 70, 23);
 
         CB_Pais.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Costa Rica" }));
         CB_Pais.setToolTipText("");
@@ -116,15 +116,15 @@ public class RegistroPersonas extends javax.swing.JFrame {
 
         L_Nombre.setText("Nombre: ");
         getContentPane().add(L_Nombre);
-        L_Nombre.setBounds(25, 62, 44, 14);
+        L_Nombre.setBounds(25, 62, 90, 14);
 
         L_Apellido1.setText("Apellido 1:");
         getContentPane().add(L_Apellido1);
-        L_Apellido1.setBounds(184, 62, 50, 14);
+        L_Apellido1.setBounds(184, 62, 80, 14);
 
         L_Apellido2.setText("Apellido 2: ");
         getContentPane().add(L_Apellido2);
-        L_Apellido2.setBounds(341, 62, 53, 14);
+        L_Apellido2.setBounds(341, 62, 90, 14);
 
         L_Identificacion.setText("Identificación: ");
         getContentPane().add(L_Identificacion);
@@ -132,11 +132,11 @@ public class RegistroPersonas extends javax.swing.JFrame {
 
         L_Nacionalidad.setText("Nacionalidad: ");
         getContentPane().add(L_Nacionalidad);
-        L_Nacionalidad.setBounds(341, 139, 67, 14);
+        L_Nacionalidad.setBounds(341, 139, 110, 14);
 
         L_Direccion.setText("Dirección: ");
         getContentPane().add(L_Direccion);
-        L_Direccion.setBounds(25, 256, 50, 14);
+        L_Direccion.setBounds(25, 256, 110, 14);
 
         L_Pais.setText("País: ");
         getContentPane().add(L_Pais);

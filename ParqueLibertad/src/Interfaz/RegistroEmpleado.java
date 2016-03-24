@@ -9,12 +9,12 @@ package Interfaz;
  *
  * @author Luis Diego
  */
-public class RegistroActividad extends javax.swing.JFrame {
+public class RegistroEmpleado extends javax.swing.JFrame {
 
     /**
      * Creates new form RegistroCurso
      */
-    public RegistroActividad() {
+    public RegistroEmpleado() {
         initComponents();
     }
 
@@ -27,14 +27,16 @@ public class RegistroActividad extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        CB_Tipo = new javax.swing.JComboBox<String>();
-        L_Tipo = new javax.swing.JLabel();
-        L_Descripcion = new javax.swing.JLabel();
+        CB_Identificacion = new javax.swing.JComboBox<String>();
+        L_Identificacion = new javax.swing.JLabel();
+        CB_Puesto = new javax.swing.JComboBox<String>();
+        TF_Direccion_Foto = new javax.swing.JFormattedTextField();
+        L_Puesto = new javax.swing.JLabel();
+        L_Foto = new javax.swing.JLabel();
         B_Registrar = new javax.swing.JButton();
         B_Atras = new javax.swing.JButton();
-        Titulo_Registro_de_Actividad = new javax.swing.JLabel();
-        SP_Descripcion = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        Titulo_Registro_de_Empleado = new javax.swing.JLabel();
+        B_Escoger_Imagen = new javax.swing.JButton();
         Fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -43,17 +45,34 @@ public class RegistroActividad extends javax.swing.JFrame {
         setResizable(false);
         getContentPane().setLayout(null);
 
-        CB_Tipo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Nombre" }));
-        getContentPane().add(CB_Tipo);
-        CB_Tipo.setBounds(110, 90, 164, 28);
+        CB_Identificacion.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "123456789" }));
+        CB_Identificacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CB_IdentificacionActionPerformed(evt);
+            }
+        });
+        getContentPane().add(CB_Identificacion);
+        CB_Identificacion.setBounds(130, 70, 164, 28);
 
-        L_Tipo.setText("Tipo:");
-        getContentPane().add(L_Tipo);
-        L_Tipo.setBounds(60, 90, 47, 28);
+        L_Identificacion.setText("Identificacion:");
+        getContentPane().add(L_Identificacion);
+        L_Identificacion.setBounds(40, 70, 80, 28);
 
-        L_Descripcion.setText("Descripción:");
-        getContentPane().add(L_Descripcion);
-        L_Descripcion.setBounds(60, 150, 90, 28);
+        CB_Puesto.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Profesor" }));
+        getContentPane().add(CB_Puesto);
+        CB_Puesto.setBounds(130, 120, 146, 31);
+
+        TF_Direccion_Foto.setEditable(false);
+        getContentPane().add(TF_Direccion_Foto);
+        TF_Direccion_Foto.setBounds(70, 210, 230, 30);
+
+        L_Puesto.setText("Puesto: ");
+        getContentPane().add(L_Puesto);
+        L_Puesto.setBounds(70, 120, 58, 28);
+
+        L_Foto.setText("Foto:");
+        getContentPane().add(L_Foto);
+        L_Foto.setBounds(70, 170, 58, 28);
 
         B_Registrar.setText("Registrar");
         B_Registrar.addActionListener(new java.awt.event.ActionListener() {
@@ -73,17 +92,14 @@ public class RegistroActividad extends javax.swing.JFrame {
         getContentPane().add(B_Atras);
         B_Atras.setBounds(10, 10, 70, 23);
 
-        Titulo_Registro_de_Actividad.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        Titulo_Registro_de_Actividad.setText("Registro de Actividad");
-        getContentPane().add(Titulo_Registro_de_Actividad);
-        Titulo_Registro_de_Actividad.setBounds(100, 30, 180, 22);
+        Titulo_Registro_de_Empleado.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        Titulo_Registro_de_Empleado.setText("Registro de Empleado");
+        getContentPane().add(Titulo_Registro_de_Empleado);
+        Titulo_Registro_de_Empleado.setBounds(110, 20, 180, 22);
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        SP_Descripcion.setViewportView(jTextArea1);
-
-        getContentPane().add(SP_Descripcion);
-        SP_Descripcion.setBounds(60, 180, 210, 60);
+        B_Escoger_Imagen.setText("Escoger imagen");
+        getContentPane().add(B_Escoger_Imagen);
+        B_Escoger_Imagen.setBounds(130, 170, 140, 23);
 
         Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Imagen1.png"))); // NOI18N
         getContentPane().add(Fondo);
@@ -102,6 +118,10 @@ public class RegistroActividad extends javax.swing.JFrame {
         new MenuRegistro().setVisible(true);
     }//GEN-LAST:event_B_AtrasActionPerformed
 
+    private void CB_IdentificacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CB_IdentificacionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CB_IdentificacionActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -119,34 +139,42 @@ public class RegistroActividad extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(RegistroActividad.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegistroEmpleado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(RegistroActividad.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegistroEmpleado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(RegistroActividad.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegistroEmpleado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(RegistroActividad.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegistroEmpleado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new RegistroActividad().setVisible(true);
+                new RegistroEmpleado().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton B_Atras;
+    private javax.swing.JButton B_Escoger_Imagen;
     private javax.swing.JButton B_Registrar;
-    private javax.swing.JComboBox<String> CB_Tipo;
+    private javax.swing.JComboBox<String> CB_Identificacion;
+    private javax.swing.JComboBox<String> CB_Puesto;
     private javax.swing.JLabel Fondo;
-    private javax.swing.JLabel L_Descripcion;
-    private javax.swing.JLabel L_Tipo;
-    private javax.swing.JScrollPane SP_Descripcion;
-    private javax.swing.JLabel Titulo_Registro_de_Actividad;
-    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JLabel L_Foto;
+    private javax.swing.JLabel L_Identificacion;
+    private javax.swing.JLabel L_Puesto;
+    private javax.swing.JFormattedTextField TF_Direccion_Foto;
+    private javax.swing.JLabel Titulo_Registro_de_Empleado;
     // End of variables declaration//GEN-END:variables
 }

@@ -88,7 +88,7 @@ public class RegistroCurso extends javax.swing.JFrame {
             }
         });
         getContentPane().add(B_Registrar);
-        B_Registrar.setBounds(270, 270, 80, 30);
+        B_Registrar.setBounds(250, 270, 100, 30);
 
         B_Atras.setText("Atrás");
         B_Atras.addActionListener(new java.awt.event.ActionListener() {
