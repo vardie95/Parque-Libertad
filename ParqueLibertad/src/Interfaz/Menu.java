@@ -49,6 +49,11 @@ public class Menu extends javax.swing.JFrame {
         B_Registro.setBounds(110, 80, 103, 41);
 
         B_Consulta.setText("Consulta");
+        B_Consulta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                B_ConsultaActionPerformed(evt);
+            }
+        });
         getContentPane().add(B_Consulta);
         B_Consulta.setBounds(110, 140, 103, 42);
 
@@ -71,9 +76,9 @@ public class Menu extends javax.swing.JFrame {
         B_Atras.setBounds(10, 10, 70, 23);
 
         Titulo_Menu.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        Titulo_Menu.setText("Menu");
+        Titulo_Menu.setText("Menú");
         getContentPane().add(Titulo_Menu);
-        Titulo_Menu.setBounds(140, 20, 60, 22);
+        Titulo_Menu.setBounds(130, 40, 60, 22);
 
         Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Imagen1.png"))); // NOI18N
         getContentPane().add(Fondo);
@@ -97,6 +102,12 @@ public class Menu extends javax.swing.JFrame {
     private void B_EstadisticaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_EstadisticaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_B_EstadisticaActionPerformed
+
+    private void B_ConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_ConsultaActionPerformed
+        // TODO add your handling code here:
+        dispose();
+        new MenuConsulta().setVisible(true);
+    }//GEN-LAST:event_B_ConsultaActionPerformed
 
     /**
      * @param args the command line arguments
