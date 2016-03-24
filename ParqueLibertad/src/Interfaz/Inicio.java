@@ -29,48 +29,45 @@ public class Inicio extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
-        jPasswordField1 = new javax.swing.JPasswordField();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        B_Ingresar = new javax.swing.JButton();
+        TF_Usuario = new javax.swing.JTextField();
+        PF_Contraseña = new javax.swing.JPasswordField();
+        L_Usuario = new javax.swing.JLabel();
+        L_Contraseña = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocation(new java.awt.Point(500, 125));
         setMinimumSize(new java.awt.Dimension(400, 400));
         getContentPane().setLayout(null);
 
-        jButton1.setText("Ingresar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        B_Ingresar.setText("Ingresar");
+        B_Ingresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                B_IngresarActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1);
-        jButton1.setBounds(160, 230, 90, 30);
-        getContentPane().add(jTextField1);
-        jTextField1.setBounds(120, 110, 170, 29);
-        getContentPane().add(jPasswordField1);
-        jPasswordField1.setBounds(120, 160, 170, 28);
+        getContentPane().add(B_Ingresar);
+        B_Ingresar.setBounds(160, 230, 90, 30);
+        getContentPane().add(TF_Usuario);
+        TF_Usuario.setBounds(120, 110, 170, 29);
+        getContentPane().add(PF_Contraseña);
+        PF_Contraseña.setBounds(120, 160, 170, 28);
 
-        jLabel2.setText("Usuario: ");
-        getContentPane().add(jLabel2);
-        jLabel2.setBounds(40, 120, 60, 14);
+        L_Usuario.setText("Usuario: ");
+        getContentPane().add(L_Usuario);
+        L_Usuario.setBounds(40, 120, 60, 14);
 
-        jLabel3.setText("Contraseña:");
-        getContentPane().add(jLabel3);
-        jLabel3.setBounds(40, 170, 70, 14);
-        getContentPane().add(jLabel4);
-        jLabel4.setBounds(0, 0, 410, 420);
+        L_Contraseña.setText("Contraseña:");
+        getContentPane().add(L_Contraseña);
+        L_Contraseña.setBounds(40, 170, 70, 14);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void B_IngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_IngresarActionPerformed
         // TODO add your handling code here:
-        String usuario= jTextField1.getText();
-        String password= jPasswordField1.getText();
+        String usuario= TF_Usuario.getText();
+        String password= PF_Contraseña.getText();
         if (usuario.equals("libertad") || password.equals("parque")) {
             new Menu().setVisible(true);
             dispose();   
@@ -79,7 +76,7 @@ public class Inicio extends javax.swing.JFrame {
             
         }
         
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_B_IngresarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -117,12 +114,11 @@ public class Inicio extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JPasswordField jPasswordField1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JButton B_Ingresar;
+    private javax.swing.JLabel L_Contraseña;
+    private javax.swing.JLabel L_Usuario;
+    private javax.swing.JPasswordField PF_Contraseña;
+    private javax.swing.JTextField TF_Usuario;
     // End of variables declaration//GEN-END:variables
    
 }

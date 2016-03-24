@@ -29,126 +29,126 @@ public class RegistroPersonas extends javax.swing.JFrame {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
         buttonGroup2 = new javax.swing.ButtonGroup();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jFormattedTextField1 = new javax.swing.JFormattedTextField();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
-        jRadioButton3 = new javax.swing.JRadioButton();
-        jComboBox1 = new javax.swing.JComboBox<String>();
-        jComboBox2 = new javax.swing.JComboBox<String>();
-        jComboBox3 = new javax.swing.JComboBox<String>();
-        jScrollPane1 = new javax.swing.JScrollPane();
+        TF_Nombre = new javax.swing.JTextField();
+        TF_Apellido1 = new javax.swing.JTextField();
+        TF_Apellido2 = new javax.swing.JTextField();
+        TF_Identificacion = new javax.swing.JFormattedTextField();
+        RB_Cedula = new javax.swing.JRadioButton();
+        RB_Pasaporte = new javax.swing.JRadioButton();
+        RB_TIM = new javax.swing.JRadioButton();
+        CB_Pais = new javax.swing.JComboBox<String>();
+        CB_Provincia = new javax.swing.JComboBox<String>();
+        CB_Canton = new javax.swing.JComboBox<String>();
+        SP_Direccion = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
-        jComboBox4 = new javax.swing.JComboBox<String>();
-        jButton1 = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
+        CB_Nacionalidad = new javax.swing.JComboBox<String>();
+        B_Registrar = new javax.swing.JButton();
+        L_Nombre = new javax.swing.JLabel();
+        L_Apellido1 = new javax.swing.JLabel();
+        L_Apellido2 = new javax.swing.JLabel();
+        L_Identificacion = new javax.swing.JLabel();
+        L_Nacionalidad = new javax.swing.JLabel();
+        L_Direccion = new javax.swing.JLabel();
+        L_Pais = new javax.swing.JLabel();
+        L_Provincia = new javax.swing.JLabel();
+        L_Canton = new javax.swing.JLabel();
         B_Atras = new javax.swing.JButton();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
+        Titulo_Registro_de_Persona = new javax.swing.JLabel();
+        Fondo = new javax.swing.JLabel();
+        Relleno_Fondo = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocation(new java.awt.Point(450, 125));
         setMinimumSize(new java.awt.Dimension(570, 420));
         setResizable(false);
         getContentPane().setLayout(null);
-        getContentPane().add(jTextField1);
-        jTextField1.setBounds(25, 81, 139, 20);
-        getContentPane().add(jTextField2);
-        jTextField2.setBounds(184, 81, 139, 20);
-        getContentPane().add(jTextField3);
-        jTextField3.setBounds(341, 81, 139, 20);
-        getContentPane().add(jFormattedTextField1);
-        jFormattedTextField1.setBounds(25, 165, 131, 20);
+        getContentPane().add(TF_Nombre);
+        TF_Nombre.setBounds(25, 81, 139, 20);
+        getContentPane().add(TF_Apellido1);
+        TF_Apellido1.setBounds(184, 81, 139, 20);
+        getContentPane().add(TF_Apellido2);
+        TF_Apellido2.setBounds(341, 81, 139, 20);
+        getContentPane().add(TF_Identificacion);
+        TF_Identificacion.setBounds(25, 165, 131, 20);
 
-        jRadioButton1.setBackground(new java.awt.Color(255, 255, 255));
-        jRadioButton1.setText("Cédula");
-        getContentPane().add(jRadioButton1);
-        jRadioButton1.setBounds(25, 135, 75, 23);
+        RB_Cedula.setBackground(new java.awt.Color(255, 255, 255));
+        RB_Cedula.setText("Cédula");
+        getContentPane().add(RB_Cedula);
+        RB_Cedula.setBounds(25, 135, 75, 23);
 
-        jRadioButton2.setBackground(new java.awt.Color(255, 255, 255));
-        jRadioButton2.setText("Pasaporte");
-        getContentPane().add(jRadioButton2);
-        jRadioButton2.setBounds(118, 135, 75, 23);
+        RB_Pasaporte.setBackground(new java.awt.Color(255, 255, 255));
+        RB_Pasaporte.setText("Pasaporte");
+        getContentPane().add(RB_Pasaporte);
+        RB_Pasaporte.setBounds(118, 135, 75, 23);
 
-        jRadioButton3.setBackground(new java.awt.Color(255, 255, 255));
-        jRadioButton3.setText("TIM");
-        getContentPane().add(jRadioButton3);
-        jRadioButton3.setBounds(211, 135, 43, 23);
+        RB_TIM.setBackground(new java.awt.Color(255, 255, 255));
+        RB_TIM.setText("TIM");
+        getContentPane().add(RB_TIM);
+        RB_TIM.setBounds(211, 135, 43, 23);
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Costa Rica" }));
-        jComboBox1.setToolTipText("");
-        getContentPane().add(jComboBox1);
-        jComboBox1.setBounds(25, 221, 93, 20);
+        CB_Pais.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Costa Rica" }));
+        CB_Pais.setToolTipText("");
+        getContentPane().add(CB_Pais);
+        CB_Pais.setBounds(25, 221, 93, 20);
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "San José" }));
-        getContentPane().add(jComboBox2);
-        jComboBox2.setBounds(136, 221, 103, 20);
+        CB_Provincia.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "San José" }));
+        getContentPane().add(CB_Provincia);
+        CB_Provincia.setBounds(136, 221, 103, 20);
 
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Central" }));
-        getContentPane().add(jComboBox3);
-        jComboBox3.setBounds(276, 221, 116, 20);
+        CB_Canton.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Central" }));
+        getContentPane().add(CB_Canton);
+        CB_Canton.setBounds(276, 221, 116, 20);
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        SP_Direccion.setViewportView(jTextArea1);
 
-        getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(25, 276, 367, 64);
+        getContentPane().add(SP_Direccion);
+        SP_Direccion.setBounds(25, 276, 367, 64);
 
-        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Costarricense" }));
-        getContentPane().add(jComboBox4);
-        jComboBox4.setBounds(341, 165, 106, 20);
+        CB_Nacionalidad.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Costarricense" }));
+        getContentPane().add(CB_Nacionalidad);
+        CB_Nacionalidad.setBounds(341, 165, 106, 20);
 
-        jButton1.setText("Registrar");
-        getContentPane().add(jButton1);
-        jButton1.setBounds(458, 351, 95, 32);
+        B_Registrar.setText("Registrar");
+        getContentPane().add(B_Registrar);
+        B_Registrar.setBounds(458, 351, 95, 32);
 
-        jLabel1.setText("Nombre: ");
-        getContentPane().add(jLabel1);
-        jLabel1.setBounds(25, 62, 44, 14);
+        L_Nombre.setText("Nombre: ");
+        getContentPane().add(L_Nombre);
+        L_Nombre.setBounds(25, 62, 44, 14);
 
-        jLabel2.setText("Apellido 1:");
-        getContentPane().add(jLabel2);
-        jLabel2.setBounds(184, 62, 50, 14);
+        L_Apellido1.setText("Apellido 1:");
+        getContentPane().add(L_Apellido1);
+        L_Apellido1.setBounds(184, 62, 50, 14);
 
-        jLabel3.setText("Apellido 2: ");
-        getContentPane().add(jLabel3);
-        jLabel3.setBounds(341, 62, 53, 14);
+        L_Apellido2.setText("Apellido 2: ");
+        getContentPane().add(L_Apellido2);
+        L_Apellido2.setBounds(341, 62, 53, 14);
 
-        jLabel4.setText("Identificación: ");
-        getContentPane().add(jLabel4);
-        jLabel4.setBounds(25, 119, 71, 14);
+        L_Identificacion.setText("Identificación: ");
+        getContentPane().add(L_Identificacion);
+        L_Identificacion.setBounds(25, 119, 71, 14);
 
-        jLabel5.setText("Nacionalidad: ");
-        getContentPane().add(jLabel5);
-        jLabel5.setBounds(341, 139, 67, 14);
+        L_Nacionalidad.setText("Nacionalidad: ");
+        getContentPane().add(L_Nacionalidad);
+        L_Nacionalidad.setBounds(341, 139, 67, 14);
 
-        jLabel6.setText("Dirección: ");
-        getContentPane().add(jLabel6);
-        jLabel6.setBounds(25, 256, 50, 14);
+        L_Direccion.setText("Dirección: ");
+        getContentPane().add(L_Direccion);
+        L_Direccion.setBounds(25, 256, 50, 14);
 
-        jLabel7.setText("País: ");
-        getContentPane().add(jLabel7);
-        jLabel7.setBounds(35, 201, 38, 14);
+        L_Pais.setText("País: ");
+        getContentPane().add(L_Pais);
+        L_Pais.setBounds(30, 200, 38, 14);
 
-        jLabel8.setText("Provincia: ");
-        getContentPane().add(jLabel8);
-        jLabel8.setBounds(147, 201, 61, 14);
+        L_Provincia.setText("Provincia: ");
+        getContentPane().add(L_Provincia);
+        L_Provincia.setBounds(140, 200, 61, 14);
 
-        jLabel9.setText("Cantón: ");
-        getContentPane().add(jLabel9);
-        jLabel9.setBounds(276, 201, 61, 14);
+        L_Canton.setText("Cantón: ");
+        getContentPane().add(L_Canton);
+        L_Canton.setBounds(276, 201, 61, 14);
 
         B_Atras.setText("Atrás");
         B_Atras.addActionListener(new java.awt.event.ActionListener() {
@@ -159,18 +159,18 @@ public class RegistroPersonas extends javax.swing.JFrame {
         getContentPane().add(B_Atras);
         B_Atras.setBounds(10, 11, 59, 23);
 
-        jLabel10.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel10.setText("Registro de Persona");
-        getContentPane().add(jLabel10);
-        jLabel10.setBounds(202, 12, 157, 22);
+        Titulo_Registro_de_Persona.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        Titulo_Registro_de_Persona.setText("Registro de Persona");
+        getContentPane().add(Titulo_Registro_de_Persona);
+        Titulo_Registro_de_Persona.setBounds(202, 12, 157, 22);
 
-        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Imagen1.png"))); // NOI18N
-        getContentPane().add(jLabel11);
-        jLabel11.setBounds(200, 0, 370, 390);
+        Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Imagen1.png"))); // NOI18N
+        getContentPane().add(Fondo);
+        Fondo.setBounds(200, 0, 370, 390);
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        getContentPane().add(jPanel1);
-        jPanel1.setBounds(0, 0, 210, 390);
+        Relleno_Fondo.setBackground(new java.awt.Color(255, 255, 255));
+        getContentPane().add(Relleno_Fondo);
+        Relleno_Fondo.setBounds(0, 0, 210, 390);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -218,33 +218,33 @@ public class RegistroPersonas extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton B_Atras;
+    private javax.swing.JButton B_Registrar;
+    private javax.swing.JComboBox<String> CB_Canton;
+    private javax.swing.JComboBox<String> CB_Nacionalidad;
+    private javax.swing.JComboBox<String> CB_Pais;
+    private javax.swing.JComboBox<String> CB_Provincia;
+    private javax.swing.JLabel Fondo;
+    private javax.swing.JLabel L_Apellido1;
+    private javax.swing.JLabel L_Apellido2;
+    private javax.swing.JLabel L_Canton;
+    private javax.swing.JLabel L_Direccion;
+    private javax.swing.JLabel L_Identificacion;
+    private javax.swing.JLabel L_Nacionalidad;
+    private javax.swing.JLabel L_Nombre;
+    private javax.swing.JLabel L_Pais;
+    private javax.swing.JLabel L_Provincia;
+    private javax.swing.JRadioButton RB_Cedula;
+    private javax.swing.JRadioButton RB_Pasaporte;
+    private javax.swing.JRadioButton RB_TIM;
+    private javax.swing.JPanel Relleno_Fondo;
+    private javax.swing.JScrollPane SP_Direccion;
+    private javax.swing.JTextField TF_Apellido1;
+    private javax.swing.JTextField TF_Apellido2;
+    private javax.swing.JFormattedTextField TF_Identificacion;
+    private javax.swing.JTextField TF_Nombre;
+    private javax.swing.JLabel Titulo_Registro_de_Persona;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
-    private javax.swing.JComboBox<String> jComboBox3;
-    private javax.swing.JComboBox<String> jComboBox4;
-    private javax.swing.JFormattedTextField jFormattedTextField1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
-    private javax.swing.JRadioButton jRadioButton3;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
     // End of variables declaration//GEN-END:variables
 }

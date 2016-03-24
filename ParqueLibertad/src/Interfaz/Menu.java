@@ -27,33 +27,39 @@ public class Menu extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        B_Registro = new javax.swing.JButton();
+        B_Consulta = new javax.swing.JButton();
+        B_Estadistica = new javax.swing.JButton();
         B_Atras = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        Titulo_Menu = new javax.swing.JLabel();
+        Fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocation(new java.awt.Point(500, 125));
         setMinimumSize(new java.awt.Dimension(380, 380));
         getContentPane().setLayout(null);
 
-        jButton1.setText("Registro");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        B_Registro.setText("Registro");
+        B_Registro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                B_RegistroActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1);
-        jButton1.setBounds(110, 80, 103, 41);
+        getContentPane().add(B_Registro);
+        B_Registro.setBounds(110, 80, 103, 41);
 
-        jButton2.setText("Consulta");
-        getContentPane().add(jButton2);
-        jButton2.setBounds(110, 140, 103, 42);
+        B_Consulta.setText("Consulta");
+        getContentPane().add(B_Consulta);
+        B_Consulta.setBounds(110, 140, 103, 42);
 
-        jButton3.setText("Estadistica");
-        getContentPane().add(jButton3);
-        jButton3.setBounds(110, 200, 103, 43);
+        B_Estadistica.setText("Estadistica");
+        B_Estadistica.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                B_EstadisticaActionPerformed(evt);
+            }
+        });
+        getContentPane().add(B_Estadistica);
+        B_Estadistica.setBounds(110, 200, 103, 43);
 
         B_Atras.setText("Atrás");
         B_Atras.addActionListener(new java.awt.event.ActionListener() {
@@ -64,24 +70,33 @@ public class Menu extends javax.swing.JFrame {
         getContentPane().add(B_Atras);
         B_Atras.setBounds(10, 10, 70, 23);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Imagen1.png"))); // NOI18N
-        getContentPane().add(jLabel1);
-        jLabel1.setBounds(-10, 0, 410, 340);
+        Titulo_Menu.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        Titulo_Menu.setText("Menu");
+        getContentPane().add(Titulo_Menu);
+        Titulo_Menu.setBounds(140, 20, 60, 22);
+
+        Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Imagen1.png"))); // NOI18N
+        getContentPane().add(Fondo);
+        Fondo.setBounds(-20, 0, 360, 340);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void B_RegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_RegistroActionPerformed
         // TODO add your handling code here:
         new MenuRegistro().setVisible(true);
         dispose();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_B_RegistroActionPerformed
 
     private void B_AtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_AtrasActionPerformed
         // TODO add your handling code here:
         dispose();
         new Inicio().setVisible(true);
     }//GEN-LAST:event_B_AtrasActionPerformed
+
+    private void B_EstadisticaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_EstadisticaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_B_EstadisticaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -120,9 +135,10 @@ public class Menu extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton B_Atras;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton B_Consulta;
+    private javax.swing.JButton B_Estadistica;
+    private javax.swing.JButton B_Registro;
+    private javax.swing.JLabel Fondo;
+    private javax.swing.JLabel Titulo_Menu;
     // End of variables declaration//GEN-END:variables
 }
