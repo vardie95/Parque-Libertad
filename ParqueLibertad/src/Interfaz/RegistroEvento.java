@@ -9,12 +9,12 @@ package Interfaz;
  *
  * @author Luis Diego
  */
-public class RegistroCurso extends javax.swing.JFrame {
+public class RegistroEvento extends javax.swing.JFrame {
 
     /**
      * Creates new form RegistroCurso
      */
-    public RegistroCurso() {
+    public RegistroEvento() {
         initComponents();
     }
 
@@ -31,13 +31,14 @@ public class RegistroCurso extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jComboBox2 = new javax.swing.JComboBox<String>();
         jComboBox3 = new javax.swing.JComboBox<String>();
-        jFormattedTextField1 = new javax.swing.JFormattedTextField();
-        jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         B_Atras = new javax.swing.JButton();
         jLabel10 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
         jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -47,16 +48,21 @@ public class RegistroCurso extends javax.swing.JFrame {
         getContentPane().setLayout(null);
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Nombre" }));
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jComboBox1);
-        jComboBox1.setBounds(130, 70, 164, 28);
+        jComboBox1.setBounds(100, 70, 164, 30);
 
-        jLabel1.setText("Curso: ");
+        jLabel1.setText("Tipo:");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(70, 70, 47, 28);
+        jLabel1.setBounds(40, 70, 47, 30);
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Adultos" }));
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "dd/mm/aaaa" }));
         getContentPane().add(jComboBox2);
-        jComboBox2.setBounds(130, 120, 146, 31);
+        jComboBox2.setBounds(100, 110, 146, 30);
 
         jComboBox3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "7:30 a 9:30" }));
         jComboBox3.addActionListener(new java.awt.event.ActionListener() {
@@ -65,21 +71,15 @@ public class RegistroCurso extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jComboBox3);
-        jComboBox3.setBounds(130, 170, 135, 30);
-        getContentPane().add(jFormattedTextField1);
-        jFormattedTextField1.setBounds(130, 220, 135, 30);
+        jComboBox3.setBounds(100, 150, 135, 30);
 
-        jLabel2.setText("Costo: ");
-        getContentPane().add(jLabel2);
-        jLabel2.setBounds(70, 220, 58, 28);
-
-        jLabel3.setText("Mercado: ");
+        jLabel3.setText("Fecha:");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(70, 120, 58, 28);
+        jLabel3.setBounds(40, 110, 58, 30);
 
-        jLabel4.setText("Horario: ");
+        jLabel4.setText("Hora: ");
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(70, 170, 58, 28);
+        jLabel4.setBounds(40, 150, 58, 30);
 
         jButton1.setText("Registrar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -100,13 +100,24 @@ public class RegistroCurso extends javax.swing.JFrame {
         B_Atras.setBounds(10, 10, 70, 23);
 
         jLabel10.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel10.setText("Registro de Curso");
+        jLabel10.setText("Registro de Evento");
         getContentPane().add(jLabel10);
-        jLabel10.setBounds(110, 20, 140, 22);
+        jLabel10.setBounds(120, 30, 160, 22);
+
+        jLabel2.setText("Descripción:");
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(40, 190, 70, 14);
+
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jScrollPane1.setViewportView(jTextArea1);
+
+        getContentPane().add(jScrollPane1);
+        jScrollPane1.setBounds(40, 210, 210, 60);
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Imagen1.png"))); // NOI18N
         getContentPane().add(jLabel5);
-        jLabel5.setBounds(0, 0, 370, 310);
+        jLabel5.setBounds(0, 0, 370, 320);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -125,6 +136,10 @@ public class RegistroCurso extends javax.swing.JFrame {
         new MenuRegistro().setVisible(true);
     }//GEN-LAST:event_B_AtrasActionPerformed
 
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -142,20 +157,21 @@ public class RegistroCurso extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(RegistroCurso.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegistroEvento.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(RegistroCurso.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegistroEvento.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(RegistroCurso.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegistroEvento.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(RegistroCurso.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegistroEvento.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new RegistroCurso().setVisible(true);
+                new RegistroEvento().setVisible(true);
             }
         });
     }
@@ -166,12 +182,13 @@ public class RegistroCurso extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JComboBox<String> jComboBox3;
-    private javax.swing.JFormattedTextField jFormattedTextField1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea jTextArea1;
     // End of variables declaration//GEN-END:variables
 }
