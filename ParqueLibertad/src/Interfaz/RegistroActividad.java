@@ -76,7 +76,7 @@ public class RegistroActividad extends javax.swing.JFrame {
         jLabel10.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel10.setText("Registro de Actividad");
         getContentPane().add(jLabel10);
-        jLabel10.setBounds(110, 20, 180, 22);
+        jLabel10.setBounds(100, 30, 180, 22);
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);

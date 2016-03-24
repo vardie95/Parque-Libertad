@@ -32,6 +32,7 @@ public class MenuRegistro extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         B_Atras = new javax.swing.JButton();
+        jLabel10 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -46,7 +47,7 @@ public class MenuRegistro extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton1);
-        jButton1.setBounds(130, 50, 91, 39);
+        jButton1.setBounds(130, 70, 91, 39);
 
         jButton2.setText("Evento");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -55,7 +56,7 @@ public class MenuRegistro extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton2);
-        jButton2.setBounds(130, 100, 91, 37);
+        jButton2.setBounds(130, 120, 91, 37);
 
         jButton3.setText("Actividad");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -64,7 +65,7 @@ public class MenuRegistro extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton3);
-        jButton3.setBounds(130, 150, 91, 44);
+        jButton3.setBounds(130, 170, 91, 44);
 
         jButton5.setText("Curso");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
@@ -73,7 +74,7 @@ public class MenuRegistro extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton5);
-        jButton5.setBounds(130, 205, 91, 43);
+        jButton5.setBounds(130, 230, 91, 43);
 
         B_Atras.setText("Atrás");
         B_Atras.addActionListener(new java.awt.event.ActionListener() {
@@ -83,6 +84,11 @@ public class MenuRegistro extends javax.swing.JFrame {
         });
         getContentPane().add(B_Atras);
         B_Atras.setBounds(10, 10, 70, 23);
+
+        jLabel10.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel10.setText("Registro");
+        getContentPane().add(jLabel10);
+        jLabel10.setBounds(140, 20, 80, 22);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Imagen1.png"))); // NOI18N
         getContentPane().add(jLabel1);
@@ -163,5 +169,6 @@ public class MenuRegistro extends javax.swing.JFrame {
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     // End of variables declaration//GEN-END:variables
 }

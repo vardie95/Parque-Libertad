@@ -102,7 +102,7 @@ public class RegistroEvento extends javax.swing.JFrame {
         jLabel10.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel10.setText("Registro de Evento");
         getContentPane().add(jLabel10);
-        jLabel10.setBounds(120, 30, 160, 22);
+        jLabel10.setBounds(100, 20, 160, 22);
 
         jLabel2.setText("Descripción:");
         getContentPane().add(jLabel2);
