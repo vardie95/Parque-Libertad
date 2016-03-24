@@ -88,7 +88,7 @@ public class RegistroEvento extends javax.swing.JFrame {
             }
         });
         getContentPane().add(B_Registrar);
-        B_Registrar.setBounds(270, 270, 80, 30);
+        B_Registrar.setBounds(260, 270, 90, 30);
 
         B_Atras.setText("Atrás");
         B_Atras.addActionListener(new java.awt.event.ActionListener() {
@@ -106,7 +106,7 @@ public class RegistroEvento extends javax.swing.JFrame {
 
         L_Descripcion.setText("Descripción:");
         getContentPane().add(L_Descripcion);
-        L_Descripcion.setBounds(40, 190, 70, 14);
+        L_Descripcion.setBounds(40, 190, 90, 14);
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);

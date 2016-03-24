@@ -27,14 +27,14 @@ public class RegistroDesercion extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        CB_Identificacion = new javax.swing.JComboBox<String>();
+        L_Identificacion = new javax.swing.JLabel();
         CB_Curso = new javax.swing.JComboBox<String>();
         L_Curso = new javax.swing.JLabel();
-        CB_Mercado = new javax.swing.JComboBox<String>();
-        L_Mercado = new javax.swing.JLabel();
-        L_Horario = new javax.swing.JLabel();
+        L_Motivo = new javax.swing.JLabel();
         B_Registrar = new javax.swing.JButton();
         B_Atras = new javax.swing.JButton();
-        Titulo_Registro_de_Curso = new javax.swing.JLabel();
+        Titulo_Registro_de_Desercion = new javax.swing.JLabel();
         SP_Descripcion = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
         Fondo = new javax.swing.JLabel();
@@ -45,25 +45,25 @@ public class RegistroDesercion extends javax.swing.JFrame {
         setResizable(false);
         getContentPane().setLayout(null);
 
-        CB_Curso.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "123456789" }));
+        CB_Identificacion.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "123456789" }));
+        getContentPane().add(CB_Identificacion);
+        CB_Identificacion.setBounds(130, 70, 164, 28);
+
+        L_Identificacion.setText("Identificación:");
+        getContentPane().add(L_Identificacion);
+        L_Identificacion.setBounds(40, 70, 80, 28);
+
+        CB_Curso.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Adultos" }));
         getContentPane().add(CB_Curso);
-        CB_Curso.setBounds(130, 70, 164, 28);
+        CB_Curso.setBounds(130, 120, 146, 31);
 
-        L_Curso.setText("Identificación:");
+        L_Curso.setText("Curso:");
         getContentPane().add(L_Curso);
-        L_Curso.setBounds(40, 70, 80, 28);
+        L_Curso.setBounds(70, 120, 40, 28);
 
-        CB_Mercado.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Adultos" }));
-        getContentPane().add(CB_Mercado);
-        CB_Mercado.setBounds(130, 120, 146, 31);
-
-        L_Mercado.setText("Curso:");
-        getContentPane().add(L_Mercado);
-        L_Mercado.setBounds(70, 120, 40, 28);
-
-        L_Horario.setText("Motivo:");
-        getContentPane().add(L_Horario);
-        L_Horario.setBounds(70, 160, 58, 28);
+        L_Motivo.setText("Motivo:");
+        getContentPane().add(L_Motivo);
+        L_Motivo.setBounds(70, 160, 58, 28);
 
         B_Registrar.setText("Registrar");
         B_Registrar.addActionListener(new java.awt.event.ActionListener() {
@@ -72,7 +72,7 @@ public class RegistroDesercion extends javax.swing.JFrame {
             }
         });
         getContentPane().add(B_Registrar);
-        B_Registrar.setBounds(270, 270, 80, 30);
+        B_Registrar.setBounds(260, 270, 90, 30);
 
         B_Atras.setText("Atrás");
         B_Atras.addActionListener(new java.awt.event.ActionListener() {
@@ -83,10 +83,10 @@ public class RegistroDesercion extends javax.swing.JFrame {
         getContentPane().add(B_Atras);
         B_Atras.setBounds(10, 10, 70, 23);
 
-        Titulo_Registro_de_Curso.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        Titulo_Registro_de_Curso.setText("Registro de Desercion");
-        getContentPane().add(Titulo_Registro_de_Curso);
-        Titulo_Registro_de_Curso.setBounds(110, 20, 180, 22);
+        Titulo_Registro_de_Desercion.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        Titulo_Registro_de_Desercion.setText("Registro de Deserción");
+        getContentPane().add(Titulo_Registro_de_Desercion);
+        Titulo_Registro_de_Desercion.setBounds(110, 20, 180, 22);
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
@@ -154,13 +154,13 @@ public class RegistroDesercion extends javax.swing.JFrame {
     private javax.swing.JButton B_Atras;
     private javax.swing.JButton B_Registrar;
     private javax.swing.JComboBox<String> CB_Curso;
-    private javax.swing.JComboBox<String> CB_Mercado;
+    private javax.swing.JComboBox<String> CB_Identificacion;
     private javax.swing.JLabel Fondo;
     private javax.swing.JLabel L_Curso;
-    private javax.swing.JLabel L_Horario;
-    private javax.swing.JLabel L_Mercado;
+    private javax.swing.JLabel L_Identificacion;
+    private javax.swing.JLabel L_Motivo;
     private javax.swing.JScrollPane SP_Descripcion;
-    private javax.swing.JLabel Titulo_Registro_de_Curso;
+    private javax.swing.JLabel Titulo_Registro_de_Desercion;
     private javax.swing.JTextArea jTextArea1;
     // End of variables declaration//GEN-END:variables
 }
