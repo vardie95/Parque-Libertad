@@ -54,14 +54,13 @@ public class RegistroPersonas extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         B_Atras = new javax.swing.JButton();
         jLabel10 = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocation(new java.awt.Point(450, 125));
-        setMinimumSize(new java.awt.Dimension(2147483647, 2147483647));
-        setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(0, 0));
+        setMinimumSize(new java.awt.Dimension(570, 420));
+        setResizable(false);
         getContentPane().setLayout(null);
         getContentPane().add(jTextField1);
         jTextField1.setBounds(25, 81, 139, 20);
@@ -165,25 +164,13 @@ public class RegistroPersonas extends javax.swing.JFrame {
         getContentPane().add(jLabel10);
         jLabel10.setBounds(202, 12, 157, 22);
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 200, Short.MAX_VALUE)
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-
-        getContentPane().add(jPanel1);
-        jPanel1.setBounds(0, 0, 200, 400);
-
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Imagen1.png"))); // NOI18N
         getContentPane().add(jLabel11);
-        jLabel11.setBounds(180, 0, 400, 400);
+        jLabel11.setBounds(200, 0, 370, 390);
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        getContentPane().add(jPanel1);
+        jPanel1.setBounds(0, 0, 210, 390);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
