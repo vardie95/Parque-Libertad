@@ -29,24 +29,14 @@ public class RegistroCurso extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        CB_Curso = new javax.swing.JComboBox<String>();
-        L_Curso = new javax.swing.JLabel();
-        CB_Mercado = new javax.swing.JComboBox<String>();
-        CB_Horario = new javax.swing.JComboBox<String>();
-        TF_Costo = new javax.swing.JFormattedTextField();
-        L_Costo = new javax.swing.JLabel();
-        L_Mercado = new javax.swing.JLabel();
-        L_Horario = new javax.swing.JLabel();
+        L_Nombre = new javax.swing.JLabel();
+        L_Descripcion = new javax.swing.JLabel();
         B_Registrar = new javax.swing.JButton();
         B_Atras = new javax.swing.JButton();
         Titulo_Registro_de_Curso = new javax.swing.JLabel();
-        RB_Sabado = new javax.swing.JRadioButton();
-        RB_Viernes = new javax.swing.JRadioButton();
-        RB_Jueves = new javax.swing.JRadioButton();
-        RB_Miercoles = new javax.swing.JRadioButton();
-        RB_Domingo = new javax.swing.JRadioButton();
-        RB_Lunes = new javax.swing.JRadioButton();
-        RB_Martes = new javax.swing.JRadioButton();
+        SP_Descripcion = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
+        TF_Nombre = new javax.swing.JTextField();
         Fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -55,40 +45,13 @@ public class RegistroCurso extends javax.swing.JFrame {
         setResizable(false);
         getContentPane().setLayout(null);
 
-        CB_Curso.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Nombre" }));
-        getContentPane().add(CB_Curso);
-        CB_Curso.setBounds(130, 60, 164, 28);
+        L_Nombre.setText("Nombre:");
+        getContentPane().add(L_Nombre);
+        L_Nombre.setBounds(60, 90, 60, 28);
 
-        L_Curso.setText("Curso: ");
-        getContentPane().add(L_Curso);
-        L_Curso.setBounds(70, 60, 47, 28);
-
-        CB_Mercado.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Adultos" }));
-        getContentPane().add(CB_Mercado);
-        CB_Mercado.setBounds(130, 110, 146, 31);
-
-        CB_Horario.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "7:30 a 9:30" }));
-        CB_Horario.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CB_HorarioActionPerformed(evt);
-            }
-        });
-        getContentPane().add(CB_Horario);
-        CB_Horario.setBounds(130, 180, 135, 30);
-        getContentPane().add(TF_Costo);
-        TF_Costo.setBounds(130, 230, 135, 30);
-
-        L_Costo.setText("Costo: ");
-        getContentPane().add(L_Costo);
-        L_Costo.setBounds(70, 230, 58, 28);
-
-        L_Mercado.setText("Mercado: ");
-        getContentPane().add(L_Mercado);
-        L_Mercado.setBounds(70, 110, 58, 28);
-
-        L_Horario.setText("Horario: ");
-        getContentPane().add(L_Horario);
-        L_Horario.setBounds(70, 180, 58, 28);
+        L_Descripcion.setText("Descripción:");
+        getContentPane().add(L_Descripcion);
+        L_Descripcion.setBounds(60, 150, 90, 28);
 
         B_Registrar.setText("Registrar");
         B_Registrar.addActionListener(new java.awt.event.ActionListener() {
@@ -97,7 +60,7 @@ public class RegistroCurso extends javax.swing.JFrame {
             }
         });
         getContentPane().add(B_Registrar);
-        B_Registrar.setBounds(250, 270, 100, 30);
+        B_Registrar.setBounds(260, 270, 90, 30);
 
         B_Atras.setText("Atrás");
         B_Atras.addActionListener(new java.awt.event.ActionListener() {
@@ -111,47 +74,16 @@ public class RegistroCurso extends javax.swing.JFrame {
         Titulo_Registro_de_Curso.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         Titulo_Registro_de_Curso.setText("Registro de Curso");
         getContentPane().add(Titulo_Registro_de_Curso);
-        Titulo_Registro_de_Curso.setBounds(110, 20, 140, 22);
+        Titulo_Registro_de_Curso.setBounds(100, 30, 180, 22);
 
-        RB_Sabado.setBackground(new java.awt.Color(255, 255, 255));
-        RB_Sabado.setText("S");
-        RB_Sabado.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                RB_SabadoActionPerformed(evt);
-            }
-        });
-        getContentPane().add(RB_Sabado);
-        RB_Sabado.setBounds(290, 150, 40, 23);
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        SP_Descripcion.setViewportView(jTextArea1);
 
-        RB_Viernes.setBackground(new java.awt.Color(255, 255, 255));
-        RB_Viernes.setText("V");
-        getContentPane().add(RB_Viernes);
-        RB_Viernes.setBounds(250, 150, 40, 23);
-
-        RB_Jueves.setBackground(new java.awt.Color(255, 255, 255));
-        RB_Jueves.setText("J");
-        getContentPane().add(RB_Jueves);
-        RB_Jueves.setBounds(210, 150, 40, 23);
-
-        RB_Miercoles.setBackground(new java.awt.Color(255, 255, 255));
-        RB_Miercoles.setText("M");
-        getContentPane().add(RB_Miercoles);
-        RB_Miercoles.setBounds(170, 150, 40, 23);
-
-        RB_Domingo.setBackground(new java.awt.Color(255, 255, 255));
-        RB_Domingo.setText("D");
-        getContentPane().add(RB_Domingo);
-        RB_Domingo.setBounds(50, 150, 40, 23);
-
-        RB_Lunes.setBackground(new java.awt.Color(255, 255, 255));
-        RB_Lunes.setText("L");
-        getContentPane().add(RB_Lunes);
-        RB_Lunes.setBounds(90, 150, 40, 23);
-
-        RB_Martes.setBackground(new java.awt.Color(255, 255, 255));
-        RB_Martes.setText("K");
-        getContentPane().add(RB_Martes);
-        RB_Martes.setBounds(130, 150, 40, 23);
+        getContentPane().add(SP_Descripcion);
+        SP_Descripcion.setBounds(60, 180, 210, 60);
+        getContentPane().add(TF_Nombre);
+        TF_Nombre.setBounds(120, 90, 150, 30);
 
         Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Imagen1.png"))); // NOI18N
         getContentPane().add(Fondo);
@@ -160,13 +92,9 @@ public class RegistroCurso extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void CB_HorarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CB_HorarioActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_CB_HorarioActionPerformed
-
     private void B_RegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_RegistrarActionPerformed
         // TODO add your handling code here:
-        if (RB_Lunes.isSelected()==false && RB_Martes.isSelected()==false && RB_Miercoles.isSelected()==false && RB_Jueves.isSelected()==false && RB_Viernes.isSelected()==false && RB_Sabado.isSelected()==false && RB_Domingo.isSelected()==false){
+        if (TF_Nombre.getText().length()==0){
             JOptionPane.showMessageDialog(this, "Debe de llenar todos los campos obligatorios.",null,JOptionPane.ERROR_MESSAGE);
         }
         else{
@@ -180,10 +108,6 @@ public class RegistroCurso extends javax.swing.JFrame {
         dispose();
         new MenuRegistro().setVisible(true);
     }//GEN-LAST:event_B_AtrasActionPerformed
-
-    private void RB_SabadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RB_SabadoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_RB_SabadoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -211,6 +135,9 @@ public class RegistroCurso extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(RegistroCurso.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -223,22 +150,12 @@ public class RegistroCurso extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton B_Atras;
     private javax.swing.JButton B_Registrar;
-    private javax.swing.JComboBox<String> CB_Curso;
-    private javax.swing.JComboBox<String> CB_Horario;
-    private javax.swing.JComboBox<String> CB_Mercado;
     private javax.swing.JLabel Fondo;
-    private javax.swing.JLabel L_Costo;
-    private javax.swing.JLabel L_Curso;
-    private javax.swing.JLabel L_Horario;
-    private javax.swing.JLabel L_Mercado;
-    private javax.swing.JRadioButton RB_Domingo;
-    private javax.swing.JRadioButton RB_Jueves;
-    private javax.swing.JRadioButton RB_Lunes;
-    private javax.swing.JRadioButton RB_Martes;
-    private javax.swing.JRadioButton RB_Miercoles;
-    private javax.swing.JRadioButton RB_Sabado;
-    private javax.swing.JRadioButton RB_Viernes;
-    private javax.swing.JFormattedTextField TF_Costo;
+    private javax.swing.JLabel L_Descripcion;
+    private javax.swing.JLabel L_Nombre;
+    private javax.swing.JScrollPane SP_Descripcion;
+    private javax.swing.JTextField TF_Nombre;
     private javax.swing.JLabel Titulo_Registro_de_Curso;
+    private javax.swing.JTextArea jTextArea1;
     // End of variables declaration//GEN-END:variables
 }
