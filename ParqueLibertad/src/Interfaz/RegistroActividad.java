@@ -94,6 +94,8 @@ public class RegistroActividad extends javax.swing.JFrame {
 
     private void B_RegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_RegistrarActionPerformed
         // TODO add your handling code here:
+        dispose();
+        new MenuRegistro().setVisible(true);
     }//GEN-LAST:event_B_RegistrarActionPerformed
 
     private void B_AtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_AtrasActionPerformed

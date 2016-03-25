@@ -65,11 +65,6 @@ public class RegistroEvento extends javax.swing.JFrame {
         CB_Fecha.setBounds(100, 110, 146, 30);
 
         CB_Hora.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "7:30 a 9:30" }));
-        CB_Hora.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CB_HoraActionPerformed(evt);
-            }
-        });
         getContentPane().add(CB_Hora);
         CB_Hora.setBounds(100, 150, 135, 30);
 
@@ -122,12 +117,10 @@ public class RegistroEvento extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void CB_HoraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CB_HoraActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_CB_HoraActionPerformed
-
     private void B_RegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_RegistrarActionPerformed
         // TODO add your handling code here:
+        dispose();
+        new MenuRegistro().setVisible(true);
     }//GEN-LAST:event_B_RegistrarActionPerformed
 
     private void B_AtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_AtrasActionPerformed

@@ -5,6 +5,8 @@
  */
 package Interfaz;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Luis Diego
@@ -45,7 +47,7 @@ public class RegistroPuesto extends javax.swing.JFrame {
 
         L_Nombre.setText("Nombre:");
         getContentPane().add(L_Nombre);
-        L_Nombre.setBounds(60, 90, 47, 28);
+        L_Nombre.setBounds(60, 90, 60, 28);
 
         L_Descripcion.setText("Descripción:");
         getContentPane().add(L_Descripcion);
@@ -92,6 +94,13 @@ public class RegistroPuesto extends javax.swing.JFrame {
 
     private void B_RegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_RegistrarActionPerformed
         // TODO add your handling code here:
+        if (TF_Nombre.getText().length()==0){
+            JOptionPane.showMessageDialog(this, "Debe de llenar todos los campos obligatorios.",null,JOptionPane.ERROR_MESSAGE); 
+        }
+        else{
+            dispose();
+            new MenuRegistro().setVisible(true);
+        }
     }//GEN-LAST:event_B_RegistrarActionPerformed
 
     private void B_AtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_AtrasActionPerformed
