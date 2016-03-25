@@ -142,7 +142,7 @@ public class RegistroPersonas extends javax.swing.JFrame {
 
         L_Identificacion.setText("Identificación: ");
         getContentPane().add(L_Identificacion);
-        L_Identificacion.setBounds(25, 119, 71, 14);
+        L_Identificacion.setBounds(25, 119, 100, 14);
 
         L_Nacionalidad.setText("Nacionalidad: ");
         getContentPane().add(L_Nacionalidad);
