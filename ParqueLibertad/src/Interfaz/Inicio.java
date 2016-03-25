@@ -34,10 +34,13 @@ public class Inicio extends javax.swing.JFrame {
         PF_Contraseña = new javax.swing.JPasswordField();
         L_Usuario = new javax.swing.JLabel();
         L_Contraseña = new javax.swing.JLabel();
+        BT_Cancelar = new javax.swing.JButton();
+        Titulo_Menu = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setLocation(new java.awt.Point(500, 125));
-        setMinimumSize(new java.awt.Dimension(400, 400));
+        setLocation(new java.awt.Point(500, 140));
+        setMinimumSize(new java.awt.Dimension(400, 320));
         getContentPane().setLayout(null);
 
         B_Ingresar.setText("Ingresar");
@@ -47,19 +50,37 @@ public class Inicio extends javax.swing.JFrame {
             }
         });
         getContentPane().add(B_Ingresar);
-        B_Ingresar.setBounds(160, 230, 90, 30);
+        B_Ingresar.setBounds(80, 210, 90, 30);
         getContentPane().add(TF_Usuario);
-        TF_Usuario.setBounds(120, 110, 170, 29);
+        TF_Usuario.setBounds(130, 100, 170, 29);
         getContentPane().add(PF_Contraseña);
-        PF_Contraseña.setBounds(120, 160, 170, 28);
+        PF_Contraseña.setBounds(130, 150, 170, 28);
 
         L_Usuario.setText("Usuario: ");
         getContentPane().add(L_Usuario);
-        L_Usuario.setBounds(40, 120, 60, 14);
+        L_Usuario.setBounds(50, 110, 60, 14);
 
         L_Contraseña.setText("Contraseña:");
         getContentPane().add(L_Contraseña);
-        L_Contraseña.setBounds(40, 170, 70, 14);
+        L_Contraseña.setBounds(50, 160, 70, 14);
+
+        BT_Cancelar.setText("Cancelar");
+        BT_Cancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BT_CancelarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(BT_Cancelar);
+        BT_Cancelar.setBounds(200, 210, 90, 30);
+
+        Titulo_Menu.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        Titulo_Menu.setText("Parque Libertad ");
+        getContentPane().add(Titulo_Menu);
+        Titulo_Menu.setBounds(140, 40, 150, 40);
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Imagen1.png"))); // NOI18N
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(0, 0, 400, 290);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -77,6 +98,12 @@ public class Inicio extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_B_IngresarActionPerformed
+
+    private void BT_CancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BT_CancelarActionPerformed
+        // TODO add your handling code here:
+        TF_Usuario.setText("");
+        PF_Contraseña.setText("");
+    }//GEN-LAST:event_BT_CancelarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -114,11 +141,14 @@ public class Inicio extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BT_Cancelar;
     private javax.swing.JButton B_Ingresar;
     private javax.swing.JLabel L_Contraseña;
     private javax.swing.JLabel L_Usuario;
     private javax.swing.JPasswordField PF_Contraseña;
     private javax.swing.JTextField TF_Usuario;
+    private javax.swing.JLabel Titulo_Menu;
+    private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
    
 }
