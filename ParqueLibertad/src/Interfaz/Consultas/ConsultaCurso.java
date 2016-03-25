@@ -9,12 +9,12 @@ package Interfaz.Consultas;
  *
  * @author Luis Diego
  */
-public class ConsultaFecha extends javax.swing.JFrame {
+public class ConsultaCurso extends javax.swing.JFrame {
 
     /**
      * Creates new form ConsultaFecha
      */
-    public ConsultaFecha() {
+    public ConsultaCurso() {
         initComponents();
     }
 
@@ -52,7 +52,7 @@ public class ConsultaFecha extends javax.swing.JFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "Identificación", "Nombre", "Apellido 1", "Apellido 2"
+                "Curso", "Descripción", "Mercado", "Costo"
             }
         ));
         jTable1.setGridColor(new java.awt.Color(51, 51, 51));
@@ -73,7 +73,7 @@ public class ConsultaFecha extends javax.swing.JFrame {
 
         jLabel1.setText("Fecha Inicio: ");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(50, 50, 90, 20);
+        jLabel1.setBounds(40, 50, 90, 20);
 
         jLabel2.setText("Fecha Final: ");
         getContentPane().add(jLabel2);
@@ -98,9 +98,9 @@ public class ConsultaFecha extends javax.swing.JFrame {
         BT_Atras.setBounds(20, 386, 78, 23);
 
         Titulo_Menu.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        Titulo_Menu.setText("Consulta por Fecha");
+        Titulo_Menu.setText("Consulta Curso");
         getContentPane().add(Titulo_Menu);
-        Titulo_Menu.setBounds(170, 20, 200, 22);
+        Titulo_Menu.setBounds(240, 20, 200, 22);
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/fondo2.png"))); // NOI18N
         getContentPane().add(jLabel4);
@@ -119,7 +119,7 @@ public class ConsultaFecha extends javax.swing.JFrame {
 
     private void BT_AtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BT_AtrasActionPerformed
         // TODO add your handling code here:
-        new MenuConsultaPersona().setVisible(true);
+        new Interfaz.MenuConsulta().setVisible(true);
         dispose();
     }//GEN-LAST:event_BT_AtrasActionPerformed
 
@@ -140,20 +140,21 @@ public class ConsultaFecha extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ConsultaFecha.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ConsultaCurso.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ConsultaFecha.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ConsultaCurso.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ConsultaFecha.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ConsultaCurso.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ConsultaFecha.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ConsultaCurso.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ConsultaFecha().setVisible(true);
+                new ConsultaCurso().setVisible(true);
             }
         });
     }

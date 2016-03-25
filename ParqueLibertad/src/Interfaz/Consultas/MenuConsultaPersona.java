@@ -31,80 +31,80 @@ public class MenuConsultaPersona extends javax.swing.JFrame {
     private void initComponents() {
 
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
+        BT_Fecha = new javax.swing.JButton();
+        BT_Decerta = new javax.swing.JButton();
+        BT_Lugar = new javax.swing.JButton();
+        BT_Nombre = new javax.swing.JButton();
+        BT_identificacion = new javax.swing.JButton();
         Titulo_Menu = new javax.swing.JLabel();
-        jButton7 = new javax.swing.JButton();
+        BT_Atras = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         jButton1.setText("jButton1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocation(new java.awt.Point(500, 125));
-        setMinimumSize(new java.awt.Dimension(380, 380));
+        setMinimumSize(new java.awt.Dimension(360, 360));
         getContentPane().setLayout(null);
 
-        jButton2.setText("Fecha");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        BT_Fecha.setText("Fecha");
+        BT_Fecha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                BT_FechaActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton2);
-        jButton2.setBounds(70, 160, 110, 40);
+        getContentPane().add(BT_Fecha);
+        BT_Fecha.setBounds(70, 160, 110, 40);
 
-        jButton3.setText("Desercción");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        BT_Decerta.setText("Desercción");
+        BT_Decerta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                BT_DecertaActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton3);
-        jButton3.setBounds(130, 220, 120, 40);
+        getContentPane().add(BT_Decerta);
+        BT_Decerta.setBounds(130, 220, 120, 40);
 
-        jButton4.setText("Lugar");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        BT_Lugar.setText("Lugar");
+        BT_Lugar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                BT_LugarActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton4);
-        jButton4.setBounds(210, 160, 110, 40);
+        getContentPane().add(BT_Lugar);
+        BT_Lugar.setBounds(210, 160, 110, 40);
 
-        jButton5.setText("Nombre");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        BT_Nombre.setText("Nombre");
+        BT_Nombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                BT_NombreActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton5);
-        jButton5.setBounds(70, 100, 110, 40);
+        getContentPane().add(BT_Nombre);
+        BT_Nombre.setBounds(70, 100, 110, 40);
 
-        jButton6.setText("Identificación");
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
+        BT_identificacion.setText("Identificación");
+        BT_identificacion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
+                BT_identificacionActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton6);
-        jButton6.setBounds(210, 100, 110, 40);
+        getContentPane().add(BT_identificacion);
+        BT_identificacion.setBounds(210, 100, 110, 40);
 
         Titulo_Menu.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         Titulo_Menu.setText("Consulta Personas");
         getContentPane().add(Titulo_Menu);
         Titulo_Menu.setBounds(110, 50, 200, 22);
 
-        jButton7.setText("Atras");
-        jButton7.addActionListener(new java.awt.event.ActionListener() {
+        BT_Atras.setText("Atras");
+        BT_Atras.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton7ActionPerformed(evt);
+                BT_AtrasActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton7);
-        jButton7.setBounds(10, 290, 70, 23);
+        getContentPane().add(BT_Atras);
+        BT_Atras.setBounds(10, 290, 70, 23);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Imagen1.png"))); // NOI18N
         getContentPane().add(jLabel1);
@@ -113,41 +113,41 @@ public class MenuConsultaPersona extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void BT_FechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BT_FechaActionPerformed
         // TODO add your handling code here:
         new ConsultaFecha().setVisible(true);
         dispose();
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_BT_FechaActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void BT_DecertaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BT_DecertaActionPerformed
         // TODO add your handling code here:
         new ConsultaDesertaPersona().setVisible(true);
         dispose();
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_BT_DecertaActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    private void BT_NombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BT_NombreActionPerformed
         // TODO add your handling code here:
         new ConsultaNombre().setVisible(true);
         dispose();
-    }//GEN-LAST:event_jButton5ActionPerformed
+    }//GEN-LAST:event_BT_NombreActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void BT_LugarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BT_LugarActionPerformed
         // TODO add your handling code here:
         new ConsultaLugarPersona().setVisible(true);
         dispose();
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_BT_LugarActionPerformed
 
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+    private void BT_AtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BT_AtrasActionPerformed
         // TODO add your handling code here:
         new MenuConsulta().setVisible(true);
         dispose();
-    }//GEN-LAST:event_jButton7ActionPerformed
+    }//GEN-LAST:event_BT_AtrasActionPerformed
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+    private void BT_identificacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BT_identificacionActionPerformed
         // TODO add your handling code here:
         new ConsultaIndentificacionPersona().setVisible(true);
         dispose();
-    }//GEN-LAST:event_jButton6ActionPerformed
+    }//GEN-LAST:event_BT_identificacionActionPerformed
 
     /**
      * @param args the command line arguments
@@ -188,14 +188,14 @@ public class MenuConsultaPersona extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BT_Atras;
+    private javax.swing.JButton BT_Decerta;
+    private javax.swing.JButton BT_Fecha;
+    private javax.swing.JButton BT_Lugar;
+    private javax.swing.JButton BT_Nombre;
+    private javax.swing.JButton BT_identificacion;
     private javax.swing.JLabel Titulo_Menu;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }
