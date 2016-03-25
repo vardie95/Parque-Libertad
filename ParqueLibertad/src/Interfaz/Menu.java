@@ -5,6 +5,9 @@
  */
 package Interfaz;
 
+import java.util.HashSet;
+import java.util.Set;
+
 /**
  *
  * @author Luis Diego
@@ -27,87 +30,93 @@ public class Menu extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        B_Registro = new javax.swing.JButton();
-        B_Consulta = new javax.swing.JButton();
-        B_Estadistica = new javax.swing.JButton();
-        B_Atras = new javax.swing.JButton();
-        Titulo_Menu = new javax.swing.JLabel();
-        Fondo = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        Titulo_Registro = new javax.swing.JLabel();
+        jButton4 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setLocation(new java.awt.Point(500, 125));
-        setMinimumSize(new java.awt.Dimension(340, 340));
+        setLocation(new java.awt.Point(500, 150));
+        setMinimumSize(new java.awt.Dimension(380, 380));
         getContentPane().setLayout(null);
 
-        B_Registro.setText("Registro");
-        B_Registro.addActionListener(new java.awt.event.ActionListener() {
+        jButton1.setText("Registro");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                B_RegistroActionPerformed(evt);
+                jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(B_Registro);
-        B_Registro.setBounds(110, 80, 103, 41);
+        getContentPane().add(jButton1);
+        jButton1.setBounds(120, 100, 110, 39);
 
-        B_Consulta.setText("Consulta");
-        B_Consulta.addActionListener(new java.awt.event.ActionListener() {
+        jButton2.setText("Consulta");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                B_ConsultaActionPerformed(evt);
+                jButton2ActionPerformed(evt);
             }
         });
-        getContentPane().add(B_Consulta);
-        B_Consulta.setBounds(110, 140, 103, 42);
+        getContentPane().add(jButton2);
+        jButton2.setBounds(120, 160, 110, 40);
 
-        B_Estadistica.setText("Estadistica");
-        B_Estadistica.addActionListener(new java.awt.event.ActionListener() {
+        jButton3.setText("Estadistícas");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                B_EstadisticaActionPerformed(evt);
+                jButton3ActionPerformed(evt);
             }
         });
-        getContentPane().add(B_Estadistica);
-        B_Estadistica.setBounds(110, 200, 103, 43);
+        getContentPane().add(jButton3);
+        jButton3.setBounds(120, 220, 110, 40);
 
-        B_Atras.setText("Atrás");
-        B_Atras.addActionListener(new java.awt.event.ActionListener() {
+        Titulo_Registro.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        Titulo_Registro.setText("Menú");
+        getContentPane().add(Titulo_Registro);
+        Titulo_Registro.setBounds(150, 50, 110, 40);
+
+        jButton4.setText("Atrás");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                B_AtrasActionPerformed(evt);
+                jButton4ActionPerformed(evt);
             }
         });
-        getContentPane().add(B_Atras);
-        B_Atras.setBounds(10, 310, 70, 23);
+        getContentPane().add(jButton4);
+        jButton4.setBounds(10, 307, 69, 36);
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(0, 20, 0, 0);
 
-        Titulo_Menu.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        Titulo_Menu.setText("Menú");
-        getContentPane().add(Titulo_Menu);
-        Titulo_Menu.setBounds(130, 40, 60, 22);
-
-        Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Imagen1.png"))); // NOI18N
-        getContentPane().add(Fondo);
-        Fondo.setBounds(-20, 0, 360, 340);
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Imagen1.png"))); // NOI18N
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(0, 0, 360, 360);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void B_RegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_RegistroActionPerformed
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         new MenuRegistro().setVisible(true);
         dispose();
-    }//GEN-LAST:event_B_RegistroActionPerformed
+    }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void B_AtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_AtrasActionPerformed
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
+        new MenuEstadistica().setVisible(true);
         dispose();
-        new Inicio().setVisible(true);
-    }//GEN-LAST:event_B_AtrasActionPerformed
+    }//GEN-LAST:event_jButton3ActionPerformed
 
-    private void B_EstadisticaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_EstadisticaActionPerformed
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_B_EstadisticaActionPerformed
-
-    private void B_ConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_ConsultaActionPerformed
-        // TODO add your handling code here:
-        dispose();
         new MenuConsulta().setVisible(true);
-    }//GEN-LAST:event_B_ConsultaActionPerformed
+        dispose();
+        
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+        new Inicio().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -145,11 +154,12 @@ public class Menu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton B_Atras;
-    private javax.swing.JButton B_Consulta;
-    private javax.swing.JButton B_Estadistica;
-    private javax.swing.JButton B_Registro;
-    private javax.swing.JLabel Fondo;
-    private javax.swing.JLabel Titulo_Menu;
+    private javax.swing.JLabel Titulo_Registro;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
 }
