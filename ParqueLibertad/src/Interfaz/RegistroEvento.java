@@ -29,8 +29,6 @@ public class RegistroEvento extends javax.swing.JFrame {
 
         CB_Tipo = new javax.swing.JComboBox<String>();
         L_Tipo = new javax.swing.JLabel();
-        CB_Fecha = new javax.swing.JComboBox<String>();
-        CB_Hora = new javax.swing.JComboBox<String>();
         L_Fecha = new javax.swing.JLabel();
         L_Hora = new javax.swing.JLabel();
         B_Registrar = new javax.swing.JButton();
@@ -39,6 +37,19 @@ public class RegistroEvento extends javax.swing.JFrame {
         L_Descripcion = new javax.swing.JLabel();
         SP_Descripcion = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
+        jTextField1 = new javax.swing.JTextField();
+        jTextField2 = new javax.swing.JTextField();
+        jTextField3 = new javax.swing.JTextField();
+        jTextField4 = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jTextField5 = new javax.swing.JTextField();
+        jTextField6 = new javax.swing.JTextField();
+        jTextField8 = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
         Fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -54,19 +65,11 @@ public class RegistroEvento extends javax.swing.JFrame {
             }
         });
         getContentPane().add(CB_Tipo);
-        CB_Tipo.setBounds(100, 70, 164, 30);
+        CB_Tipo.setBounds(100, 60, 164, 30);
 
         L_Tipo.setText("Tipo:");
         getContentPane().add(L_Tipo);
-        L_Tipo.setBounds(40, 70, 47, 30);
-
-        CB_Fecha.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "dd/mm/aaaa" }));
-        getContentPane().add(CB_Fecha);
-        CB_Fecha.setBounds(100, 110, 146, 30);
-
-        CB_Hora.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "7:30 a 9:30" }));
-        getContentPane().add(CB_Hora);
-        CB_Hora.setBounds(100, 150, 135, 30);
+        L_Tipo.setBounds(40, 60, 47, 30);
 
         L_Fecha.setText("Fecha:");
         getContentPane().add(L_Fecha);
@@ -109,6 +112,44 @@ public class RegistroEvento extends javax.swing.JFrame {
 
         getContentPane().add(SP_Descripcion);
         SP_Descripcion.setBounds(40, 210, 210, 60);
+        getContentPane().add(jTextField1);
+        jTextField1.setBounds(130, 160, 20, 20);
+        getContentPane().add(jTextField2);
+        jTextField2.setBounds(170, 160, 20, 20);
+        getContentPane().add(jTextField3);
+        jTextField3.setBounds(200, 160, 20, 20);
+        getContentPane().add(jTextField4);
+        jTextField4.setBounds(100, 160, 20, 20);
+
+        jLabel1.setText(" :");
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(190, 160, 20, 14);
+
+        jLabel2.setText(" :");
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(120, 160, 20, 14);
+
+        jLabel3.setText("a");
+        getContentPane().add(jLabel3);
+        jLabel3.setBounds(160, 160, 30, 20);
+        getContentPane().add(jTextField5);
+        jTextField5.setBounds(130, 120, 20, 20);
+        getContentPane().add(jTextField6);
+        jTextField6.setBounds(160, 120, 40, 20);
+        getContentPane().add(jTextField8);
+        jTextField8.setBounds(100, 120, 20, 20);
+
+        jLabel5.setText(" /");
+        getContentPane().add(jLabel5);
+        jLabel5.setBounds(120, 120, 20, 20);
+
+        jLabel6.setText(" /");
+        getContentPane().add(jLabel6);
+        jLabel6.setBounds(150, 120, 20, 20);
+
+        jLabel4.setText("dd   /  mm  /  aaaa");
+        getContentPane().add(jLabel4);
+        jLabel4.setBounds(100, 100, 100, 20);
 
         Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Imagen1.png"))); // NOI18N
         getContentPane().add(Fondo);
@@ -172,8 +213,6 @@ public class RegistroEvento extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton B_Atras;
     private javax.swing.JButton B_Registrar;
-    private javax.swing.JComboBox<String> CB_Fecha;
-    private javax.swing.JComboBox<String> CB_Hora;
     private javax.swing.JComboBox<String> CB_Tipo;
     private javax.swing.JLabel Fondo;
     private javax.swing.JLabel L_Descripcion;
@@ -182,6 +221,19 @@ public class RegistroEvento extends javax.swing.JFrame {
     private javax.swing.JLabel L_Tipo;
     private javax.swing.JScrollPane SP_Descripcion;
     private javax.swing.JLabel Titulo_Registro_de_Evento;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField jTextField4;
+    private javax.swing.JTextField jTextField5;
+    private javax.swing.JTextField jTextField6;
+    private javax.swing.JTextField jTextField8;
     // End of variables declaration//GEN-END:variables
 }
