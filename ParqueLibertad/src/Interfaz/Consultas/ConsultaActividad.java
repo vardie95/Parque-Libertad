@@ -9,12 +9,12 @@ package Interfaz.Consultas;
  *
  * @author Luis Diego
  */
-public class ConsultaFecha extends javax.swing.JFrame {
+public class ConsultaActividad extends javax.swing.JFrame {
 
     /**
      * Creates new form ConsultaFecha
      */
-    public ConsultaFecha() {
+    public ConsultaActividad() {
         initComponents();
     }
 
@@ -35,8 +35,7 @@ public class ConsultaFecha extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         BT_Buscar = new javax.swing.JButton();
         BT_Atras = new javax.swing.JButton();
-        Titulo_Menu = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocation(new java.awt.Point(500, 125));
@@ -46,13 +45,13 @@ public class ConsultaFecha extends javax.swing.JFrame {
         jTable1.setBackground(new java.awt.Color(204, 255, 204));
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                "Identificación", "Nombre", "Apellido 1", "Apellido 2"
+                "Actividad", "Descripción", "Horario"
             }
         ));
         jTable1.setGridColor(new java.awt.Color(51, 51, 51));
@@ -97,14 +96,9 @@ public class ConsultaFecha extends javax.swing.JFrame {
         getContentPane().add(BT_Atras);
         BT_Atras.setBounds(20, 386, 78, 23);
 
-        Titulo_Menu.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        Titulo_Menu.setText("Consulta por Fecha");
-        getContentPane().add(Titulo_Menu);
-        Titulo_Menu.setBounds(170, 20, 200, 22);
-
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/fondo2.png"))); // NOI18N
-        getContentPane().add(jLabel4);
-        jLabel4.setBounds(0, 0, 580, 420);
+        jLabel3.setIcon(new javax.swing.ImageIcon("C:\\Users\\Luis Diego\\Desktop\\Fondo\\fondo2.png")); // NOI18N
+        getContentPane().add(jLabel3);
+        jLabel3.setBounds(0, 0, 560, 420);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -119,7 +113,7 @@ public class ConsultaFecha extends javax.swing.JFrame {
 
     private void BT_AtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BT_AtrasActionPerformed
         // TODO add your handling code here:
-        new MenuConsultaPersona().setVisible(true);
+        new Interfaz.MenuConsulta().setVisible(true);
         dispose();
     }//GEN-LAST:event_BT_AtrasActionPerformed
 
@@ -140,20 +134,27 @@ public class ConsultaFecha extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ConsultaFecha.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ConsultaActividad.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ConsultaFecha.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ConsultaActividad.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ConsultaFecha.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ConsultaActividad.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ConsultaFecha.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ConsultaActividad.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ConsultaFecha().setVisible(true);
+                new ConsultaActividad().setVisible(true);
             }
         });
     }
@@ -163,10 +164,9 @@ public class ConsultaFecha extends javax.swing.JFrame {
     private javax.swing.JButton BT_Buscar;
     private javax.swing.JFormattedTextField PT_FechaFinal;
     private javax.swing.JFormattedTextField PT_FechaInicio;
-    private javax.swing.JLabel Titulo_Menu;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables

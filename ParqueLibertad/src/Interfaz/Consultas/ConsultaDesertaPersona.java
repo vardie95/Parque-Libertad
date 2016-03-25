@@ -29,11 +29,12 @@ public class ConsultaDesertaPersona extends javax.swing.JFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        BT_Buscar = new javax.swing.JButton();
+        BT_Atras = new javax.swing.JButton();
+        CB_Curso = new javax.swing.JComboBox<>();
         jLabel4 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        Titulo_Menu = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocation(new java.awt.Point(500, 125));
@@ -58,48 +59,53 @@ public class ConsultaDesertaPersona extends javax.swing.JFrame {
         getContentPane().add(jScrollPane1);
         jScrollPane1.setBounds(20, 100, 550, 250);
 
-        jButton1.setText("Buscar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        BT_Buscar.setText("Buscar");
+        BT_Buscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                BT_BuscarActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1);
-        jButton1.setBounds(440, 40, 80, 34);
+        getContentPane().add(BT_Buscar);
+        BT_Buscar.setBounds(440, 40, 80, 34);
 
-        jButton2.setText("Atrás");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        BT_Atras.setText("Atrás");
+        BT_Atras.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                BT_AtrasActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton2);
-        jButton2.setBounds(10, 360, 78, 23);
+        getContentPane().add(BT_Atras);
+        BT_Atras.setBounds(10, 360, 78, 23);
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Curso" }));
-        getContentPane().add(jComboBox2);
-        jComboBox2.setBounds(130, 50, 99, 22);
+        CB_Curso.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Curso" }));
+        getContentPane().add(CB_Curso);
+        CB_Curso.setBounds(130, 50, 99, 22);
 
         jLabel4.setText("Curso: ");
         getContentPane().add(jLabel4);
         jLabel4.setBounds(50, 50, 70, 14);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Luis Diego\\Desktop\\Fondo\\fondo2.png")); // NOI18N
-        getContentPane().add(jLabel1);
-        jLabel1.setBounds(0, 0, 580, 400);
+        Titulo_Menu.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        Titulo_Menu.setText("Deserción");
+        getContentPane().add(Titulo_Menu);
+        Titulo_Menu.setBounds(250, 20, 200, 22);
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/fondo2.png"))); // NOI18N
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(0, 0, 600, 400);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void BT_BuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BT_BuscarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_BT_BuscarActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void BT_AtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BT_AtrasActionPerformed
         // TODO add your handling code here:
         new MenuConsultaPersona().setVisible(true);
         dispose();
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_BT_AtrasActionPerformed
 
     /**
      * @param args the command line arguments
@@ -140,10 +146,11 @@ public class ConsultaDesertaPersona extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JComboBox<String> jComboBox2;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton BT_Atras;
+    private javax.swing.JButton BT_Buscar;
+    private javax.swing.JComboBox<String> CB_Curso;
+    private javax.swing.JLabel Titulo_Menu;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;

@@ -29,15 +29,16 @@ public class ConsultaIndentificacionPersona extends javax.swing.JFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        jFormattedTextField1 = new javax.swing.JFormattedTextField();
+        PT_Identificacion = new javax.swing.JFormattedTextField();
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
+        BT_Buscar = new javax.swing.JButton();
+        BT_Atras = new javax.swing.JButton();
+        Titulo_Menu = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocation(new java.awt.Point(500, 125));
-        setMinimumSize(new java.awt.Dimension(580, 460));
+        setMinimumSize(new java.awt.Dimension(580, 440));
         getContentPane().setLayout(null);
 
         jTable1.setBackground(new java.awt.Color(204, 255, 204));
@@ -56,48 +57,53 @@ public class ConsultaIndentificacionPersona extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTable1);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(10, 90, 540, 250);
-        getContentPane().add(jFormattedTextField1);
-        jFormattedTextField1.setBounds(150, 50, 150, 20);
+        jScrollPane1.setBounds(10, 80, 540, 250);
+        getContentPane().add(PT_Identificacion);
+        PT_Identificacion.setBounds(150, 50, 150, 20);
 
         jLabel1.setText("Identificación: ");
         getContentPane().add(jLabel1);
         jLabel1.setBounds(30, 50, 110, 20);
 
-        jButton1.setText("Buscar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        BT_Buscar.setText("Buscar");
+        BT_Buscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                BT_BuscarActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1);
-        jButton1.setBounds(430, 40, 80, 34);
+        getContentPane().add(BT_Buscar);
+        BT_Buscar.setBounds(430, 40, 80, 34);
 
-        jButton2.setText("Atrás");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        BT_Atras.setText("Atrás");
+        BT_Atras.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                BT_AtrasActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton2);
-        jButton2.setBounds(10, 350, 78, 23);
+        getContentPane().add(BT_Atras);
+        BT_Atras.setBounds(10, 340, 78, 23);
 
-        jLabel3.setIcon(new javax.swing.ImageIcon("C:\\Users\\Luis Diego\\Desktop\\Fondo\\fondo2.png")); // NOI18N
-        getContentPane().add(jLabel3);
-        jLabel3.setBounds(0, 0, 560, 420);
+        Titulo_Menu.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        Titulo_Menu.setText("Consulta por Identificación");
+        getContentPane().add(Titulo_Menu);
+        Titulo_Menu.setBounds(160, 10, 290, 22);
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/fondo2.png"))); // NOI18N
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(0, 0, 560, 380);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void BT_BuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BT_BuscarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_BT_BuscarActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void BT_AtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BT_AtrasActionPerformed
         // TODO add your handling code here:
         new MenuConsultaPersona().setVisible(true);
         dispose();
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_BT_AtrasActionPerformed
 
     /**
      * @param args the command line arguments
@@ -136,11 +142,12 @@ public class ConsultaIndentificacionPersona extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JFormattedTextField jFormattedTextField1;
+    private javax.swing.JButton BT_Atras;
+    private javax.swing.JButton BT_Buscar;
+    private javax.swing.JFormattedTextField PT_Identificacion;
+    private javax.swing.JLabel Titulo_Menu;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables

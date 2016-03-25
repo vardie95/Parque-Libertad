@@ -5,6 +5,7 @@
  */
 package Interfaz;
 
+import Interfaz.Consultas.ConsultaCurso;
 import Interfaz.Consultas.MenuConsultaPersona;
 
 /**
@@ -32,11 +33,11 @@ public class MenuConsulta extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         Titulo_Registro = new javax.swing.JLabel();
         B_Atras = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
+        BT_Persona = new javax.swing.JButton();
+        BT_Curso = new javax.swing.JButton();
+        BT_Evento = new javax.swing.JButton();
+        BT_Empleado = new javax.swing.JButton();
+        BT_Activdades = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         jButton1.setText("jButton1");
@@ -60,30 +61,45 @@ public class MenuConsulta extends javax.swing.JFrame {
         getContentPane().add(B_Atras);
         B_Atras.setBounds(10, 290, 80, 30);
 
-        jButton2.setText("Persona");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        BT_Persona.setText("Persona");
+        BT_Persona.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                BT_PersonaActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton2);
-        jButton2.setBounds(60, 110, 100, 40);
+        getContentPane().add(BT_Persona);
+        BT_Persona.setBounds(60, 110, 100, 40);
 
-        jButton3.setText("Curso");
-        getContentPane().add(jButton3);
-        jButton3.setBounds(190, 110, 100, 40);
+        BT_Curso.setText("Curso");
+        BT_Curso.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BT_CursoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(BT_Curso);
+        BT_Curso.setBounds(190, 110, 100, 40);
 
-        jButton4.setText("Evento");
-        getContentPane().add(jButton4);
-        jButton4.setBounds(60, 170, 100, 40);
+        BT_Evento.setText("Evento");
+        BT_Evento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BT_EventoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(BT_Evento);
+        BT_Evento.setBounds(60, 170, 100, 40);
 
-        jButton5.setText("Empleado");
-        getContentPane().add(jButton5);
-        jButton5.setBounds(190, 170, 100, 40);
+        BT_Empleado.setText("Empleado");
+        getContentPane().add(BT_Empleado);
+        BT_Empleado.setBounds(190, 170, 100, 40);
 
-        jButton6.setText("Actividades");
-        getContentPane().add(jButton6);
-        jButton6.setBounds(130, 220, 100, 40);
+        BT_Activdades.setText("Actividades");
+        BT_Activdades.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BT_ActivdadesActionPerformed(evt);
+            }
+        });
+        getContentPane().add(BT_Activdades);
+        BT_Activdades.setBounds(130, 220, 100, 40);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Imagen1.png"))); // NOI18N
         getContentPane().add(jLabel1);
@@ -99,11 +115,29 @@ public class MenuConsulta extends javax.swing.JFrame {
         
     }//GEN-LAST:event_B_AtrasActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void BT_PersonaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BT_PersonaActionPerformed
         // TODO add your handling code here:
         new MenuConsultaPersona().setVisible(true);
         dispose();
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_BT_PersonaActionPerformed
+
+    private void BT_CursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BT_CursoActionPerformed
+        // TODO add your handling code here:
+        new ConsultaCurso().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_BT_CursoActionPerformed
+
+    private void BT_EventoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BT_EventoActionPerformed
+        // TODO add your handling code here:
+        new Interfaz.Consultas.ConsultaEvento().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_BT_EventoActionPerformed
+
+    private void BT_ActivdadesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BT_ActivdadesActionPerformed
+        // TODO add your handling code here:
+        new Interfaz.Consultas.ConsultaActividad().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_BT_ActivdadesActionPerformed
 
     /**
      * @param args the command line arguments
@@ -142,14 +176,14 @@ public class MenuConsulta extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BT_Activdades;
+    private javax.swing.JButton BT_Curso;
+    private javax.swing.JButton BT_Empleado;
+    private javax.swing.JButton BT_Evento;
+    private javax.swing.JButton BT_Persona;
     private javax.swing.JButton B_Atras;
     private javax.swing.JLabel Titulo_Registro;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }
