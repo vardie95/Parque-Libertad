@@ -68,7 +68,7 @@ public class Inicio extends javax.swing.JFrame {
         // TODO add your handling code here:
         String usuario= TF_Usuario.getText();
         String password= PF_Contraseña.getText();
-        if (usuario.equals("libertad") || password.equals("parque")) {
+        if (usuario.equals("libertad") && password.equals("parque")) {
             new Menu().setVisible(true);
             dispose();   
         }else{

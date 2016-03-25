@@ -36,7 +36,7 @@ public class Menu extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocation(new java.awt.Point(500, 125));
-        setMinimumSize(new java.awt.Dimension(380, 380));
+        setMinimumSize(new java.awt.Dimension(350, 340));
         getContentPane().setLayout(null);
 
         B_Registro.setText("Registro");
@@ -78,11 +78,11 @@ public class Menu extends javax.swing.JFrame {
         Titulo_Menu.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         Titulo_Menu.setText("Menú");
         getContentPane().add(Titulo_Menu);
-        Titulo_Menu.setBounds(130, 40, 60, 22);
+        Titulo_Menu.setBounds(140, 30, 60, 22);
 
         Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Imagen1.png"))); // NOI18N
         getContentPane().add(Fondo);
-        Fondo.setBounds(-20, 0, 360, 340);
+        Fondo.setBounds(-30, 0, 380, 340);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

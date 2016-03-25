@@ -5,6 +5,8 @@
  */
 package Interfaz;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Luis Diego
@@ -28,7 +30,6 @@ public class RegistroPersonas extends javax.swing.JFrame {
     private void initComponents() {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
-        buttonGroup2 = new javax.swing.ButtonGroup();
         TF_Nombre = new javax.swing.JTextField();
         TF_Apellido1 = new javax.swing.JTextField();
         TF_Apellido2 = new javax.swing.JTextField();
@@ -72,16 +73,24 @@ public class RegistroPersonas extends javax.swing.JFrame {
         TF_Identificacion.setBounds(25, 165, 131, 20);
 
         RB_Cedula.setBackground(new java.awt.Color(255, 255, 255));
+        buttonGroup1.add(RB_Cedula);
         RB_Cedula.setText("Cédula");
+        RB_Cedula.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RB_CedulaActionPerformed(evt);
+            }
+        });
         getContentPane().add(RB_Cedula);
         RB_Cedula.setBounds(25, 135, 75, 23);
 
         RB_Pasaporte.setBackground(new java.awt.Color(255, 255, 255));
+        buttonGroup1.add(RB_Pasaporte);
         RB_Pasaporte.setText("Pasaporte");
         getContentPane().add(RB_Pasaporte);
         RB_Pasaporte.setBounds(118, 135, 90, 23);
 
         RB_TIM.setBackground(new java.awt.Color(255, 255, 255));
+        buttonGroup1.add(RB_TIM);
         RB_TIM.setText("TIM");
         getContentPane().add(RB_TIM);
         RB_TIM.setBounds(211, 135, 70, 23);
@@ -111,6 +120,11 @@ public class RegistroPersonas extends javax.swing.JFrame {
         CB_Nacionalidad.setBounds(341, 165, 106, 20);
 
         B_Registrar.setText("Registrar");
+        B_Registrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                B_RegistrarActionPerformed(evt);
+            }
+        });
         getContentPane().add(B_Registrar);
         B_Registrar.setBounds(458, 351, 95, 32);
 
@@ -157,7 +171,7 @@ public class RegistroPersonas extends javax.swing.JFrame {
             }
         });
         getContentPane().add(B_Atras);
-        B_Atras.setBounds(10, 11, 59, 23);
+        B_Atras.setBounds(10, 11, 70, 23);
 
         Titulo_Registro_de_Persona.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         Titulo_Registro_de_Persona.setText("Registro de Persona");
@@ -180,6 +194,21 @@ public class RegistroPersonas extends javax.swing.JFrame {
         dispose();
         new MenuRegistro().setVisible(true);
     }//GEN-LAST:event_B_AtrasActionPerformed
+
+    private void RB_CedulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RB_CedulaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_RB_CedulaActionPerformed
+
+    private void B_RegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_RegistrarActionPerformed
+        // TODO add your handling code here:
+        if (TF_Nombre.getText().length()==0 || TF_Apellido1.getText().length()==0 || TF_Apellido2.getText().length()==0 ){
+            JOptionPane.showMessageDialog(this, "Debe de llenar todos los campos obligatorios.",null,JOptionPane.ERROR_MESSAGE);
+        }
+        else{
+            dispose();
+            new MenuRegistro().setVisible(true);
+        }
+    }//GEN-LAST:event_B_RegistrarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -244,7 +273,6 @@ public class RegistroPersonas extends javax.swing.JFrame {
     private javax.swing.JTextField TF_Nombre;
     private javax.swing.JLabel Titulo_Registro_de_Persona;
     private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.JTextArea jTextArea1;
     // End of variables declaration//GEN-END:variables
 }

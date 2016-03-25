@@ -37,11 +37,20 @@ public class RegistroEmpleado extends javax.swing.JFrame {
         B_Atras = new javax.swing.JButton();
         Titulo_Registro_de_Empleado = new javax.swing.JLabel();
         B_Escoger_Imagen = new javax.swing.JButton();
+        TF_Nombre = new javax.swing.JTextField();
+        TF_Apellido1 = new javax.swing.JTextField();
+        TF_Apellido2 = new javax.swing.JTextField();
+        L_Nombre = new javax.swing.JLabel();
+        L_Apellido1 = new javax.swing.JLabel();
+        L_Apellido2 = new javax.swing.JLabel();
+        L_Nacionalidad = new javax.swing.JLabel();
+        FT_Nacionalidad = new javax.swing.JTextField();
         Fondo = new javax.swing.JLabel();
+        Relleno_Fondo = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocation(new java.awt.Point(500, 125));
-        setMinimumSize(new java.awt.Dimension(380, 350));
+        setMinimumSize(new java.awt.Dimension(505, 370));
         setResizable(false);
         getContentPane().setLayout(null);
 
@@ -52,27 +61,27 @@ public class RegistroEmpleado extends javax.swing.JFrame {
             }
         });
         getContentPane().add(CB_Identificacion);
-        CB_Identificacion.setBounds(130, 70, 164, 28);
+        CB_Identificacion.setBounds(210, 60, 164, 28);
 
         L_Identificacion.setText("Identificacion:");
         getContentPane().add(L_Identificacion);
-        L_Identificacion.setBounds(40, 70, 80, 28);
+        L_Identificacion.setBounds(120, 60, 80, 28);
 
         CB_Puesto.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Profesor" }));
         getContentPane().add(CB_Puesto);
-        CB_Puesto.setBounds(130, 120, 146, 31);
+        CB_Puesto.setBounds(80, 160, 146, 30);
 
         TF_Direccion_Foto.setEditable(false);
         getContentPane().add(TF_Direccion_Foto);
-        TF_Direccion_Foto.setBounds(70, 210, 230, 30);
+        TF_Direccion_Foto.setBounds(30, 250, 310, 30);
 
         L_Puesto.setText("Puesto: ");
         getContentPane().add(L_Puesto);
-        L_Puesto.setBounds(70, 120, 58, 28);
+        L_Puesto.setBounds(20, 160, 58, 28);
 
         L_Foto.setText("Foto:");
         getContentPane().add(L_Foto);
-        L_Foto.setBounds(70, 170, 58, 28);
+        L_Foto.setBounds(30, 210, 58, 28);
 
         B_Registrar.setText("Registrar");
         B_Registrar.addActionListener(new java.awt.event.ActionListener() {
@@ -81,7 +90,7 @@ public class RegistroEmpleado extends javax.swing.JFrame {
             }
         });
         getContentPane().add(B_Registrar);
-        B_Registrar.setBounds(260, 270, 90, 30);
+        B_Registrar.setBounds(390, 290, 90, 30);
 
         B_Atras.setText("Atrás");
         B_Atras.addActionListener(new java.awt.event.ActionListener() {
@@ -95,21 +104,59 @@ public class RegistroEmpleado extends javax.swing.JFrame {
         Titulo_Registro_de_Empleado.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         Titulo_Registro_de_Empleado.setText("Registro de Empleado");
         getContentPane().add(Titulo_Registro_de_Empleado);
-        Titulo_Registro_de_Empleado.setBounds(110, 20, 180, 22);
+        Titulo_Registro_de_Empleado.setBounds(160, 20, 180, 22);
 
         B_Escoger_Imagen.setText("Escoger imagen");
         getContentPane().add(B_Escoger_Imagen);
-        B_Escoger_Imagen.setBounds(130, 170, 140, 23);
+        B_Escoger_Imagen.setBounds(70, 210, 140, 23);
+
+        TF_Nombre.setEditable(false);
+        getContentPane().add(TF_Nombre);
+        TF_Nombre.setBounds(30, 120, 139, 20);
+
+        TF_Apellido1.setEditable(false);
+        getContentPane().add(TF_Apellido1);
+        TF_Apellido1.setBounds(180, 120, 139, 20);
+
+        TF_Apellido2.setEditable(false);
+        getContentPane().add(TF_Apellido2);
+        TF_Apellido2.setBounds(340, 120, 139, 20);
+
+        L_Nombre.setText("Nombre: ");
+        getContentPane().add(L_Nombre);
+        L_Nombre.setBounds(30, 100, 90, 14);
+
+        L_Apellido1.setText("Apellido 1:");
+        getContentPane().add(L_Apellido1);
+        L_Apellido1.setBounds(180, 100, 80, 14);
+
+        L_Apellido2.setText("Apellido 2: ");
+        getContentPane().add(L_Apellido2);
+        L_Apellido2.setBounds(340, 100, 90, 14);
+
+        L_Nacionalidad.setText("Nacionalidad: ");
+        getContentPane().add(L_Nacionalidad);
+        L_Nacionalidad.setBounds(310, 170, 110, 14);
+
+        FT_Nacionalidad.setEditable(false);
+        getContentPane().add(FT_Nacionalidad);
+        FT_Nacionalidad.setBounds(310, 190, 140, 20);
 
         Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Imagen1.png"))); // NOI18N
         getContentPane().add(Fondo);
-        Fondo.setBounds(0, 0, 370, 310);
+        Fondo.setBounds(100, 0, 400, 340);
+
+        Relleno_Fondo.setBackground(new java.awt.Color(255, 255, 255));
+        getContentPane().add(Relleno_Fondo);
+        Relleno_Fondo.setBounds(0, 0, 210, 340);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void B_RegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_RegistrarActionPerformed
         // TODO add your handling code here:
+        dispose();
+        new MenuRegistro().setVisible(true);
     }//GEN-LAST:event_B_RegistrarActionPerformed
 
     private void B_AtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_AtrasActionPerformed
@@ -170,11 +217,20 @@ public class RegistroEmpleado extends javax.swing.JFrame {
     private javax.swing.JButton B_Registrar;
     private javax.swing.JComboBox<String> CB_Identificacion;
     private javax.swing.JComboBox<String> CB_Puesto;
+    private javax.swing.JTextField FT_Nacionalidad;
     private javax.swing.JLabel Fondo;
+    private javax.swing.JLabel L_Apellido1;
+    private javax.swing.JLabel L_Apellido2;
     private javax.swing.JLabel L_Foto;
     private javax.swing.JLabel L_Identificacion;
+    private javax.swing.JLabel L_Nacionalidad;
+    private javax.swing.JLabel L_Nombre;
     private javax.swing.JLabel L_Puesto;
+    private javax.swing.JPanel Relleno_Fondo;
+    private javax.swing.JTextField TF_Apellido1;
+    private javax.swing.JTextField TF_Apellido2;
     private javax.swing.JFormattedTextField TF_Direccion_Foto;
+    private javax.swing.JTextField TF_Nombre;
     private javax.swing.JLabel Titulo_Registro_de_Empleado;
     // End of variables declaration//GEN-END:variables
 }
