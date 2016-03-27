@@ -59,7 +59,7 @@ public class MenuConsulta extends javax.swing.JFrame {
             }
         });
         getContentPane().add(B_Atras);
-        B_Atras.setBounds(10, 290, 80, 30);
+        B_Atras.setBounds(10, 10, 70, 23);
 
         BT_Persona.setText("Persona");
         BT_Persona.addActionListener(new java.awt.event.ActionListener() {

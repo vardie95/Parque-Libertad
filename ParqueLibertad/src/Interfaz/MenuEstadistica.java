@@ -63,7 +63,7 @@ public class MenuEstadistica extends javax.swing.JFrame {
             }
         });
         getContentPane().add(B_Atras);
-        B_Atras.setBounds(10, 290, 80, 30);
+        B_Atras.setBounds(10, 10, 70, 23);
 
         BT_Persona.setText("Persona");
         BT_Persona.addActionListener(new java.awt.event.ActionListener() {
@@ -81,7 +81,7 @@ public class MenuEstadistica extends javax.swing.JFrame {
             }
         });
         getContentPane().add(BT_Curso);
-        BT_Curso.setBounds(60, 140, 100, 40);
+        BT_Curso.setBounds(60, 150, 100, 40);
 
         BT_Activdades.setText("Actividades");
         BT_Activdades.addActionListener(new java.awt.event.ActionListener() {
@@ -90,7 +90,7 @@ public class MenuEstadistica extends javax.swing.JFrame {
             }
         });
         getContentPane().add(BT_Activdades);
-        BT_Activdades.setBounds(200, 140, 100, 40);
+        BT_Activdades.setBounds(200, 150, 100, 40);
 
         BT_Empleado.setText("Empleado");
         BT_Empleado.addActionListener(new java.awt.event.ActionListener() {
@@ -108,7 +108,7 @@ public class MenuEstadistica extends javax.swing.JFrame {
             }
         });
         getContentPane().add(BT_Deserciones);
-        BT_Deserciones.setBounds(120, 200, 120, 40);
+        BT_Deserciones.setBounds(120, 220, 120, 40);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Imagen1.png"))); // NOI18N
         getContentPane().add(jLabel1);

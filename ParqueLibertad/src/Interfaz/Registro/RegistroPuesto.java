@@ -3,18 +3,20 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Interfaz;
+package Interfaz.Registro;
+
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author Luis Diego
  */
-public class RegistroActividad extends javax.swing.JFrame {
+public class RegistroPuesto extends javax.swing.JFrame {
 
     /**
      * Creates new form RegistroCurso
      */
-    public RegistroActividad() {
+    public RegistroPuesto() {
         initComponents();
     }
 
@@ -27,14 +29,14 @@ public class RegistroActividad extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        CB_Tipo = new javax.swing.JComboBox<String>();
-        L_Tipo = new javax.swing.JLabel();
+        L_Nombre = new javax.swing.JLabel();
         L_Descripcion = new javax.swing.JLabel();
         B_Registrar = new javax.swing.JButton();
         B_Atras = new javax.swing.JButton();
-        Titulo_Registro_de_Actividad = new javax.swing.JLabel();
+        Titulo_Registro_de_Puesto = new javax.swing.JLabel();
         SP_Descripcion = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
+        TF_Nombre = new javax.swing.JTextField();
         Fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -43,13 +45,9 @@ public class RegistroActividad extends javax.swing.JFrame {
         setResizable(false);
         getContentPane().setLayout(null);
 
-        CB_Tipo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Nombre" }));
-        getContentPane().add(CB_Tipo);
-        CB_Tipo.setBounds(110, 90, 164, 28);
-
-        L_Tipo.setText("Tipo:");
-        getContentPane().add(L_Tipo);
-        L_Tipo.setBounds(60, 90, 47, 28);
+        L_Nombre.setText("Nombre:");
+        getContentPane().add(L_Nombre);
+        L_Nombre.setBounds(60, 90, 60, 28);
 
         L_Descripcion.setText("Descripción:");
         getContentPane().add(L_Descripcion);
@@ -73,10 +71,10 @@ public class RegistroActividad extends javax.swing.JFrame {
         getContentPane().add(B_Atras);
         B_Atras.setBounds(10, 10, 70, 23);
 
-        Titulo_Registro_de_Actividad.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        Titulo_Registro_de_Actividad.setText("Registro de Actividad");
-        getContentPane().add(Titulo_Registro_de_Actividad);
-        Titulo_Registro_de_Actividad.setBounds(100, 30, 180, 22);
+        Titulo_Registro_de_Puesto.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        Titulo_Registro_de_Puesto.setText("Registro de Puesto");
+        getContentPane().add(Titulo_Registro_de_Puesto);
+        Titulo_Registro_de_Puesto.setBounds(100, 30, 180, 22);
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
@@ -84,6 +82,8 @@ public class RegistroActividad extends javax.swing.JFrame {
 
         getContentPane().add(SP_Descripcion);
         SP_Descripcion.setBounds(60, 180, 210, 60);
+        getContentPane().add(TF_Nombre);
+        TF_Nombre.setBounds(110, 90, 180, 30);
 
         Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Imagen1.png"))); // NOI18N
         getContentPane().add(Fondo);
@@ -94,14 +94,19 @@ public class RegistroActividad extends javax.swing.JFrame {
 
     private void B_RegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_RegistrarActionPerformed
         // TODO add your handling code here:
-        dispose();
-        new MenuRegistro().setVisible(true);
+        if (TF_Nombre.getText().length()==0){
+            JOptionPane.showMessageDialog(this, "Debe de llenar todos los campos obligatorios.",null,JOptionPane.ERROR_MESSAGE); 
+        }
+        else{
+            dispose();
+            new RegistroEmpleado().setVisible(true);
+        }
     }//GEN-LAST:event_B_RegistrarActionPerformed
 
     private void B_AtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_AtrasActionPerformed
         // TODO add your handling code here:
         dispose();
-        new MenuRegistro().setVisible(true);
+        new RegistroEmpleado().setVisible(true);
     }//GEN-LAST:event_B_AtrasActionPerformed
 
     /**
@@ -121,21 +126,23 @@ public class RegistroActividad extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(RegistroActividad.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegistroPuesto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(RegistroActividad.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegistroPuesto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(RegistroActividad.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegistroPuesto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(RegistroActividad.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegistroPuesto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new RegistroActividad().setVisible(true);
+                new RegistroPuesto().setVisible(true);
             }
         });
     }
@@ -143,12 +150,12 @@ public class RegistroActividad extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton B_Atras;
     private javax.swing.JButton B_Registrar;
-    private javax.swing.JComboBox<String> CB_Tipo;
     private javax.swing.JLabel Fondo;
     private javax.swing.JLabel L_Descripcion;
-    private javax.swing.JLabel L_Tipo;
+    private javax.swing.JLabel L_Nombre;
     private javax.swing.JScrollPane SP_Descripcion;
-    private javax.swing.JLabel Titulo_Registro_de_Actividad;
+    private javax.swing.JTextField TF_Nombre;
+    private javax.swing.JLabel Titulo_Registro_de_Puesto;
     private javax.swing.JTextArea jTextArea1;
     // End of variables declaration//GEN-END:variables
 }

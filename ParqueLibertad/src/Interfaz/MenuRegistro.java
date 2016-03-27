@@ -5,6 +5,13 @@
  */
 package Interfaz;
 
+import Interfaz.Registro.RegistroClase;
+import Interfaz.Registro.RegistroDesercion;
+import Interfaz.Registro.RegistroEmpleado;
+import Interfaz.Registro.RegistroEvento;
+import Interfaz.Estadisticas.RegistroPersonas;
+import Interfaz.Registro.RegistroActividad;
+
 /**
  *
  * @author Luis Diego
@@ -35,13 +42,11 @@ public class MenuRegistro extends javax.swing.JFrame {
         B_Atras = new javax.swing.JButton();
         B_Desercion = new javax.swing.JButton();
         B_Empleado = new javax.swing.JButton();
-        B_Puesto = new javax.swing.JButton();
-        B_Curso = new javax.swing.JButton();
         Fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocation(new java.awt.Point(500, 125));
-        setMinimumSize(new java.awt.Dimension(380, 380));
+        setMinimumSize(new java.awt.Dimension(380, 320));
         getContentPane().setLayout(null);
 
         Titulo_Registro.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -56,7 +61,7 @@ public class MenuRegistro extends javax.swing.JFrame {
             }
         });
         getContentPane().add(B_Persona);
-        B_Persona.setBounds(60, 70, 100, 44);
+        B_Persona.setBounds(60, 80, 100, 44);
 
         B_Evento.setText("Evento");
         B_Evento.addActionListener(new java.awt.event.ActionListener() {
@@ -65,7 +70,7 @@ public class MenuRegistro extends javax.swing.JFrame {
             }
         });
         getContentPane().add(B_Evento);
-        B_Evento.setBounds(60, 130, 100, 44);
+        B_Evento.setBounds(60, 140, 100, 44);
 
         B_Actividad.setText("Actividad");
         B_Actividad.addActionListener(new java.awt.event.ActionListener() {
@@ -74,7 +79,7 @@ public class MenuRegistro extends javax.swing.JFrame {
             }
         });
         getContentPane().add(B_Actividad);
-        B_Actividad.setBounds(60, 190, 100, 44);
+        B_Actividad.setBounds(60, 200, 100, 44);
 
         B_Clase.setText("Clase");
         B_Clase.addActionListener(new java.awt.event.ActionListener() {
@@ -83,7 +88,7 @@ public class MenuRegistro extends javax.swing.JFrame {
             }
         });
         getContentPane().add(B_Clase);
-        B_Clase.setBounds(200, 70, 100, 44);
+        B_Clase.setBounds(200, 80, 100, 44);
 
         B_Atras.setText("Atrás");
         B_Atras.addActionListener(new java.awt.event.ActionListener() {
@@ -101,7 +106,7 @@ public class MenuRegistro extends javax.swing.JFrame {
             }
         });
         getContentPane().add(B_Desercion);
-        B_Desercion.setBounds(200, 190, 100, 44);
+        B_Desercion.setBounds(200, 200, 100, 44);
 
         B_Empleado.setText("Empleado");
         B_Empleado.addActionListener(new java.awt.event.ActionListener() {
@@ -110,29 +115,11 @@ public class MenuRegistro extends javax.swing.JFrame {
             }
         });
         getContentPane().add(B_Empleado);
-        B_Empleado.setBounds(200, 130, 100, 44);
-
-        B_Puesto.setText("Puesto");
-        B_Puesto.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                B_PuestoActionPerformed(evt);
-            }
-        });
-        getContentPane().add(B_Puesto);
-        B_Puesto.setBounds(200, 250, 100, 44);
-
-        B_Curso.setText("Curso");
-        B_Curso.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                B_CursoActionPerformed(evt);
-            }
-        });
-        getContentPane().add(B_Curso);
-        B_Curso.setBounds(60, 250, 100, 44);
+        B_Empleado.setBounds(200, 140, 100, 44);
 
         Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Imagen1.png"))); // NOI18N
         getContentPane().add(Fondo);
-        Fondo.setBounds(0, 0, 370, 330);
+        Fondo.setBounds(0, 0, 370, 280);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -179,18 +166,6 @@ public class MenuRegistro extends javax.swing.JFrame {
         new RegistroDesercion().setVisible(true);
     }//GEN-LAST:event_B_DesercionActionPerformed
 
-    private void B_PuestoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_PuestoActionPerformed
-        // TODO add your handling code here:
-        dispose();
-        new RegistroPuesto().setVisible(true);
-    }//GEN-LAST:event_B_PuestoActionPerformed
-
-    private void B_CursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_CursoActionPerformed
-        // TODO add your handling code here:
-        dispose();
-        new RegistroCurso().setVisible(true);
-    }//GEN-LAST:event_B_CursoActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -230,12 +205,10 @@ public class MenuRegistro extends javax.swing.JFrame {
     private javax.swing.JButton B_Actividad;
     private javax.swing.JButton B_Atras;
     private javax.swing.JButton B_Clase;
-    private javax.swing.JButton B_Curso;
     private javax.swing.JButton B_Desercion;
     private javax.swing.JButton B_Empleado;
     private javax.swing.JButton B_Evento;
     private javax.swing.JButton B_Persona;
-    private javax.swing.JButton B_Puesto;
     private javax.swing.JLabel Fondo;
     private javax.swing.JLabel Titulo_Registro;
     // End of variables declaration//GEN-END:variables

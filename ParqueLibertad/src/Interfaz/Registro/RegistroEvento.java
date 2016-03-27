@@ -3,7 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Interfaz;
+package Interfaz.Registro;
+
+import Interfaz.MenuRegistro;
+import Interfaz.Registro.RegistroTipoEvento;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -37,19 +41,20 @@ public class RegistroEvento extends javax.swing.JFrame {
         L_Descripcion = new javax.swing.JLabel();
         SP_Descripcion = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
+        TF_Minutos1 = new javax.swing.JTextField();
+        TF_Hora2 = new javax.swing.JTextField();
+        TF_Minutos2 = new javax.swing.JTextField();
+        TF_Hora1 = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
-        jTextField6 = new javax.swing.JTextField();
-        jTextField8 = new javax.swing.JTextField();
+        TF_Mes = new javax.swing.JTextField();
+        TF_Año = new javax.swing.JTextField();
+        TF_Dia = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        B_Otro = new javax.swing.JButton();
         Fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -86,7 +91,7 @@ public class RegistroEvento extends javax.swing.JFrame {
             }
         });
         getContentPane().add(B_Registrar);
-        B_Registrar.setBounds(260, 270, 90, 30);
+        B_Registrar.setBounds(270, 270, 90, 30);
 
         B_Atras.setText("Atrás");
         B_Atras.addActionListener(new java.awt.event.ActionListener() {
@@ -112,14 +117,20 @@ public class RegistroEvento extends javax.swing.JFrame {
 
         getContentPane().add(SP_Descripcion);
         SP_Descripcion.setBounds(40, 210, 210, 60);
-        getContentPane().add(jTextField1);
-        jTextField1.setBounds(130, 160, 20, 20);
-        getContentPane().add(jTextField2);
-        jTextField2.setBounds(170, 160, 20, 20);
-        getContentPane().add(jTextField3);
-        jTextField3.setBounds(200, 160, 20, 20);
-        getContentPane().add(jTextField4);
-        jTextField4.setBounds(100, 160, 20, 20);
+        getContentPane().add(TF_Minutos1);
+        TF_Minutos1.setBounds(130, 160, 20, 20);
+        getContentPane().add(TF_Hora2);
+        TF_Hora2.setBounds(170, 160, 20, 20);
+        getContentPane().add(TF_Minutos2);
+        TF_Minutos2.setBounds(200, 160, 20, 20);
+
+        TF_Hora1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TF_Hora1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(TF_Hora1);
+        TF_Hora1.setBounds(100, 160, 20, 20);
 
         jLabel1.setText(" :");
         getContentPane().add(jLabel1);
@@ -132,12 +143,12 @@ public class RegistroEvento extends javax.swing.JFrame {
         jLabel3.setText("a");
         getContentPane().add(jLabel3);
         jLabel3.setBounds(160, 160, 30, 20);
-        getContentPane().add(jTextField5);
-        jTextField5.setBounds(130, 120, 20, 20);
-        getContentPane().add(jTextField6);
-        jTextField6.setBounds(160, 120, 40, 20);
-        getContentPane().add(jTextField8);
-        jTextField8.setBounds(100, 120, 20, 20);
+        getContentPane().add(TF_Mes);
+        TF_Mes.setBounds(130, 120, 20, 20);
+        getContentPane().add(TF_Año);
+        TF_Año.setBounds(160, 120, 40, 20);
+        getContentPane().add(TF_Dia);
+        TF_Dia.setBounds(100, 120, 20, 20);
 
         jLabel5.setText(" /");
         getContentPane().add(jLabel5);
@@ -151,17 +162,34 @@ public class RegistroEvento extends javax.swing.JFrame {
         getContentPane().add(jLabel4);
         jLabel4.setBounds(100, 100, 100, 20);
 
+        B_Otro.setText("Otro");
+        B_Otro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                B_OtroActionPerformed(evt);
+            }
+        });
+        getContentPane().add(B_Otro);
+        B_Otro.setBounds(280, 60, 70, 23);
+
         Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Imagen1.png"))); // NOI18N
         getContentPane().add(Fondo);
-        Fondo.setBounds(0, 0, 370, 320);
+        Fondo.setBounds(0, 0, 380, 320);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void B_RegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_RegistrarActionPerformed
         // TODO add your handling code here:
-        dispose();
-        new MenuRegistro().setVisible(true);
+        if (TF_Hora1.getText().length()==0 || TF_Hora2.getText().length()==0 || TF_Minutos1.getText().length()==0 || TF_Minutos2.getText().length()==0){
+            JOptionPane.showMessageDialog(this, "Debe de llenar todos los campos obligatorios.",null,JOptionPane.ERROR_MESSAGE);
+        }
+        else if(Integer.parseInt(TF_Hora1.getText())>12 || Integer.parseInt(TF_Hora1.getText())<1 || Integer.parseInt(TF_Hora2.getText())>12 || Integer.parseInt(TF_Hora2.getText())<1 || Integer.parseInt(TF_Minutos1.getText())<1 || Integer.parseInt(TF_Minutos2.getText())<1 || Integer.parseInt(TF_Minutos1.getText())>59 || Integer.parseInt(TF_Minutos2.getText())>59 || Integer.parseInt(TF_Dia.getText())>31 || Integer.parseInt(TF_Dia.getText())<1 || Integer.parseInt(TF_Mes.getText())>12 || Integer.parseInt(TF_Mes.getText())<1 || Integer.parseInt(TF_Año.getText())<1){
+                   JOptionPane.showMessageDialog(this, "Ha ingresado un dato incorrecto.",null,JOptionPane.ERROR_MESSAGE);
+        }
+        else{
+            dispose();
+            new MenuRegistro().setVisible(true);
+        }
     }//GEN-LAST:event_B_RegistrarActionPerformed
 
     private void B_AtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_AtrasActionPerformed
@@ -173,6 +201,16 @@ public class RegistroEvento extends javax.swing.JFrame {
     private void CB_TipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CB_TipoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_CB_TipoActionPerformed
+
+    private void B_OtroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_OtroActionPerformed
+        // TODO add your handling code here:
+        dispose();
+        new RegistroTipoEvento().setVisible(true);
+    }//GEN-LAST:event_B_OtroActionPerformed
+
+    private void TF_Hora1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TF_Hora1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TF_Hora1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -212,6 +250,7 @@ public class RegistroEvento extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton B_Atras;
+    private javax.swing.JButton B_Otro;
     private javax.swing.JButton B_Registrar;
     private javax.swing.JComboBox<String> CB_Tipo;
     private javax.swing.JLabel Fondo;
@@ -220,6 +259,13 @@ public class RegistroEvento extends javax.swing.JFrame {
     private javax.swing.JLabel L_Hora;
     private javax.swing.JLabel L_Tipo;
     private javax.swing.JScrollPane SP_Descripcion;
+    private javax.swing.JTextField TF_Año;
+    private javax.swing.JTextField TF_Dia;
+    private javax.swing.JTextField TF_Hora1;
+    private javax.swing.JTextField TF_Hora2;
+    private javax.swing.JTextField TF_Mes;
+    private javax.swing.JTextField TF_Minutos1;
+    private javax.swing.JTextField TF_Minutos2;
     private javax.swing.JLabel Titulo_Registro_de_Evento;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -228,12 +274,5 @@ public class RegistroEvento extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField8;
     // End of variables declaration//GEN-END:variables
 }

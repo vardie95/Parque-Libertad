@@ -3,8 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Interfaz;
+package Interfaz.Registro;
 
+import Interfaz.MenuRegistro;
+import Interfaz.Registro.RegistroCurso;
 import javax.swing.JOptionPane;
 
 /**
@@ -46,18 +48,20 @@ public class RegistroClase extends javax.swing.JFrame {
         RB_Domingo = new javax.swing.JRadioButton();
         RB_Lunes = new javax.swing.JRadioButton();
         RB_Martes = new javax.swing.JRadioButton();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
+        TF_Minutos1 = new javax.swing.JTextField();
+        TF_Hora2 = new javax.swing.JTextField();
+        TF_Minutos2 = new javax.swing.JTextField();
+        TF_Hora1 = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
         Fondo = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocation(new java.awt.Point(500, 125));
-        setMinimumSize(new java.awt.Dimension(380, 350));
+        setMinimumSize(new java.awt.Dimension(425, 340));
         setResizable(false);
         getContentPane().setLayout(null);
 
@@ -94,7 +98,7 @@ public class RegistroClase extends javax.swing.JFrame {
             }
         });
         getContentPane().add(B_Registrar);
-        B_Registrar.setBounds(250, 270, 100, 30);
+        B_Registrar.setBounds(310, 270, 100, 30);
 
         B_Atras.setText("Atrás");
         B_Atras.addActionListener(new java.awt.event.ActionListener() {
@@ -149,14 +153,14 @@ public class RegistroClase extends javax.swing.JFrame {
         RB_Martes.setText("K");
         getContentPane().add(RB_Martes);
         RB_Martes.setBounds(130, 150, 40, 23);
-        getContentPane().add(jTextField1);
-        jTextField1.setBounds(160, 180, 20, 20);
-        getContentPane().add(jTextField2);
-        jTextField2.setBounds(200, 180, 20, 20);
-        getContentPane().add(jTextField3);
-        jTextField3.setBounds(230, 180, 20, 20);
-        getContentPane().add(jTextField4);
-        jTextField4.setBounds(130, 180, 20, 20);
+        getContentPane().add(TF_Minutos1);
+        TF_Minutos1.setBounds(160, 180, 20, 20);
+        getContentPane().add(TF_Hora2);
+        TF_Hora2.setBounds(200, 180, 20, 20);
+        getContentPane().add(TF_Minutos2);
+        TF_Minutos2.setBounds(230, 180, 20, 20);
+        getContentPane().add(TF_Hora1);
+        TF_Hora1.setBounds(130, 180, 20, 20);
 
         jLabel1.setText(" :");
         getContentPane().add(jLabel1);
@@ -170,18 +174,35 @@ public class RegistroClase extends javax.swing.JFrame {
         getContentPane().add(jLabel3);
         jLabel3.setBounds(190, 180, 30, 20);
 
+        jButton1.setText("Otro");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1);
+        jButton1.setBounds(320, 60, 73, 23);
+
         Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Imagen1.png"))); // NOI18N
         getContentPane().add(Fondo);
-        Fondo.setBounds(0, 0, 370, 310);
+        Fondo.setBounds(30, 0, 400, 310);
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        getContentPane().add(jPanel1);
+        jPanel1.setBounds(0, 0, 40, 310);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void B_RegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_RegistrarActionPerformed
         // TODO add your handling code here:
-        if (RB_Lunes.isSelected()==false && RB_Martes.isSelected()==false && RB_Miercoles.isSelected()==false && RB_Jueves.isSelected()==false && RB_Viernes.isSelected()==false && RB_Sabado.isSelected()==false && RB_Domingo.isSelected()==false){
+        if (RB_Lunes.isSelected()==false && RB_Martes.isSelected()==false && RB_Miercoles.isSelected()==false && RB_Jueves.isSelected()==false && RB_Viernes.isSelected()==false && RB_Sabado.isSelected()==false && RB_Domingo.isSelected()==false && (TF_Hora1.getText().length()==0 || TF_Hora2.getText().length()==0 || TF_Minutos1.getText().length()==0 || TF_Minutos2.getText().length()==0)){
             JOptionPane.showMessageDialog(this, "Debe de llenar todos los campos obligatorios.",null,JOptionPane.ERROR_MESSAGE);
         }
+        else if(Integer.parseInt(TF_Hora1.getText())>12 || Integer.parseInt(TF_Hora1.getText())<1 || Integer.parseInt(TF_Hora2.getText())>12 || Integer.parseInt(TF_Hora2.getText())<1 || Integer.parseInt(TF_Minutos1.getText())<1 || Integer.parseInt(TF_Minutos2.getText())<1 || Integer.parseInt(TF_Minutos1.getText())>59 || Integer.parseInt(TF_Minutos2.getText())>59){
+                   JOptionPane.showMessageDialog(this, "Ha ingresado un dato incorrecto.",null,JOptionPane.ERROR_MESSAGE);
+        }
+        
         else{
             dispose();
             new MenuRegistro().setVisible(true);
@@ -197,6 +218,12 @@ public class RegistroClase extends javax.swing.JFrame {
     private void RB_SabadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RB_SabadoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_RB_SabadoActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        dispose();
+        new RegistroCurso().setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -252,13 +279,15 @@ public class RegistroClase extends javax.swing.JFrame {
     private javax.swing.JRadioButton RB_Sabado;
     private javax.swing.JRadioButton RB_Viernes;
     private javax.swing.JFormattedTextField TF_Costo;
+    private javax.swing.JTextField TF_Hora1;
+    private javax.swing.JTextField TF_Hora2;
+    private javax.swing.JTextField TF_Minutos1;
+    private javax.swing.JTextField TF_Minutos2;
     private javax.swing.JLabel Titulo_Registro_de_Curso;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
+    private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

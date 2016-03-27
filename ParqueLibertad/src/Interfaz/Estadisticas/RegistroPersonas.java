@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Interfaz;
+package Interfaz.Estadisticas;
 
+import Interfaz.MenuRegistro;
 import javax.swing.JOptionPane;
 
 /**

@@ -96,6 +96,7 @@ public class MenuEstadisticaPersona extends javax.swing.JFrame {
 
     private void BT_DecertaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BT_DecertaActionPerformed
         // TODO add your handling code here:
+        dispose();
         new Top10Personas().setVisible(true);
     }//GEN-LAST:event_BT_DecertaActionPerformed
 

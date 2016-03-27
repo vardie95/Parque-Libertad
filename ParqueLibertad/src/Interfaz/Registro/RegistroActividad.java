@@ -3,20 +3,21 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Interfaz;
+package Interfaz.Registro;
 
+import Interfaz.MenuRegistro;
 import javax.swing.JOptionPane;
 
 /**
  *
  * @author Luis Diego
  */
-public class RegistroPuesto extends javax.swing.JFrame {
+public class RegistroActividad extends javax.swing.JFrame {
 
     /**
      * Creates new form RegistroCurso
      */
-    public RegistroPuesto() {
+    public RegistroActividad() {
         initComponents();
     }
 
@@ -33,7 +34,7 @@ public class RegistroPuesto extends javax.swing.JFrame {
         L_Descripcion = new javax.swing.JLabel();
         B_Registrar = new javax.swing.JButton();
         B_Atras = new javax.swing.JButton();
-        Titulo_Registro_de_Puesto = new javax.swing.JLabel();
+        Titulo_Registro_de_Actividad = new javax.swing.JLabel();
         SP_Descripcion = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
         TF_Nombre = new javax.swing.JTextField();
@@ -41,7 +42,7 @@ public class RegistroPuesto extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocation(new java.awt.Point(500, 125));
-        setMinimumSize(new java.awt.Dimension(380, 350));
+        setMinimumSize(new java.awt.Dimension(375, 340));
         setResizable(false);
         getContentPane().setLayout(null);
 
@@ -71,10 +72,10 @@ public class RegistroPuesto extends javax.swing.JFrame {
         getContentPane().add(B_Atras);
         B_Atras.setBounds(10, 10, 70, 23);
 
-        Titulo_Registro_de_Puesto.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        Titulo_Registro_de_Puesto.setText("Registro de Puesto");
-        getContentPane().add(Titulo_Registro_de_Puesto);
-        Titulo_Registro_de_Puesto.setBounds(100, 30, 180, 22);
+        Titulo_Registro_de_Actividad.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        Titulo_Registro_de_Actividad.setText("Registro de Actividad");
+        getContentPane().add(Titulo_Registro_de_Actividad);
+        Titulo_Registro_de_Actividad.setBounds(100, 30, 180, 22);
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
@@ -83,7 +84,7 @@ public class RegistroPuesto extends javax.swing.JFrame {
         getContentPane().add(SP_Descripcion);
         SP_Descripcion.setBounds(60, 180, 210, 60);
         getContentPane().add(TF_Nombre);
-        TF_Nombre.setBounds(110, 90, 180, 30);
+        TF_Nombre.setBounds(120, 90, 140, 30);
 
         Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Imagen1.png"))); // NOI18N
         getContentPane().add(Fondo);
@@ -95,7 +96,7 @@ public class RegistroPuesto extends javax.swing.JFrame {
     private void B_RegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_RegistrarActionPerformed
         // TODO add your handling code here:
         if (TF_Nombre.getText().length()==0){
-            JOptionPane.showMessageDialog(this, "Debe de llenar todos los campos obligatorios.",null,JOptionPane.ERROR_MESSAGE); 
+            JOptionPane.showMessageDialog(this, "Debe de llenar todos los campos obligatorios.",null,JOptionPane.ERROR_MESSAGE);
         }
         else{
             dispose();
@@ -126,23 +127,21 @@ public class RegistroPuesto extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(RegistroPuesto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegistroActividad.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(RegistroPuesto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegistroActividad.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(RegistroPuesto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegistroActividad.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(RegistroPuesto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegistroActividad.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new RegistroPuesto().setVisible(true);
+                new RegistroActividad().setVisible(true);
             }
         });
     }
@@ -155,7 +154,7 @@ public class RegistroPuesto extends javax.swing.JFrame {
     private javax.swing.JLabel L_Nombre;
     private javax.swing.JScrollPane SP_Descripcion;
     private javax.swing.JTextField TF_Nombre;
-    private javax.swing.JLabel Titulo_Registro_de_Puesto;
+    private javax.swing.JLabel Titulo_Registro_de_Actividad;
     private javax.swing.JTextArea jTextArea1;
     // End of variables declaration//GEN-END:variables
 }

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Interfaz;
+package Interfaz.Registro;
 
 import javax.swing.JOptionPane;
 
@@ -11,12 +11,12 @@ import javax.swing.JOptionPane;
  *
  * @author Luis Diego
  */
-public class RegistroCurso extends javax.swing.JFrame {
+public class RegistroTipoEvento extends javax.swing.JFrame {
 
     /**
      * Creates new form RegistroCurso
      */
-    public RegistroCurso() {
+    public RegistroTipoEvento() {
         initComponents();
     }
 
@@ -33,7 +33,7 @@ public class RegistroCurso extends javax.swing.JFrame {
         L_Descripcion = new javax.swing.JLabel();
         B_Registrar = new javax.swing.JButton();
         B_Atras = new javax.swing.JButton();
-        Titulo_Registro_de_Curso = new javax.swing.JLabel();
+        Titulo_Registro_de_Actividad = new javax.swing.JLabel();
         SP_Descripcion = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
         TF_Nombre = new javax.swing.JTextField();
@@ -71,10 +71,10 @@ public class RegistroCurso extends javax.swing.JFrame {
         getContentPane().add(B_Atras);
         B_Atras.setBounds(10, 10, 70, 23);
 
-        Titulo_Registro_de_Curso.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        Titulo_Registro_de_Curso.setText("Registro de Curso");
-        getContentPane().add(Titulo_Registro_de_Curso);
-        Titulo_Registro_de_Curso.setBounds(100, 30, 180, 22);
+        Titulo_Registro_de_Actividad.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        Titulo_Registro_de_Actividad.setText("Registro Tipo de Evento");
+        getContentPane().add(Titulo_Registro_de_Actividad);
+        Titulo_Registro_de_Actividad.setBounds(100, 30, 200, 22);
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
@@ -83,7 +83,7 @@ public class RegistroCurso extends javax.swing.JFrame {
         getContentPane().add(SP_Descripcion);
         SP_Descripcion.setBounds(60, 180, 210, 60);
         getContentPane().add(TF_Nombre);
-        TF_Nombre.setBounds(120, 90, 150, 30);
+        TF_Nombre.setBounds(120, 90, 140, 30);
 
         Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Imagen1.png"))); // NOI18N
         getContentPane().add(Fondo);
@@ -95,18 +95,18 @@ public class RegistroCurso extends javax.swing.JFrame {
     private void B_RegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_RegistrarActionPerformed
         // TODO add your handling code here:
         if (TF_Nombre.getText().length()==0){
-            JOptionPane.showMessageDialog(this, "Debe de llenar todos los campos obligatorios.",null,JOptionPane.ERROR_MESSAGE);
+             JOptionPane.showMessageDialog(this, "Debe de llenar todos los campos obligatorios.",null,JOptionPane.ERROR_MESSAGE);
         }
         else{
             dispose();
-            new MenuRegistro().setVisible(true);
+            new RegistroEvento().setVisible(true);
         }
     }//GEN-LAST:event_B_RegistrarActionPerformed
 
     private void B_AtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_AtrasActionPerformed
         // TODO add your handling code here:
         dispose();
-        new MenuRegistro().setVisible(true);
+        new RegistroEvento().setVisible(true);
     }//GEN-LAST:event_B_AtrasActionPerformed
 
     /**
@@ -126,13 +126,13 @@ public class RegistroCurso extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(RegistroCurso.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegistroTipoEvento.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(RegistroCurso.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegistroTipoEvento.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(RegistroCurso.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegistroTipoEvento.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(RegistroCurso.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegistroTipoEvento.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>
@@ -142,7 +142,7 @@ public class RegistroCurso extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new RegistroCurso().setVisible(true);
+                new RegistroTipoEvento().setVisible(true);
             }
         });
     }
@@ -155,7 +155,7 @@ public class RegistroCurso extends javax.swing.JFrame {
     private javax.swing.JLabel L_Nombre;
     private javax.swing.JScrollPane SP_Descripcion;
     private javax.swing.JTextField TF_Nombre;
-    private javax.swing.JLabel Titulo_Registro_de_Curso;
+    private javax.swing.JLabel Titulo_Registro_de_Actividad;
     private javax.swing.JTextArea jTextArea1;
     // End of variables declaration//GEN-END:variables
 }
