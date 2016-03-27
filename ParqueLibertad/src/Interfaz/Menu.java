@@ -82,7 +82,7 @@ public class Menu extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton4);
-        jButton4.setBounds(10, 307, 69, 36);
+        jButton4.setBounds(10, 290, 69, 36);
         getContentPane().add(jLabel1);
         jLabel1.setBounds(0, 20, 0, 0);
 

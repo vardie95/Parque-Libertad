@@ -7,6 +7,7 @@ package Interfaz;
 
 import Interfaz.Consultas.ConsultaCurso;
 import Interfaz.Consultas.MenuConsultaPersona;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -31,14 +32,19 @@ public class MenuEstadistica extends javax.swing.JFrame {
     private void initComponents() {
 
         jButton1 = new javax.swing.JButton();
+        jTextField1 = new javax.swing.JTextField();
         Titulo_Registro = new javax.swing.JLabel();
         B_Atras = new javax.swing.JButton();
         BT_Persona = new javax.swing.JButton();
         BT_Curso = new javax.swing.JButton();
         BT_Activdades = new javax.swing.JButton();
+        BT_Empleado = new javax.swing.JButton();
+        BT_Deserciones = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         jButton1.setText("jButton1");
+
+        jTextField1.setText("jTextField1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocation(new java.awt.Point(500, 125));
@@ -48,7 +54,7 @@ public class MenuEstadistica extends javax.swing.JFrame {
         Titulo_Registro.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         Titulo_Registro.setText("Estadísticas");
         getContentPane().add(Titulo_Registro);
-        Titulo_Registro.setBounds(130, 50, 110, 40);
+        Titulo_Registro.setBounds(130, 10, 110, 40);
 
         B_Atras.setText("Atrás");
         B_Atras.addActionListener(new java.awt.event.ActionListener() {
@@ -66,7 +72,7 @@ public class MenuEstadistica extends javax.swing.JFrame {
             }
         });
         getContentPane().add(BT_Persona);
-        BT_Persona.setBounds(130, 100, 100, 40);
+        BT_Persona.setBounds(60, 80, 100, 40);
 
         BT_Curso.setText("Curso");
         BT_Curso.addActionListener(new java.awt.event.ActionListener() {
@@ -75,7 +81,7 @@ public class MenuEstadistica extends javax.swing.JFrame {
             }
         });
         getContentPane().add(BT_Curso);
-        BT_Curso.setBounds(130, 150, 100, 40);
+        BT_Curso.setBounds(60, 140, 100, 40);
 
         BT_Activdades.setText("Actividades");
         BT_Activdades.addActionListener(new java.awt.event.ActionListener() {
@@ -84,7 +90,25 @@ public class MenuEstadistica extends javax.swing.JFrame {
             }
         });
         getContentPane().add(BT_Activdades);
-        BT_Activdades.setBounds(130, 200, 100, 40);
+        BT_Activdades.setBounds(200, 140, 100, 40);
+
+        BT_Empleado.setText("Empleado");
+        BT_Empleado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BT_EmpleadoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(BT_Empleado);
+        BT_Empleado.setBounds(200, 80, 100, 40);
+
+        BT_Deserciones.setText("Deserciones");
+        BT_Deserciones.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BT_DesercionesActionPerformed(evt);
+            }
+        });
+        getContentPane().add(BT_Deserciones);
+        BT_Deserciones.setBounds(120, 200, 120, 40);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Imagen1.png"))); // NOI18N
         getContentPane().add(jLabel1);
@@ -103,19 +127,36 @@ public class MenuEstadistica extends javax.swing.JFrame {
 
     private void BT_PersonaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BT_PersonaActionPerformed
         // TODO add your handling code here:
+        new Interfaz.Estadisticas.MenuEstadisticaPersona().setVisible(true);
+        dispose();
         
        
     }//GEN-LAST:event_BT_PersonaActionPerformed
 
     private void BT_CursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BT_CursoActionPerformed
         // TODO add your handling code here:
+        new Interfaz.Estadisticas.Top5Cursos().setVisible(true);
+        dispose();
         
     }//GEN-LAST:event_BT_CursoActionPerformed
 
     private void BT_ActivdadesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BT_ActivdadesActionPerformed
         // TODO add your handling code here:
-        
+        new Interfaz.Estadisticas.Top5Actividades().setVisible(true);
+        dispose();
     }//GEN-LAST:event_BT_ActivdadesActionPerformed
+
+    private void BT_EmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BT_EmpleadoActionPerformed
+        // TODO add your handling code here:
+        JOptionPane.showMessageDialog(this,"La cantidad de empleados es: ","Cantidad Empleados",JOptionPane.INFORMATION_MESSAGE);
+    }//GEN-LAST:event_BT_EmpleadoActionPerformed
+
+    private void BT_DesercionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BT_DesercionesActionPerformed
+        // TODO add your handling code here:
+        new Interfaz.Estadisticas.Top5Deserciones().setVisible(true);
+        dispose();
+        
+    }//GEN-LAST:event_BT_DesercionesActionPerformed
 
     /**
      * @param args the command line arguments
@@ -158,10 +199,13 @@ public class MenuEstadistica extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BT_Activdades;
     private javax.swing.JButton BT_Curso;
+    private javax.swing.JButton BT_Deserciones;
+    private javax.swing.JButton BT_Empleado;
     private javax.swing.JButton BT_Persona;
     private javax.swing.JButton B_Atras;
     private javax.swing.JLabel Titulo_Registro;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }
