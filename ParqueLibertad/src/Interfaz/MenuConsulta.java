@@ -89,6 +89,11 @@ public class MenuConsulta extends javax.swing.JFrame {
         BT_Evento.setBounds(60, 170, 100, 40);
 
         BT_Empleado.setText("Empleado");
+        BT_Empleado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BT_EmpleadoActionPerformed(evt);
+            }
+        });
         getContentPane().add(BT_Empleado);
         BT_Empleado.setBounds(190, 170, 100, 40);
 
@@ -138,6 +143,12 @@ public class MenuConsulta extends javax.swing.JFrame {
         new Interfaz.Consultas.ConsultaActividad().setVisible(true);
         dispose();
     }//GEN-LAST:event_BT_ActivdadesActionPerformed
+
+    private void BT_EmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BT_EmpleadoActionPerformed
+        // TODO add your handling code here:
+        new Interfaz.Consultas.MenuConsultaEmpleado().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_BT_EmpleadoActionPerformed
 
     /**
      * @param args the command line arguments
