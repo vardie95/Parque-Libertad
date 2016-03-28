@@ -5,6 +5,7 @@
  */
 package Interfaz;
 
+import Interfaz.Registro.MenuInscripcion;
 import Interfaz.Registro.RegistroClase;
 import Interfaz.Registro.RegistroDesercion;
 import Interfaz.Registro.RegistroEmpleado;
@@ -34,6 +35,7 @@ public class MenuRegistro extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jButton1 = new javax.swing.JButton();
         Titulo_Registro = new javax.swing.JLabel();
         B_Persona = new javax.swing.JButton();
         B_Evento = new javax.swing.JButton();
@@ -43,6 +45,8 @@ public class MenuRegistro extends javax.swing.JFrame {
         B_Desercion = new javax.swing.JButton();
         B_Empleado = new javax.swing.JButton();
         Fondo = new javax.swing.JLabel();
+
+        jButton1.setText("jButton1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocation(new java.awt.Point(500, 125));
@@ -72,7 +76,7 @@ public class MenuRegistro extends javax.swing.JFrame {
         getContentPane().add(B_Evento);
         B_Evento.setBounds(60, 140, 100, 44);
 
-        B_Actividad.setText("Actividad");
+        B_Actividad.setText("Inscripcion");
         B_Actividad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 B_ActividadActionPerformed(evt);
@@ -119,7 +123,7 @@ public class MenuRegistro extends javax.swing.JFrame {
 
         Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Imagen1.png"))); // NOI18N
         getContentPane().add(Fondo);
-        Fondo.setBounds(0, 0, 370, 280);
+        Fondo.setBounds(0, 0, 370, 320);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -151,7 +155,7 @@ public class MenuRegistro extends javax.swing.JFrame {
     private void B_ActividadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_ActividadActionPerformed
         // TODO add your handling code here:
         dispose();
-        new RegistroActividad().setVisible(true);
+        new MenuInscripcion().setVisible(true);
     }//GEN-LAST:event_B_ActividadActionPerformed
 
     private void B_EmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_EmpleadoActionPerformed
@@ -211,5 +215,6 @@ public class MenuRegistro extends javax.swing.JFrame {
     private javax.swing.JButton B_Persona;
     private javax.swing.JLabel Fondo;
     private javax.swing.JLabel Titulo_Registro;
+    private javax.swing.JButton jButton1;
     // End of variables declaration//GEN-END:variables
 }

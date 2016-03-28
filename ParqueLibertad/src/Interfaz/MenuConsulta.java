@@ -44,7 +44,7 @@ public class MenuConsulta extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocation(new java.awt.Point(500, 125));
-        setMinimumSize(new java.awt.Dimension(380, 380));
+        setMinimumSize(new java.awt.Dimension(380, 370));
         getContentPane().setLayout(null);
 
         Titulo_Registro.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
