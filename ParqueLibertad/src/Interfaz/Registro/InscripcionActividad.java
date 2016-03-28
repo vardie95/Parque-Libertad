@@ -29,9 +29,9 @@ public class InscripcionActividad extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        CB_Identificacion = new javax.swing.JComboBox<String>();
+        CB_Identificacion = new javax.swing.JComboBox<>();
         L_Identificacion = new javax.swing.JLabel();
-        CB_Curso = new javax.swing.JComboBox<String>();
+        CB_Curso = new javax.swing.JComboBox<>();
         L_Curso = new javax.swing.JLabel();
         B_Registrar = new javax.swing.JButton();
         B_Atras = new javax.swing.JButton();
@@ -52,7 +52,7 @@ public class InscripcionActividad extends javax.swing.JFrame {
         setResizable(false);
         getContentPane().setLayout(null);
 
-        CB_Identificacion.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "123456789" }));
+        CB_Identificacion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "123456789" }));
         getContentPane().add(CB_Identificacion);
         CB_Identificacion.setBounds(200, 60, 164, 28);
 
@@ -60,13 +60,13 @@ public class InscripcionActividad extends javax.swing.JFrame {
         getContentPane().add(L_Identificacion);
         L_Identificacion.setBounds(110, 60, 80, 28);
 
-        CB_Curso.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Nombre" }));
+        CB_Curso.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nombre" }));
         getContentPane().add(CB_Curso);
         CB_Curso.setBounds(130, 180, 146, 31);
 
-        L_Curso.setText("Curso:");
+        L_Curso.setText("Actividad:");
         getContentPane().add(L_Curso);
-        L_Curso.setBounds(70, 180, 40, 28);
+        L_Curso.setBounds(30, 180, 80, 28);
 
         B_Registrar.setText("Registrar");
         B_Registrar.addActionListener(new java.awt.event.ActionListener() {
