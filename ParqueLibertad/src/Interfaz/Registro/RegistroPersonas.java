@@ -5,18 +5,19 @@
  */
 package Interfaz.Registro;
 
+import Interfaz.MenuRegistro;
 import javax.swing.JOptionPane;
 
 /**
  *
  * @author Luis Diego
  */
-public class RegistroTipoEvento extends javax.swing.JFrame {
+public class RegistroPersonas extends javax.swing.JFrame {
 
     /**
-     * Creates new form RegistroCurso
+     * Creates new form RegistroPersonas
      */
-    public RegistroTipoEvento() {
+    public RegistroPersonas() {
         initComponents();
     }
 
@@ -29,14 +30,33 @@ public class RegistroTipoEvento extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        L_Nombre = new javax.swing.JLabel();
-        L_Descripcion = new javax.swing.JLabel();
-        B_Registrar = new javax.swing.JButton();
-        Titulo_Registro_de_Actividad = new javax.swing.JLabel();
-        SP_Descripcion = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        buttonGroup1 = new javax.swing.ButtonGroup();
         TF_Nombre = new javax.swing.JTextField();
+        TF_Apellido1 = new javax.swing.JTextField();
+        TF_Apellido2 = new javax.swing.JTextField();
+        TF_Identificacion = new javax.swing.JFormattedTextField();
+        RB_Cedula = new javax.swing.JRadioButton();
+        RB_Pasaporte = new javax.swing.JRadioButton();
+        RB_TIM = new javax.swing.JRadioButton();
+        CB_Pais = new javax.swing.JComboBox<>();
+        CB_Provincia = new javax.swing.JComboBox<>();
+        CB_Canton = new javax.swing.JComboBox<>();
+        SP_Direccion = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
+        CB_Nacionalidad = new javax.swing.JComboBox<>();
+        B_Registrar = new javax.swing.JButton();
+        L_Nombre = new javax.swing.JLabel();
+        L_Apellido1 = new javax.swing.JLabel();
+        L_Apellido2 = new javax.swing.JLabel();
+        L_Identificacion = new javax.swing.JLabel();
+        L_Nacionalidad = new javax.swing.JLabel();
+        L_Direccion = new javax.swing.JLabel();
+        L_Pais = new javax.swing.JLabel();
+        L_Provincia = new javax.swing.JLabel();
+        L_Canton = new javax.swing.JLabel();
+        Titulo_Registro_de_Persona = new javax.swing.JLabel();
         Fondo = new javax.swing.JLabel();
+        Relleno_Fondo = new javax.swing.JPanel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         Re_Curso = new javax.swing.JMenuItem();
@@ -69,19 +89,65 @@ public class RegistroTipoEvento extends javax.swing.JFrame {
         Re_Persona1 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setLocation(new java.awt.Point(500, 125));
-        setMinimumSize(new java.awt.Dimension(380, 350));
-        setPreferredSize(new java.awt.Dimension(520, 150));
+        setLocation(new java.awt.Point(450, 125));
+        setMinimumSize(new java.awt.Dimension(580, 480));
         setResizable(false);
         getContentPane().setLayout(null);
+        getContentPane().add(TF_Nombre);
+        TF_Nombre.setBounds(25, 81, 139, 20);
+        getContentPane().add(TF_Apellido1);
+        TF_Apellido1.setBounds(184, 81, 139, 20);
+        getContentPane().add(TF_Apellido2);
+        TF_Apellido2.setBounds(341, 81, 139, 20);
+        getContentPane().add(TF_Identificacion);
+        TF_Identificacion.setBounds(25, 165, 131, 20);
 
-        L_Nombre.setText("Nombre:");
-        getContentPane().add(L_Nombre);
-        L_Nombre.setBounds(60, 90, 60, 28);
+        RB_Cedula.setBackground(new java.awt.Color(255, 255, 255));
+        buttonGroup1.add(RB_Cedula);
+        RB_Cedula.setText("Cédula");
+        RB_Cedula.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RB_CedulaActionPerformed(evt);
+            }
+        });
+        getContentPane().add(RB_Cedula);
+        RB_Cedula.setBounds(25, 135, 75, 23);
 
-        L_Descripcion.setText("Descripción:");
-        getContentPane().add(L_Descripcion);
-        L_Descripcion.setBounds(60, 150, 90, 28);
+        RB_Pasaporte.setBackground(new java.awt.Color(255, 255, 255));
+        buttonGroup1.add(RB_Pasaporte);
+        RB_Pasaporte.setText("Pasaporte");
+        getContentPane().add(RB_Pasaporte);
+        RB_Pasaporte.setBounds(118, 135, 90, 23);
+
+        RB_TIM.setBackground(new java.awt.Color(255, 255, 255));
+        buttonGroup1.add(RB_TIM);
+        RB_TIM.setText("TIM");
+        getContentPane().add(RB_TIM);
+        RB_TIM.setBounds(211, 135, 70, 23);
+
+        CB_Pais.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Costa Rica" }));
+        CB_Pais.setToolTipText("");
+        getContentPane().add(CB_Pais);
+        CB_Pais.setBounds(25, 221, 93, 20);
+
+        CB_Provincia.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "San José" }));
+        getContentPane().add(CB_Provincia);
+        CB_Provincia.setBounds(136, 221, 103, 20);
+
+        CB_Canton.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Central" }));
+        getContentPane().add(CB_Canton);
+        CB_Canton.setBounds(276, 221, 116, 20);
+
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        SP_Direccion.setViewportView(jTextArea1);
+
+        getContentPane().add(SP_Direccion);
+        SP_Direccion.setBounds(25, 276, 367, 64);
+
+        CB_Nacionalidad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Costarricense" }));
+        getContentPane().add(CB_Nacionalidad);
+        CB_Nacionalidad.setBounds(341, 165, 106, 20);
 
         B_Registrar.setText("Registrar");
         B_Registrar.addActionListener(new java.awt.event.ActionListener() {
@@ -90,32 +156,63 @@ public class RegistroTipoEvento extends javax.swing.JFrame {
             }
         });
         getContentPane().add(B_Registrar);
-        B_Registrar.setBounds(260, 270, 90, 30);
+        B_Registrar.setBounds(458, 351, 95, 32);
 
-        Titulo_Registro_de_Actividad.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        Titulo_Registro_de_Actividad.setText("Registro Tipo de Evento");
-        getContentPane().add(Titulo_Registro_de_Actividad);
-        Titulo_Registro_de_Actividad.setBounds(100, 30, 200, 22);
+        L_Nombre.setText("Nombre: ");
+        getContentPane().add(L_Nombre);
+        L_Nombre.setBounds(25, 62, 90, 14);
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        SP_Descripcion.setViewportView(jTextArea1);
+        L_Apellido1.setText("Apellido 1:");
+        getContentPane().add(L_Apellido1);
+        L_Apellido1.setBounds(184, 62, 80, 14);
 
-        getContentPane().add(SP_Descripcion);
-        SP_Descripcion.setBounds(60, 180, 210, 60);
-        getContentPane().add(TF_Nombre);
-        TF_Nombre.setBounds(120, 90, 140, 30);
+        L_Apellido2.setText("Apellido 2: ");
+        getContentPane().add(L_Apellido2);
+        L_Apellido2.setBounds(341, 62, 90, 14);
+
+        L_Identificacion.setText("Identificación: ");
+        getContentPane().add(L_Identificacion);
+        L_Identificacion.setBounds(25, 119, 100, 14);
+
+        L_Nacionalidad.setText("Nacionalidad: ");
+        getContentPane().add(L_Nacionalidad);
+        L_Nacionalidad.setBounds(341, 139, 110, 14);
+
+        L_Direccion.setText("Dirección: ");
+        getContentPane().add(L_Direccion);
+        L_Direccion.setBounds(25, 256, 110, 14);
+
+        L_Pais.setText("País: ");
+        getContentPane().add(L_Pais);
+        L_Pais.setBounds(30, 200, 38, 14);
+
+        L_Provincia.setText("Provincia: ");
+        getContentPane().add(L_Provincia);
+        L_Provincia.setBounds(140, 200, 61, 14);
+
+        L_Canton.setText("Cantón: ");
+        getContentPane().add(L_Canton);
+        L_Canton.setBounds(276, 201, 61, 14);
+
+        Titulo_Registro_de_Persona.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        Titulo_Registro_de_Persona.setText("Registro de Persona");
+        getContentPane().add(Titulo_Registro_de_Persona);
+        Titulo_Registro_de_Persona.setBounds(202, 12, 157, 22);
 
         Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Imagen1.png"))); // NOI18N
         getContentPane().add(Fondo);
-        Fondo.setBounds(0, 0, 370, 310);
+        Fondo.setBounds(200, 0, 370, 390);
+
+        Relleno_Fondo.setBackground(new java.awt.Color(255, 255, 255));
+        getContentPane().add(Relleno_Fondo);
+        Relleno_Fondo.setBounds(0, 0, 210, 390);
 
         jMenuBar1.setBackground(new java.awt.Color(255, 255, 255));
         jMenuBar1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jMenuBar1.setPreferredSize(new java.awt.Dimension(106, 50));
 
         jMenu1.setBackground(new java.awt.Color(204, 255, 204));
-        jMenu1.setText("  Registro");
+        jMenu1.setText("      Registro");
         jMenu1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jMenu1.setFocusPainted(true);
         jMenu1.setFont(new java.awt.Font("MS Reference Sans Serif", 1, 13)); // NOI18N
@@ -169,7 +266,7 @@ public class RegistroTipoEvento extends javax.swing.JFrame {
         jMenuBar1.add(jMenu1);
 
         jMenu4.setBackground(new java.awt.Color(255, 255, 255));
-        jMenu4.setText("  Consulta");
+        jMenu4.setText("     Consulta");
         jMenu4.setFont(new java.awt.Font("MS Reference Sans Serif", 1, 13)); // NOI18N
         jMenu4.setPreferredSize(new java.awt.Dimension(180, 19));
 
@@ -273,7 +370,7 @@ public class RegistroTipoEvento extends javax.swing.JFrame {
         jMenuBar1.add(jMenu4);
 
         jMenu3.setBackground(new java.awt.Color(255, 255, 255));
-        jMenu3.setText(" Estadística");
+        jMenu3.setText("      Estadística");
         jMenu3.setFont(new java.awt.Font("MS Reference Sans Serif", 1, 13)); // NOI18N
         jMenu3.setPreferredSize(new java.awt.Dimension(180, 19));
 
@@ -347,7 +444,7 @@ public class RegistroTipoEvento extends javax.swing.JFrame {
         jMenuBar1.add(jMenu3);
 
         jMenu10.setBackground(new java.awt.Color(204, 255, 204));
-        jMenu10.setText("    Admi");
+        jMenu10.setText("       Admi");
         jMenu10.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jMenu10.setFocusPainted(true);
         jMenu10.setFont(new java.awt.Font("MS Reference Sans Serif", 1, 13)); // NOI18N
@@ -405,14 +502,18 @@ public class RegistroTipoEvento extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void RB_CedulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RB_CedulaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_RB_CedulaActionPerformed
+
     private void B_RegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_RegistrarActionPerformed
         // TODO add your handling code here:
-        if (TF_Nombre.getText().length()==0){
-             JOptionPane.showMessageDialog(this, "Debe de llenar todos los campos obligatorios.",null,JOptionPane.ERROR_MESSAGE);
+        if (TF_Nombre.getText().length()==0 || TF_Apellido1.getText().length()==0 || TF_Apellido2.getText().length()==0 ){
+            JOptionPane.showMessageDialog(this, "Debe de llenar todos los campos obligatorios.",null,JOptionPane.ERROR_MESSAGE);
         }
         else{
             dispose();
-            new RegistroEvento().setVisible(true);
+            new MenuRegistro().setVisible(true);
         }
     }//GEN-LAST:event_B_RegistrarActionPerformed
 
@@ -426,7 +527,7 @@ public class RegistroTipoEvento extends javax.swing.JFrame {
         // TODO add your handling code here:
         new Interfaz.Registro.RegistroEmpleado().setVisible(true);
         dispose();
-
+        
     }//GEN-LAST:event_Re_EmpleadoActionPerformed
 
     private void Re_EventoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Re_EventoActionPerformed
@@ -458,7 +559,7 @@ public class RegistroTipoEvento extends javax.swing.JFrame {
         new Interfaz.Consultas.ConsultaLugarPersona().setVisible(true);
         dispose();
     }//GEN-LAST:event_Con_persona_LugarActionPerformed
-
+        
     private void con_persona_FechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_con_persona_FechaActionPerformed
         // TODO add your handling code here:
         new Interfaz.Consultas.ConsultaFecha().setVisible(true);
@@ -557,29 +658,30 @@ public class RegistroTipoEvento extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(RegistroTipoEvento.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegistroPersonas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(RegistroTipoEvento.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegistroPersonas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(RegistroTipoEvento.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegistroPersonas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(RegistroTipoEvento.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegistroPersonas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new RegistroTipoEvento().setVisible(true);
+                new RegistroPersonas().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton B_Registrar;
+    private javax.swing.JComboBox<String> CB_Canton;
+    private javax.swing.JComboBox<String> CB_Nacionalidad;
+    private javax.swing.JComboBox<String> CB_Pais;
+    private javax.swing.JComboBox<String> CB_Provincia;
     private javax.swing.JMenuItem Con_Curso;
     private javax.swing.JMenuItem Con_Evento;
     private javax.swing.JMenuItem Con_Persona_Name;
@@ -591,8 +693,18 @@ public class RegistroTipoEvento extends javax.swing.JFrame {
     private javax.swing.JMenuItem Es_persona_lugar;
     private javax.swing.JMenuItem Es_top_persona;
     private javax.swing.JLabel Fondo;
-    private javax.swing.JLabel L_Descripcion;
+    private javax.swing.JLabel L_Apellido1;
+    private javax.swing.JLabel L_Apellido2;
+    private javax.swing.JLabel L_Canton;
+    private javax.swing.JLabel L_Direccion;
+    private javax.swing.JLabel L_Identificacion;
+    private javax.swing.JLabel L_Nacionalidad;
     private javax.swing.JLabel L_Nombre;
+    private javax.swing.JLabel L_Pais;
+    private javax.swing.JLabel L_Provincia;
+    private javax.swing.JRadioButton RB_Cedula;
+    private javax.swing.JRadioButton RB_Pasaporte;
+    private javax.swing.JRadioButton RB_TIM;
     private javax.swing.JMenuItem Re_Curso;
     private javax.swing.JMenuItem Re_Curso1;
     private javax.swing.JMenuItem Re_Empleado;
@@ -601,12 +713,17 @@ public class RegistroTipoEvento extends javax.swing.JFrame {
     private javax.swing.JMenuItem Re_Evento1;
     private javax.swing.JMenuItem Re_Persona;
     private javax.swing.JMenuItem Re_Persona1;
-    private javax.swing.JScrollPane SP_Descripcion;
+    private javax.swing.JPanel Relleno_Fondo;
+    private javax.swing.JScrollPane SP_Direccion;
+    private javax.swing.JTextField TF_Apellido1;
+    private javax.swing.JTextField TF_Apellido2;
+    private javax.swing.JFormattedTextField TF_Identificacion;
     private javax.swing.JTextField TF_Nombre;
-    private javax.swing.JLabel Titulo_Registro_de_Actividad;
+    private javax.swing.JLabel Titulo_Registro_de_Persona;
     private javax.swing.JMenuItem TopActividades;
     private javax.swing.JMenuItem TopCurso;
     private javax.swing.JMenuItem TopDeserciones;
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JMenuItem con_persona_Fecha;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu10;

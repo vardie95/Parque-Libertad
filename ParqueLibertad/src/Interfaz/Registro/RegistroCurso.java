@@ -32,7 +32,6 @@ public class RegistroCurso extends javax.swing.JFrame {
         L_Nombre = new javax.swing.JLabel();
         L_Descripcion = new javax.swing.JLabel();
         B_Registrar = new javax.swing.JButton();
-        B_Atras = new javax.swing.JButton();
         Titulo_Registro_de_Curso = new javax.swing.JLabel();
         SP_Descripcion = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
@@ -41,7 +40,7 @@ public class RegistroCurso extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocation(new java.awt.Point(500, 125));
-        setMinimumSize(new java.awt.Dimension(380, 350));
+        setMinimumSize(new java.awt.Dimension(380, 400));
         setResizable(false);
         getContentPane().setLayout(null);
 
@@ -61,15 +60,6 @@ public class RegistroCurso extends javax.swing.JFrame {
         });
         getContentPane().add(B_Registrar);
         B_Registrar.setBounds(260, 270, 90, 30);
-
-        B_Atras.setText("Atrás");
-        B_Atras.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                B_AtrasActionPerformed(evt);
-            }
-        });
-        getContentPane().add(B_Atras);
-        B_Atras.setBounds(10, 10, 70, 23);
 
         Titulo_Registro_de_Curso.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         Titulo_Registro_de_Curso.setText("Registro de Curso");
@@ -102,12 +92,6 @@ public class RegistroCurso extends javax.swing.JFrame {
             new RegistroClase().setVisible(true);
         }
     }//GEN-LAST:event_B_RegistrarActionPerformed
-
-    private void B_AtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_AtrasActionPerformed
-        // TODO add your handling code here:
-        dispose();
-        new RegistroClase().setVisible(true);
-    }//GEN-LAST:event_B_AtrasActionPerformed
 
     /**
      * @param args the command line arguments
@@ -148,7 +132,6 @@ public class RegistroCurso extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton B_Atras;
     private javax.swing.JButton B_Registrar;
     private javax.swing.JLabel Fondo;
     private javax.swing.JLabel L_Descripcion;

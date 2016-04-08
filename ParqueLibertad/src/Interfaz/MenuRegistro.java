@@ -10,7 +10,7 @@ import Interfaz.Registro.RegistroClase;
 import Interfaz.Registro.RegistroDesercion;
 import Interfaz.Registro.RegistroEmpleado;
 import Interfaz.Registro.RegistroEvento;
-import Interfaz.Estadisticas.RegistroPersonas;
+import Interfaz.Registro.RegistroPersonas;
 import Interfaz.Registro.RegistroActividad;
 
 /**
