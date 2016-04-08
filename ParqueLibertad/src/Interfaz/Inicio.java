@@ -90,7 +90,7 @@ public class Inicio extends javax.swing.JFrame {
         String usuario= TF_Usuario.getText();
         String password= PF_Contraseña.getText();
         if (usuario.equals("libertad") && password.equals("parque")) {
-            new Menu().setVisible(true);
+            new Interfaz.Registro.RegistroPersonas().setVisible(true);
             dispose();   
         }else{
             JOptionPane.showMessageDialog(this, "Contraseña Incorrecta","El usuario o la contraseña son invalidos",JOptionPane.ERROR_MESSAGE);
