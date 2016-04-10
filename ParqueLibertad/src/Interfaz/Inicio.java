@@ -5,6 +5,10 @@
  */
 package Interfaz;
 
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -12,12 +16,14 @@ import javax.swing.JOptionPane;
  * @author Luis Diego
  */
 public class Inicio extends javax.swing.JFrame {
-
+    Connection con= null;
+    
     /**
      * Creates new form Inicio
      */
     public Inicio() {
         initComponents();
+        con = parquelibertad.dbConnection.conectDB();
     }
 
     /**
@@ -91,6 +97,11 @@ public class Inicio extends javax.swing.JFrame {
         String password= PF_Contraseña.getText();
         if (usuario.equals("libertad") && password.equals("parque")) {
             new Interfaz.Registro.RegistroPersonas().setVisible(true);
+            try {
+                con.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
+            }
             dispose();   
         }else{
             JOptionPane.showMessageDialog(this, "Contraseña Incorrecta","El usuario o la contraseña son invalidos",JOptionPane.ERROR_MESSAGE);
