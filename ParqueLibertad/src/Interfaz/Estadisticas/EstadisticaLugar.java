@@ -403,6 +403,7 @@ public class EstadisticaLugar extends javax.swing.JFrame {
         setResizable(false);
         getContentPane().setLayout(null);
 
+        PT_FechaFinal.setBackground(new java.awt.Color(204, 204, 255));
         PT_FechaFinal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 PT_FechaFinalActionPerformed(evt);
@@ -434,6 +435,8 @@ public class EstadisticaLugar extends javax.swing.JFrame {
         jLabel3.setText("Cantidad de personas:");
         getContentPane().add(jLabel3);
         jLabel3.setBounds(30, 140, 140, 14);
+
+        jTextField1.setBackground(new java.awt.Color(204, 204, 255));
         getContentPane().add(jTextField1);
         jTextField1.setBounds(200, 140, 40, 20);
 
@@ -445,8 +448,10 @@ public class EstadisticaLugar extends javax.swing.JFrame {
         jLabel1.setText("Analizar por: ");
         getContentPane().add(jLabel1);
         jLabel1.setBounds(30, 50, 100, 14);
+
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/13010187_1077907862232310_2035377480_o.png"))); // NOI18N
         getContentPane().add(jLabel5);
-        jLabel5.setBounds(0, 0, 430, 290);
+        jLabel5.setBounds(0, 0, 430, 310);
 
         jMenuBar3.setBackground(new java.awt.Color(255, 255, 255));
         jMenuBar3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));

@@ -73,6 +73,7 @@ public class Top10Personas extends javax.swing.JFrame {
         TopDeserciones2 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Parque la Libertad");
         setLocation(new java.awt.Point(500, 125));
         setMinimumSize(new java.awt.Dimension(630, 380));
         setResizable(false);

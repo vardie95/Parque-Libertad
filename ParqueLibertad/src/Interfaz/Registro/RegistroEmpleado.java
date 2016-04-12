@@ -491,7 +491,7 @@ public class RegistroEmpleado extends javax.swing.JFrame {
         L_Identificacion.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         L_Identificacion.setText("Identificacion:");
         getContentPane().add(L_Identificacion);
-        L_Identificacion.setBounds(120, 60, 80, 28);
+        L_Identificacion.setBounds(90, 60, 110, 28);
 
         CB_Puesto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Profesor" }));
         CB_Puesto.addActionListener(new java.awt.event.ActionListener() {

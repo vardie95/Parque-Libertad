@@ -1070,6 +1070,11 @@
   </Layout>
   <SubComponents>
     <Component class="javax.swing.JFormattedTextField" name="PT_FechaFinal">
+      <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="cc" red="cc" type="rgb"/>
+        </Property>
+      </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="PT_FechaFinalActionPerformed"/>
       </Events>
@@ -1132,6 +1137,11 @@
       </Constraints>
     </Component>
     <Component class="javax.swing.JTextField" name="jTextField1">
+      <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="cc" red="cc" type="rgb"/>
+        </Property>
+      </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
           <AbsoluteConstraints x="200" y="140" width="40" height="-1"/>
@@ -1172,9 +1182,14 @@
       </Constraints>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel5">
+      <Properties>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/Interfaz/13010187_1077907862232310_2035377480_o.png"/>
+        </Property>
+      </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="0" y="0" width="430" height="290"/>
+          <AbsoluteConstraints x="0" y="0" width="430" height="310"/>
         </Constraint>
       </Constraints>
     </Component>
