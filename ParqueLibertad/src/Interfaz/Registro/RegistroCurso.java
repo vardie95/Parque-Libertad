@@ -73,11 +73,13 @@ public class RegistroCurso extends javax.swing.JFrame {
         TopDeserciones = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Parque la Libertad");
         setLocation(new java.awt.Point(500, 125));
         setMinimumSize(new java.awt.Dimension(400, 340));
         setResizable(false);
         getContentPane().setLayout(null);
 
+        L_Nombre.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         L_Nombre.setText("Nombre:");
         getContentPane().add(L_Nombre);
         L_Nombre.setBounds(60, 90, 60, 28);
@@ -89,16 +91,18 @@ public class RegistroCurso extends javax.swing.JFrame {
             }
         });
         getContentPane().add(B_Registrar);
-        B_Registrar.setBounds(240, 170, 90, 30);
+        B_Registrar.setBounds(240, 170, 90, 40);
 
         Titulo_Registro_de_Curso.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         Titulo_Registro_de_Curso.setText("Registro de Curso");
         getContentPane().add(Titulo_Registro_de_Curso);
-        Titulo_Registro_de_Curso.setBounds(100, 30, 180, 22);
+        Titulo_Registro_de_Curso.setBounds(120, 30, 180, 22);
+
+        TF_Nombre.setBackground(new java.awt.Color(204, 204, 255));
         getContentPane().add(TF_Nombre);
         TF_Nombre.setBounds(120, 90, 150, 30);
 
-        Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Imagen1.png"))); // NOI18N
+        Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/13010187_1077907862232310_2035377480_o.png"))); // NOI18N
         getContentPane().add(Fondo);
         Fondo.setBounds(0, 0, 390, 280);
 

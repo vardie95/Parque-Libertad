@@ -62,8 +62,7 @@ public class RegistroPersonas extends javax.swing.JFrame {
         L_Provincia = new javax.swing.JLabel();
         L_Canton = new javax.swing.JLabel();
         Titulo_Registro_de_Persona = new javax.swing.JLabel();
-        Fondo = new javax.swing.JLabel();
-        Relleno_Fondo = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         Re_Actividad = new javax.swing.JMenuItem();
@@ -105,22 +104,37 @@ public class RegistroPersonas extends javax.swing.JFrame {
         jMenuItem1.setText("jMenuItem1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Parque La Libertad");
         setLocation(new java.awt.Point(450, 125));
         setMinimumSize(new java.awt.Dimension(580, 480));
         setResizable(false);
         getContentPane().setLayout(null);
+
+        TF_Nombre.setBackground(new java.awt.Color(217, 217, 253));
+        TF_Nombre.setForeground(new java.awt.Color(204, 204, 255));
         getContentPane().add(TF_Nombre);
         TF_Nombre.setBounds(25, 81, 139, 20);
+
+        TF_Apellido1.setBackground(new java.awt.Color(217, 217, 253));
+        TF_Apellido1.setForeground(new java.awt.Color(204, 204, 255));
         getContentPane().add(TF_Apellido1);
         TF_Apellido1.setBounds(184, 81, 139, 20);
+
+        TF_Apellido2.setBackground(new java.awt.Color(217, 217, 253));
+        TF_Apellido2.setForeground(new java.awt.Color(204, 204, 255));
         getContentPane().add(TF_Apellido2);
         TF_Apellido2.setBounds(341, 81, 139, 20);
+
+        TF_Identificacion.setBackground(new java.awt.Color(217, 217, 253));
+        TF_Identificacion.setForeground(new java.awt.Color(204, 204, 255));
         getContentPane().add(TF_Identificacion);
         TF_Identificacion.setBounds(25, 165, 131, 20);
 
         RB_Cedula.setBackground(new java.awt.Color(255, 255, 255));
         buttonGroup1.add(RB_Cedula);
+        RB_Cedula.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         RB_Cedula.setText("Cédula");
+        RB_Cedula.setOpaque(false);
         RB_Cedula.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 RB_CedulaActionPerformed(evt);
@@ -131,40 +145,51 @@ public class RegistroPersonas extends javax.swing.JFrame {
 
         RB_Pasaporte.setBackground(new java.awt.Color(255, 255, 255));
         buttonGroup1.add(RB_Pasaporte);
+        RB_Pasaporte.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         RB_Pasaporte.setText("Pasaporte");
+        RB_Pasaporte.setOpaque(false);
         getContentPane().add(RB_Pasaporte);
         RB_Pasaporte.setBounds(118, 135, 90, 23);
 
         RB_TIM.setBackground(new java.awt.Color(255, 255, 255));
         buttonGroup1.add(RB_TIM);
+        RB_TIM.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         RB_TIM.setText("TIM");
+        RB_TIM.setOpaque(false);
         getContentPane().add(RB_TIM);
         RB_TIM.setBounds(211, 135, 70, 23);
 
+        CB_Pais.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         CB_Pais.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Costa Rica" }));
         CB_Pais.setToolTipText("");
         getContentPane().add(CB_Pais);
-        CB_Pais.setBounds(25, 221, 93, 20);
+        CB_Pais.setBounds(25, 221, 93, 21);
 
+        CB_Provincia.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         CB_Provincia.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "San José" }));
         getContentPane().add(CB_Provincia);
-        CB_Provincia.setBounds(136, 221, 103, 20);
+        CB_Provincia.setBounds(136, 221, 103, 21);
 
+        CB_Canton.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         CB_Canton.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Central" }));
         getContentPane().add(CB_Canton);
-        CB_Canton.setBounds(276, 221, 116, 20);
+        CB_Canton.setBounds(276, 221, 116, 21);
 
+        jTextArea1.setBackground(new java.awt.Color(217, 217, 253));
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
         SP_Direccion.setViewportView(jTextArea1);
 
         getContentPane().add(SP_Direccion);
-        SP_Direccion.setBounds(25, 276, 367, 64);
+        SP_Direccion.setBounds(25, 276, 367, 70);
 
+        CB_Nacionalidad.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         CB_Nacionalidad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Costarricense" }));
         getContentPane().add(CB_Nacionalidad);
-        CB_Nacionalidad.setBounds(341, 165, 106, 20);
+        CB_Nacionalidad.setBounds(341, 165, 106, 21);
 
+        B_Registrar.setBackground(new java.awt.Color(255, 255, 255));
+        B_Registrar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         B_Registrar.setText("Registrar");
         B_Registrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -172,56 +197,61 @@ public class RegistroPersonas extends javax.swing.JFrame {
             }
         });
         getContentPane().add(B_Registrar);
-        B_Registrar.setBounds(430, 340, 95, 32);
+        B_Registrar.setBounds(400, 350, 110, 40);
 
+        L_Nombre.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         L_Nombre.setText("Nombre: ");
         getContentPane().add(L_Nombre);
-        L_Nombre.setBounds(25, 62, 90, 14);
+        L_Nombre.setBounds(25, 62, 90, 15);
 
+        L_Apellido1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         L_Apellido1.setText("Apellido 1:");
         getContentPane().add(L_Apellido1);
-        L_Apellido1.setBounds(184, 62, 80, 14);
+        L_Apellido1.setBounds(184, 62, 80, 15);
 
+        L_Apellido2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         L_Apellido2.setText("Apellido 2: ");
         getContentPane().add(L_Apellido2);
-        L_Apellido2.setBounds(341, 62, 90, 14);
+        L_Apellido2.setBounds(341, 62, 90, 15);
 
+        L_Identificacion.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         L_Identificacion.setText("Identificación: ");
         getContentPane().add(L_Identificacion);
-        L_Identificacion.setBounds(25, 119, 100, 14);
+        L_Identificacion.setBounds(25, 119, 100, 15);
 
+        L_Nacionalidad.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         L_Nacionalidad.setText("Nacionalidad: ");
         getContentPane().add(L_Nacionalidad);
-        L_Nacionalidad.setBounds(341, 139, 110, 14);
+        L_Nacionalidad.setBounds(341, 139, 110, 15);
 
+        L_Direccion.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         L_Direccion.setText("Dirección: ");
         getContentPane().add(L_Direccion);
-        L_Direccion.setBounds(25, 256, 110, 14);
+        L_Direccion.setBounds(25, 256, 110, 15);
 
+        L_Pais.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         L_Pais.setText("País: ");
         getContentPane().add(L_Pais);
-        L_Pais.setBounds(30, 200, 38, 14);
+        L_Pais.setBounds(30, 200, 38, 15);
 
+        L_Provincia.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         L_Provincia.setText("Provincia: ");
         getContentPane().add(L_Provincia);
-        L_Provincia.setBounds(140, 200, 61, 14);
+        L_Provincia.setBounds(140, 200, 61, 15);
 
+        L_Canton.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         L_Canton.setText("Cantón: ");
         getContentPane().add(L_Canton);
-        L_Canton.setBounds(276, 201, 61, 14);
+        L_Canton.setBounds(276, 201, 61, 15);
 
-        Titulo_Registro_de_Persona.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        Titulo_Registro_de_Persona.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         Titulo_Registro_de_Persona.setText("Registro de Persona");
         getContentPane().add(Titulo_Registro_de_Persona);
-        Titulo_Registro_de_Persona.setBounds(202, 12, 157, 22);
+        Titulo_Registro_de_Persona.setBounds(170, 10, 230, 30);
 
-        Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Imagen1.png"))); // NOI18N
-        getContentPane().add(Fondo);
-        Fondo.setBounds(200, 0, 370, 390);
-
-        Relleno_Fondo.setBackground(new java.awt.Color(255, 255, 255));
-        getContentPane().add(Relleno_Fondo);
-        Relleno_Fondo.setBounds(0, 0, 210, 390);
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/13010187_1077907862232310_2035377480_o.png"))); // NOI18N
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(0, 0, 580, 410);
 
         jMenuBar1.setBackground(new java.awt.Color(255, 255, 255));
         jMenuBar1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -823,7 +853,6 @@ public class RegistroPersonas extends javax.swing.JFrame {
     private javax.swing.JMenuItem Es_persona_Fecha;
     private javax.swing.JMenuItem Es_persona_lugar;
     private javax.swing.JMenuItem Es_top_persona;
-    private javax.swing.JLabel Fondo;
     private javax.swing.JMenuItem Ins_Actividad;
     private javax.swing.JMenuItem Ins_Clase;
     private javax.swing.JLabel L_Apellido1;
@@ -844,7 +873,6 @@ public class RegistroPersonas extends javax.swing.JFrame {
     private javax.swing.JMenuItem Re_Evento;
     private javax.swing.JMenuItem Re_Persona;
     private javax.swing.JMenuItem Re_desercion;
-    private javax.swing.JPanel Relleno_Fondo;
     private javax.swing.JScrollPane SP_Direccion;
     private javax.swing.JTextField TF_Apellido1;
     private javax.swing.JTextField TF_Apellido2;
@@ -857,6 +885,7 @@ public class RegistroPersonas extends javax.swing.JFrame {
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JMenuItem con_Empleado_Fecha;
     private javax.swing.JMenuItem con_persona_Fecha;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu10;
     private javax.swing.JMenu jMenu11;

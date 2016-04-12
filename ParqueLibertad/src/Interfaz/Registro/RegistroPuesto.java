@@ -94,14 +94,16 @@ public class RegistroPuesto extends javax.swing.JFrame {
         TopDeserciones = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Parque Libertad");
         setLocation(new java.awt.Point(500, 125));
         setMinimumSize(new java.awt.Dimension(400, 340));
         setResizable(false);
         getContentPane().setLayout(null);
 
+        L_Nombre.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         L_Nombre.setText("Nombre:");
         getContentPane().add(L_Nombre);
-        L_Nombre.setBounds(60, 90, 60, 28);
+        L_Nombre.setBounds(40, 90, 60, 28);
 
         B_Registrar.setText("Registrar");
         B_Registrar.addActionListener(new java.awt.event.ActionListener() {
@@ -110,32 +112,33 @@ public class RegistroPuesto extends javax.swing.JFrame {
             }
         });
         getContentPane().add(B_Registrar);
-        B_Registrar.setBounds(230, 160, 90, 30);
+        B_Registrar.setBounds(220, 160, 90, 40);
 
         Titulo_Registro_de_Puesto.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         Titulo_Registro_de_Puesto.setText("Registro de Puesto");
         getContentPane().add(Titulo_Registro_de_Puesto);
-        Titulo_Registro_de_Puesto.setBounds(100, 30, 180, 22);
-        getContentPane().add(TF_Nombre);
-        TF_Nombre.setBounds(110, 90, 180, 30);
+        Titulo_Registro_de_Puesto.setBounds(120, 30, 180, 22);
 
-        Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Imagen1.png"))); // NOI18N
+        TF_Nombre.setBackground(new java.awt.Color(204, 204, 255));
+        getContentPane().add(TF_Nombre);
+        TF_Nombre.setBounds(130, 90, 180, 30);
+
+        Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/13010187_1077907862232310_2035377480_o.png"))); // NOI18N
         getContentPane().add(Fondo);
         Fondo.setBounds(0, 0, 390, 300);
 
         jMenuBar1.setBackground(new java.awt.Color(255, 255, 255));
-        jMenuBar1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jMenuBar1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jMenuBar1.setPreferredSize(new java.awt.Dimension(106, 50));
 
         jMenu1.setBackground(new java.awt.Color(204, 255, 204));
         jMenu1.setText("   Registro");
-        jMenu1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jMenu1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jMenu1.setFocusPainted(true);
         jMenu1.setFont(new java.awt.Font("MS Reference Sans Serif", 1, 13)); // NOI18N
         jMenu1.setPreferredSize(new java.awt.Dimension(180, 19));
 
         Re_Actividad.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.CTRL_MASK));
-        Re_Actividad.setBackground(new java.awt.Color(255, 255, 255));
         Re_Actividad.setText("Actividad");
         Re_Actividad.setName("Regis_curso"); // NOI18N
         Re_Actividad.setPreferredSize(new java.awt.Dimension(137, 40));
@@ -147,7 +150,6 @@ public class RegistroPuesto extends javax.swing.JFrame {
         jMenu1.add(Re_Actividad);
 
         Re_Curso.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.CTRL_MASK));
-        Re_Curso.setBackground(new java.awt.Color(255, 255, 255));
         Re_Curso.setText("Clase");
         Re_Curso.setName("Regis_curso"); // NOI18N
         Re_Curso.setPreferredSize(new java.awt.Dimension(137, 40));
@@ -159,7 +161,6 @@ public class RegistroPuesto extends javax.swing.JFrame {
         jMenu1.add(Re_Curso);
 
         Re_desercion.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_D, java.awt.event.InputEvent.CTRL_MASK));
-        Re_desercion.setBackground(new java.awt.Color(255, 255, 255));
         Re_desercion.setText("Deserción");
         Re_desercion.setPreferredSize(new java.awt.Dimension(137, 40));
         Re_desercion.addActionListener(new java.awt.event.ActionListener() {
@@ -170,7 +171,6 @@ public class RegistroPuesto extends javax.swing.JFrame {
         jMenu1.add(Re_desercion);
 
         Re_Empleado.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.CTRL_MASK));
-        Re_Empleado.setBackground(new java.awt.Color(255, 255, 255));
         Re_Empleado.setText("Empleado");
         Re_Empleado.setPreferredSize(new java.awt.Dimension(137, 40));
         Re_Empleado.addActionListener(new java.awt.event.ActionListener() {
@@ -181,7 +181,6 @@ public class RegistroPuesto extends javax.swing.JFrame {
         jMenu1.add(Re_Empleado);
 
         Re_Evento.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_N, java.awt.event.InputEvent.CTRL_MASK));
-        Re_Evento.setBackground(new java.awt.Color(255, 255, 255));
         Re_Evento.setText("Evento");
         Re_Evento.setPreferredSize(new java.awt.Dimension(137, 40));
         Re_Evento.addActionListener(new java.awt.event.ActionListener() {
@@ -192,7 +191,6 @@ public class RegistroPuesto extends javax.swing.JFrame {
         jMenu1.add(Re_Evento);
 
         Re_Persona.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.CTRL_MASK));
-        Re_Persona.setBackground(new java.awt.Color(255, 255, 255));
         Re_Persona.setText("Persona");
         Re_Persona.setPreferredSize(new java.awt.Dimension(137, 40));
         Re_Persona.addActionListener(new java.awt.event.ActionListener() {
@@ -202,12 +200,9 @@ public class RegistroPuesto extends javax.swing.JFrame {
         });
         jMenu1.add(Re_Persona);
 
-        jMenu11.setBackground(new java.awt.Color(255, 255, 255));
         jMenu11.setText("Inscripción");
-        jMenu11.setOpaque(true);
         jMenu11.setPreferredSize(new java.awt.Dimension(100, 35));
 
-        Ins_Actividad.setBackground(new java.awt.Color(255, 255, 255));
         Ins_Actividad.setText("Actividad");
         Ins_Actividad.setFocusCycleRoot(true);
         Ins_Actividad.setPreferredSize(new java.awt.Dimension(140, 30));
@@ -218,7 +213,6 @@ public class RegistroPuesto extends javax.swing.JFrame {
         });
         jMenu11.add(Ins_Actividad);
 
-        Ins_Clase.setBackground(new java.awt.Color(255, 255, 255));
         Ins_Clase.setText("Clase");
         Ins_Clase.setPreferredSize(new java.awt.Dimension(140, 30));
         Ins_Clase.addActionListener(new java.awt.event.ActionListener() {
@@ -230,12 +224,9 @@ public class RegistroPuesto extends javax.swing.JFrame {
 
         jMenu1.add(jMenu11);
 
-        jMenu10.setBackground(new java.awt.Color(255, 255, 255));
         jMenu10.setText("Administrar");
-        jMenu10.setOpaque(true);
         jMenu10.setPreferredSize(new java.awt.Dimension(100, 35));
 
-        Admi_Curso.setBackground(new java.awt.Color(255, 255, 255));
         Admi_Curso.setText("Curso");
         Admi_Curso.setFocusCycleRoot(true);
         Admi_Curso.setPreferredSize(new java.awt.Dimension(140, 30));
@@ -246,7 +237,6 @@ public class RegistroPuesto extends javax.swing.JFrame {
         });
         jMenu10.add(Admi_Curso);
 
-        Admi_Puesto.setBackground(new java.awt.Color(255, 255, 255));
         Admi_Puesto.setText("Puesto");
         Admi_Puesto.setPreferredSize(new java.awt.Dimension(140, 30));
         Admi_Puesto.addActionListener(new java.awt.event.ActionListener() {
@@ -256,7 +246,6 @@ public class RegistroPuesto extends javax.swing.JFrame {
         });
         jMenu10.add(Admi_Puesto);
 
-        Admi_tipoEvento.setBackground(new java.awt.Color(255, 255, 255));
         Admi_tipoEvento.setText("Tipo Evento");
         Admi_tipoEvento.setPreferredSize(new java.awt.Dimension(140, 30));
         Admi_tipoEvento.addActionListener(new java.awt.event.ActionListener() {
@@ -270,17 +259,13 @@ public class RegistroPuesto extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu1);
 
-        jMenu4.setBackground(new java.awt.Color(255, 255, 255));
         jMenu4.setText("  Consulta");
         jMenu4.setFont(new java.awt.Font("MS Reference Sans Serif", 1, 13)); // NOI18N
         jMenu4.setPreferredSize(new java.awt.Dimension(180, 19));
 
-        jMenu8.setBackground(new java.awt.Color(255, 255, 255));
         jMenu8.setText("Persona");
-        jMenu8.setOpaque(true);
         jMenu8.setPreferredSize(new java.awt.Dimension(100, 35));
 
-        Con_persona_ID.setBackground(new java.awt.Color(255, 255, 255));
         Con_persona_ID.setText("Identificación");
         Con_persona_ID.setFocusCycleRoot(true);
         Con_persona_ID.setPreferredSize(new java.awt.Dimension(140, 30));
@@ -291,7 +276,6 @@ public class RegistroPuesto extends javax.swing.JFrame {
         });
         jMenu8.add(Con_persona_ID);
 
-        Con_Persona_Name.setBackground(new java.awt.Color(255, 255, 255));
         Con_Persona_Name.setText("Nombre");
         Con_Persona_Name.setPreferredSize(new java.awt.Dimension(140, 30));
         Con_Persona_Name.addActionListener(new java.awt.event.ActionListener() {
@@ -301,7 +285,6 @@ public class RegistroPuesto extends javax.swing.JFrame {
         });
         jMenu8.add(Con_Persona_Name);
 
-        Con_persona_Lugar.setBackground(new java.awt.Color(255, 255, 255));
         Con_persona_Lugar.setText("Lugar");
         Con_persona_Lugar.setPreferredSize(new java.awt.Dimension(140, 30));
         Con_persona_Lugar.addActionListener(new java.awt.event.ActionListener() {
@@ -311,7 +294,6 @@ public class RegistroPuesto extends javax.swing.JFrame {
         });
         jMenu8.add(Con_persona_Lugar);
 
-        con_persona_Fecha.setBackground(new java.awt.Color(255, 255, 255));
         con_persona_Fecha.setText("Fecha");
         con_persona_Fecha.setPreferredSize(new java.awt.Dimension(140, 30));
         con_persona_Fecha.addActionListener(new java.awt.event.ActionListener() {
@@ -321,7 +303,6 @@ public class RegistroPuesto extends javax.swing.JFrame {
         });
         jMenu8.add(con_persona_Fecha);
 
-        Con_persona_deser.setBackground(new java.awt.Color(255, 255, 255));
         Con_persona_deser.setText("Deserciones");
         Con_persona_deser.setPreferredSize(new java.awt.Dimension(140, 30));
         Con_persona_deser.addActionListener(new java.awt.event.ActionListener() {
@@ -333,12 +314,9 @@ public class RegistroPuesto extends javax.swing.JFrame {
 
         jMenu4.add(jMenu8);
 
-        jMenu9.setBackground(new java.awt.Color(255, 255, 255));
         jMenu9.setText("Empleado");
-        jMenu9.setOpaque(true);
         jMenu9.setPreferredSize(new java.awt.Dimension(100, 35));
 
-        Con_Empleado_ID.setBackground(new java.awt.Color(255, 255, 255));
         Con_Empleado_ID.setText("Identificación");
         Con_Empleado_ID.setFocusCycleRoot(true);
         Con_Empleado_ID.setPreferredSize(new java.awt.Dimension(140, 30));
@@ -349,7 +327,6 @@ public class RegistroPuesto extends javax.swing.JFrame {
         });
         jMenu9.add(Con_Empleado_ID);
 
-        Con_Empleado_Name.setBackground(new java.awt.Color(255, 255, 255));
         Con_Empleado_Name.setText("Nombre");
         Con_Empleado_Name.setPreferredSize(new java.awt.Dimension(140, 30));
         Con_Empleado_Name.addActionListener(new java.awt.event.ActionListener() {
@@ -359,7 +336,6 @@ public class RegistroPuesto extends javax.swing.JFrame {
         });
         jMenu9.add(Con_Empleado_Name);
 
-        con_Empleado_Fecha.setBackground(new java.awt.Color(255, 255, 255));
         con_Empleado_Fecha.setText("Fecha");
         con_Empleado_Fecha.setPreferredSize(new java.awt.Dimension(140, 30));
         con_Empleado_Fecha.addActionListener(new java.awt.event.ActionListener() {
@@ -371,9 +347,7 @@ public class RegistroPuesto extends javax.swing.JFrame {
 
         jMenu4.add(jMenu9);
 
-        Con_actividad.setBackground(new java.awt.Color(255, 255, 255));
         Con_actividad.setText("Actividad");
-        Con_actividad.setOpaque(true);
         Con_actividad.setPreferredSize(new java.awt.Dimension(137, 30));
         Con_actividad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -382,9 +356,7 @@ public class RegistroPuesto extends javax.swing.JFrame {
         });
         jMenu4.add(Con_actividad);
 
-        Con_Curso.setBackground(new java.awt.Color(255, 255, 255));
         Con_Curso.setText("Curso");
-        Con_Curso.setOpaque(true);
         Con_Curso.setPreferredSize(new java.awt.Dimension(137, 30));
         Con_Curso.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -393,9 +365,7 @@ public class RegistroPuesto extends javax.swing.JFrame {
         });
         jMenu4.add(Con_Curso);
 
-        Con_Evento.setBackground(new java.awt.Color(255, 255, 255));
         Con_Evento.setText("Evento");
-        Con_Evento.setOpaque(true);
         Con_Evento.setPreferredSize(new java.awt.Dimension(137, 30));
         Con_Evento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -406,17 +376,13 @@ public class RegistroPuesto extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu4);
 
-        jMenu3.setBackground(new java.awt.Color(255, 255, 255));
         jMenu3.setText("   Estadística");
         jMenu3.setFont(new java.awt.Font("MS Reference Sans Serif", 1, 13)); // NOI18N
         jMenu3.setPreferredSize(new java.awt.Dimension(180, 19));
 
-        jMenu7.setBackground(new java.awt.Color(255, 255, 255));
         jMenu7.setText("Persona");
-        jMenu7.setOpaque(true);
         jMenu7.setPreferredSize(new java.awt.Dimension(100, 35));
 
-        Es_persona_Fecha.setBackground(new java.awt.Color(255, 255, 255));
         Es_persona_Fecha.setText("Fecha");
         Es_persona_Fecha.setPreferredSize(new java.awt.Dimension(140, 30));
         Es_persona_Fecha.addActionListener(new java.awt.event.ActionListener() {
@@ -426,7 +392,6 @@ public class RegistroPuesto extends javax.swing.JFrame {
         });
         jMenu7.add(Es_persona_Fecha);
 
-        Es_persona_lugar.setBackground(new java.awt.Color(255, 255, 255));
         Es_persona_lugar.setText("Lugar");
         Es_persona_lugar.setPreferredSize(new java.awt.Dimension(140, 30));
         Es_persona_lugar.addActionListener(new java.awt.event.ActionListener() {
@@ -436,7 +401,6 @@ public class RegistroPuesto extends javax.swing.JFrame {
         });
         jMenu7.add(Es_persona_lugar);
 
-        Es_top_persona.setBackground(new java.awt.Color(255, 255, 255));
         Es_top_persona.setText("Top 10");
         Es_top_persona.setPreferredSize(new java.awt.Dimension(140, 30));
         Es_top_persona.addActionListener(new java.awt.event.ActionListener() {
@@ -448,7 +412,6 @@ public class RegistroPuesto extends javax.swing.JFrame {
 
         jMenu3.add(jMenu7);
 
-        TopCurso.setBackground(new java.awt.Color(255, 255, 255));
         TopCurso.setText("Top Cursos");
         TopCurso.setPreferredSize(new java.awt.Dimension(137, 40));
         TopCurso.addActionListener(new java.awt.event.ActionListener() {
@@ -458,7 +421,6 @@ public class RegistroPuesto extends javax.swing.JFrame {
         });
         jMenu3.add(TopCurso);
 
-        TopActividades.setBackground(new java.awt.Color(255, 255, 255));
         TopActividades.setText("Top Actividades");
         TopActividades.setPreferredSize(new java.awt.Dimension(137, 40));
         TopActividades.addActionListener(new java.awt.event.ActionListener() {
@@ -468,7 +430,6 @@ public class RegistroPuesto extends javax.swing.JFrame {
         });
         jMenu3.add(TopActividades);
 
-        TopDeserciones.setBackground(new java.awt.Color(255, 255, 255));
         TopDeserciones.setText("Top Deserciones");
         TopDeserciones.setPreferredSize(new java.awt.Dimension(137, 40));
         TopDeserciones.addActionListener(new java.awt.event.ActionListener() {

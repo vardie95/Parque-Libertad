@@ -78,15 +78,17 @@ public class RegistroTipoEvento extends javax.swing.JFrame {
         TopDeserciones = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Parque la  Libertad ");
         setLocation(new java.awt.Point(500, 125));
         setMinimumSize(new java.awt.Dimension(400, 340));
         setPreferredSize(new java.awt.Dimension(400, 340));
         setResizable(false);
         getContentPane().setLayout(null);
 
+        L_Nombre.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         L_Nombre.setText("Nombre:");
         getContentPane().add(L_Nombre);
-        L_Nombre.setBounds(60, 90, 60, 28);
+        L_Nombre.setBounds(40, 90, 60, 28);
 
         B_Registrar.setText("Registrar");
         B_Registrar.addActionListener(new java.awt.event.ActionListener() {
@@ -95,16 +97,18 @@ public class RegistroTipoEvento extends javax.swing.JFrame {
             }
         });
         getContentPane().add(B_Registrar);
-        B_Registrar.setBounds(250, 150, 90, 30);
+        B_Registrar.setBounds(250, 150, 100, 40);
 
-        Titulo_Registro_de_Actividad.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        Titulo_Registro_de_Actividad.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         Titulo_Registro_de_Actividad.setText("Registro Tipo de Evento");
         getContentPane().add(Titulo_Registro_de_Actividad);
-        Titulo_Registro_de_Actividad.setBounds(100, 30, 200, 22);
-        getContentPane().add(TF_Nombre);
-        TF_Nombre.setBounds(120, 90, 140, 30);
+        Titulo_Registro_de_Actividad.setBounds(90, 20, 250, 40);
 
-        Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Imagen1.png"))); // NOI18N
+        TF_Nombre.setBackground(new java.awt.Color(204, 204, 255));
+        getContentPane().add(TF_Nombre);
+        TF_Nombre.setBounds(120, 90, 180, 30);
+
+        Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/13010187_1077907862232310_2035377480_o.png"))); // NOI18N
         getContentPane().add(Fondo);
         Fondo.setBounds(0, 0, 390, 260);
 
