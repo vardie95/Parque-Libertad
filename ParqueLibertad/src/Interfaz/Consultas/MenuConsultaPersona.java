@@ -104,7 +104,7 @@ public class MenuConsultaPersona extends javax.swing.JFrame {
             }
         });
         getContentPane().add(BT_Atras);
-        BT_Atras.setBounds(10, 290, 70, 23);
+        BT_Atras.setBounds(10, 10, 70, 23);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Imagen1.png"))); // NOI18N
         getContentPane().add(jLabel1);

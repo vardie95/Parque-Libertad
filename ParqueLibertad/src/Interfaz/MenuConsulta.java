@@ -32,7 +32,6 @@ public class MenuConsulta extends javax.swing.JFrame {
 
         jButton1 = new javax.swing.JButton();
         Titulo_Registro = new javax.swing.JLabel();
-        B_Atras = new javax.swing.JButton();
         BT_Persona = new javax.swing.JButton();
         BT_Curso = new javax.swing.JButton();
         BT_Evento = new javax.swing.JButton();
@@ -44,22 +43,13 @@ public class MenuConsulta extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocation(new java.awt.Point(500, 125));
-        setMinimumSize(new java.awt.Dimension(380, 380));
+        setMinimumSize(new java.awt.Dimension(380, 370));
         getContentPane().setLayout(null);
 
         Titulo_Registro.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         Titulo_Registro.setText("Consultas");
         getContentPane().add(Titulo_Registro);
         Titulo_Registro.setBounds(130, 40, 100, 20);
-
-        B_Atras.setText("Atrás");
-        B_Atras.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                B_AtrasActionPerformed(evt);
-            }
-        });
-        getContentPane().add(B_Atras);
-        B_Atras.setBounds(10, 290, 80, 30);
 
         BT_Persona.setText("Persona");
         BT_Persona.addActionListener(new java.awt.event.ActionListener() {
@@ -89,6 +79,11 @@ public class MenuConsulta extends javax.swing.JFrame {
         BT_Evento.setBounds(60, 170, 100, 40);
 
         BT_Empleado.setText("Empleado");
+        BT_Empleado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BT_EmpleadoActionPerformed(evt);
+            }
+        });
         getContentPane().add(BT_Empleado);
         BT_Empleado.setBounds(190, 170, 100, 40);
 
@@ -103,17 +98,10 @@ public class MenuConsulta extends javax.swing.JFrame {
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Imagen1.png"))); // NOI18N
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(0, 0, 370, 330);
+        jLabel1.setBounds(0, 0, 410, 290);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void B_AtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_AtrasActionPerformed
-        // TODO add your handling code here:
-        dispose();
-        new Menu().setVisible(true);
-        
-    }//GEN-LAST:event_B_AtrasActionPerformed
 
     private void BT_PersonaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BT_PersonaActionPerformed
         // TODO add your handling code here:
@@ -138,6 +126,12 @@ public class MenuConsulta extends javax.swing.JFrame {
         new Interfaz.Consultas.ConsultaActividad().setVisible(true);
         dispose();
     }//GEN-LAST:event_BT_ActivdadesActionPerformed
+
+    private void BT_EmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BT_EmpleadoActionPerformed
+        // TODO add your handling code here:
+        new Interfaz.Consultas.MenuConsultaEmpleado().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_BT_EmpleadoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -181,7 +175,6 @@ public class MenuConsulta extends javax.swing.JFrame {
     private javax.swing.JButton BT_Empleado;
     private javax.swing.JButton BT_Evento;
     private javax.swing.JButton BT_Persona;
-    private javax.swing.JButton B_Atras;
     private javax.swing.JLabel Titulo_Registro;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;

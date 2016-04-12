@@ -5,6 +5,7 @@
  */
 package Interfaz;
 
+
 import javax.swing.JOptionPane;
 
 /**
@@ -12,7 +13,8 @@ import javax.swing.JOptionPane;
  * @author Luis Diego
  */
 public class Inicio extends javax.swing.JFrame {
-
+    
+    
     /**
      * Creates new form Inicio
      */
@@ -39,8 +41,12 @@ public class Inicio extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setLocation(new java.awt.Point(500, 140));
-        setMinimumSize(new java.awt.Dimension(400, 320));
+        setTitle("Parque Libertad");
+        setBackground(new java.awt.Color(255, 255, 255));
+        setLocation(new java.awt.Point(490, 160));
+        setMinimumSize(new java.awt.Dimension(500, 390));
+        setName("Login"); // NOI18N
+        setResizable(false);
         getContentPane().setLayout(null);
 
         B_Ingresar.setText("Ingresar");
@@ -50,19 +56,19 @@ public class Inicio extends javax.swing.JFrame {
             }
         });
         getContentPane().add(B_Ingresar);
-        B_Ingresar.setBounds(80, 210, 90, 30);
+        B_Ingresar.setBounds(240, 290, 90, 30);
         getContentPane().add(TF_Usuario);
-        TF_Usuario.setBounds(130, 100, 170, 29);
+        TF_Usuario.setBounds(280, 200, 170, 29);
         getContentPane().add(PF_Contraseña);
-        PF_Contraseña.setBounds(130, 150, 170, 28);
+        PF_Contraseña.setBounds(280, 250, 170, 28);
 
         L_Usuario.setText("Usuario: ");
         getContentPane().add(L_Usuario);
-        L_Usuario.setBounds(50, 110, 60, 14);
+        L_Usuario.setBounds(200, 210, 60, 14);
 
         L_Contraseña.setText("Contraseña:");
         getContentPane().add(L_Contraseña);
-        L_Contraseña.setBounds(50, 160, 70, 14);
+        L_Contraseña.setBounds(200, 260, 70, 14);
 
         BT_Cancelar.setText("Cancelar");
         BT_Cancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -71,16 +77,16 @@ public class Inicio extends javax.swing.JFrame {
             }
         });
         getContentPane().add(BT_Cancelar);
-        BT_Cancelar.setBounds(200, 210, 90, 30);
+        BT_Cancelar.setBounds(360, 290, 90, 30);
 
-        Titulo_Menu.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        Titulo_Menu.setText("Parque Libertad ");
+        Titulo_Menu.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        Titulo_Menu.setText("Bienvenido ");
         getContentPane().add(Titulo_Menu);
-        Titulo_Menu.setBounds(140, 40, 150, 40);
+        Titulo_Menu.setBounds(290, 150, 150, 40);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Imagen1.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/login.jpg"))); // NOI18N
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(0, 0, 400, 290);
+        jLabel1.setBounds(0, 0, 510, 360);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -90,7 +96,7 @@ public class Inicio extends javax.swing.JFrame {
         String usuario= TF_Usuario.getText();
         String password= PF_Contraseña.getText();
         if (usuario.equals("libertad") && password.equals("parque")) {
-            new Menu().setVisible(true);
+            new Interfaz.Registro.InscripcionClase().setVisible(true);
             dispose();   
         }else{
             JOptionPane.showMessageDialog(this, "Contraseña Incorrecta","El usuario o la contraseña son invalidos",JOptionPane.ERROR_MESSAGE);
@@ -116,7 +122,7 @@ public class Inicio extends javax.swing.JFrame {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+                if ("Windows".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
