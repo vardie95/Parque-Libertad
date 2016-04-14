@@ -5,6 +5,7 @@
  */
 package Interfaz.Registro;
 
+import java.sql.CallableStatement;
 import Interfaz.MenuRegistro;
 import Interfaz.Registro.RegistroPuesto;
 import java.sql.Connection;
@@ -36,13 +37,23 @@ public class RegistroEmpleado extends javax.swing.JFrame {
     }
     public final  void llenarpuesto() {
         CB_Puesto.removeAllItems();
-        Statement st;
             try {
-                st = con.createStatement();
-                ResultSet rs=st.executeQuery("select descripcion from puesto");
-                while(rs.next()){
-                    CB_Puesto.addItem(rs.getString("descripcion"));
-                }   
+                
+                CallableStatement cstmt = con.prepareCall("{?=call count_puesto}");
+                cstmt.registerOutParameter(1, java.sql.Types.INTEGER);
+                
+                cstmt.execute();
+                int cantidad= cstmt.getInt(1);
+                 
+                while(cantidad!=0){
+ 
+                    CallableStatement cstmt2 = con.prepareCall("{?=call consulta_puesto(?)}");
+                    cstmt2.registerOutParameter(1, java.sql.Types.VARCHAR);
+                    cstmt2.setInt(2, cantidad);
+                    cstmt2.execute();
+                    CB_Puesto.addItem(cstmt2.getString(1));
+                     cantidad-=1;
+                }
             } catch (SQLException ex) {
                 Logger.getLogger(RegistroEmpleado.class.getName()).log(Level.SEVERE, null, ex);
             }
