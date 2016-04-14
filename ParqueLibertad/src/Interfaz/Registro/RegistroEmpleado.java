@@ -8,11 +8,14 @@ package Interfaz.Registro;
 import Interfaz.MenuRegistro;
 import Interfaz.Registro.RegistroPuesto;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
 import parquelibertad.dbConnection;
 
 /**
@@ -21,30 +24,38 @@ import parquelibertad.dbConnection;
  */
 public class RegistroEmpleado extends javax.swing.JFrame {
         Connection con=null;
+        Statement st=null;
+        ResultSet rs=null;
     /**
      * Creates new form RegistroCurso
      */
     public RegistroEmpleado() {
         initComponents();
-        con=dbConnection.conectDB();
-        llenarpuesto();
+        
+        
             try {
+                con=parquelibertad.dbConnection.conectDB();
+                llenarpuesto();
+                System.out.println("entra funcion");
                 con.close();
             } catch (SQLException ex) {
                 Logger.getLogger(RegistroEmpleado.class.getName()).log(Level.SEVERE, null, ex);
             }
     }
-    public final  void llenarpuesto() {
+    private void llenarpuesto() {
+        DefaultComboBoxModel modeloCombo = new DefaultComboBoxModel();
         CB_Puesto.removeAllItems();
-        Statement st;
             try {
-                st = con.createStatement();
-                ResultSet rs=st.executeQuery("select descripcion from puesto");
+                String sql="SELECT descripcion from puesto";
+                st=con.createStatement();
+                rs = st.executeQuery(sql);
                 while(rs.next()){
-                    CB_Puesto.addItem(rs.getString("descripcion"));
-                }   
+                    String name=rs.getString("descripcion");
+                    CB_Puesto.addItem(name);
+                }
+                
             } catch (SQLException ex) {
-                Logger.getLogger(RegistroEmpleado.class.getName()).log(Level.SEVERE, null, ex);
+                JOptionPane.showMessageDialog(this,"Error: "+ex);
             }
         
         

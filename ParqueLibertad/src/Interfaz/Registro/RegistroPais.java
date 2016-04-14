@@ -5,47 +5,40 @@
  */
 package Interfaz.Registro;
 
-import Interfaz.Inicio;
-import Interfaz.MenuRegistro;
+import java.sql.CallableStatement;
 import java.sql.Connection;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 
 /**
  *
  * @author Luis Diego
  */
-public class RegistroPersonas extends javax.swing.JFrame {
-        Connection con= null;
+public class RegistroPais extends javax.swing.JFrame {
+
     /**
-     * Creates new form RegistroPersonas
+     * Creates new form RegistroCurso
      */
-    public RegistroPersonas() {
+    public RegistroPais() {
         initComponents();
-        con= parquelibertad.dbConnection.conectDB();
-        llenarpais();
     }
-    private void llenarpais() {
-        DefaultComboBoxModel modeloCombo = new DefaultComboBoxModel();
-        CB_Pais.removeAllItems();
+    public void InsertPais(){
+        Connection con= null;
+            String pais=TF_Nombre.getText();
+            con= parquelibertad.dbConnection.conectDB();
             try {
-                String sql="SELECT descripcion from provincia";
-            Statement st = con.createStatement();
-            ResultSet rs = st.executeQuery(sql);
-                while(rs.next()){
-                    String name=rs.getString("descripcion");
-                    CB_Pais.addItem(name);
-                }
+                CallableStatement proc= con.prepareCall("{call insertPais(?)}");
+                proc.setString(1, pais);
+                proc.execute();
+                JOptionPane.showMessageDialog(this, "Pais Agregado Exitosamente",null,JOptionPane.INFORMATION_MESSAGE);
+                TF_Nombre.setText("");
                 con.close();
+                
             } catch (SQLException ex) {
-                JOptionPane.showMessageDialog(this,"Error: "+ex);
+                Logger.getLogger(RegistroTipoEvento.class.getName()).log(Level.SEVERE, null, ex);
             }
-        
     }
 
     /**
@@ -57,34 +50,11 @@ public class RegistroPersonas extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        buttonGroup1 = new javax.swing.ButtonGroup();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        TF_Nombre = new javax.swing.JTextField();
-        TF_Apellido1 = new javax.swing.JTextField();
-        TF_Apellido2 = new javax.swing.JTextField();
-        TF_Identificacion = new javax.swing.JFormattedTextField();
-        RB_Cedula = new javax.swing.JRadioButton();
-        RB_Pasaporte = new javax.swing.JRadioButton();
-        RB_TIM = new javax.swing.JRadioButton();
-        CB_Pais = new javax.swing.JComboBox<>();
-        CB_Provincia = new javax.swing.JComboBox<>();
-        CB_Canton = new javax.swing.JComboBox<>();
-        SP_Direccion = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
-        CB_Nacionalidad = new javax.swing.JComboBox<>();
-        B_Registrar = new javax.swing.JButton();
         L_Nombre = new javax.swing.JLabel();
-        L_Apellido1 = new javax.swing.JLabel();
-        L_Apellido2 = new javax.swing.JLabel();
-        L_Identificacion = new javax.swing.JLabel();
-        L_Nacionalidad = new javax.swing.JLabel();
-        L_Direccion = new javax.swing.JLabel();
-        L_Pais = new javax.swing.JLabel();
-        L_Provincia = new javax.swing.JLabel();
-        Titulo_Registro_de_Persona = new javax.swing.JLabel();
-        L_Canton2 = new javax.swing.JLabel();
-        L_Canton3 = new javax.swing.JLabel();
-        CB_Canton1 = new javax.swing.JComboBox<>();
+        B_Registrar = new javax.swing.JButton();
+        Titulo_Registro_de_Puesto = new javax.swing.JLabel();
+        TF_Nombre = new javax.swing.JTextField();
+        Fondo = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         Re_Actividad = new javax.swing.JMenuItem();
@@ -97,6 +67,11 @@ public class RegistroPersonas extends javax.swing.JFrame {
         Ins_Actividad = new javax.swing.JMenuItem();
         Ins_Clase = new javax.swing.JMenuItem();
         jMenu10 = new javax.swing.JMenu();
+        jMenu12 = new javax.swing.JMenu();
+        Admi_Curso1 = new javax.swing.JMenuItem();
+        Admi_Puesto1 = new javax.swing.JMenuItem();
+        Admi_tipoEvento1 = new javax.swing.JMenuItem();
+        Admi_tipoEvento2 = new javax.swing.JMenuItem();
         Admi_Curso = new javax.swing.JMenuItem();
         Admi_Puesto = new javax.swing.JMenuItem();
         Admi_tipoEvento = new javax.swing.JMenuItem();
@@ -123,111 +98,39 @@ public class RegistroPersonas extends javax.swing.JFrame {
         TopActividades = new javax.swing.JMenuItem();
         TopDeserciones = new javax.swing.JMenuItem();
 
-        jMenuItem1.setText("jMenuItem1");
-
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Parque La Libertad");
-        setLocation(new java.awt.Point(450, 125));
-        setMinimumSize(new java.awt.Dimension(580, 480));
+        setTitle("Parque Libertad");
+        setLocation(new java.awt.Point(500, 125));
+        setMinimumSize(new java.awt.Dimension(400, 340));
         setResizable(false);
+        getContentPane().setLayout(null);
 
-        TF_Nombre.setBackground(new java.awt.Color(217, 217, 253));
-        TF_Nombre.setForeground(new java.awt.Color(204, 204, 255));
+        L_Nombre.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        L_Nombre.setText("Nombre:");
+        getContentPane().add(L_Nombre);
+        L_Nombre.setBounds(40, 90, 60, 28);
 
-        TF_Apellido1.setBackground(new java.awt.Color(217, 217, 253));
-        TF_Apellido1.setForeground(new java.awt.Color(204, 204, 255));
-
-        TF_Apellido2.setBackground(new java.awt.Color(217, 217, 253));
-        TF_Apellido2.setForeground(new java.awt.Color(204, 204, 255));
-
-        TF_Identificacion.setBackground(new java.awt.Color(217, 217, 253));
-        TF_Identificacion.setForeground(new java.awt.Color(204, 204, 255));
-
-        RB_Cedula.setBackground(new java.awt.Color(255, 255, 255));
-        buttonGroup1.add(RB_Cedula);
-        RB_Cedula.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        RB_Cedula.setText("Cédula");
-        RB_Cedula.setOpaque(false);
-        RB_Cedula.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                RB_CedulaActionPerformed(evt);
-            }
-        });
-
-        RB_Pasaporte.setBackground(new java.awt.Color(255, 255, 255));
-        buttonGroup1.add(RB_Pasaporte);
-        RB_Pasaporte.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        RB_Pasaporte.setText("Pasaporte");
-        RB_Pasaporte.setOpaque(false);
-
-        RB_TIM.setBackground(new java.awt.Color(255, 255, 255));
-        buttonGroup1.add(RB_TIM);
-        RB_TIM.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        RB_TIM.setText("TIM");
-        RB_TIM.setOpaque(false);
-
-        CB_Pais.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        CB_Pais.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Costa Rica" }));
-        CB_Pais.setToolTipText("");
-
-        CB_Provincia.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        CB_Provincia.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "San José" }));
-
-        CB_Canton.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        CB_Canton.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Central" }));
-
-        jTextArea1.setBackground(new java.awt.Color(217, 217, 253));
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        SP_Direccion.setViewportView(jTextArea1);
-
-        CB_Nacionalidad.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        CB_Nacionalidad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Costarricense" }));
-
-        B_Registrar.setBackground(new java.awt.Color(255, 255, 255));
-        B_Registrar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         B_Registrar.setText("Registrar");
         B_Registrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 B_RegistrarActionPerformed(evt);
             }
         });
+        getContentPane().add(B_Registrar);
+        B_Registrar.setBounds(220, 160, 90, 40);
 
-        L_Nombre.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        L_Nombre.setText("Nombre: ");
+        Titulo_Registro_de_Puesto.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        Titulo_Registro_de_Puesto.setText("Registro de Pais");
+        getContentPane().add(Titulo_Registro_de_Puesto);
+        Titulo_Registro_de_Puesto.setBounds(120, 30, 180, 22);
 
-        L_Apellido1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        L_Apellido1.setText("Apellido 1:");
+        TF_Nombre.setBackground(new java.awt.Color(204, 204, 255));
+        getContentPane().add(TF_Nombre);
+        TF_Nombre.setBounds(130, 90, 180, 30);
 
-        L_Apellido2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        L_Apellido2.setText("Apellido 2: ");
-
-        L_Identificacion.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        L_Identificacion.setText("Identificación: ");
-
-        L_Nacionalidad.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        L_Nacionalidad.setText("Nacionalidad: ");
-
-        L_Direccion.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        L_Direccion.setText("Dirección: ");
-
-        L_Pais.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        L_Pais.setText("País: ");
-
-        L_Provincia.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        L_Provincia.setText("Provincia: ");
-
-        Titulo_Registro_de_Persona.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        Titulo_Registro_de_Persona.setText("Registro de Persona");
-
-        L_Canton2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        L_Canton2.setText("Cantón: ");
-
-        L_Canton3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        L_Canton3.setText("Distrito: ");
-
-        CB_Canton1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        CB_Canton1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Central" }));
+        Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/13010187_1077907862232310_2035377480_o.png"))); // NOI18N
+        getContentPane().add(Fondo);
+        Fondo.setBounds(0, 0, 390, 300);
 
         jMenuBar1.setBackground(new java.awt.Color(255, 255, 255));
         jMenuBar1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -328,6 +231,48 @@ public class RegistroPersonas extends javax.swing.JFrame {
 
         jMenu10.setText("Administrar");
         jMenu10.setPreferredSize(new java.awt.Dimension(100, 35));
+
+        jMenu12.setText("Ubicación");
+        jMenu12.setPreferredSize(new java.awt.Dimension(100, 35));
+
+        Admi_Curso1.setText("País");
+        Admi_Curso1.setFocusCycleRoot(true);
+        Admi_Curso1.setPreferredSize(new java.awt.Dimension(140, 30));
+        Admi_Curso1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Admi_Curso1ActionPerformed(evt);
+            }
+        });
+        jMenu12.add(Admi_Curso1);
+
+        Admi_Puesto1.setText("Provincia");
+        Admi_Puesto1.setPreferredSize(new java.awt.Dimension(140, 30));
+        Admi_Puesto1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Admi_Puesto1ActionPerformed(evt);
+            }
+        });
+        jMenu12.add(Admi_Puesto1);
+
+        Admi_tipoEvento1.setText("Cantón");
+        Admi_tipoEvento1.setPreferredSize(new java.awt.Dimension(140, 30));
+        Admi_tipoEvento1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Admi_tipoEvento1ActionPerformed(evt);
+            }
+        });
+        jMenu12.add(Admi_tipoEvento1);
+
+        Admi_tipoEvento2.setText("Distrito");
+        Admi_tipoEvento2.setPreferredSize(new java.awt.Dimension(140, 30));
+        Admi_tipoEvento2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Admi_tipoEvento2ActionPerformed(evt);
+            }
+        });
+        jMenu12.add(Admi_tipoEvento2);
+
+        jMenu10.add(jMenu12);
 
         Admi_Curso.setText("Curso");
         Admi_Curso.setFocusCycleRoot(true);
@@ -545,167 +490,16 @@ public class RegistroPersonas extends javax.swing.JFrame {
 
         setJMenuBar(jMenuBar1);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(25, 25, 25)
-                        .addComponent(L_Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(69, 69, 69)
-                        .addComponent(L_Apellido1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(25, 25, 25)
-                        .addComponent(RB_Cedula, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(RB_Pasaporte, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(25, 25, 25)
-                        .addComponent(L_Direccion, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(SP_Direccion, javax.swing.GroupLayout.PREFERRED_SIZE, 367, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(33, 33, 33)
-                        .addComponent(B_Registrar, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(25, 25, 25)
-                        .addComponent(TF_Identificacion, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(211, 211, 211)
-                        .addComponent(RB_TIM, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(25, 25, 25)
-                        .addComponent(L_Identificacion, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(341, 341, 341)
-                        .addComponent(L_Nacionalidad, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(341, 341, 341)
-                        .addComponent(L_Apellido2, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(170, 170, 170)
-                        .addComponent(Titulo_Registro_de_Persona, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(25, 25, 25)
-                        .addComponent(CB_Pais, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(CB_Provincia, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(CB_Canton, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(CB_Canton1, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(25, 25, 25)
-                        .addComponent(TF_Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(TF_Apellido1, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(28, 28, 28)
-                        .addComponent(TF_Apellido2, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(30, 30, 30)
-                            .addComponent(L_Pais, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(68, 68, 68)
-                            .addComponent(L_Provincia, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(43, 43, 43)
-                            .addComponent(L_Canton2, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(L_Canton3, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(341, 341, 341)
-                            .addComponent(CB_Nacionalidad, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(221, 221, 221)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(CB_Pais, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(CB_Canton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(CB_Canton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(CB_Provincia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(119, 119, 119)
-                        .addComponent(L_Identificacion))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(10, 10, 10)
-                                        .addComponent(Titulo_Registro_de_Persona, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(165, 165, 165)
-                                        .addComponent(CB_Nacionalidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(139, 139, 139)
-                                        .addComponent(L_Nacionalidad))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(81, 81, 81)
-                                        .addComponent(TF_Apellido2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(62, 62, 62)
-                                        .addComponent(L_Apellido2))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(135, 135, 135)
-                                        .addComponent(RB_TIM))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(81, 81, 81)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                            .addComponent(TF_Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(TF_Apellido1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(165, 165, 165)
-                                        .addComponent(TF_Identificacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(14, 14, 14)
-                                .addComponent(L_Canton3))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(62, 62, 62)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(L_Nombre)
-                                    .addComponent(L_Apellido1))
-                                .addGap(58, 58, 58)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(RB_Cedula)
-                                    .addComponent(RB_Pasaporte))
-                                .addGap(42, 42, 42)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(L_Pais)
-                                        .addComponent(L_Provincia))
-                                    .addComponent(L_Canton2))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
-                        .addComponent(L_Direccion)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(79, 79, 79)
-                        .addComponent(B_Registrar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(108, 108, 108))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(SP_Direccion, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(131, 131, 131))))
-        );
-
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void RB_CedulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RB_CedulaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_RB_CedulaActionPerformed
-
     private void B_RegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_RegistrarActionPerformed
         // TODO add your handling code here:
-        if (TF_Nombre.getText().length()==0 || TF_Apellido1.getText().length()==0 || TF_Apellido2.getText().length()==0 ){
-            JOptionPane.showMessageDialog(this, "Debe de llenar todos los campos obligatorios.",null,JOptionPane.ERROR_MESSAGE);
+        if (TF_Nombre.getText().length()==0){
+            JOptionPane.showMessageDialog(this, "Debe de llenar todos los campos obligatorios.",null,JOptionPane.ERROR_MESSAGE); 
         }
         else{
-            
+            InsertPais();
         }
     }//GEN-LAST:event_B_RegistrarActionPerformed
 
@@ -765,7 +559,7 @@ public class RegistroPersonas extends javax.swing.JFrame {
 
     private void Admi_PuestoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Admi_PuestoActionPerformed
         // TODO add your handling code here:
-        new Interfaz.Registro.RegistroPuesto().setVisible(true);
+        new Interfaz.Registro.RegistroPais().setVisible(true);
         dispose();
     }//GEN-LAST:event_Admi_PuestoActionPerformed
 
@@ -876,7 +670,23 @@ public class RegistroPersonas extends javax.swing.JFrame {
         new Interfaz.Estadisticas.Top5Deserciones().setVisible(true);
         dispose();
     }//GEN-LAST:event_TopDesercionesActionPerformed
-        
+
+    private void Admi_Curso1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Admi_Curso1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Admi_Curso1ActionPerformed
+
+    private void Admi_Puesto1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Admi_Puesto1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Admi_Puesto1ActionPerformed
+
+    private void Admi_tipoEvento1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Admi_tipoEvento1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Admi_tipoEvento1ActionPerformed
+
+    private void Admi_tipoEvento2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Admi_tipoEvento2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Admi_tipoEvento2ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -894,34 +704,40 @@ public class RegistroPersonas extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(RegistroPersonas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegistroPais.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(RegistroPersonas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegistroPais.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(RegistroPersonas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegistroPais.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(RegistroPersonas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegistroPais.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new RegistroPersonas().setVisible(true);
+                new RegistroPais().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem Admi_Curso;
+    private javax.swing.JMenuItem Admi_Curso1;
     private javax.swing.JMenuItem Admi_Puesto;
+    private javax.swing.JMenuItem Admi_Puesto1;
     private javax.swing.JMenuItem Admi_tipoEvento;
+    private javax.swing.JMenuItem Admi_tipoEvento1;
+    private javax.swing.JMenuItem Admi_tipoEvento2;
     private javax.swing.JButton B_Registrar;
-    private javax.swing.JComboBox<String> CB_Canton;
-    private javax.swing.JComboBox<String> CB_Canton1;
-    private javax.swing.JComboBox<String> CB_Nacionalidad;
-    private javax.swing.JComboBox<String> CB_Pais;
-    private javax.swing.JComboBox<String> CB_Provincia;
     private javax.swing.JMenuItem Con_Curso;
     private javax.swing.JMenuItem Con_Empleado_ID;
     private javax.swing.JMenuItem Con_Empleado_Name;
@@ -934,49 +750,32 @@ public class RegistroPersonas extends javax.swing.JFrame {
     private javax.swing.JMenuItem Es_persona_Fecha;
     private javax.swing.JMenuItem Es_persona_lugar;
     private javax.swing.JMenuItem Es_top_persona;
+    private javax.swing.JLabel Fondo;
     private javax.swing.JMenuItem Ins_Actividad;
     private javax.swing.JMenuItem Ins_Clase;
-    private javax.swing.JLabel L_Apellido1;
-    private javax.swing.JLabel L_Apellido2;
-    private javax.swing.JLabel L_Canton2;
-    private javax.swing.JLabel L_Canton3;
-    private javax.swing.JLabel L_Direccion;
-    private javax.swing.JLabel L_Identificacion;
-    private javax.swing.JLabel L_Nacionalidad;
     private javax.swing.JLabel L_Nombre;
-    private javax.swing.JLabel L_Pais;
-    private javax.swing.JLabel L_Provincia;
-    private javax.swing.JRadioButton RB_Cedula;
-    private javax.swing.JRadioButton RB_Pasaporte;
-    private javax.swing.JRadioButton RB_TIM;
     private javax.swing.JMenuItem Re_Actividad;
     private javax.swing.JMenuItem Re_Curso;
     private javax.swing.JMenuItem Re_Empleado;
     private javax.swing.JMenuItem Re_Evento;
     private javax.swing.JMenuItem Re_Persona;
     private javax.swing.JMenuItem Re_desercion;
-    private javax.swing.JScrollPane SP_Direccion;
-    private javax.swing.JTextField TF_Apellido1;
-    private javax.swing.JTextField TF_Apellido2;
-    private javax.swing.JFormattedTextField TF_Identificacion;
     private javax.swing.JTextField TF_Nombre;
-    private javax.swing.JLabel Titulo_Registro_de_Persona;
+    private javax.swing.JLabel Titulo_Registro_de_Puesto;
     private javax.swing.JMenuItem TopActividades;
     private javax.swing.JMenuItem TopCurso;
     private javax.swing.JMenuItem TopDeserciones;
-    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JMenuItem con_Empleado_Fecha;
     private javax.swing.JMenuItem con_persona_Fecha;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu10;
     private javax.swing.JMenu jMenu11;
+    private javax.swing.JMenu jMenu12;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu7;
     private javax.swing.JMenu jMenu8;
     private javax.swing.JMenu jMenu9;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JTextArea jTextArea1;
     // End of variables declaration//GEN-END:variables
 }
