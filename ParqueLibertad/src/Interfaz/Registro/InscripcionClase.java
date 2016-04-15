@@ -48,6 +48,7 @@ public class InscripcionClase extends javax.swing.JFrame {
         Re_Curso = new javax.swing.JMenuItem();
         Re_desercion = new javax.swing.JMenuItem();
         Re_Empleado = new javax.swing.JMenuItem();
+        Re_Estudiante = new javax.swing.JMenuItem();
         Re_Evento = new javax.swing.JMenuItem();
         Re_Persona = new javax.swing.JMenuItem();
         jMenu11 = new javax.swing.JMenu();
@@ -217,6 +218,17 @@ public class InscripcionClase extends javax.swing.JFrame {
         });
         jMenu1.add(Re_Empleado);
 
+        Re_Estudiante.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.CTRL_MASK));
+        Re_Estudiante.setBackground(new java.awt.Color(251, 251, 251));
+        Re_Estudiante.setText("Estudiante");
+        Re_Estudiante.setPreferredSize(new java.awt.Dimension(137, 40));
+        Re_Estudiante.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Re_EstudianteActionPerformed(evt);
+            }
+        });
+        jMenu1.add(Re_Estudiante);
+
         Re_Evento.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_N, java.awt.event.InputEvent.CTRL_MASK));
         Re_Evento.setBackground(new java.awt.Color(251, 251, 251));
         Re_Evento.setText("Evento");
@@ -239,12 +251,9 @@ public class InscripcionClase extends javax.swing.JFrame {
         });
         jMenu1.add(Re_Persona);
 
-        jMenu11.setBackground(new java.awt.Color(255, 255, 255));
         jMenu11.setText("Inscripción");
-        jMenu11.setOpaque(true);
         jMenu11.setPreferredSize(new java.awt.Dimension(100, 35));
 
-        Ins_Actividad.setBackground(new java.awt.Color(255, 255, 255));
         Ins_Actividad.setText("Actividad");
         Ins_Actividad.setFocusCycleRoot(true);
         Ins_Actividad.setPreferredSize(new java.awt.Dimension(140, 30));
@@ -255,7 +264,6 @@ public class InscripcionClase extends javax.swing.JFrame {
         });
         jMenu11.add(Ins_Actividad);
 
-        Ins_Clase.setBackground(new java.awt.Color(255, 255, 255));
         Ins_Clase.setText("Clase");
         Ins_Clase.setPreferredSize(new java.awt.Dimension(140, 30));
         Ins_Clase.addActionListener(new java.awt.event.ActionListener() {
@@ -267,12 +275,9 @@ public class InscripcionClase extends javax.swing.JFrame {
 
         jMenu1.add(jMenu11);
 
-        jMenu10.setBackground(new java.awt.Color(255, 255, 255));
         jMenu10.setText("Administrar");
-        jMenu10.setOpaque(true);
         jMenu10.setPreferredSize(new java.awt.Dimension(100, 35));
 
-        Admi_Curso.setBackground(new java.awt.Color(255, 255, 255));
         Admi_Curso.setText("Curso");
         Admi_Curso.setFocusCycleRoot(true);
         Admi_Curso.setPreferredSize(new java.awt.Dimension(140, 30));
@@ -283,7 +288,6 @@ public class InscripcionClase extends javax.swing.JFrame {
         });
         jMenu10.add(Admi_Curso);
 
-        Admi_Puesto.setBackground(new java.awt.Color(255, 255, 255));
         Admi_Puesto.setText("Puesto");
         Admi_Puesto.setPreferredSize(new java.awt.Dimension(140, 30));
         Admi_Puesto.addActionListener(new java.awt.event.ActionListener() {
@@ -293,7 +297,6 @@ public class InscripcionClase extends javax.swing.JFrame {
         });
         jMenu10.add(Admi_Puesto);
 
-        Admi_tipoEvento.setBackground(new java.awt.Color(255, 255, 255));
         Admi_tipoEvento.setText("Tipo Evento");
         Admi_tipoEvento.setPreferredSize(new java.awt.Dimension(140, 30));
         Admi_tipoEvento.addActionListener(new java.awt.event.ActionListener() {
@@ -307,20 +310,17 @@ public class InscripcionClase extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu1);
 
-        jMenu4.setBackground(new java.awt.Color(255, 255, 255));
         jMenu4.setText("  Consulta");
         jMenu4.setFont(new java.awt.Font("MS Reference Sans Serif", 1, 13)); // NOI18N
         jMenu4.setPreferredSize(new java.awt.Dimension(180, 19));
 
         jMenu8.setBackground(new java.awt.Color(253, 253, 253));
         jMenu8.setText("Persona");
-        jMenu8.setOpaque(true);
         jMenu8.setPreferredSize(new java.awt.Dimension(100, 35));
 
         Con_persona_ID.setBackground(new java.awt.Color(253, 253, 253));
         Con_persona_ID.setText("Identificación");
         Con_persona_ID.setFocusCycleRoot(true);
-        Con_persona_ID.setOpaque(true);
         Con_persona_ID.setPreferredSize(new java.awt.Dimension(140, 30));
         Con_persona_ID.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -331,7 +331,6 @@ public class InscripcionClase extends javax.swing.JFrame {
 
         Con_Persona_Name.setBackground(new java.awt.Color(253, 253, 253));
         Con_Persona_Name.setText("Nombre");
-        Con_Persona_Name.setOpaque(true);
         Con_Persona_Name.setPreferredSize(new java.awt.Dimension(140, 30));
         Con_Persona_Name.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -342,7 +341,6 @@ public class InscripcionClase extends javax.swing.JFrame {
 
         Con_persona_Lugar.setBackground(new java.awt.Color(253, 253, 253));
         Con_persona_Lugar.setText("Lugar");
-        Con_persona_Lugar.setOpaque(true);
         Con_persona_Lugar.setPreferredSize(new java.awt.Dimension(140, 30));
         Con_persona_Lugar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -353,7 +351,6 @@ public class InscripcionClase extends javax.swing.JFrame {
 
         con_persona_Fecha.setBackground(new java.awt.Color(253, 253, 253));
         con_persona_Fecha.setText("Fecha");
-        con_persona_Fecha.setOpaque(true);
         con_persona_Fecha.setPreferredSize(new java.awt.Dimension(140, 30));
         con_persona_Fecha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -364,7 +361,6 @@ public class InscripcionClase extends javax.swing.JFrame {
 
         Con_persona_deser.setBackground(new java.awt.Color(253, 253, 253));
         Con_persona_deser.setText("Deserciones");
-        Con_persona_deser.setOpaque(true);
         Con_persona_deser.setPreferredSize(new java.awt.Dimension(140, 30));
         Con_persona_deser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -375,15 +371,12 @@ public class InscripcionClase extends javax.swing.JFrame {
 
         jMenu4.add(jMenu8);
 
-        jMenu9.setBackground(new java.awt.Color(255, 255, 255));
         jMenu9.setText("Empleado");
-        jMenu9.setOpaque(true);
         jMenu9.setPreferredSize(new java.awt.Dimension(100, 35));
 
         Con_Empleado_ID.setBackground(new java.awt.Color(252, 252, 252));
         Con_Empleado_ID.setText("Identificación");
         Con_Empleado_ID.setFocusCycleRoot(true);
-        Con_Empleado_ID.setOpaque(true);
         Con_Empleado_ID.setPreferredSize(new java.awt.Dimension(140, 30));
         Con_Empleado_ID.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -394,7 +387,6 @@ public class InscripcionClase extends javax.swing.JFrame {
 
         Con_Empleado_Name.setBackground(new java.awt.Color(252, 252, 252));
         Con_Empleado_Name.setText("Nombre");
-        Con_Empleado_Name.setOpaque(true);
         Con_Empleado_Name.setPreferredSize(new java.awt.Dimension(140, 30));
         Con_Empleado_Name.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -405,7 +397,6 @@ public class InscripcionClase extends javax.swing.JFrame {
 
         con_Empleado_Fecha.setBackground(new java.awt.Color(252, 252, 252));
         con_Empleado_Fecha.setText("Fecha");
-        con_Empleado_Fecha.setOpaque(true);
         con_Empleado_Fecha.setPreferredSize(new java.awt.Dimension(140, 30));
         con_Empleado_Fecha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -416,7 +407,6 @@ public class InscripcionClase extends javax.swing.JFrame {
 
         jMenu4.add(jMenu9);
 
-        Con_actividad.setBackground(new java.awt.Color(255, 255, 255));
         Con_actividad.setText("Actividad");
         Con_actividad.setPreferredSize(new java.awt.Dimension(137, 30));
         Con_actividad.addActionListener(new java.awt.event.ActionListener() {
@@ -426,7 +416,6 @@ public class InscripcionClase extends javax.swing.JFrame {
         });
         jMenu4.add(Con_actividad);
 
-        Con_Curso.setBackground(new java.awt.Color(255, 255, 255));
         Con_Curso.setText("Curso");
         Con_Curso.setPreferredSize(new java.awt.Dimension(137, 30));
         Con_Curso.addActionListener(new java.awt.event.ActionListener() {
@@ -436,7 +425,6 @@ public class InscripcionClase extends javax.swing.JFrame {
         });
         jMenu4.add(Con_Curso);
 
-        Con_Evento.setBackground(new java.awt.Color(255, 255, 255));
         Con_Evento.setText("Evento");
         Con_Evento.setPreferredSize(new java.awt.Dimension(137, 30));
         Con_Evento.addActionListener(new java.awt.event.ActionListener() {
@@ -448,19 +436,15 @@ public class InscripcionClase extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu4);
 
-        jMenu3.setBackground(new java.awt.Color(255, 255, 255));
         jMenu3.setText("   Estadística");
         jMenu3.setFont(new java.awt.Font("MS Reference Sans Serif", 1, 13)); // NOI18N
         jMenu3.setPreferredSize(new java.awt.Dimension(180, 19));
 
         jMenu7.setBackground(new java.awt.Color(253, 253, 253));
         jMenu7.setText("Persona");
-        jMenu7.setOpaque(true);
         jMenu7.setPreferredSize(new java.awt.Dimension(100, 35));
 
-        Es_persona_Fecha.setBackground(new java.awt.Color(255, 255, 255));
         Es_persona_Fecha.setText("Fecha");
-        Es_persona_Fecha.setOpaque(true);
         Es_persona_Fecha.setPreferredSize(new java.awt.Dimension(140, 30));
         Es_persona_Fecha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -469,9 +453,7 @@ public class InscripcionClase extends javax.swing.JFrame {
         });
         jMenu7.add(Es_persona_Fecha);
 
-        Es_persona_lugar.setBackground(new java.awt.Color(255, 255, 255));
         Es_persona_lugar.setText("Lugar");
-        Es_persona_lugar.setOpaque(true);
         Es_persona_lugar.setPreferredSize(new java.awt.Dimension(140, 30));
         Es_persona_lugar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -480,9 +462,7 @@ public class InscripcionClase extends javax.swing.JFrame {
         });
         jMenu7.add(Es_persona_lugar);
 
-        Es_top_persona.setBackground(new java.awt.Color(255, 255, 255));
         Es_top_persona.setText("Top 10");
-        Es_top_persona.setOpaque(true);
         Es_top_persona.setPreferredSize(new java.awt.Dimension(140, 30));
         Es_top_persona.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -493,7 +473,6 @@ public class InscripcionClase extends javax.swing.JFrame {
 
         jMenu3.add(jMenu7);
 
-        TopCurso.setBackground(new java.awt.Color(255, 255, 255));
         TopCurso.setText("Top Cursos");
         TopCurso.setPreferredSize(new java.awt.Dimension(137, 40));
         TopCurso.addActionListener(new java.awt.event.ActionListener() {
@@ -503,7 +482,6 @@ public class InscripcionClase extends javax.swing.JFrame {
         });
         jMenu3.add(TopCurso);
 
-        TopActividades.setBackground(new java.awt.Color(255, 255, 255));
         TopActividades.setText("Top Actividades");
         TopActividades.setPreferredSize(new java.awt.Dimension(137, 40));
         TopActividades.addActionListener(new java.awt.event.ActionListener() {
@@ -513,7 +491,6 @@ public class InscripcionClase extends javax.swing.JFrame {
         });
         jMenu3.add(TopActividades);
 
-        TopDeserciones.setBackground(new java.awt.Color(255, 255, 255));
         TopDeserciones.setText("Top Deserciones");
         TopDeserciones.setPreferredSize(new java.awt.Dimension(137, 40));
         TopDeserciones.addActionListener(new java.awt.event.ActionListener() {
@@ -704,6 +681,12 @@ public class InscripcionClase extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_TopDesercionesActionPerformed
 
+    private void Re_EstudianteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Re_EstudianteActionPerformed
+        // TODO add your handling code here:
+        new Interfaz.Registro.RegistroEstudiante().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_Re_EstudianteActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -783,6 +766,7 @@ public class InscripcionClase extends javax.swing.JFrame {
     private javax.swing.JMenuItem Re_Actividad;
     private javax.swing.JMenuItem Re_Curso;
     private javax.swing.JMenuItem Re_Empleado;
+    private javax.swing.JMenuItem Re_Estudiante;
     private javax.swing.JMenuItem Re_Evento;
     private javax.swing.JMenuItem Re_Persona;
     private javax.swing.JMenuItem Re_desercion;
