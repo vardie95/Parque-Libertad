@@ -32,7 +32,10 @@ public class RegistroEmpleado extends javax.swing.JFrame {
         initComponents();
         con=dbConnection.conectDB();
         llenarpuesto();
+<<<<<<< HEAD
         llenaridentificacion();
+=======
+>>>>>>> origin/master
             try {
                 con.close();
             } catch (SQLException ex) {
@@ -41,7 +44,9 @@ public class RegistroEmpleado extends javax.swing.JFrame {
     }
     public final  void llenarpuesto() {
         CB_Puesto.removeAllItems();
+        Statement st;
             try {
+<<<<<<< HEAD
  
                 CallableStatement cstmt = con.prepareCall("{?=call consulta_puesto}");
                 cstmt.registerOutParameter(1, oracle.jdbc.OracleTypes.CURSOR);
@@ -68,6 +73,15 @@ public class RegistroEmpleado extends javax.swing.JFrame {
                 }
             } catch (SQLException ex) {
                 Logger.getLogger(RegistroEmpleado.class.getName()).log(Level.SEVERE, null, ex);
+=======
+                st = con.createStatement();
+                ResultSet rs=st.executeQuery("select descripcion from puesto");
+                while(rs.next()){
+                    CB_Puesto.addItem(rs.getString("descripcion"));
+                }   
+            } catch (SQLException ex) {
+                Logger.getLogger(RegistroEmpleado.class.getName()).log(Level.SEVERE, null, ex);
+>>>>>>> origin/master
             }
     }
 
