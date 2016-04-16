@@ -447,7 +447,6 @@ public class RegistroTipoEvento extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "Tipo de Evento Agregado Exitosamente",null,JOptionPane.INFORMATION_MESSAGE);
                 TF_Nombre.setText("");
                 con.close();
-                proc.close();
                 
             } catch (SQLException ex) {
                 Logger.getLogger(RegistroTipoEvento.class.getName()).log(Level.SEVERE, null, ex);
