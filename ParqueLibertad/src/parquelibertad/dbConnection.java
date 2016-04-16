@@ -18,11 +18,7 @@ public class dbConnection {
         try{
         
           Class.forName("oracle.jdbc.OracleDriver");
-<<<<<<< HEAD
-          Connection con= DriverManager.getConnection("jdbc:oracle:thin:@10.0.2.15:1521:PLibertad","ge","libertad2016");
-=======
           Connection con= DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:libertadpre","ge","ge");
->>>>>>> origin/master
           return con;
         }catch(Exception e){
             JOptionPane.showMessageDialog(null, e);

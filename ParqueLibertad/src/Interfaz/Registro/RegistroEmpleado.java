@@ -32,10 +32,7 @@ public class RegistroEmpleado extends javax.swing.JFrame {
         initComponents();
         con=dbConnection.conectDB();
         llenarpuesto();
-<<<<<<< HEAD
         llenaridentificacion();
-=======
->>>>>>> origin/master
             try {
                 con.close();
             } catch (SQLException ex) {
@@ -46,9 +43,7 @@ public class RegistroEmpleado extends javax.swing.JFrame {
         CB_Puesto.removeAllItems();
         Statement st;
             try {
-<<<<<<< HEAD
- 
-                CallableStatement cstmt = con.prepareCall("{?=call consulta_puesto}");
+               CallableStatement cstmt = con.prepareCall("{call get_puesto(?)}");
                 cstmt.registerOutParameter(1, oracle.jdbc.OracleTypes.CURSOR);
                 cstmt.execute();
                 ResultSet rs = (ResultSet)cstmt.getObject(1);
@@ -64,7 +59,7 @@ public class RegistroEmpleado extends javax.swing.JFrame {
         CB_Identificacion.addItem("Seleccione Identificacion");
             try {
                  
-                CallableStatement cstmt = con.prepareCall("{?=call consulta_persona}");
+                CallableStatement cstmt = con.prepareCall("{call get_idPersona(?)}");
                 cstmt.registerOutParameter(1, oracle.jdbc.OracleTypes.CURSOR);
                 cstmt.execute();
                 ResultSet rs = (ResultSet)cstmt.getObject(1);
@@ -73,16 +68,8 @@ public class RegistroEmpleado extends javax.swing.JFrame {
                 }
             } catch (SQLException ex) {
                 Logger.getLogger(RegistroEmpleado.class.getName()).log(Level.SEVERE, null, ex);
-=======
-                st = con.createStatement();
-                ResultSet rs=st.executeQuery("select descripcion from puesto");
-                while(rs.next()){
-                    CB_Puesto.addItem(rs.getString("descripcion"));
-                }   
-            } catch (SQLException ex) {
-                Logger.getLogger(RegistroEmpleado.class.getName()).log(Level.SEVERE, null, ex);
->>>>>>> origin/master
-            }
+            
+    }
     }
 
     /**
@@ -1315,9 +1302,9 @@ public class RegistroEmpleado extends javax.swing.JFrame {
             try {
                 CallableStatement cstmt = con.prepareCall("{?=call consulta_nombre (?)}");
                 TF_Nombre.setText((String)CB_Identificacion.getSelectedItem());
-                cstmt.registerOutParameter(1, oracle.jdbc.OracleTypes.VARCHAR);
                 int aux=Integer.parseInt(TF_Nombre.getText());
                 cstmt.setInt(2,aux);
+                cstmt.registerOutParameter(1, oracle.jdbc.OracleTypes.VARCHAR);
                 cstmt.execute();
                 TF_Nombre.setText(cstmt.getString(1));
                 
