@@ -8,12 +8,9 @@ package Interfaz.Registro;
 import Interfaz.Inicio;
 import Interfaz.MenuRegistro;
 import java.sql.Connection;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 
 /**
@@ -28,24 +25,6 @@ public class RegistroPersonas extends javax.swing.JFrame {
     public RegistroPersonas() {
         initComponents();
         con= parquelibertad.dbConnection.conectDB();
-        llenarpais();
-    }
-    private void llenarpais() {
-        DefaultComboBoxModel modeloCombo = new DefaultComboBoxModel();
-        CB_Pais.removeAllItems();
-            try {
-                String sql="SELECT descripcion from provincia";
-            Statement st = con.createStatement();
-            ResultSet rs = st.executeQuery(sql);
-                while(rs.next()){
-                    String name=rs.getString("descripcion");
-                    CB_Pais.addItem(name);
-                }
-                con.close();
-            } catch (SQLException ex) {
-                JOptionPane.showMessageDialog(this,"Error: "+ex);
-            }
-        
     }
 
     /**
@@ -81,10 +60,9 @@ public class RegistroPersonas extends javax.swing.JFrame {
         L_Direccion = new javax.swing.JLabel();
         L_Pais = new javax.swing.JLabel();
         L_Provincia = new javax.swing.JLabel();
+        L_Canton = new javax.swing.JLabel();
         Titulo_Registro_de_Persona = new javax.swing.JLabel();
-        L_Canton2 = new javax.swing.JLabel();
-        L_Canton3 = new javax.swing.JLabel();
-        CB_Canton1 = new javax.swing.JComboBox<>();
+        jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         Re_Actividad = new javax.swing.JMenuItem();
@@ -130,18 +108,27 @@ public class RegistroPersonas extends javax.swing.JFrame {
         setLocation(new java.awt.Point(450, 125));
         setMinimumSize(new java.awt.Dimension(580, 480));
         setResizable(false);
+        getContentPane().setLayout(null);
 
         TF_Nombre.setBackground(new java.awt.Color(217, 217, 253));
         TF_Nombre.setForeground(new java.awt.Color(204, 204, 255));
+        getContentPane().add(TF_Nombre);
+        TF_Nombre.setBounds(25, 81, 139, 20);
 
         TF_Apellido1.setBackground(new java.awt.Color(217, 217, 253));
         TF_Apellido1.setForeground(new java.awt.Color(204, 204, 255));
+        getContentPane().add(TF_Apellido1);
+        TF_Apellido1.setBounds(184, 81, 139, 20);
 
         TF_Apellido2.setBackground(new java.awt.Color(217, 217, 253));
         TF_Apellido2.setForeground(new java.awt.Color(204, 204, 255));
+        getContentPane().add(TF_Apellido2);
+        TF_Apellido2.setBounds(341, 81, 139, 20);
 
         TF_Identificacion.setBackground(new java.awt.Color(217, 217, 253));
         TF_Identificacion.setForeground(new java.awt.Color(204, 204, 255));
+        getContentPane().add(TF_Identificacion);
+        TF_Identificacion.setBounds(25, 165, 131, 20);
 
         RB_Cedula.setBackground(new java.awt.Color(255, 255, 255));
         buttonGroup1.add(RB_Cedula);
@@ -153,36 +140,53 @@ public class RegistroPersonas extends javax.swing.JFrame {
                 RB_CedulaActionPerformed(evt);
             }
         });
+        getContentPane().add(RB_Cedula);
+        RB_Cedula.setBounds(25, 135, 75, 23);
 
         RB_Pasaporte.setBackground(new java.awt.Color(255, 255, 255));
         buttonGroup1.add(RB_Pasaporte);
         RB_Pasaporte.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         RB_Pasaporte.setText("Pasaporte");
         RB_Pasaporte.setOpaque(false);
+        getContentPane().add(RB_Pasaporte);
+        RB_Pasaporte.setBounds(118, 135, 90, 23);
 
         RB_TIM.setBackground(new java.awt.Color(255, 255, 255));
         buttonGroup1.add(RB_TIM);
         RB_TIM.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         RB_TIM.setText("TIM");
         RB_TIM.setOpaque(false);
+        getContentPane().add(RB_TIM);
+        RB_TIM.setBounds(211, 135, 70, 23);
 
         CB_Pais.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         CB_Pais.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Costa Rica" }));
         CB_Pais.setToolTipText("");
+        getContentPane().add(CB_Pais);
+        CB_Pais.setBounds(25, 221, 93, 21);
 
         CB_Provincia.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         CB_Provincia.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "San José" }));
+        getContentPane().add(CB_Provincia);
+        CB_Provincia.setBounds(136, 221, 103, 21);
 
         CB_Canton.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         CB_Canton.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Central" }));
+        getContentPane().add(CB_Canton);
+        CB_Canton.setBounds(276, 221, 116, 21);
 
         jTextArea1.setBackground(new java.awt.Color(217, 217, 253));
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
         SP_Direccion.setViewportView(jTextArea1);
 
+        getContentPane().add(SP_Direccion);
+        SP_Direccion.setBounds(25, 276, 367, 70);
+
         CB_Nacionalidad.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         CB_Nacionalidad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Costarricense" }));
+        getContentPane().add(CB_Nacionalidad);
+        CB_Nacionalidad.setBounds(341, 165, 106, 21);
 
         B_Registrar.setBackground(new java.awt.Color(255, 255, 255));
         B_Registrar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
@@ -192,55 +196,76 @@ public class RegistroPersonas extends javax.swing.JFrame {
                 B_RegistrarActionPerformed(evt);
             }
         });
+        getContentPane().add(B_Registrar);
+        B_Registrar.setBounds(400, 350, 110, 40);
 
         L_Nombre.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         L_Nombre.setText("Nombre: ");
+        getContentPane().add(L_Nombre);
+        L_Nombre.setBounds(25, 62, 90, 15);
 
         L_Apellido1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         L_Apellido1.setText("Apellido 1:");
+        getContentPane().add(L_Apellido1);
+        L_Apellido1.setBounds(184, 62, 80, 15);
 
         L_Apellido2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         L_Apellido2.setText("Apellido 2: ");
+        getContentPane().add(L_Apellido2);
+        L_Apellido2.setBounds(341, 62, 90, 15);
 
         L_Identificacion.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         L_Identificacion.setText("Identificación: ");
+        getContentPane().add(L_Identificacion);
+        L_Identificacion.setBounds(25, 119, 100, 15);
 
         L_Nacionalidad.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         L_Nacionalidad.setText("Nacionalidad: ");
+        getContentPane().add(L_Nacionalidad);
+        L_Nacionalidad.setBounds(341, 139, 110, 15);
 
         L_Direccion.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         L_Direccion.setText("Dirección: ");
+        getContentPane().add(L_Direccion);
+        L_Direccion.setBounds(25, 256, 110, 15);
 
         L_Pais.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         L_Pais.setText("País: ");
+        getContentPane().add(L_Pais);
+        L_Pais.setBounds(30, 200, 38, 15);
 
         L_Provincia.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         L_Provincia.setText("Provincia: ");
+        getContentPane().add(L_Provincia);
+        L_Provincia.setBounds(140, 200, 61, 15);
+
+        L_Canton.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        L_Canton.setText("Cantón: ");
+        getContentPane().add(L_Canton);
+        L_Canton.setBounds(276, 201, 61, 15);
 
         Titulo_Registro_de_Persona.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         Titulo_Registro_de_Persona.setText("Registro de Persona");
+        getContentPane().add(Titulo_Registro_de_Persona);
+        Titulo_Registro_de_Persona.setBounds(170, 10, 230, 30);
 
-        L_Canton2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        L_Canton2.setText("Cantón: ");
-
-        L_Canton3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        L_Canton3.setText("Distrito: ");
-
-        CB_Canton1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        CB_Canton1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Central" }));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/13010187_1077907862232310_2035377480_o.png"))); // NOI18N
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(0, 0, 580, 410);
 
         jMenuBar1.setBackground(new java.awt.Color(255, 255, 255));
-        jMenuBar1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jMenuBar1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jMenuBar1.setPreferredSize(new java.awt.Dimension(106, 50));
 
         jMenu1.setBackground(new java.awt.Color(204, 255, 204));
         jMenu1.setText("   Registro");
-        jMenu1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jMenu1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jMenu1.setFocusPainted(true);
         jMenu1.setFont(new java.awt.Font("MS Reference Sans Serif", 1, 13)); // NOI18N
         jMenu1.setPreferredSize(new java.awt.Dimension(180, 19));
 
         Re_Actividad.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.CTRL_MASK));
+        Re_Actividad.setBackground(new java.awt.Color(255, 255, 255));
         Re_Actividad.setText("Actividad");
         Re_Actividad.setName("Regis_curso"); // NOI18N
         Re_Actividad.setPreferredSize(new java.awt.Dimension(137, 40));
@@ -252,6 +277,7 @@ public class RegistroPersonas extends javax.swing.JFrame {
         jMenu1.add(Re_Actividad);
 
         Re_Curso.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.CTRL_MASK));
+        Re_Curso.setBackground(new java.awt.Color(255, 255, 255));
         Re_Curso.setText("Clase");
         Re_Curso.setName("Regis_curso"); // NOI18N
         Re_Curso.setPreferredSize(new java.awt.Dimension(137, 40));
@@ -263,6 +289,7 @@ public class RegistroPersonas extends javax.swing.JFrame {
         jMenu1.add(Re_Curso);
 
         Re_desercion.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_D, java.awt.event.InputEvent.CTRL_MASK));
+        Re_desercion.setBackground(new java.awt.Color(255, 255, 255));
         Re_desercion.setText("Deserción");
         Re_desercion.setPreferredSize(new java.awt.Dimension(137, 40));
         Re_desercion.addActionListener(new java.awt.event.ActionListener() {
@@ -273,6 +300,7 @@ public class RegistroPersonas extends javax.swing.JFrame {
         jMenu1.add(Re_desercion);
 
         Re_Empleado.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.CTRL_MASK));
+        Re_Empleado.setBackground(new java.awt.Color(255, 255, 255));
         Re_Empleado.setText("Empleado");
         Re_Empleado.setPreferredSize(new java.awt.Dimension(137, 40));
         Re_Empleado.addActionListener(new java.awt.event.ActionListener() {
@@ -283,6 +311,7 @@ public class RegistroPersonas extends javax.swing.JFrame {
         jMenu1.add(Re_Empleado);
 
         Re_Evento.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_N, java.awt.event.InputEvent.CTRL_MASK));
+        Re_Evento.setBackground(new java.awt.Color(255, 255, 255));
         Re_Evento.setText("Evento");
         Re_Evento.setPreferredSize(new java.awt.Dimension(137, 40));
         Re_Evento.addActionListener(new java.awt.event.ActionListener() {
@@ -293,6 +322,7 @@ public class RegistroPersonas extends javax.swing.JFrame {
         jMenu1.add(Re_Evento);
 
         Re_Persona.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.CTRL_MASK));
+        Re_Persona.setBackground(new java.awt.Color(255, 255, 255));
         Re_Persona.setText("Persona");
         Re_Persona.setPreferredSize(new java.awt.Dimension(137, 40));
         Re_Persona.addActionListener(new java.awt.event.ActionListener() {
@@ -302,9 +332,12 @@ public class RegistroPersonas extends javax.swing.JFrame {
         });
         jMenu1.add(Re_Persona);
 
+        jMenu11.setBackground(new java.awt.Color(255, 255, 255));
         jMenu11.setText("Inscripción");
+        jMenu11.setOpaque(true);
         jMenu11.setPreferredSize(new java.awt.Dimension(100, 35));
 
+        Ins_Actividad.setBackground(new java.awt.Color(255, 255, 255));
         Ins_Actividad.setText("Actividad");
         Ins_Actividad.setFocusCycleRoot(true);
         Ins_Actividad.setPreferredSize(new java.awt.Dimension(140, 30));
@@ -315,6 +348,7 @@ public class RegistroPersonas extends javax.swing.JFrame {
         });
         jMenu11.add(Ins_Actividad);
 
+        Ins_Clase.setBackground(new java.awt.Color(255, 255, 255));
         Ins_Clase.setText("Clase");
         Ins_Clase.setPreferredSize(new java.awt.Dimension(140, 30));
         Ins_Clase.addActionListener(new java.awt.event.ActionListener() {
@@ -326,9 +360,12 @@ public class RegistroPersonas extends javax.swing.JFrame {
 
         jMenu1.add(jMenu11);
 
+        jMenu10.setBackground(new java.awt.Color(255, 255, 255));
         jMenu10.setText("Administrar");
+        jMenu10.setOpaque(true);
         jMenu10.setPreferredSize(new java.awt.Dimension(100, 35));
 
+        Admi_Curso.setBackground(new java.awt.Color(255, 255, 255));
         Admi_Curso.setText("Curso");
         Admi_Curso.setFocusCycleRoot(true);
         Admi_Curso.setPreferredSize(new java.awt.Dimension(140, 30));
@@ -339,6 +376,7 @@ public class RegistroPersonas extends javax.swing.JFrame {
         });
         jMenu10.add(Admi_Curso);
 
+        Admi_Puesto.setBackground(new java.awt.Color(255, 255, 255));
         Admi_Puesto.setText("Puesto");
         Admi_Puesto.setPreferredSize(new java.awt.Dimension(140, 30));
         Admi_Puesto.addActionListener(new java.awt.event.ActionListener() {
@@ -348,6 +386,7 @@ public class RegistroPersonas extends javax.swing.JFrame {
         });
         jMenu10.add(Admi_Puesto);
 
+        Admi_tipoEvento.setBackground(new java.awt.Color(255, 255, 255));
         Admi_tipoEvento.setText("Tipo Evento");
         Admi_tipoEvento.setPreferredSize(new java.awt.Dimension(140, 30));
         Admi_tipoEvento.addActionListener(new java.awt.event.ActionListener() {
@@ -361,13 +400,17 @@ public class RegistroPersonas extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu1);
 
+        jMenu4.setBackground(new java.awt.Color(255, 255, 255));
         jMenu4.setText("  Consulta");
         jMenu4.setFont(new java.awt.Font("MS Reference Sans Serif", 1, 13)); // NOI18N
         jMenu4.setPreferredSize(new java.awt.Dimension(180, 19));
 
+        jMenu8.setBackground(new java.awt.Color(255, 255, 255));
         jMenu8.setText("Persona");
+        jMenu8.setOpaque(true);
         jMenu8.setPreferredSize(new java.awt.Dimension(100, 35));
 
+        Con_persona_ID.setBackground(new java.awt.Color(255, 255, 255));
         Con_persona_ID.setText("Identificación");
         Con_persona_ID.setFocusCycleRoot(true);
         Con_persona_ID.setPreferredSize(new java.awt.Dimension(140, 30));
@@ -378,6 +421,7 @@ public class RegistroPersonas extends javax.swing.JFrame {
         });
         jMenu8.add(Con_persona_ID);
 
+        Con_Persona_Name.setBackground(new java.awt.Color(255, 255, 255));
         Con_Persona_Name.setText("Nombre");
         Con_Persona_Name.setPreferredSize(new java.awt.Dimension(140, 30));
         Con_Persona_Name.addActionListener(new java.awt.event.ActionListener() {
@@ -387,6 +431,7 @@ public class RegistroPersonas extends javax.swing.JFrame {
         });
         jMenu8.add(Con_Persona_Name);
 
+        Con_persona_Lugar.setBackground(new java.awt.Color(255, 255, 255));
         Con_persona_Lugar.setText("Lugar");
         Con_persona_Lugar.setPreferredSize(new java.awt.Dimension(140, 30));
         Con_persona_Lugar.addActionListener(new java.awt.event.ActionListener() {
@@ -396,6 +441,7 @@ public class RegistroPersonas extends javax.swing.JFrame {
         });
         jMenu8.add(Con_persona_Lugar);
 
+        con_persona_Fecha.setBackground(new java.awt.Color(255, 255, 255));
         con_persona_Fecha.setText("Fecha");
         con_persona_Fecha.setPreferredSize(new java.awt.Dimension(140, 30));
         con_persona_Fecha.addActionListener(new java.awt.event.ActionListener() {
@@ -405,6 +451,7 @@ public class RegistroPersonas extends javax.swing.JFrame {
         });
         jMenu8.add(con_persona_Fecha);
 
+        Con_persona_deser.setBackground(new java.awt.Color(255, 255, 255));
         Con_persona_deser.setText("Deserciones");
         Con_persona_deser.setPreferredSize(new java.awt.Dimension(140, 30));
         Con_persona_deser.addActionListener(new java.awt.event.ActionListener() {
@@ -416,9 +463,12 @@ public class RegistroPersonas extends javax.swing.JFrame {
 
         jMenu4.add(jMenu8);
 
+        jMenu9.setBackground(new java.awt.Color(255, 255, 255));
         jMenu9.setText("Empleado");
+        jMenu9.setOpaque(true);
         jMenu9.setPreferredSize(new java.awt.Dimension(100, 35));
 
+        Con_Empleado_ID.setBackground(new java.awt.Color(255, 255, 255));
         Con_Empleado_ID.setText("Identificación");
         Con_Empleado_ID.setFocusCycleRoot(true);
         Con_Empleado_ID.setPreferredSize(new java.awt.Dimension(140, 30));
@@ -429,6 +479,7 @@ public class RegistroPersonas extends javax.swing.JFrame {
         });
         jMenu9.add(Con_Empleado_ID);
 
+        Con_Empleado_Name.setBackground(new java.awt.Color(255, 255, 255));
         Con_Empleado_Name.setText("Nombre");
         Con_Empleado_Name.setPreferredSize(new java.awt.Dimension(140, 30));
         Con_Empleado_Name.addActionListener(new java.awt.event.ActionListener() {
@@ -438,6 +489,7 @@ public class RegistroPersonas extends javax.swing.JFrame {
         });
         jMenu9.add(Con_Empleado_Name);
 
+        con_Empleado_Fecha.setBackground(new java.awt.Color(255, 255, 255));
         con_Empleado_Fecha.setText("Fecha");
         con_Empleado_Fecha.setPreferredSize(new java.awt.Dimension(140, 30));
         con_Empleado_Fecha.addActionListener(new java.awt.event.ActionListener() {
@@ -449,7 +501,9 @@ public class RegistroPersonas extends javax.swing.JFrame {
 
         jMenu4.add(jMenu9);
 
+        Con_actividad.setBackground(new java.awt.Color(255, 255, 255));
         Con_actividad.setText("Actividad");
+        Con_actividad.setOpaque(true);
         Con_actividad.setPreferredSize(new java.awt.Dimension(137, 30));
         Con_actividad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -458,7 +512,9 @@ public class RegistroPersonas extends javax.swing.JFrame {
         });
         jMenu4.add(Con_actividad);
 
+        Con_Curso.setBackground(new java.awt.Color(255, 255, 255));
         Con_Curso.setText("Curso");
+        Con_Curso.setOpaque(true);
         Con_Curso.setPreferredSize(new java.awt.Dimension(137, 30));
         Con_Curso.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -467,7 +523,9 @@ public class RegistroPersonas extends javax.swing.JFrame {
         });
         jMenu4.add(Con_Curso);
 
+        Con_Evento.setBackground(new java.awt.Color(255, 255, 255));
         Con_Evento.setText("Evento");
+        Con_Evento.setOpaque(true);
         Con_Evento.setPreferredSize(new java.awt.Dimension(137, 30));
         Con_Evento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -478,13 +536,17 @@ public class RegistroPersonas extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu4);
 
+        jMenu3.setBackground(new java.awt.Color(255, 255, 255));
         jMenu3.setText("   Estadística");
         jMenu3.setFont(new java.awt.Font("MS Reference Sans Serif", 1, 13)); // NOI18N
         jMenu3.setPreferredSize(new java.awt.Dimension(180, 19));
 
+        jMenu7.setBackground(new java.awt.Color(255, 255, 255));
         jMenu7.setText("Persona");
+        jMenu7.setOpaque(true);
         jMenu7.setPreferredSize(new java.awt.Dimension(100, 35));
 
+        Es_persona_Fecha.setBackground(new java.awt.Color(255, 255, 255));
         Es_persona_Fecha.setText("Fecha");
         Es_persona_Fecha.setPreferredSize(new java.awt.Dimension(140, 30));
         Es_persona_Fecha.addActionListener(new java.awt.event.ActionListener() {
@@ -494,6 +556,7 @@ public class RegistroPersonas extends javax.swing.JFrame {
         });
         jMenu7.add(Es_persona_Fecha);
 
+        Es_persona_lugar.setBackground(new java.awt.Color(255, 255, 255));
         Es_persona_lugar.setText("Lugar");
         Es_persona_lugar.setPreferredSize(new java.awt.Dimension(140, 30));
         Es_persona_lugar.addActionListener(new java.awt.event.ActionListener() {
@@ -503,6 +566,7 @@ public class RegistroPersonas extends javax.swing.JFrame {
         });
         jMenu7.add(Es_persona_lugar);
 
+        Es_top_persona.setBackground(new java.awt.Color(255, 255, 255));
         Es_top_persona.setText("Top 10");
         Es_top_persona.setPreferredSize(new java.awt.Dimension(140, 30));
         Es_top_persona.addActionListener(new java.awt.event.ActionListener() {
@@ -514,6 +578,7 @@ public class RegistroPersonas extends javax.swing.JFrame {
 
         jMenu3.add(jMenu7);
 
+        TopCurso.setBackground(new java.awt.Color(255, 255, 255));
         TopCurso.setText("Top Cursos");
         TopCurso.setPreferredSize(new java.awt.Dimension(137, 40));
         TopCurso.addActionListener(new java.awt.event.ActionListener() {
@@ -523,6 +588,7 @@ public class RegistroPersonas extends javax.swing.JFrame {
         });
         jMenu3.add(TopCurso);
 
+        TopActividades.setBackground(new java.awt.Color(255, 255, 255));
         TopActividades.setText("Top Actividades");
         TopActividades.setPreferredSize(new java.awt.Dimension(137, 40));
         TopActividades.addActionListener(new java.awt.event.ActionListener() {
@@ -532,6 +598,7 @@ public class RegistroPersonas extends javax.swing.JFrame {
         });
         jMenu3.add(TopActividades);
 
+        TopDeserciones.setBackground(new java.awt.Color(255, 255, 255));
         TopDeserciones.setText("Top Deserciones");
         TopDeserciones.setPreferredSize(new java.awt.Dimension(137, 40));
         TopDeserciones.addActionListener(new java.awt.event.ActionListener() {
@@ -544,153 +611,6 @@ public class RegistroPersonas extends javax.swing.JFrame {
         jMenuBar1.add(jMenu3);
 
         setJMenuBar(jMenuBar1);
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(25, 25, 25)
-                        .addComponent(L_Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(69, 69, 69)
-                        .addComponent(L_Apellido1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(25, 25, 25)
-                        .addComponent(RB_Cedula, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(RB_Pasaporte, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(25, 25, 25)
-                        .addComponent(L_Direccion, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(SP_Direccion, javax.swing.GroupLayout.PREFERRED_SIZE, 367, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(33, 33, 33)
-                        .addComponent(B_Registrar, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(25, 25, 25)
-                        .addComponent(TF_Identificacion, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(211, 211, 211)
-                        .addComponent(RB_TIM, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(25, 25, 25)
-                        .addComponent(L_Identificacion, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(341, 341, 341)
-                        .addComponent(L_Nacionalidad, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(341, 341, 341)
-                        .addComponent(L_Apellido2, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(170, 170, 170)
-                        .addComponent(Titulo_Registro_de_Persona, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(25, 25, 25)
-                        .addComponent(CB_Pais, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(CB_Provincia, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(CB_Canton, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(CB_Canton1, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(25, 25, 25)
-                        .addComponent(TF_Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(TF_Apellido1, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(28, 28, 28)
-                        .addComponent(TF_Apellido2, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(30, 30, 30)
-                            .addComponent(L_Pais, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(68, 68, 68)
-                            .addComponent(L_Provincia, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(43, 43, 43)
-                            .addComponent(L_Canton2, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(L_Canton3, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(341, 341, 341)
-                            .addComponent(CB_Nacionalidad, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(221, 221, 221)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(CB_Pais, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(CB_Canton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(CB_Canton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(CB_Provincia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(119, 119, 119)
-                        .addComponent(L_Identificacion))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(10, 10, 10)
-                                        .addComponent(Titulo_Registro_de_Persona, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(165, 165, 165)
-                                        .addComponent(CB_Nacionalidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(139, 139, 139)
-                                        .addComponent(L_Nacionalidad))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(81, 81, 81)
-                                        .addComponent(TF_Apellido2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(62, 62, 62)
-                                        .addComponent(L_Apellido2))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(135, 135, 135)
-                                        .addComponent(RB_TIM))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(81, 81, 81)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                            .addComponent(TF_Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(TF_Apellido1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(165, 165, 165)
-                                        .addComponent(TF_Identificacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(14, 14, 14)
-                                .addComponent(L_Canton3))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(62, 62, 62)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(L_Nombre)
-                                    .addComponent(L_Apellido1))
-                                .addGap(58, 58, 58)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(RB_Cedula)
-                                    .addComponent(RB_Pasaporte))
-                                .addGap(42, 42, 42)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(L_Pais)
-                                        .addComponent(L_Provincia))
-                                    .addComponent(L_Canton2))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
-                        .addComponent(L_Direccion)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(79, 79, 79)
-                        .addComponent(B_Registrar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(108, 108, 108))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(SP_Direccion, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(131, 131, 131))))
-        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -918,7 +838,6 @@ public class RegistroPersonas extends javax.swing.JFrame {
     private javax.swing.JMenuItem Admi_tipoEvento;
     private javax.swing.JButton B_Registrar;
     private javax.swing.JComboBox<String> CB_Canton;
-    private javax.swing.JComboBox<String> CB_Canton1;
     private javax.swing.JComboBox<String> CB_Nacionalidad;
     private javax.swing.JComboBox<String> CB_Pais;
     private javax.swing.JComboBox<String> CB_Provincia;
@@ -938,8 +857,7 @@ public class RegistroPersonas extends javax.swing.JFrame {
     private javax.swing.JMenuItem Ins_Clase;
     private javax.swing.JLabel L_Apellido1;
     private javax.swing.JLabel L_Apellido2;
-    private javax.swing.JLabel L_Canton2;
-    private javax.swing.JLabel L_Canton3;
+    private javax.swing.JLabel L_Canton;
     private javax.swing.JLabel L_Direccion;
     private javax.swing.JLabel L_Identificacion;
     private javax.swing.JLabel L_Nacionalidad;
@@ -967,6 +885,7 @@ public class RegistroPersonas extends javax.swing.JFrame {
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JMenuItem con_Empleado_Fecha;
     private javax.swing.JMenuItem con_persona_Fecha;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu10;
     private javax.swing.JMenu jMenu11;

@@ -5,11 +5,6 @@
  */
 package Interfaz.Registro;
 
-import java.sql.CallableStatement;
-import java.sql.Connection;
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -23,22 +18,6 @@ public class RegistroCurso extends javax.swing.JFrame {
      */
     public RegistroCurso() {
         initComponents();
-    }
-    public void InsertCurso(){
-        Connection con= null;
-            String curso= TF_Nombre.getText();
-            con= parquelibertad.dbConnection.conectDB();
-            try {
-                CallableStatement proc= con.prepareCall("{call insertCurso(?)}");
-                proc.setString(1, curso);
-                proc.execute();
-                JOptionPane.showMessageDialog(this, "Curso Agregado Exitosamente",null,JOptionPane.INFORMATION_MESSAGE);
-                TF_Nombre.setText("");
-                con.close();
-                
-            } catch (SQLException ex) {
-                Logger.getLogger(RegistroTipoEvento.class.getName()).log(Level.SEVERE, null, ex);
-            }
     }
 
     /**
@@ -495,8 +474,8 @@ public class RegistroCurso extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Debe de llenar todos los campos obligatorios.",null,JOptionPane.ERROR_MESSAGE);
         }
         else{
-            InsertCurso();
-            
+            dispose();
+            new RegistroClase().setVisible(true);
         }
     }//GEN-LAST:event_B_RegistrarActionPerformed
 
