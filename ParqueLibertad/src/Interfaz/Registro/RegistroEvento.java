@@ -12,6 +12,8 @@ import java.sql.Connection;
 import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -51,7 +53,7 @@ public class RegistroEvento extends javax.swing.JFrame {
         String dia=CB_Dia.getSelectedItem().toString();
         String mes=CB_Mes.getSelectedItem().toString();
         String año=CB_Año.getSelectedItem().toString();        
-        fecha=dia+"/"+mes+"/"+año;   
+        fecha=dia+mes+año;   
         return fecha;
     }
     public final void registrarEvento(){
@@ -63,13 +65,19 @@ public class RegistroEvento extends javax.swing.JFrame {
                     cstmt.registerOutParameter(1, oracle.jdbc.OracleTypes.INTEGER);
                     cstmt.execute();
                     int idTipo = cstmt.getInt(1);
-                    String fecha=fecha();       
-                    CallableStatement proc= con.prepareCall("{call insertRegEvento(?,?)}");
+                    String fecha=fecha();
+                    SimpleDateFormat formato=new SimpleDateFormat("ddMMyy"); 
+                    try {
+                        java.util.Date parsed = formato.parse(fecha);
+                        java.sql.Date sql= new java.sql.Date(parsed.getTime());
+                        CallableStatement proc= con.prepareCall("{call insertRegEvento(?,?)}");
                     proc.setInt(1, idTipo);
+                    proc.setDate(2, sql);
                     proc.execute();
                     JOptionPane.showMessageDialog(this, "Puesto de Trabajo Agregado Exitosamente",null,JOptionPane.INFORMATION_MESSAGE);
-                
-                    
+                } catch (ParseException ex) {     
+                Logger.getLogger(RegistroEvento.class.getName()).log(Level.SEVERE, null, ex);
+            }     
                 } catch (SQLException ex) {
                     Logger.getLogger(RegistroEvento.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -99,6 +107,7 @@ public class RegistroEvento extends javax.swing.JFrame {
         CB_Dia = new javax.swing.JComboBox<>();
         CB_Mes = new javax.swing.JComboBox<>();
         CB_Año = new javax.swing.JComboBox<>();
+        jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         Re_Actividad = new javax.swing.JMenuItem();
@@ -215,6 +224,10 @@ public class RegistroEvento extends javax.swing.JFrame {
         CB_Año.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", " ", " " }));
         getContentPane().add(CB_Año);
         CB_Año.setBounds(160, 140, 50, 20);
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/13010187_1077907862232310_2035377480_o.png"))); // NOI18N
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(0, 0, 400, 340);
 
         jMenuBar1.setBackground(new java.awt.Color(255, 255, 255));
         jMenuBar1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -795,6 +808,7 @@ public class RegistroEvento extends javax.swing.JFrame {
     private javax.swing.JMenuItem TopDeserciones;
     private javax.swing.JMenuItem con_Empleado_Fecha;
     private javax.swing.JMenuItem con_persona_Fecha;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu10;
