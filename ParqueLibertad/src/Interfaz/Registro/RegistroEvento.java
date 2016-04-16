@@ -7,19 +7,74 @@ package Interfaz.Registro;
 
 import Interfaz.MenuRegistro;
 import Interfaz.Registro.RegistroTipoEvento;
+import java.sql.CallableStatement;
+import java.sql.Connection;
+import java.sql.Date;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import static org.eclipse.persistence.expressions.ExpressionOperator.currentDate;
 
 /**
  *
  * @author Luis Diego
  */
 public class RegistroEvento extends javax.swing.JFrame {
-
+            Connection con= null;
     /**
      * Creates new form RegistroCurso
      */
     public RegistroEvento() {
         initComponents();
+        con= parquelibertad.dbConnection.conectDB();
+        llenarTipo_evento();
+    }
+    
+    public final  void llenarTipo_evento() {
+        CB_Tipo.removeAllItems();
+            try {
+               CallableStatement cstmt =con.prepareCall("{call get_TipoEvento(?)}");
+                cstmt.registerOutParameter(1, oracle.jdbc.OracleTypes.CURSOR);
+                cstmt.execute();
+                ResultSet rs = (ResultSet)cstmt.getObject(1);
+                while(rs.next()){
+                   CB_Tipo.addItem(rs.getString(1));
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(RegistroEmpleado.class.getName()).log(Level.SEVERE, null, ex);
+            }
+    }
+    public  String fecha(){
+        String fecha=null;
+        String dia=CB_Dia.getSelectedItem().toString();
+        String mes=CB_Mes.getSelectedItem().toString();
+        String año=CB_Año.getSelectedItem().toString();        
+        fecha=dia+"/"+mes+"/"+año;   
+        return fecha;
+    }
+    public final void registrarEvento(){
+        CallableStatement cstmt;
+                try {
+                    cstmt = con.prepareCall("{?=call consulta_idTipoEvento (?)}");
+                    String descripcion = CB_Tipo.getSelectedItem().toString();
+                    cstmt.setString(2,descripcion);
+                    cstmt.registerOutParameter(1, oracle.jdbc.OracleTypes.INTEGER);
+                    cstmt.execute();
+                    int idTipo = cstmt.getInt(1);
+                    String fecha=fecha();       
+                    CallableStatement proc= con.prepareCall("{call insertRegEvento(?,?)}");
+                    proc.setInt(1, idTipo);
+                    proc.execute();
+                    JOptionPane.showMessageDialog(this, "Puesto de Trabajo Agregado Exitosamente",null,JOptionPane.INFORMATION_MESSAGE);
+                
+                    
+                } catch (SQLException ex) {
+                    Logger.getLogger(RegistroEvento.class.getName()).log(Level.SEVERE, null, ex);
+                }
+         
+    
     }
 
     /**
@@ -34,27 +89,16 @@ public class RegistroEvento extends javax.swing.JFrame {
         CB_Tipo = new javax.swing.JComboBox<>();
         L_Tipo = new javax.swing.JLabel();
         L_Fecha = new javax.swing.JLabel();
-        L_Hora = new javax.swing.JLabel();
         B_Registrar = new javax.swing.JButton();
         Titulo_Registro_de_Evento = new javax.swing.JLabel();
         L_Descripcion = new javax.swing.JLabel();
         SP_Descripcion = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
-        TF_Minutos1 = new javax.swing.JTextField();
-        TF_Hora2 = new javax.swing.JTextField();
-        TF_Minutos2 = new javax.swing.JTextField();
-        TF_Hora1 = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        TF_Mes = new javax.swing.JTextField();
-        TF_Año = new javax.swing.JTextField();
-        TF_Dia = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         B_Otro = new javax.swing.JButton();
-        Fondo = new javax.swing.JLabel();
+        CB_Dia = new javax.swing.JComboBox<>();
+        CB_Mes = new javax.swing.JComboBox<>();
+        CB_Año = new javax.swing.JComboBox<>();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         Re_Actividad = new javax.swing.JMenuItem();
@@ -117,12 +161,7 @@ public class RegistroEvento extends javax.swing.JFrame {
         L_Fecha.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         L_Fecha.setText("Fecha:");
         getContentPane().add(L_Fecha);
-        L_Fecha.setBounds(40, 110, 58, 30);
-
-        L_Hora.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        L_Hora.setText("Hora: ");
-        getContentPane().add(L_Hora);
-        L_Hora.setBounds(40, 150, 58, 30);
+        L_Fecha.setBounds(20, 100, 58, 30);
 
         B_Registrar.setText("Registrar");
         B_Registrar.addActionListener(new java.awt.event.ActionListener() {
@@ -151,66 +190,10 @@ public class RegistroEvento extends javax.swing.JFrame {
         getContentPane().add(SP_Descripcion);
         SP_Descripcion.setBounds(40, 210, 210, 60);
 
-        TF_Minutos1.setBackground(new java.awt.Color(204, 204, 255));
-        getContentPane().add(TF_Minutos1);
-        TF_Minutos1.setBounds(130, 160, 20, 20);
-
-        TF_Hora2.setBackground(new java.awt.Color(204, 204, 255));
-        getContentPane().add(TF_Hora2);
-        TF_Hora2.setBounds(170, 160, 20, 20);
-
-        TF_Minutos2.setBackground(new java.awt.Color(204, 204, 255));
-        getContentPane().add(TF_Minutos2);
-        TF_Minutos2.setBounds(200, 160, 20, 20);
-
-        TF_Hora1.setBackground(new java.awt.Color(204, 204, 255));
-        TF_Hora1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TF_Hora1ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(TF_Hora1);
-        TF_Hora1.setBounds(100, 160, 20, 20);
-
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel1.setText(" :");
-        getContentPane().add(jLabel1);
-        jLabel1.setBounds(190, 160, 20, 15);
-
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel2.setText(" :");
-        getContentPane().add(jLabel2);
-        jLabel2.setBounds(120, 160, 20, 15);
-
-        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel3.setText("a");
-        getContentPane().add(jLabel3);
-        jLabel3.setBounds(150, 160, 30, 20);
-
-        TF_Mes.setBackground(new java.awt.Color(204, 204, 255));
-        getContentPane().add(TF_Mes);
-        TF_Mes.setBounds(130, 120, 20, 20);
-
-        TF_Año.setBackground(new java.awt.Color(204, 204, 255));
-        getContentPane().add(TF_Año);
-        TF_Año.setBounds(160, 120, 40, 20);
-
-        TF_Dia.setBackground(new java.awt.Color(204, 204, 255));
-        getContentPane().add(TF_Dia);
-        TF_Dia.setBounds(100, 120, 20, 20);
-
-        jLabel5.setText(" /");
-        getContentPane().add(jLabel5);
-        jLabel5.setBounds(120, 120, 20, 20);
-
-        jLabel6.setText(" /");
-        getContentPane().add(jLabel6);
-        jLabel6.setBounds(150, 120, 20, 20);
-
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel4.setText("dd   /  mm  /  aaaa");
+        jLabel4.setText("dd   /     mm  /  aa");
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(100, 100, 120, 20);
+        jLabel4.setBounds(90, 110, 120, 20);
 
         B_Otro.setText("Otro");
         B_Otro.addActionListener(new java.awt.event.ActionListener() {
@@ -221,9 +204,17 @@ public class RegistroEvento extends javax.swing.JFrame {
         getContentPane().add(B_Otro);
         B_Otro.setBounds(280, 60, 70, 23);
 
-        Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/13010187_1077907862232310_2035377480_o.png"))); // NOI18N
-        getContentPane().add(Fondo);
-        Fondo.setBounds(0, 0, 440, 350);
+        CB_Dia.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" }));
+        getContentPane().add(CB_Dia);
+        CB_Dia.setBounds(50, 140, 50, 20);
+
+        CB_Mes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", " " }));
+        getContentPane().add(CB_Mes);
+        CB_Mes.setBounds(110, 140, 50, 20);
+
+        CB_Año.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", " ", " " }));
+        getContentPane().add(CB_Año);
+        CB_Año.setBounds(160, 140, 50, 20);
 
         jMenuBar1.setBackground(new java.awt.Color(255, 255, 255));
         jMenuBar1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -546,16 +537,8 @@ public class RegistroEvento extends javax.swing.JFrame {
 
     private void B_RegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_RegistrarActionPerformed
         // TODO add your handling code here:
-        if (TF_Hora1.getText().length()==0 || TF_Hora2.getText().length()==0 || TF_Minutos1.getText().length()==0 || TF_Minutos2.getText().length()==0){
-            JOptionPane.showMessageDialog(this, "Debe de llenar todos los campos obligatorios.",null,JOptionPane.ERROR_MESSAGE);
-        }
-        else if(Integer.parseInt(TF_Hora1.getText())>12 || Integer.parseInt(TF_Hora1.getText())<1 || Integer.parseInt(TF_Hora2.getText())>12 || Integer.parseInt(TF_Hora2.getText())<1 || Integer.parseInt(TF_Minutos1.getText())<1 || Integer.parseInt(TF_Minutos2.getText())<1 || Integer.parseInt(TF_Minutos1.getText())>59 || Integer.parseInt(TF_Minutos2.getText())>59 || Integer.parseInt(TF_Dia.getText())>31 || Integer.parseInt(TF_Dia.getText())<1 || Integer.parseInt(TF_Mes.getText())>12 || Integer.parseInt(TF_Mes.getText())<1 || Integer.parseInt(TF_Año.getText())<1){
-                   JOptionPane.showMessageDialog(this, "Ha ingresado un dato incorrecto.",null,JOptionPane.ERROR_MESSAGE);
-        }
-        else{
-            dispose();
-            new MenuRegistro().setVisible(true);
-        }
+        registrarEvento();
+        
     }//GEN-LAST:event_B_RegistrarActionPerformed
 
     private void CB_TipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CB_TipoActionPerformed
@@ -567,10 +550,6 @@ public class RegistroEvento extends javax.swing.JFrame {
         dispose();
         new RegistroTipoEvento().setVisible(true);
     }//GEN-LAST:event_B_OtroActionPerformed
-
-    private void TF_Hora1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TF_Hora1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TF_Hora1ActionPerformed
 
     private void Re_ActividadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Re_ActividadActionPerformed
         // TODO add your handling code here:
@@ -782,6 +761,9 @@ public class RegistroEvento extends javax.swing.JFrame {
     private javax.swing.JMenuItem Admi_tipoEvento;
     private javax.swing.JButton B_Otro;
     private javax.swing.JButton B_Registrar;
+    private javax.swing.JComboBox<String> CB_Año;
+    private javax.swing.JComboBox<String> CB_Dia;
+    private javax.swing.JComboBox<String> CB_Mes;
     private javax.swing.JComboBox<String> CB_Tipo;
     private javax.swing.JMenuItem Con_Curso;
     private javax.swing.JMenuItem Con_Empleado_ID;
@@ -795,12 +777,10 @@ public class RegistroEvento extends javax.swing.JFrame {
     private javax.swing.JMenuItem Es_persona_Fecha;
     private javax.swing.JMenuItem Es_persona_lugar;
     private javax.swing.JMenuItem Es_top_persona;
-    private javax.swing.JLabel Fondo;
     private javax.swing.JMenuItem Ins_Actividad;
     private javax.swing.JMenuItem Ins_Clase;
     private javax.swing.JLabel L_Descripcion;
     private javax.swing.JLabel L_Fecha;
-    private javax.swing.JLabel L_Hora;
     private javax.swing.JLabel L_Tipo;
     private javax.swing.JMenuItem Re_Actividad;
     private javax.swing.JMenuItem Re_Curso;
@@ -809,25 +789,13 @@ public class RegistroEvento extends javax.swing.JFrame {
     private javax.swing.JMenuItem Re_Persona;
     private javax.swing.JMenuItem Re_desercion;
     private javax.swing.JScrollPane SP_Descripcion;
-    private javax.swing.JTextField TF_Año;
-    private javax.swing.JTextField TF_Dia;
-    private javax.swing.JTextField TF_Hora1;
-    private javax.swing.JTextField TF_Hora2;
-    private javax.swing.JTextField TF_Mes;
-    private javax.swing.JTextField TF_Minutos1;
-    private javax.swing.JTextField TF_Minutos2;
     private javax.swing.JLabel Titulo_Registro_de_Evento;
     private javax.swing.JMenuItem TopActividades;
     private javax.swing.JMenuItem TopCurso;
     private javax.swing.JMenuItem TopDeserciones;
     private javax.swing.JMenuItem con_Empleado_Fecha;
     private javax.swing.JMenuItem con_persona_Fecha;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu10;
     private javax.swing.JMenu jMenu11;
