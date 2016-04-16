@@ -5,12 +5,19 @@
  */
 package Interfaz.Consultas;
 
+
+import java.sql.CallableStatement;
+import parquelibertad.dbConnection;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 /**
  *
  * @author Luis Diego
  */
 public class ConsultaIndentificacionPersona extends javax.swing.JFrame {
-
+    Connection con=null;
     /**
      * Creates new form ConsultaFecha
      */
@@ -28,7 +35,7 @@ public class ConsultaIndentificacionPersona extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        Tabla_Identificacion = new javax.swing.JTable();
         PT_Identificacion = new javax.swing.JFormattedTextField();
         jLabel1 = new javax.swing.JLabel();
         BT_Buscar = new javax.swing.JButton();
@@ -78,8 +85,8 @@ public class ConsultaIndentificacionPersona extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(580, 460));
         getContentPane().setLayout(null);
 
-        jTable1.setBackground(new java.awt.Color(204, 255, 204));
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        Tabla_Identificacion.setBackground(new java.awt.Color(204, 255, 204));
+        Tabla_Identificacion.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -90,8 +97,8 @@ public class ConsultaIndentificacionPersona extends javax.swing.JFrame {
                 "Identificación", "Nombre", "Apellido 1", "Apellido 2"
             }
         ));
-        jTable1.setGridColor(new java.awt.Color(51, 51, 51));
-        jScrollPane1.setViewportView(jTable1);
+        Tabla_Identificacion.setGridColor(new java.awt.Color(51, 51, 51));
+        jScrollPane1.setViewportView(Tabla_Identificacion);
 
         getContentPane().add(jScrollPane1);
         jScrollPane1.setBounds(10, 80, 540, 250);
@@ -202,12 +209,9 @@ public class ConsultaIndentificacionPersona extends javax.swing.JFrame {
         });
         jMenu15.add(Re_Persona4);
 
-        jMenu11.setBackground(new java.awt.Color(255, 255, 255));
         jMenu11.setText("Inscripción");
-        jMenu11.setOpaque(true);
         jMenu11.setPreferredSize(new java.awt.Dimension(100, 35));
 
-        Ins_Actividad.setBackground(new java.awt.Color(255, 255, 255));
         Ins_Actividad.setText("Actividad");
         Ins_Actividad.setFocusCycleRoot(true);
         Ins_Actividad.setPreferredSize(new java.awt.Dimension(140, 30));
@@ -218,7 +222,6 @@ public class ConsultaIndentificacionPersona extends javax.swing.JFrame {
         });
         jMenu11.add(Ins_Actividad);
 
-        Ins_Clase.setBackground(new java.awt.Color(255, 255, 255));
         Ins_Clase.setText("Clase");
         Ins_Clase.setPreferredSize(new java.awt.Dimension(140, 30));
         Ins_Clase.addActionListener(new java.awt.event.ActionListener() {
@@ -230,12 +233,9 @@ public class ConsultaIndentificacionPersona extends javax.swing.JFrame {
 
         jMenu15.add(jMenu11);
 
-        jMenu16.setBackground(new java.awt.Color(255, 255, 255));
         jMenu16.setText("Administrar");
-        jMenu16.setOpaque(true);
         jMenu16.setPreferredSize(new java.awt.Dimension(100, 35));
 
-        Admi_Curso.setBackground(new java.awt.Color(255, 255, 255));
         Admi_Curso.setText("Curso");
         Admi_Curso.setFocusCycleRoot(true);
         Admi_Curso.setPreferredSize(new java.awt.Dimension(140, 30));
@@ -246,7 +246,6 @@ public class ConsultaIndentificacionPersona extends javax.swing.JFrame {
         });
         jMenu16.add(Admi_Curso);
 
-        Admi_Puesto.setBackground(new java.awt.Color(255, 255, 255));
         Admi_Puesto.setText("Puesto");
         Admi_Puesto.setPreferredSize(new java.awt.Dimension(140, 30));
         Admi_Puesto.addActionListener(new java.awt.event.ActionListener() {
@@ -256,7 +255,6 @@ public class ConsultaIndentificacionPersona extends javax.swing.JFrame {
         });
         jMenu16.add(Admi_Puesto);
 
-        Admi_tipoEvento.setBackground(new java.awt.Color(255, 255, 255));
         Admi_tipoEvento.setText("Tipo Evento");
         Admi_tipoEvento.setPreferredSize(new java.awt.Dimension(140, 30));
         Admi_tipoEvento.addActionListener(new java.awt.event.ActionListener() {
@@ -270,20 +268,17 @@ public class ConsultaIndentificacionPersona extends javax.swing.JFrame {
 
         jMenuBar3.add(jMenu15);
 
-        jMenu17.setBackground(new java.awt.Color(255, 255, 255));
         jMenu17.setText("  Consulta");
         jMenu17.setFont(new java.awt.Font("MS Reference Sans Serif", 1, 13)); // NOI18N
         jMenu17.setPreferredSize(new java.awt.Dimension(180, 19));
 
         jMenu18.setBackground(new java.awt.Color(253, 253, 253));
         jMenu18.setText("Persona");
-        jMenu18.setOpaque(true);
         jMenu18.setPreferredSize(new java.awt.Dimension(100, 35));
 
         Con_persona_ID2.setBackground(new java.awt.Color(253, 253, 253));
         Con_persona_ID2.setText("Identificación");
         Con_persona_ID2.setFocusCycleRoot(true);
-        Con_persona_ID2.setOpaque(true);
         Con_persona_ID2.setPreferredSize(new java.awt.Dimension(140, 30));
         Con_persona_ID2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -294,7 +289,6 @@ public class ConsultaIndentificacionPersona extends javax.swing.JFrame {
 
         Con_Persona_Name2.setBackground(new java.awt.Color(253, 253, 253));
         Con_Persona_Name2.setText("Nombre");
-        Con_Persona_Name2.setOpaque(true);
         Con_Persona_Name2.setPreferredSize(new java.awt.Dimension(140, 30));
         Con_Persona_Name2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -305,7 +299,6 @@ public class ConsultaIndentificacionPersona extends javax.swing.JFrame {
 
         Con_persona_Lugar2.setBackground(new java.awt.Color(253, 253, 253));
         Con_persona_Lugar2.setText("Lugar");
-        Con_persona_Lugar2.setOpaque(true);
         Con_persona_Lugar2.setPreferredSize(new java.awt.Dimension(140, 30));
         Con_persona_Lugar2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -316,7 +309,6 @@ public class ConsultaIndentificacionPersona extends javax.swing.JFrame {
 
         con_persona_Fecha2.setBackground(new java.awt.Color(253, 253, 253));
         con_persona_Fecha2.setText("Fecha");
-        con_persona_Fecha2.setOpaque(true);
         con_persona_Fecha2.setPreferredSize(new java.awt.Dimension(140, 30));
         con_persona_Fecha2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -327,7 +319,6 @@ public class ConsultaIndentificacionPersona extends javax.swing.JFrame {
 
         Con_persona_deser2.setBackground(new java.awt.Color(253, 253, 253));
         Con_persona_deser2.setText("Deserciones");
-        Con_persona_deser2.setOpaque(true);
         Con_persona_deser2.setPreferredSize(new java.awt.Dimension(140, 30));
         Con_persona_deser2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -338,15 +329,12 @@ public class ConsultaIndentificacionPersona extends javax.swing.JFrame {
 
         jMenu17.add(jMenu18);
 
-        jMenu19.setBackground(new java.awt.Color(255, 255, 255));
         jMenu19.setText("Empleado");
-        jMenu19.setOpaque(true);
         jMenu19.setPreferredSize(new java.awt.Dimension(100, 35));
 
         Con_Empleado_ID.setBackground(new java.awt.Color(252, 252, 252));
         Con_Empleado_ID.setText("Identificación");
         Con_Empleado_ID.setFocusCycleRoot(true);
-        Con_Empleado_ID.setOpaque(true);
         Con_Empleado_ID.setPreferredSize(new java.awt.Dimension(140, 30));
         Con_Empleado_ID.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -357,7 +345,6 @@ public class ConsultaIndentificacionPersona extends javax.swing.JFrame {
 
         Con_Empleado_Name.setBackground(new java.awt.Color(252, 252, 252));
         Con_Empleado_Name.setText("Nombre");
-        Con_Empleado_Name.setOpaque(true);
         Con_Empleado_Name.setPreferredSize(new java.awt.Dimension(140, 30));
         Con_Empleado_Name.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -368,7 +355,6 @@ public class ConsultaIndentificacionPersona extends javax.swing.JFrame {
 
         con_Empleado_Fecha.setBackground(new java.awt.Color(252, 252, 252));
         con_Empleado_Fecha.setText("Fecha");
-        con_Empleado_Fecha.setOpaque(true);
         con_Empleado_Fecha.setPreferredSize(new java.awt.Dimension(140, 30));
         con_Empleado_Fecha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -379,7 +365,6 @@ public class ConsultaIndentificacionPersona extends javax.swing.JFrame {
 
         jMenu17.add(jMenu19);
 
-        Con_actividad2.setBackground(new java.awt.Color(255, 255, 255));
         Con_actividad2.setText("Actividad");
         Con_actividad2.setPreferredSize(new java.awt.Dimension(137, 30));
         Con_actividad2.addActionListener(new java.awt.event.ActionListener() {
@@ -389,7 +374,6 @@ public class ConsultaIndentificacionPersona extends javax.swing.JFrame {
         });
         jMenu17.add(Con_actividad2);
 
-        Con_Curso2.setBackground(new java.awt.Color(255, 255, 255));
         Con_Curso2.setText("Curso");
         Con_Curso2.setPreferredSize(new java.awt.Dimension(137, 30));
         Con_Curso2.addActionListener(new java.awt.event.ActionListener() {
@@ -399,7 +383,6 @@ public class ConsultaIndentificacionPersona extends javax.swing.JFrame {
         });
         jMenu17.add(Con_Curso2);
 
-        Con_Evento2.setBackground(new java.awt.Color(255, 255, 255));
         Con_Evento2.setText("Evento");
         Con_Evento2.setPreferredSize(new java.awt.Dimension(137, 30));
         Con_Evento2.addActionListener(new java.awt.event.ActionListener() {
@@ -411,19 +394,15 @@ public class ConsultaIndentificacionPersona extends javax.swing.JFrame {
 
         jMenuBar3.add(jMenu17);
 
-        jMenu20.setBackground(new java.awt.Color(255, 255, 255));
         jMenu20.setText("   Estadística");
         jMenu20.setFont(new java.awt.Font("MS Reference Sans Serif", 1, 13)); // NOI18N
         jMenu20.setPreferredSize(new java.awt.Dimension(180, 19));
 
         jMenu21.setBackground(new java.awt.Color(253, 253, 253));
         jMenu21.setText("Persona");
-        jMenu21.setOpaque(true);
         jMenu21.setPreferredSize(new java.awt.Dimension(100, 35));
 
-        Es_persona_Fecha2.setBackground(new java.awt.Color(255, 255, 255));
         Es_persona_Fecha2.setText("Fecha");
-        Es_persona_Fecha2.setOpaque(true);
         Es_persona_Fecha2.setPreferredSize(new java.awt.Dimension(140, 30));
         Es_persona_Fecha2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -432,9 +411,7 @@ public class ConsultaIndentificacionPersona extends javax.swing.JFrame {
         });
         jMenu21.add(Es_persona_Fecha2);
 
-        Es_persona_lugar2.setBackground(new java.awt.Color(255, 255, 255));
         Es_persona_lugar2.setText("Lugar");
-        Es_persona_lugar2.setOpaque(true);
         Es_persona_lugar2.setPreferredSize(new java.awt.Dimension(140, 30));
         Es_persona_lugar2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -443,9 +420,7 @@ public class ConsultaIndentificacionPersona extends javax.swing.JFrame {
         });
         jMenu21.add(Es_persona_lugar2);
 
-        Es_top_persona2.setBackground(new java.awt.Color(255, 255, 255));
         Es_top_persona2.setText("Top 10");
-        Es_top_persona2.setOpaque(true);
         Es_top_persona2.setPreferredSize(new java.awt.Dimension(140, 30));
         Es_top_persona2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -456,7 +431,6 @@ public class ConsultaIndentificacionPersona extends javax.swing.JFrame {
 
         jMenu20.add(jMenu21);
 
-        TopCurso2.setBackground(new java.awt.Color(255, 255, 255));
         TopCurso2.setText("Top Cursos");
         TopCurso2.setPreferredSize(new java.awt.Dimension(137, 40));
         TopCurso2.addActionListener(new java.awt.event.ActionListener() {
@@ -466,7 +440,6 @@ public class ConsultaIndentificacionPersona extends javax.swing.JFrame {
         });
         jMenu20.add(TopCurso2);
 
-        TopActividades2.setBackground(new java.awt.Color(255, 255, 255));
         TopActividades2.setText("Top Actividades");
         TopActividades2.setPreferredSize(new java.awt.Dimension(137, 40));
         TopActividades2.addActionListener(new java.awt.event.ActionListener() {
@@ -476,7 +449,6 @@ public class ConsultaIndentificacionPersona extends javax.swing.JFrame {
         });
         jMenu20.add(TopActividades2);
 
-        TopDeserciones2.setBackground(new java.awt.Color(255, 255, 255));
         TopDeserciones2.setText("Top Deserciones");
         TopDeserciones2.setPreferredSize(new java.awt.Dimension(137, 40));
         TopDeserciones2.addActionListener(new java.awt.event.ActionListener() {
@@ -495,6 +467,8 @@ public class ConsultaIndentificacionPersona extends javax.swing.JFrame {
 
     private void BT_BuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BT_BuscarActionPerformed
         // TODO add your handling code here:
+
+        
     }//GEN-LAST:event_BT_BuscarActionPerformed
 
     private void Re_ActividadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Re_ActividadActionPerformed
@@ -727,6 +701,7 @@ public class ConsultaIndentificacionPersona extends javax.swing.JFrame {
     private javax.swing.JMenuItem Re_Evento4;
     private javax.swing.JMenuItem Re_Persona4;
     private javax.swing.JMenuItem Re_desercion;
+    private javax.swing.JTable Tabla_Identificacion;
     private javax.swing.JLabel Titulo_Menu;
     private javax.swing.JMenuItem TopActividades2;
     private javax.swing.JMenuItem TopCurso2;
@@ -745,6 +720,5 @@ public class ConsultaIndentificacionPersona extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu21;
     private javax.swing.JMenuBar jMenuBar3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }
