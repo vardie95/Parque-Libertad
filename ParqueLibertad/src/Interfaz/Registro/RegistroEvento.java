@@ -32,6 +32,12 @@ public class RegistroEvento extends javax.swing.JFrame {
         initComponents();
         con= parquelibertad.dbConnection.conectDB();
         llenarTipo_evento();
+                try {
+                    con.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(RegistroEvento.class.getName()).log(Level.SEVERE, null, ex);
+                }
+        
     }
     
     public final  void llenarTipo_evento() {
@@ -59,6 +65,7 @@ public class RegistroEvento extends javax.swing.JFrame {
     public final void registrarEvento(){
         CallableStatement cstmt;
                 try {
+                    con= parquelibertad.dbConnection.conectDB();
                     cstmt = con.prepareCall("{?=call consulta_idTipoEvento (?)}");
                     String descripcion = CB_Tipo.getSelectedItem().toString();
                     cstmt.setString(2,descripcion);
@@ -74,7 +81,8 @@ public class RegistroEvento extends javax.swing.JFrame {
                     proc.setInt(1, idTipo);
                     proc.setDate(2, sql);
                     proc.execute();
-                    JOptionPane.showMessageDialog(this, "Puesto de Trabajo Agregado Exitosamente",null,JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(this, "Evento Agregado Exitosamente",null,JOptionPane.INFORMATION_MESSAGE);
+                    con.close();
                 } catch (ParseException ex) {     
                 Logger.getLogger(RegistroEvento.class.getName()).log(Level.SEVERE, null, ex);
             }     

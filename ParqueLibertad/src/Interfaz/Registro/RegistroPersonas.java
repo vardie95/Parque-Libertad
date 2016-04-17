@@ -64,6 +64,7 @@ public class RegistroPersonas extends javax.swing.JFrame {
                 cstmt.registerOutParameter(1, oracle.jdbc.OracleTypes.INTEGER);
                 cstmt.execute();
                 int id_pais= cstmt.getInt(1);
+                System.out.println(id_pais);
                 cstmt = con.prepareCall("{select descripcion from provincia where id_pais=1}");
                 cstmt.execute();
                 ResultSet rs = cstmt.getResultSet();
