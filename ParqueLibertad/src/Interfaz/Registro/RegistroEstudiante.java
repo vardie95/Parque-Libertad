@@ -17,6 +17,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import parquelibertad.dbConnection;
 
 /**
@@ -39,12 +40,12 @@ public class RegistroEstudiante extends javax.swing.JFrame {
             }
     }
     
-    public final  void llenaridentificacion() {
+   public final  void llenaridentificacion() {
         CB_Identificacion.removeAllItems();
         CB_Identificacion.addItem("Seleccione Identificacion");
             try {
                  
-                CallableStatement cstmt = con.prepareCall("{?=call consulta_persona}");
+                CallableStatement cstmt = con.prepareCall("{call get_idPersona(?)}");
                 cstmt.registerOutParameter(1, oracle.jdbc.OracleTypes.CURSOR);
                 cstmt.execute();
                 ResultSet rs = (ResultSet)cstmt.getObject(1);
@@ -52,8 +53,9 @@ public class RegistroEstudiante extends javax.swing.JFrame {
                    CB_Identificacion.addItem(rs.getString(1));
                 }
             } catch (SQLException ex) {
-                Logger.getLogger(RegistroEstudiante.class.getName()).log(Level.SEVERE, null, ex);
-            }
+                Logger.getLogger(RegistroEmpleado.class.getName()).log(Level.SEVERE, null, ex);
+            
+    }
     }
 
     /**
@@ -113,7 +115,6 @@ public class RegistroEstudiante extends javax.swing.JFrame {
         L_Apellido1 = new javax.swing.JLabel();
         L_Apellido2 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
-        Fondo = new javax.swing.JLabel();
         jMenuBar3 = new javax.swing.JMenuBar();
         jMenu5 = new javax.swing.JMenu();
         Re_Actividad2 = new javax.swing.JMenuItem();
@@ -499,7 +500,7 @@ public class RegistroEstudiante extends javax.swing.JFrame {
             }
         });
         getContentPane().add(B_Registrar);
-        B_Registrar.setBounds(360, 250, 110, 40);
+        B_Registrar.setBounds(360, 210, 110, 40);
 
         Titulo_Registro_de_Empleado.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         Titulo_Registro_de_Empleado.setText("Registro de Estudiante");
@@ -544,10 +545,6 @@ public class RegistroEstudiante extends javax.swing.JFrame {
         });
         getContentPane().add(jButton2);
         jButton2.setBounds(380, 60, 60, 23);
-
-        Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/13010187_1077907862232310_2035377480_o.png"))); // NOI18N
-        getContentPane().add(Fondo);
-        Fondo.setBounds(0, -20, 560, 370);
 
         jMenuBar3.setBackground(new java.awt.Color(255, 255, 255));
         jMenuBar3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -870,8 +867,22 @@ public class RegistroEstudiante extends javax.swing.JFrame {
 
     private void B_RegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_RegistrarActionPerformed
         // TODO add your handling code here:
-        dispose();
-        new MenuRegistro().setVisible(true);
+        Connection con= null;
+        con = parquelibertad.dbConnection.conectDB();
+        int Identificacion=Integer.parseInt(CB_Identificacion.getSelectedItem().toString());
+        try {
+                CallableStatement proc= con.prepareCall("{call insertEstudiante(?)}");
+                proc.setInt(1,Identificacion);
+                proc.execute();
+                JOptionPane.showMessageDialog(this, "Estudiante agregado",null,JOptionPane.INFORMATION_MESSAGE);
+                TF_Nombre.setText("");
+                TF_Apellido1.setText("");
+                TF_Apellido2.setText("");
+                con.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(RegistroTipoEvento.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        
     }//GEN-LAST:event_B_RegistrarActionPerformed
 
     private void CB_IdentificacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CB_IdentificacionActionPerformed
@@ -1340,7 +1351,6 @@ public class RegistroEstudiante extends javax.swing.JFrame {
     private javax.swing.JMenuItem Es_persona_lugar1;
     private javax.swing.JMenuItem Es_top_persona;
     private javax.swing.JMenuItem Es_top_persona1;
-    private javax.swing.JLabel Fondo;
     private javax.swing.JMenuItem Ins_Actividad;
     private javax.swing.JMenuItem Ins_Actividad1;
     private javax.swing.JMenuItem Ins_Clase;

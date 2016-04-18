@@ -10,19 +10,20 @@ import Interfaz.MenuRegistro;
 import java.awt.event.ItemListener;
 import java.sql.CallableStatement;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-
 /**
  *
  * @author Luis Diego
  */
 public class RegistroPersonas extends javax.swing.JFrame {
         Connection con= null;
+        int tipo=1;
     /**
      * Creates new form RegistroPersonas
      */
@@ -53,38 +54,86 @@ public class RegistroPersonas extends javax.swing.JFrame {
             }
     }
    public final void LlenarProvincia(){
+       CB_Provincia.removeAllItems();
        CallableStatement cstmt;
             try {
+                con= parquelibertad.dbConnection.conectDB();
                 cstmt = con.prepareCall("{?=call consulta_idPais (?)}");
                 String descripcion=CB_Pais.getSelectedItem().toString();
-                if(descripcion==null){
-                    descripcion="Costa Rica";
-                }
                 cstmt.setString(2,descripcion);
                 cstmt.registerOutParameter(1, oracle.jdbc.OracleTypes.INTEGER);
                 cstmt.execute();
                 int id_pais= cstmt.getInt(1);
-                System.out.println(id_pais);
-                cstmt = con.prepareCall("{select descripcion from provincia where id_pais=1}");
-                cstmt.execute();
-                ResultSet rs = cstmt.getResultSet();
+                CallableStatement cstmt1 = con.prepareCall("{call get_provincia(?,?)}");
+                cstmt1.setInt(1,id_pais);
+                cstmt1.registerOutParameter(2, oracle.jdbc.OracleTypes.CURSOR);
+                cstmt1.execute();
+                ResultSet rs = (ResultSet)cstmt1.getObject(2);
                 while(rs.next()){
-                   CB_Provincia.addItem(rs.getString("descripcion"));
-                }
-                
-              
+                   CB_Provincia.addItem(rs.getString(1));
+                } 
+              con.close();
             } catch (SQLException ex) {
                 Logger.getLogger(RegistroPersonas.class.getName()).log(Level.SEVERE, null, ex);
             }
-        
-                
-   
-   
    
    }
+   public final void LlenarCanton(){
+       CallableStatement cstmt;
+            try {
+                CB_Canton.removeAllItems();
+                con= parquelibertad.dbConnection.conectDB();
+                cstmt = con.prepareCall("{?=call consulta_idProvincia (?)}");
+                String descripcion=CB_Provincia.getSelectedItem().toString();
+                cstmt.setString(2,descripcion);
+                cstmt.registerOutParameter(1, oracle.jdbc.OracleTypes.INTEGER);
+                cstmt.execute();
+                int id_provincia= cstmt.getInt(1);
+                CallableStatement cstmt1 = con.prepareCall("{call get_Canton(?,?)}");
+                cstmt1.setInt(1,id_provincia);
+                cstmt1.registerOutParameter(2, oracle.jdbc.OracleTypes.CURSOR);
+                cstmt1.execute();
+                ResultSet rs = (ResultSet)cstmt1.getObject(2);
+                while(rs.next()){
+                   CB_Canton.addItem(rs.getString(1));
+                } 
+                con.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(RegistroPersonas.class.getName()).log(Level.SEVERE, null, ex);
+            }
+   
+   }
+   public final void LlenarDistrito(){
+       CallableStatement cstmt;
+            try {
+                CB_Distrito.removeAllItems();
+                con= parquelibertad.dbConnection.conectDB();
+                cstmt = con.prepareCall("{?=call consulta_idCanton (?)}");
+                String descripcion=CB_Canton.getSelectedItem().toString();
+                cstmt.setString(2,descripcion);
+                cstmt.registerOutParameter(1, oracle.jdbc.OracleTypes.INTEGER);
+                cstmt.execute();
+                int id_provincia= cstmt.getInt(1);
+                System.out.println(id_provincia);
+                CallableStatement cstmt1 = con.prepareCall("{call get_Distrito(?,?)}");
+                cstmt1.setInt(1,id_provincia);
+                cstmt1.registerOutParameter(2, oracle.jdbc.OracleTypes.CURSOR);
+                cstmt1.execute();
+                ResultSet rs = (ResultSet)cstmt1.getObject(2);
+                while(rs.next()){
+                   CB_Distrito.addItem(rs.getString(1));
+                } 
+                con.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(RegistroPersonas.class.getName()).log(Level.SEVERE, null, ex);
+            }
+   
+   }
+   
     public final  void llenarNacionalidad() {
         CB_Nacionalidad.removeAllItems();
             try {
+               con= parquelibertad.dbConnection.conectDB();
                CallableStatement cstmt = con.prepareCall("{call get_Nacionalidad(?)}");
                 cstmt.registerOutParameter(1, oracle.jdbc.OracleTypes.CURSOR);
                 cstmt.execute();
@@ -95,6 +144,84 @@ public class RegistroPersonas extends javax.swing.JFrame {
             } catch (SQLException ex) {
                 Logger.getLogger(RegistroEmpleado.class.getName()).log(Level.SEVERE, null, ex);
             }
+    }
+    public final void RegistrarPersona(){
+        CallableStatement cstmt;
+        int ID_Nacionalidad;
+        int ID_Distrito;
+        int identificacion=Integer.parseInt(TF_Identificacion.getText());
+        String Nombre=TF_Nombre.getText();
+        String Apellido1=TF_Apellido1.getText();
+        String Apellido2=TF_Apellido2.getText();
+        String Direccion=jTextArea1.getText();
+        con= parquelibertad.dbConnection.conectDB();
+            try {
+                cstmt = con.prepareCall("{?=call consulta_idDistrito (?)}");
+                String descripcion=CB_Distrito.getSelectedItem().toString();
+                cstmt.setString(2,descripcion);
+                cstmt.registerOutParameter(1, oracle.jdbc.OracleTypes.INTEGER);
+                cstmt.execute();
+                int idDistrito=cstmt.getInt(1);
+                CallableStatement proc= con.prepareCall("{call insertPersona(?,?,?,?,?,?,?)}");
+                proc.setInt(1, identificacion);
+                proc.setString(2, Nombre);
+                proc.setString(3, Apellido1);
+                proc.setString(4, Apellido2);
+                proc.setString(5, Direccion);
+                proc.setInt(6, tipo);
+                proc.setInt(7,idDistrito);
+                proc.execute();
+                System.out.println("Persona ingresada");
+                con.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(RegistroPersonas.class.getName()).log(Level.SEVERE, null, ex);
+            }
+  
+    }
+    public final void IngresoPersona(){
+            con= parquelibertad.dbConnection.conectDB();
+            java.util.Date fecha=new java.util.Date();
+            java.sql.Date fechaIngreso=new java.sql.Date(fecha.getTime());
+            System.out.println(fechaIngreso);
+            int identificacion=Integer.parseInt(TF_Identificacion.getText());
+            CallableStatement proc;
+            try {
+                proc = con.prepareCall("{call insertIngresos(?,?,?)}");
+                proc.setInt(1, identificacion);
+                proc.setDate(2, fechaIngreso);
+                proc.setInt(3,1);
+                proc.execute();
+                System.out.println("Registro visita Exitoso");
+            } catch (SQLException ex) {
+                Logger.getLogger(RegistroPersonas.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+    
+    }
+    public final void NacionalidadPersona(){
+            try {
+                CallableStatement cstmt;
+                con= parquelibertad.dbConnection.conectDB();
+                int identificacion=Integer.parseInt(TF_Identificacion.getText());
+                String nacionalidad=CB_Nacionalidad.getSelectedItem().toString();
+                cstmt = con.prepareCall("{?=call consulta_idNacionalidad (?)}");
+                cstmt.setString(2,nacionalidad);
+                cstmt.registerOutParameter(1, oracle.jdbc.OracleTypes.INTEGER);
+                cstmt.execute();
+                int idNacionalidad=cstmt.getInt(1);
+                CallableStatement proc;
+                proc = con.prepareCall("{call insertNacionalidad(?,?)}");
+                proc.setInt(1, identificacion);
+                proc.setInt(2, idNacionalidad);
+                proc.execute();
+                System.out.println("Registro Nacionalidad Exitoso");
+                
+            } catch (SQLException ex) {
+                Logger.getLogger(RegistroPersonas.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        
+    
+    
     }
 
     /**
@@ -198,6 +325,11 @@ public class RegistroPersonas extends javax.swing.JFrame {
 
         TF_Identificacion.setBackground(new java.awt.Color(217, 217, 253));
         TF_Identificacion.setForeground(new java.awt.Color(204, 204, 255));
+        try {
+            TF_Identificacion.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("#########")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
         getContentPane().add(TF_Identificacion);
         TF_Identificacion.setBounds(25, 165, 131, 20);
 
@@ -219,6 +351,11 @@ public class RegistroPersonas extends javax.swing.JFrame {
         RB_Pasaporte.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         RB_Pasaporte.setText("Pasaporte");
         RB_Pasaporte.setOpaque(false);
+        RB_Pasaporte.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RB_PasaporteActionPerformed(evt);
+            }
+        });
         getContentPane().add(RB_Pasaporte);
         RB_Pasaporte.setBounds(118, 135, 90, 23);
 
@@ -227,6 +364,11 @@ public class RegistroPersonas extends javax.swing.JFrame {
         RB_TIM.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         RB_TIM.setText("TIM");
         RB_TIM.setOpaque(false);
+        RB_TIM.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RB_TIMActionPerformed(evt);
+            }
+        });
         getContentPane().add(RB_TIM);
         RB_TIM.setBounds(211, 135, 70, 23);
 
@@ -243,11 +385,21 @@ public class RegistroPersonas extends javax.swing.JFrame {
 
         CB_Provincia.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         CB_Provincia.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "San José" }));
+        CB_Provincia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CB_ProvinciaActionPerformed(evt);
+            }
+        });
         getContentPane().add(CB_Provincia);
         CB_Provincia.setBounds(136, 221, 103, 21);
 
         CB_Canton.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         CB_Canton.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Central" }));
+        CB_Canton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CB_CantonActionPerformed(evt);
+            }
+        });
         getContentPane().add(CB_Canton);
         CB_Canton.setBounds(270, 220, 116, 21);
 
@@ -656,6 +808,8 @@ public class RegistroPersonas extends javax.swing.JFrame {
 
     private void RB_CedulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RB_CedulaActionPerformed
         // TODO add your handling code here:
+        tipo=1;
+        
     }//GEN-LAST:event_RB_CedulaActionPerformed
 
     private void B_RegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_RegistrarActionPerformed
@@ -664,6 +818,9 @@ public class RegistroPersonas extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Debe de llenar todos los campos obligatorios.",null,JOptionPane.ERROR_MESSAGE);
         }
         else{
+            RegistrarPersona();
+            IngresoPersona();
+            NacionalidadPersona();
             
         }
     }//GEN-LAST:event_B_RegistrarActionPerformed
@@ -838,7 +995,41 @@ public class RegistroPersonas extends javax.swing.JFrame {
     
     private void CB_PaisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CB_PaisActionPerformed
         // TODO add your handling code here:
+        if(evt.getSource()==CB_Pais){
+            if(CB_Pais.getSelectedItem()!=null){
+            LlenarProvincia();
+            }
+        }
     }//GEN-LAST:event_CB_PaisActionPerformed
+
+    private void CB_ProvinciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CB_ProvinciaActionPerformed
+        // TODO add your handling code here:
+        if(evt.getSource()==CB_Provincia){
+            if(CB_Provincia.getSelectedItem()!=null){
+            LlenarCanton();
+            }
+        }
+    }//GEN-LAST:event_CB_ProvinciaActionPerformed
+
+    private void CB_CantonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CB_CantonActionPerformed
+        // TODO add your handling code here:
+        if(evt.getSource()==CB_Canton){
+            if(CB_Canton.getSelectedItem()!=null){
+            LlenarDistrito();
+            }
+        }
+        
+    }//GEN-LAST:event_CB_CantonActionPerformed
+
+    private void RB_PasaporteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RB_PasaporteActionPerformed
+        // TODO add your handling code here:
+        tipo=3;
+    }//GEN-LAST:event_RB_PasaporteActionPerformed
+
+    private void RB_TIMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RB_TIMActionPerformed
+        // TODO add your handling code here:
+        tipo=2;
+    }//GEN-LAST:event_RB_TIMActionPerformed
         
     /**
      * @param args the command line arguments
