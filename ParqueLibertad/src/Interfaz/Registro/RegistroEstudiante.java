@@ -115,6 +115,7 @@ public class RegistroEstudiante extends javax.swing.JFrame {
         L_Apellido1 = new javax.swing.JLabel();
         L_Apellido2 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
         jMenuBar3 = new javax.swing.JMenuBar();
         jMenu5 = new javax.swing.JMenu();
         Re_Actividad2 = new javax.swing.JMenuItem();
@@ -470,7 +471,7 @@ public class RegistroEstudiante extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Parque la Libertad");
         setLocation(new java.awt.Point(500, 125));
-        setMinimumSize(new java.awt.Dimension(500, 420));
+        setMinimumSize(new java.awt.Dimension(540, 420));
         setResizable(false);
         getContentPane().setLayout(null);
 
@@ -508,17 +509,17 @@ public class RegistroEstudiante extends javax.swing.JFrame {
         Titulo_Registro_de_Empleado.setBounds(160, 20, 180, 22);
 
         TF_Nombre.setEditable(false);
-        TF_Nombre.setBackground(new java.awt.Color(204, 204, 255));
+        TF_Nombre.setBackground(new java.awt.Color(153, 255, 153));
         getContentPane().add(TF_Nombre);
         TF_Nombre.setBounds(30, 140, 139, 20);
 
         TF_Apellido1.setEditable(false);
-        TF_Apellido1.setBackground(new java.awt.Color(204, 204, 255));
+        TF_Apellido1.setBackground(new java.awt.Color(153, 255, 153));
         getContentPane().add(TF_Apellido1);
         TF_Apellido1.setBounds(180, 140, 139, 20);
 
         TF_Apellido2.setEditable(false);
-        TF_Apellido2.setBackground(new java.awt.Color(204, 204, 255));
+        TF_Apellido2.setBackground(new java.awt.Color(153, 255, 153));
         getContentPane().add(TF_Apellido2);
         TF_Apellido2.setBounds(340, 140, 139, 20);
 
@@ -545,6 +546,10 @@ public class RegistroEstudiante extends javax.swing.JFrame {
         });
         getContentPane().add(jButton2);
         jButton2.setBounds(380, 60, 60, 23);
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Registro/Fondo.jpg"))); // NOI18N
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(0, 0, 530, 350);
 
         jMenuBar3.setBackground(new java.awt.Color(255, 255, 255));
         jMenuBar3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -1386,6 +1391,7 @@ public class RegistroEstudiante extends javax.swing.JFrame {
     private javax.swing.JMenuItem con_persona_Fecha;
     private javax.swing.JMenuItem con_persona_Fecha1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu10;
     private javax.swing.JMenu jMenu11;
     private javax.swing.JMenu jMenu12;

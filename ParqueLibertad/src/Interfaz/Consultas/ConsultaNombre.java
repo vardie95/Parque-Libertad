@@ -5,17 +5,53 @@
  */
 package Interfaz.Consultas;
 
+import java.sql.CallableStatement;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import net.proteanit.sql.DbUtils;
+
 /**
  *
  * @author Luis Diego
  */
 public class ConsultaNombre extends javax.swing.JFrame {
+    Connection con= null;
 
     /**
      * Creates new form ConsultaFecha
      */
     public ConsultaNombre() {
-        initComponents();
+        initComponents(); 
+        
+    }
+    private void UpdateTable(){
+        CallableStatement cstmt =null;
+        con = parquelibertad.dbConnection.conectDB();
+        try {
+            String opcion=CB_Nombre.getSelectedItem().toString();
+            if("Nombre".equals(opcion)){
+                cstmt =con.prepareCall("{call consultaNombre(?,?)}");
+            }else if("Apellido 1".equals(opcion)){
+                cstmt =con.prepareCall("{call consultaapellido1(?,?)}");
+            }else{
+                cstmt =con.prepareCall("{call consultaapellido2(?,?)}");
+            
+            }
+            String dato=PT_Nombre.getText();
+            cstmt.setString(1,dato);
+            cstmt.registerOutParameter(2, oracle.jdbc.OracleTypes.CURSOR);
+            cstmt.execute();
+            ResultSet rs = (ResultSet)cstmt.getObject(2);
+            jTable1.setModel(DbUtils.resultSetToTableModel(rs));
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(ConsultaNombre.class.getName()).log(Level.SEVERE, null, ex);
+        }
+  
     }
 
     /**
@@ -503,6 +539,7 @@ public class ConsultaNombre extends javax.swing.JFrame {
 
     private void BT_BuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BT_BuscarActionPerformed
         // TODO add your handling code here:
+        UpdateTable();
     }//GEN-LAST:event_BT_BuscarActionPerformed
 
     private void Re_Actividad1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Re_Actividad1ActionPerformed

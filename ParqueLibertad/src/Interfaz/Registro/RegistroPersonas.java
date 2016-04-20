@@ -261,6 +261,9 @@ public class RegistroPersonas extends javax.swing.JFrame {
         Titulo_Registro_de_Persona = new javax.swing.JLabel();
         CB_Distrito = new javax.swing.JComboBox<>();
         L_Canton1 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         Re_Actividad = new javax.swing.JMenuItem();
@@ -304,27 +307,23 @@ public class RegistroPersonas extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Parque La Libertad");
         setLocation(new java.awt.Point(450, 125));
-        setMinimumSize(new java.awt.Dimension(580, 480));
+        setMinimumSize(new java.awt.Dimension(600, 511));
         setResizable(false);
         getContentPane().setLayout(null);
 
-        TF_Nombre.setBackground(new java.awt.Color(217, 217, 253));
-        TF_Nombre.setForeground(new java.awt.Color(204, 204, 255));
+        TF_Nombre.setBackground(new java.awt.Color(153, 255, 153));
         getContentPane().add(TF_Nombre);
         TF_Nombre.setBounds(25, 81, 139, 20);
 
-        TF_Apellido1.setBackground(new java.awt.Color(217, 217, 253));
-        TF_Apellido1.setForeground(new java.awt.Color(204, 204, 255));
+        TF_Apellido1.setBackground(new java.awt.Color(153, 255, 153));
         getContentPane().add(TF_Apellido1);
         TF_Apellido1.setBounds(184, 81, 139, 20);
 
-        TF_Apellido2.setBackground(new java.awt.Color(217, 217, 253));
-        TF_Apellido2.setForeground(new java.awt.Color(204, 204, 255));
+        TF_Apellido2.setBackground(new java.awt.Color(153, 255, 153));
         getContentPane().add(TF_Apellido2);
         TF_Apellido2.setBounds(341, 81, 139, 20);
 
-        TF_Identificacion.setBackground(new java.awt.Color(217, 217, 253));
-        TF_Identificacion.setForeground(new java.awt.Color(204, 204, 255));
+        TF_Identificacion.setBackground(new java.awt.Color(153, 255, 153));
         try {
             TF_Identificacion.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("#########")));
         } catch (java.text.ParseException ex) {
@@ -403,18 +402,18 @@ public class RegistroPersonas extends javax.swing.JFrame {
         getContentPane().add(CB_Canton);
         CB_Canton.setBounds(270, 220, 116, 21);
 
-        jTextArea1.setBackground(new java.awt.Color(217, 217, 253));
+        jTextArea1.setBackground(new java.awt.Color(153, 255, 153));
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
         SP_Direccion.setViewportView(jTextArea1);
 
         getContentPane().add(SP_Direccion);
-        SP_Direccion.setBounds(25, 276, 367, 70);
+        SP_Direccion.setBounds(25, 276, 380, 96);
 
         CB_Nacionalidad.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         CB_Nacionalidad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Costarricense" }));
         getContentPane().add(CB_Nacionalidad);
-        CB_Nacionalidad.setBounds(341, 165, 106, 21);
+        CB_Nacionalidad.setBounds(341, 165, 150, 21);
 
         B_Registrar.setBackground(new java.awt.Color(255, 255, 255));
         B_Registrar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
@@ -425,7 +424,7 @@ public class RegistroPersonas extends javax.swing.JFrame {
             }
         });
         getContentPane().add(B_Registrar);
-        B_Registrar.setBounds(400, 350, 110, 40);
+        B_Registrar.setBounds(450, 370, 110, 40);
 
         L_Nombre.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         L_Nombre.setText("Nombre: ");
@@ -465,7 +464,7 @@ public class RegistroPersonas extends javax.swing.JFrame {
         L_Provincia.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         L_Provincia.setText("Provincia: ");
         getContentPane().add(L_Provincia);
-        L_Provincia.setBounds(140, 200, 61, 15);
+        L_Provincia.setBounds(140, 200, 90, 15);
 
         L_Canton.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         L_Canton.setText("Distrito:");
@@ -475,7 +474,7 @@ public class RegistroPersonas extends javax.swing.JFrame {
         Titulo_Registro_de_Persona.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         Titulo_Registro_de_Persona.setText("Registro de Persona");
         getContentPane().add(Titulo_Registro_de_Persona);
-        Titulo_Registro_de_Persona.setBounds(170, 10, 230, 30);
+        Titulo_Registro_de_Persona.setBounds(210, 10, 230, 30);
 
         CB_Distrito.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         CB_Distrito.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Central" }));
@@ -486,6 +485,17 @@ public class RegistroPersonas extends javax.swing.JFrame {
         L_Canton1.setText("Cantón: ");
         getContentPane().add(L_Canton1);
         L_Canton1.setBounds(276, 201, 61, 15);
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Registro/Fondo.jpg"))); // NOI18N
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(0, -10, 590, 380);
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(30, 390, 0, 0);
+
+        jLabel3.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel3.setOpaque(true);
+        getContentPane().add(jLabel3);
+        jLabel3.setBounds(0, 360, 590, 60);
 
         jMenuBar1.setBackground(new java.awt.Color(255, 255, 255));
         jMenuBar1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -1121,6 +1131,9 @@ public class RegistroPersonas extends javax.swing.JFrame {
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JMenuItem con_Empleado_Fecha;
     private javax.swing.JMenuItem con_persona_Fecha;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu10;
     private javax.swing.JMenu jMenu11;

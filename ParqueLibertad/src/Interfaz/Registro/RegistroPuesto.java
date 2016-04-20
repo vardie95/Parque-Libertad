@@ -37,7 +37,8 @@ public class RegistroPuesto extends javax.swing.JFrame {
                 con.close();
                 
             } catch (SQLException ex) {
-                Logger.getLogger(RegistroTipoEvento.class.getName()).log(Level.SEVERE, null, ex);
+           JOptionPane.showMessageDialog(this, "Error:"+ex,null,JOptionPane.ERROR_MESSAGE);
+
             }
     }
 
@@ -117,15 +118,15 @@ public class RegistroPuesto extends javax.swing.JFrame {
         Titulo_Registro_de_Puesto.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         Titulo_Registro_de_Puesto.setText("Registro de Puesto");
         getContentPane().add(Titulo_Registro_de_Puesto);
-        Titulo_Registro_de_Puesto.setBounds(120, 30, 180, 22);
+        Titulo_Registro_de_Puesto.setBounds(110, 30, 180, 22);
 
-        TF_Nombre.setBackground(new java.awt.Color(204, 204, 255));
+        TF_Nombre.setBackground(new java.awt.Color(153, 255, 153));
         getContentPane().add(TF_Nombre);
-        TF_Nombre.setBounds(130, 90, 180, 30);
+        TF_Nombre.setBounds(110, 90, 180, 30);
 
-        Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/13010187_1077907862232310_2035377480_o.png"))); // NOI18N
+        Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Registro/Fondo.jpg"))); // NOI18N
         getContentPane().add(Fondo);
-        Fondo.setBounds(0, 0, 390, 300);
+        Fondo.setBounds(0, 0, 400, 280);
 
         jMenuBar1.setBackground(new java.awt.Color(255, 255, 255));
         jMenuBar1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));

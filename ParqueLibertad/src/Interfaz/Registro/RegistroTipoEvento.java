@@ -104,11 +104,11 @@ public class RegistroTipoEvento extends javax.swing.JFrame {
         getContentPane().add(Titulo_Registro_de_Actividad);
         Titulo_Registro_de_Actividad.setBounds(90, 20, 250, 40);
 
-        TF_Nombre.setBackground(new java.awt.Color(204, 204, 255));
+        TF_Nombre.setBackground(new java.awt.Color(153, 255, 153));
         getContentPane().add(TF_Nombre);
         TF_Nombre.setBounds(120, 90, 180, 30);
 
-        Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/13010187_1077907862232310_2035377480_o.png"))); // NOI18N
+        Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Registro/Fondo.jpg"))); // NOI18N
         getContentPane().add(Fondo);
         Fondo.setBounds(0, 0, 390, 260);
 

@@ -9,9 +9,11 @@ package Interfaz.Consultas;
 import java.sql.CallableStatement;
 import parquelibertad.dbConnection;
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import net.proteanit.sql.DbUtils;
 /**
  *
  * @author Luis Diego
@@ -23,6 +25,23 @@ public class ConsultaIndentificacionPersona extends javax.swing.JFrame {
      */
     public ConsultaIndentificacionPersona() {
         initComponents();
+    }
+    private void UpdateTable(){
+        CallableStatement cstmt =null;
+        con = parquelibertad.dbConnection.conectDB();
+        try {
+            cstmt =con.prepareCall("{call consultaidPersona(?,?)}");
+            int dato=Integer.parseInt(PT_Identificacion.getText());
+            cstmt.setInt(1,dato);
+            cstmt.registerOutParameter(2, oracle.jdbc.OracleTypes.CURSOR);
+            cstmt.execute();
+            ResultSet rs = (ResultSet)cstmt.getObject(2);
+            Tabla_Identificacion.setModel(DbUtils.resultSetToTableModel(rs));
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(ConsultaNombre.class.getName()).log(Level.SEVERE, null, ex);
+        }
+  
     }
 
     /**
@@ -88,9 +107,6 @@ public class ConsultaIndentificacionPersona extends javax.swing.JFrame {
         Tabla_Identificacion.setBackground(new java.awt.Color(204, 255, 204));
         Tabla_Identificacion.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
                 {null, null, null, null}
             },
             new String [] {
@@ -104,6 +120,11 @@ public class ConsultaIndentificacionPersona extends javax.swing.JFrame {
         jScrollPane1.setBounds(10, 80, 540, 250);
 
         PT_Identificacion.setBackground(new java.awt.Color(204, 204, 255));
+        try {
+            PT_Identificacion.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("#########")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
         getContentPane().add(PT_Identificacion);
         PT_Identificacion.setBounds(150, 50, 150, 20);
 
@@ -467,6 +488,7 @@ public class ConsultaIndentificacionPersona extends javax.swing.JFrame {
 
     private void BT_BuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BT_BuscarActionPerformed
         // TODO add your handling code here:
+        UpdateTable();
 
         
     }//GEN-LAST:event_BT_BuscarActionPerformed

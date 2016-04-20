@@ -86,7 +86,7 @@ public class RegistroDesercion extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Parque la Libertad");
         setLocation(new java.awt.Point(500, 125));
-        setMinimumSize(new java.awt.Dimension(511, 390));
+        setMinimumSize(new java.awt.Dimension(511, 430));
         setResizable(false);
         getContentPane().setLayout(null);
 
@@ -127,7 +127,7 @@ public class RegistroDesercion extends javax.swing.JFrame {
         getContentPane().add(Titulo_Registro_de_Desercion);
         Titulo_Registro_de_Desercion.setBounds(180, 20, 180, 22);
 
-        jTextArea1.setBackground(new java.awt.Color(204, 204, 255));
+        jTextArea1.setBackground(new java.awt.Color(153, 255, 153));
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
         SP_Descripcion.setViewportView(jTextArea1);
@@ -136,17 +136,17 @@ public class RegistroDesercion extends javax.swing.JFrame {
         SP_Descripcion.setBounds(70, 210, 270, 60);
 
         TF_Nombre.setEditable(false);
-        TF_Nombre.setBackground(new java.awt.Color(204, 204, 255));
+        TF_Nombre.setBackground(new java.awt.Color(153, 255, 153));
         getContentPane().add(TF_Nombre);
         TF_Nombre.setBounds(30, 120, 139, 20);
 
         TF_Apellido1.setEditable(false);
-        TF_Apellido1.setBackground(new java.awt.Color(204, 204, 255));
+        TF_Apellido1.setBackground(new java.awt.Color(153, 255, 153));
         getContentPane().add(TF_Apellido1);
         TF_Apellido1.setBounds(180, 120, 139, 20);
 
         TF_Apellido2.setEditable(false);
-        TF_Apellido2.setBackground(new java.awt.Color(204, 204, 255));
+        TF_Apellido2.setBackground(new java.awt.Color(153, 255, 153));
         getContentPane().add(TF_Apellido2);
         TF_Apellido2.setBounds(340, 120, 139, 20);
 
@@ -165,9 +165,9 @@ public class RegistroDesercion extends javax.swing.JFrame {
         getContentPane().add(L_Apellido2);
         L_Apellido2.setBounds(340, 100, 90, 17);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/13010187_1077907862232310_2035377480_o.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Registro/Fondo.jpg"))); // NOI18N
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(0, 0, 520, 320);
+        jLabel1.setBounds(0, 0, 560, 350);
 
         jMenuBar1.setBackground(new java.awt.Color(255, 255, 255));
         jMenuBar1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));

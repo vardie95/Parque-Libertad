@@ -39,6 +39,7 @@ public class Inicio extends javax.swing.JFrame {
         BT_Cancelar = new javax.swing.JButton();
         Titulo_Menu = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Parque Libertad");
@@ -56,9 +57,13 @@ public class Inicio extends javax.swing.JFrame {
             }
         });
         getContentPane().add(B_Ingresar);
-        B_Ingresar.setBounds(240, 290, 90, 30);
+        B_Ingresar.setBounds(240, 300, 90, 30);
+
+        TF_Usuario.setBackground(new java.awt.Color(153, 255, 153));
         getContentPane().add(TF_Usuario);
         TF_Usuario.setBounds(280, 200, 170, 29);
+
+        PF_Contraseña.setBackground(new java.awt.Color(153, 255, 153));
         getContentPane().add(PF_Contraseña);
         PF_Contraseña.setBounds(280, 250, 170, 28);
 
@@ -77,16 +82,21 @@ public class Inicio extends javax.swing.JFrame {
             }
         });
         getContentPane().add(BT_Cancelar);
-        BT_Cancelar.setBounds(360, 290, 90, 30);
+        BT_Cancelar.setBounds(370, 300, 90, 30);
 
         Titulo_Menu.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         Titulo_Menu.setText("Bienvenido ");
         getContentPane().add(Titulo_Menu);
-        Titulo_Menu.setBounds(290, 150, 150, 40);
+        Titulo_Menu.setBounds(310, 150, 150, 40);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/login.jpg"))); // NOI18N
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(0, 0, 510, 360);
+        jLabel1.setBounds(0, 10, 510, 360);
+
+        jLabel2.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel2.setOpaque(true);
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(0, 0, 510, 10);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -155,6 +165,7 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JTextField TF_Usuario;
     private javax.swing.JLabel Titulo_Menu;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
    
 }

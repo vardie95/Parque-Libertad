@@ -115,7 +115,7 @@ public class RegistroEvento extends javax.swing.JFrame {
         CB_Dia = new javax.swing.JComboBox<>();
         CB_Mes = new javax.swing.JComboBox<>();
         CB_Año = new javax.swing.JComboBox<>();
-        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         Re_Actividad = new javax.swing.JMenuItem();
@@ -157,7 +157,7 @@ public class RegistroEvento extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Parque la Libertad");
         setLocation(new java.awt.Point(500, 125));
-        setMinimumSize(new java.awt.Dimension(380, 400));
+        setMinimumSize(new java.awt.Dimension(550, 423));
         setResizable(false);
         getContentPane().setLayout(null);
 
@@ -168,7 +168,7 @@ public class RegistroEvento extends javax.swing.JFrame {
             }
         });
         getContentPane().add(CB_Tipo);
-        CB_Tipo.setBounds(100, 60, 164, 30);
+        CB_Tipo.setBounds(100, 60, 220, 30);
 
         L_Tipo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         L_Tipo.setText("Tipo:");
@@ -178,7 +178,7 @@ public class RegistroEvento extends javax.swing.JFrame {
         L_Fecha.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         L_Fecha.setText("Fecha:");
         getContentPane().add(L_Fecha);
-        L_Fecha.setBounds(20, 100, 58, 30);
+        L_Fecha.setBounds(50, 110, 58, 30);
 
         B_Registrar.setText("Registrar");
         B_Registrar.addActionListener(new java.awt.event.ActionListener() {
@@ -187,30 +187,30 @@ public class RegistroEvento extends javax.swing.JFrame {
             }
         });
         getContentPane().add(B_Registrar);
-        B_Registrar.setBounds(270, 280, 90, 40);
+        B_Registrar.setBounds(380, 310, 90, 40);
 
         Titulo_Registro_de_Evento.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         Titulo_Registro_de_Evento.setText("Registro de Evento");
         getContentPane().add(Titulo_Registro_de_Evento);
-        Titulo_Registro_de_Evento.setBounds(110, 20, 160, 22);
+        Titulo_Registro_de_Evento.setBounds(170, 20, 160, 22);
 
         L_Descripcion.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         L_Descripcion.setText("Descripción:");
         getContentPane().add(L_Descripcion);
         L_Descripcion.setBounds(40, 190, 90, 17);
 
-        jTextArea1.setBackground(new java.awt.Color(204, 204, 255));
+        jTextArea1.setBackground(new java.awt.Color(153, 255, 153));
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
         SP_Descripcion.setViewportView(jTextArea1);
 
         getContentPane().add(SP_Descripcion);
-        SP_Descripcion.setBounds(40, 210, 210, 60);
+        SP_Descripcion.setBounds(40, 210, 310, 100);
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel4.setText("dd   /     mm  /  aa");
+        jLabel4.setText("dd     /   mm       /  aa");
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(90, 110, 120, 20);
+        jLabel4.setBounds(130, 110, 130, 20);
 
         B_Otro.setText("Otro");
         B_Otro.addActionListener(new java.awt.event.ActionListener() {
@@ -219,23 +219,23 @@ public class RegistroEvento extends javax.swing.JFrame {
             }
         });
         getContentPane().add(B_Otro);
-        B_Otro.setBounds(280, 60, 70, 23);
+        B_Otro.setBounds(350, 60, 70, 23);
 
         CB_Dia.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" }));
         getContentPane().add(CB_Dia);
-        CB_Dia.setBounds(50, 140, 50, 20);
+        CB_Dia.setBounds(100, 140, 70, 20);
 
         CB_Mes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", " " }));
         getContentPane().add(CB_Mes);
-        CB_Mes.setBounds(110, 140, 50, 20);
+        CB_Mes.setBounds(180, 140, 60, 20);
 
         CB_Año.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", " ", " " }));
         getContentPane().add(CB_Año);
-        CB_Año.setBounds(160, 140, 50, 20);
+        CB_Año.setBounds(240, 140, 70, 20);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/13010187_1077907862232310_2035377480_o.png"))); // NOI18N
-        getContentPane().add(jLabel1);
-        jLabel1.setBounds(0, 0, 400, 340);
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Registro/Fondo.jpg"))); // NOI18N
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(0, 0, 530, 370);
 
         jMenuBar1.setBackground(new java.awt.Color(255, 255, 255));
         jMenuBar1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -816,7 +816,7 @@ public class RegistroEvento extends javax.swing.JFrame {
     private javax.swing.JMenuItem TopDeserciones;
     private javax.swing.JMenuItem con_Empleado_Fecha;
     private javax.swing.JMenuItem con_persona_Fecha;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu10;

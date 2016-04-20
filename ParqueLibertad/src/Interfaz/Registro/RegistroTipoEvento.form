@@ -524,7 +524,7 @@
     <Component class="javax.swing.JTextField" name="TF_Nombre">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="cc" red="cc" type="rgb"/>
+          <Color blue="99" green="ff" red="99" type="rgb"/>
         </Property>
       </Properties>
       <Constraints>
@@ -536,7 +536,7 @@
     <Component class="javax.swing.JLabel" name="Fondo">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/Interfaz/13010187_1077907862232310_2035377480_o.png"/>
+          <Image iconType="3" name="/Interfaz/Registro/Fondo.jpg"/>
         </Property>
       </Properties>
       <Constraints>

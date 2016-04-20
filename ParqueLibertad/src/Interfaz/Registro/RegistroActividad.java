@@ -98,13 +98,11 @@ public class RegistroActividad extends javax.swing.JFrame {
         Re_Empleado1 = new javax.swing.JMenuItem();
         Re_Evento1 = new javax.swing.JMenuItem();
         Re_Persona1 = new javax.swing.JMenuItem();
-        L_Nombre = new javax.swing.JLabel();
         L_Descripcion = new javax.swing.JLabel();
         B_Registrar = new javax.swing.JButton();
         Titulo_Registro_de_Actividad = new javax.swing.JLabel();
         SP_Descripcion = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
-        TF_Nombre = new javax.swing.JTextField();
         L_Fecha = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         CB_Dia = new javax.swing.JComboBox<>();
@@ -412,15 +410,10 @@ public class RegistroActividad extends javax.swing.JFrame {
         setResizable(false);
         getContentPane().setLayout(null);
 
-        L_Nombre.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        L_Nombre.setText("Nombre:");
-        getContentPane().add(L_Nombre);
-        L_Nombre.setBounds(60, 60, 60, 28);
-
         L_Descripcion.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         L_Descripcion.setText("Descripción:");
         getContentPane().add(L_Descripcion);
-        L_Descripcion.setBounds(60, 150, 90, 28);
+        L_Descripcion.setBounds(50, 130, 90, 28);
 
         B_Registrar.setText("Registrar");
         B_Registrar.addActionListener(new java.awt.event.ActionListener() {
@@ -429,7 +422,7 @@ public class RegistroActividad extends javax.swing.JFrame {
             }
         });
         getContentPane().add(B_Registrar);
-        B_Registrar.setBounds(260, 260, 90, 40);
+        B_Registrar.setBounds(260, 240, 90, 40);
 
         Titulo_Registro_de_Actividad.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         Titulo_Registro_de_Actividad.setText("Registro de Actividad");
@@ -442,33 +435,29 @@ public class RegistroActividad extends javax.swing.JFrame {
         SP_Descripcion.setViewportView(jTextArea1);
 
         getContentPane().add(SP_Descripcion);
-        SP_Descripcion.setBounds(60, 180, 210, 60);
-
-        TF_Nombre.setBackground(new java.awt.Color(204, 204, 255));
-        getContentPane().add(TF_Nombre);
-        TF_Nombre.setBounds(120, 60, 140, 30);
+        SP_Descripcion.setBounds(70, 160, 250, 70);
 
         L_Fecha.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         L_Fecha.setText("Fecha:");
         getContentPane().add(L_Fecha);
-        L_Fecha.setBounds(60, 90, 58, 30);
+        L_Fecha.setBounds(50, 60, 58, 30);
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel4.setText("dd   /     mm  /  aa");
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(140, 100, 120, 20);
+        jLabel4.setBounds(130, 70, 120, 20);
 
         CB_Dia.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" }));
         getContentPane().add(CB_Dia);
-        CB_Dia.setBounds(100, 130, 50, 20);
+        CB_Dia.setBounds(80, 100, 60, 20);
 
         CB_Mes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", " " }));
         getContentPane().add(CB_Mes);
-        CB_Mes.setBounds(160, 130, 50, 20);
+        CB_Mes.setBounds(150, 100, 60, 20);
 
         CB_Año.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", " ", " " }));
         getContentPane().add(CB_Año);
-        CB_Año.setBounds(210, 130, 50, 20);
+        CB_Año.setBounds(220, 100, 60, 20);
 
         jMenuBar1.setBackground(new java.awt.Color(255, 255, 255));
         jMenuBar1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -807,7 +796,7 @@ public class RegistroActividad extends javax.swing.JFrame {
 
     private void B_RegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_RegistrarActionPerformed
         // TODO add your handling code here:
-        if (TF_Nombre.getText().length()==0){
+        if (jTextArea1.getText().length()==0){
             JOptionPane.showMessageDialog(this, "Debe de llenar todos los campos obligatorios.",null,JOptionPane.ERROR_MESSAGE);
         }
         else{
@@ -1177,7 +1166,6 @@ public class RegistroActividad extends javax.swing.JFrame {
     private javax.swing.JMenuItem Ins_Clase;
     private javax.swing.JLabel L_Descripcion;
     private javax.swing.JLabel L_Fecha;
-    private javax.swing.JLabel L_Nombre;
     private javax.swing.JMenuItem Re_Actividad;
     private javax.swing.JMenuItem Re_Curso;
     private javax.swing.JMenuItem Re_Curso3;
@@ -1193,7 +1181,6 @@ public class RegistroActividad extends javax.swing.JFrame {
     private javax.swing.JMenuItem Re_Persona4;
     private javax.swing.JMenuItem Re_desercion;
     private javax.swing.JScrollPane SP_Descripcion;
-    private javax.swing.JTextField TF_Nombre;
     private javax.swing.JLabel Titulo_Registro_de_Actividad;
     private javax.swing.JMenuItem TopActividades;
     private javax.swing.JMenuItem TopActividades2;
