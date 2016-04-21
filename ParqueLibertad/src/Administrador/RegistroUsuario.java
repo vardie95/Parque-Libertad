@@ -3,21 +3,45 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Interfaz.Registro;
+package Administrador;
 
-
+import Interfaz.Registro.*;
+import java.sql.CallableStatement;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author Luis Diego
  */
-public class RegistroDesercion extends javax.swing.JFrame {
+public class RegistroUsuario extends javax.swing.JFrame {
 
     /**
      * Creates new form RegistroCurso
      */
-    public RegistroDesercion() {
+    public RegistroUsuario() {
         initComponents();
+    }
+    public void InsertUsuario(){
+        Connection con= null;
+            String puesto=TF_Nombre.getText();
+            
+            con= parquelibertad.dbConnection.conectDB();
+            try {
+                CallableStatement proc= con.prepareCall("{call insertPais(?)}");
+                proc.setString(1, puesto);
+                proc.execute();
+                JOptionPane.showMessageDialog(this, "País Agregado Exitosamente",null,JOptionPane.INFORMATION_MESSAGE);
+                TF_Nombre.setText("");
+                con.close();
+                
+            } catch (SQLException ex) {
+           JOptionPane.showMessageDialog(this, "Error:"+ex,null,JOptionPane.ERROR_MESSAGE);
+
+            }
     }
 
     /**
@@ -29,21 +53,15 @@ public class RegistroDesercion extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        CB_Identificacion = new javax.swing.JComboBox<>();
-        L_Identificacion = new javax.swing.JLabel();
-        CB_Curso = new javax.swing.JComboBox<>();
-        L_Curso = new javax.swing.JLabel();
-        L_Motivo = new javax.swing.JLabel();
-        B_Registrar = new javax.swing.JButton();
-        Titulo_Registro_de_Desercion = new javax.swing.JLabel();
-        SP_Descripcion = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
-        TF_Nombre = new javax.swing.JTextField();
-        TF_Apellido1 = new javax.swing.JTextField();
-        TF_Apellido2 = new javax.swing.JTextField();
         L_Nombre = new javax.swing.JLabel();
-        L_Apellido1 = new javax.swing.JLabel();
-        L_Apellido2 = new javax.swing.JLabel();
+        B_Registrar = new javax.swing.JButton();
+        Titulo_Registro_de_Puesto = new javax.swing.JLabel();
+        TF_Nombre = new javax.swing.JTextField();
+        TF_Nombre1 = new javax.swing.JTextField();
+        L_Nombre1 = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        TF_Nombre2 = new javax.swing.JTextField();
+        L_Nombre2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
@@ -69,34 +87,16 @@ public class RegistroDesercion extends javax.swing.JFrame {
         Admi_Puesto1 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Parque la Libertad");
+        setTitle("Parque Libertad");
         setLocation(new java.awt.Point(500, 125));
-        setMinimumSize(new java.awt.Dimension(511, 430));
+        setMinimumSize(new java.awt.Dimension(400, 370));
         setResizable(false);
         getContentPane().setLayout(null);
 
-        CB_Identificacion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "123456789" }));
-        getContentPane().add(CB_Identificacion);
-        CB_Identificacion.setBounds(200, 60, 164, 28);
-
-        L_Identificacion.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        L_Identificacion.setText("Identificación:");
-        getContentPane().add(L_Identificacion);
-        L_Identificacion.setBounds(90, 60, 100, 28);
-
-        CB_Curso.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nombre" }));
-        getContentPane().add(CB_Curso);
-        CB_Curso.setBounds(130, 150, 146, 31);
-
-        L_Curso.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        L_Curso.setText("Curso:");
-        getContentPane().add(L_Curso);
-        L_Curso.setBounds(40, 150, 70, 28);
-
-        L_Motivo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        L_Motivo.setText("Motivo:");
-        getContentPane().add(L_Motivo);
-        L_Motivo.setBounds(70, 180, 58, 28);
+        L_Nombre.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        L_Nombre.setText("Confirmar:");
+        getContentPane().add(L_Nombre);
+        L_Nombre.setBounds(30, 150, 80, 28);
 
         B_Registrar.setText("Registrar");
         B_Registrar.addActionListener(new java.awt.event.ActionListener() {
@@ -105,54 +105,42 @@ public class RegistroDesercion extends javax.swing.JFrame {
             }
         });
         getContentPane().add(B_Registrar);
-        B_Registrar.setBounds(390, 260, 90, 40);
+        B_Registrar.setBounds(250, 220, 90, 40);
 
-        Titulo_Registro_de_Desercion.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        Titulo_Registro_de_Desercion.setText("Registro de Deserción");
-        getContentPane().add(Titulo_Registro_de_Desercion);
-        Titulo_Registro_de_Desercion.setBounds(180, 20, 180, 22);
+        Titulo_Registro_de_Puesto.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        Titulo_Registro_de_Puesto.setText("Registro Usuario ");
+        getContentPane().add(Titulo_Registro_de_Puesto);
+        Titulo_Registro_de_Puesto.setBounds(120, 20, 180, 22);
 
-        jTextArea1.setBackground(new java.awt.Color(153, 255, 153));
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        SP_Descripcion.setViewportView(jTextArea1);
-
-        getContentPane().add(SP_Descripcion);
-        SP_Descripcion.setBounds(70, 210, 270, 60);
-
-        TF_Nombre.setEditable(false);
         TF_Nombre.setBackground(new java.awt.Color(153, 255, 153));
         getContentPane().add(TF_Nombre);
-        TF_Nombre.setBounds(30, 120, 139, 20);
+        TF_Nombre.setBounds(110, 70, 180, 30);
 
-        TF_Apellido1.setEditable(false);
-        TF_Apellido1.setBackground(new java.awt.Color(153, 255, 153));
-        getContentPane().add(TF_Apellido1);
-        TF_Apellido1.setBounds(180, 120, 139, 20);
+        TF_Nombre1.setBackground(new java.awt.Color(153, 255, 153));
+        getContentPane().add(TF_Nombre1);
+        TF_Nombre1.setBounds(110, 110, 180, 30);
 
-        TF_Apellido2.setEditable(false);
-        TF_Apellido2.setBackground(new java.awt.Color(153, 255, 153));
-        getContentPane().add(TF_Apellido2);
-        TF_Apellido2.setBounds(340, 120, 139, 20);
+        L_Nombre1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        L_Nombre1.setText("Usuario:");
+        getContentPane().add(L_Nombre1);
+        L_Nombre1.setBounds(40, 70, 60, 28);
 
-        L_Nombre.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        L_Nombre.setText("Nombre: ");
-        getContentPane().add(L_Nombre);
-        L_Nombre.setBounds(30, 100, 90, 17);
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Administrador", "Usuario" }));
+        getContentPane().add(jComboBox1);
+        jComboBox1.setBounds(110, 200, 120, 20);
 
-        L_Apellido1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        L_Apellido1.setText("Apellido 1:");
-        getContentPane().add(L_Apellido1);
-        L_Apellido1.setBounds(180, 100, 80, 17);
+        TF_Nombre2.setBackground(new java.awt.Color(153, 255, 153));
+        getContentPane().add(TF_Nombre2);
+        TF_Nombre2.setBounds(110, 150, 180, 30);
 
-        L_Apellido2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        L_Apellido2.setText("Apellido 2: ");
-        getContentPane().add(L_Apellido2);
-        L_Apellido2.setBounds(340, 100, 90, 17);
+        L_Nombre2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        L_Nombre2.setText("Contraseña:");
+        getContentPane().add(L_Nombre2);
+        L_Nombre2.setBounds(20, 110, 80, 28);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Registro/Fondo.jpg"))); // NOI18N
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(0, 0, 560, 350);
+        jLabel1.setBounds(0, 0, 400, 310);
 
         jMenuBar1.setBackground(new java.awt.Color(255, 255, 255));
         jMenuBar1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -344,8 +332,12 @@ public class RegistroDesercion extends javax.swing.JFrame {
 
     private void B_RegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_RegistrarActionPerformed
         // TODO add your handling code here:
-        dispose();
-        
+        if (TF_Nombre.getText().length()==0){
+            JOptionPane.showMessageDialog(this, "Debe de llenar todos los campos obligatorios.",null,JOptionPane.ERROR_MESSAGE); 
+        }
+        else{
+            InsertUsuario();
+        }
     }//GEN-LAST:event_B_RegistrarActionPerformed
 
     private void Re_ActividadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Re_ActividadActionPerformed
@@ -459,14 +451,26 @@ public class RegistroDesercion extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(RegistroDesercion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegistroUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(RegistroDesercion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegistroUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(RegistroDesercion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegistroUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(RegistroDesercion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegistroUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -475,7 +479,7 @@ public class RegistroDesercion extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new RegistroDesercion().setVisible(true);
+                new RegistroUsuario().setVisible(true);
             }
         });
     }
@@ -487,14 +491,9 @@ public class RegistroDesercion extends javax.swing.JFrame {
     private javax.swing.JMenuItem Admi_Puesto1;
     private javax.swing.JMenuItem Admi_tipoEvento;
     private javax.swing.JButton B_Registrar;
-    private javax.swing.JComboBox<String> CB_Curso;
-    private javax.swing.JComboBox<String> CB_Identificacion;
-    private javax.swing.JLabel L_Apellido1;
-    private javax.swing.JLabel L_Apellido2;
-    private javax.swing.JLabel L_Curso;
-    private javax.swing.JLabel L_Identificacion;
-    private javax.swing.JLabel L_Motivo;
     private javax.swing.JLabel L_Nombre;
+    private javax.swing.JLabel L_Nombre1;
+    private javax.swing.JLabel L_Nombre2;
     private javax.swing.JMenuItem Re_Actividad;
     private javax.swing.JMenuItem Re_Curso;
     private javax.swing.JMenuItem Re_Empleado;
@@ -502,11 +501,11 @@ public class RegistroDesercion extends javax.swing.JFrame {
     private javax.swing.JMenuItem Re_Persona;
     private javax.swing.JMenuItem Re_Persona1;
     private javax.swing.JMenuItem Re_desercion;
-    private javax.swing.JScrollPane SP_Descripcion;
-    private javax.swing.JTextField TF_Apellido1;
-    private javax.swing.JTextField TF_Apellido2;
     private javax.swing.JTextField TF_Nombre;
-    private javax.swing.JLabel Titulo_Registro_de_Desercion;
+    private javax.swing.JTextField TF_Nombre1;
+    private javax.swing.JTextField TF_Nombre2;
+    private javax.swing.JLabel Titulo_Registro_de_Puesto;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu10;
@@ -518,6 +517,5 @@ public class RegistroDesercion extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
-    private javax.swing.JTextArea jTextArea1;
     // End of variables declaration//GEN-END:variables
 }

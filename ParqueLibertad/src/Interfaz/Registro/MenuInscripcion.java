@@ -10,7 +10,7 @@ import Interfaz.Registro.RegistroClase;
 import Interfaz.Registro.RegistroDesercion;
 import Interfaz.Registro.RegistroEmpleado;
 import Interfaz.Registro.RegistroEvento;
-import Interfaz.Menu;
+
 import Interfaz.Registro.RegistroActividad;
 import Interfaz.Registro.RegistroClase;
 
@@ -103,8 +103,7 @@ public class MenuInscripcion extends javax.swing.JFrame {
 
     private void B_AtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_AtrasActionPerformed
         // TODO add your handling code here:
-        dispose();
-        new MenuRegistro().setVisible(true);
+        
     }//GEN-LAST:event_B_AtrasActionPerformed
 
     /**
