@@ -170,7 +170,11 @@ public class RegistroPersonas extends javax.swing.JFrame {
                 proc.setInt(6, tipo);
                 proc.setInt(7,idDistrito);
                 proc.execute();
-                System.out.println("Persona ingresada");
+                JOptionPane.showMessageDialog(this, "Persona Registrada Exitosamente",null,JOptionPane.INFORMATION_MESSAGE);
+                TF_Nombre.setText("");
+                TF_Apellido1.setText("");
+                TF_Apellido2.setText("");
+                jTextArea1.setText("");
                 con.close();
             } catch (SQLException ex) {
                 Logger.getLogger(RegistroPersonas.class.getName()).log(Level.SEVERE, null, ex);
@@ -213,7 +217,7 @@ public class RegistroPersonas extends javax.swing.JFrame {
                 proc.setInt(1, identificacion);
                 proc.setInt(2, idNacionalidad);
                 proc.execute();
-                System.out.println("Registro Nacionalidad Exitoso");
+                
                 
             } catch (SQLException ex) {
                 Logger.getLogger(RegistroPersonas.class.getName()).log(Level.SEVERE, null, ex);
@@ -260,9 +264,10 @@ public class RegistroPersonas extends javax.swing.JFrame {
         Titulo_Registro_de_Persona = new javax.swing.JLabel();
         CB_Distrito = new javax.swing.JComboBox<>();
         L_Canton1 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         Re_Actividad = new javax.swing.JMenuItem();
@@ -408,7 +413,7 @@ public class RegistroPersonas extends javax.swing.JFrame {
             }
         });
         getContentPane().add(B_Registrar);
-        B_Registrar.setBounds(450, 370, 110, 40);
+        B_Registrar.setBounds(440, 290, 110, 40);
 
         L_Nombre.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         L_Nombre.setText("Nombre: ");
@@ -469,17 +474,26 @@ public class RegistroPersonas extends javax.swing.JFrame {
         L_Canton1.setText("Cantón: ");
         getContentPane().add(L_Canton1);
         L_Canton1.setBounds(276, 201, 61, 15);
-
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Registro/Fondo.jpg"))); // NOI18N
-        getContentPane().add(jLabel1);
-        jLabel1.setBounds(0, -10, 590, 380);
         getContentPane().add(jLabel2);
         jLabel2.setBounds(30, 390, 0, 0);
 
-        jLabel3.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel3.setOpaque(true);
-        getContentPane().add(jLabel3);
-        jLabel3.setBounds(0, 360, 590, 80);
+        jButton1.setText("Modificar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1);
+        jButton1.setBounds(440, 350, 110, 50);
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Registro/Fondo.jpg"))); // NOI18N
+        getContentPane().add(jLabel4);
+        jLabel4.setBounds(0, 40, 600, 380);
+
+        jLabel1.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel1.setOpaque(true);
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(0, 0, 590, 50);
 
         jMenuBar1.setBackground(new java.awt.Color(255, 255, 255));
         jMenuBar1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -832,6 +846,30 @@ public class RegistroPersonas extends javax.swing.JFrame {
         new Interfaz.Inicio().setVisible(true);
         dispose();
     }//GEN-LAST:event_Admi_Puesto1ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        if (TF_Nombre.getText().length()>0 || TF_Apellido1.getText().length()>0 || TF_Apellido2.getText().length()>0 ){
+            int response = JOptionPane.showConfirmDialog(null, "Se perderán todo los datos desea continuar?", "Confirmación",JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+            switch (response) {
+                case JOptionPane.NO_OPTION:
+                    break;
+                case JOptionPane.YES_OPTION:
+                    new Interfaz.Modificaciones.ModificarPersonas().setVisible(true);
+                    dispose();
+                    break;
+                case JOptionPane.CLOSED_OPTION:
+                    break;
+                default:
+                    break;
+            }
+        
+        }else{
+            new Interfaz.Modificaciones.ModificarPersonas().setVisible(true);
+            dispose();
+        }
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
         
     /**
      * @param args the command line arguments
@@ -907,9 +945,10 @@ public class RegistroPersonas extends javax.swing.JFrame {
     private javax.swing.JTextField TF_Nombre;
     private javax.swing.JLabel Titulo_Registro_de_Persona;
     private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu10;
     private javax.swing.JMenu jMenu12;

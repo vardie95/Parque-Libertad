@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Interfaz.Registro;
+package Interfaz.Modificaciones;
 
+import Interfaz.Registro.*;
 import java.sql.CallableStatement;
 
 import java.lang.Object;
@@ -26,13 +27,13 @@ import parquelibertad.dbConnection;
  *
  * @author Luis Diego
  */
-public class RegistroEmpleado extends javax.swing.JFrame {
+public class ModificarEmpleado extends javax.swing.JFrame {
         Connection con=null;
         String direccionArchivo=null;
     /**
      * Creates new form RegistroCurso
      */
-    public RegistroEmpleado() {
+    public ModificarEmpleado() {
         initComponents();
         con=dbConnection.conectDB();
         llenarpuesto();
@@ -40,7 +41,7 @@ public class RegistroEmpleado extends javax.swing.JFrame {
             try {
                 con.close();
             } catch (SQLException ex) {
-                Logger.getLogger(RegistroEmpleado.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(ModificarEmpleado.class.getName()).log(Level.SEVERE, null, ex);
             }
     }
     public final  void llenarpuesto() {
@@ -55,7 +56,7 @@ public class RegistroEmpleado extends javax.swing.JFrame {
                    CB_Puesto.addItem(rs.getString(1));
                 }
             } catch (SQLException ex) {
-                Logger.getLogger(RegistroEmpleado.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(ModificarEmpleado.class.getName()).log(Level.SEVERE, null, ex);
             }
     }
     public final  void llenaridentificacion() {
@@ -63,7 +64,7 @@ public class RegistroEmpleado extends javax.swing.JFrame {
         CB_Identificacion.addItem("Seleccione Identificacion");
             try {
                  
-                CallableStatement cstmt = con.prepareCall("{call get_idPersona(?)}");
+                CallableStatement cstmt = con.prepareCall("{call get_idEmpleado(?)}");
                 cstmt.registerOutParameter(1, oracle.jdbc.OracleTypes.CURSOR);
                 cstmt.execute();
                 ResultSet rs = (ResultSet)cstmt.getObject(1);
@@ -71,7 +72,7 @@ public class RegistroEmpleado extends javax.swing.JFrame {
                    CB_Identificacion.addItem(rs.getString(1));
                 }
             } catch (SQLException ex) {
-                Logger.getLogger(RegistroEmpleado.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(ModificarEmpleado.class.getName()).log(Level.SEVERE, null, ex);
             
     }
     }
@@ -89,7 +90,7 @@ public class RegistroEmpleado extends javax.swing.JFrame {
                 idPuesto = cstmt.getInt(1);
                 System.out.println(idPuesto);
             } catch (SQLException ex) {
-                Logger.getLogger(RegistroEmpleado.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(ModificarEmpleado.class.getName()).log(Level.SEVERE, null, ex);
             }
         
           return idPuesto;
@@ -108,15 +109,18 @@ public class RegistroEmpleado extends javax.swing.JFrame {
            java.sql.Date fechaIngreso=new java.sql.Date(fecha.getTime());
            if(direccionArchivo!=null){
                try {
-                   CallableStatement proc= con.prepareCall("{call insertEmpleado(?,?,?,?)}");
+                   CallableStatement proc= con.prepareCall("{call modificarEmpleado(?,?,?,?)}");
                    proc.setInt(1, identificacion);
                    proc.setInt(2, idPuesto);
                    proc.setDate(3,fechaIngreso);
                    proc.setString(4, direccionArchivo);
                    proc.execute();
-                   JOptionPane.showMessageDialog(this, "Empleado Agregado Exitosamente",null,JOptionPane.INFORMATION_MESSAGE);
+                   JOptionPane.showMessageDialog(this, "Empleado Modificado Exitosamente",null,JOptionPane.INFORMATION_MESSAGE);
+                   TF_Nombre.setText("");
+                   TF_Apellido1.setText("");
+                   TF_Apellido2.setText("");
                } catch (SQLException ex) {
-                   Logger.getLogger(RegistroEmpleado.class.getName()).log(Level.SEVERE, null, ex);
+                   Logger.getLogger(ModificarEmpleado.class.getName()).log(Level.SEVERE, null, ex);
                }
            
            }
@@ -187,29 +191,7 @@ public class RegistroEmpleado extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
-        jLabel5 = new javax.swing.JLabel();
-        jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        Re_Actividad = new javax.swing.JMenuItem();
-        Re_Curso1 = new javax.swing.JMenuItem();
-        Re_desercion1 = new javax.swing.JMenuItem();
-        Re_Empleado1 = new javax.swing.JMenuItem();
-        Re_Evento1 = new javax.swing.JMenuItem();
-        Re_Persona3 = new javax.swing.JMenuItem();
-        Re_Persona1 = new javax.swing.JMenuItem();
-        jMenu13 = new javax.swing.JMenu();
-        Admi_Curso3 = new javax.swing.JMenuItem();
-        Admi_Puesto3 = new javax.swing.JMenuItem();
-        Admi_tipoEvento1 = new javax.swing.JMenuItem();
-        jMenu5 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenuItem3 = new javax.swing.JMenuItem();
-        jMenuItem4 = new javax.swing.JMenuItem();
-        jMenuItem5 = new javax.swing.JMenuItem();
-        jMenu12 = new javax.swing.JMenu();
-        Admi_Curso1 = new javax.swing.JMenuItem();
-        Admi_Puesto1 = new javax.swing.JMenuItem();
+        jLabel2 = new javax.swing.JLabel();
 
         jMenuBar2.setBackground(new java.awt.Color(255, 255, 255));
         jMenuBar2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -570,17 +552,17 @@ public class RegistroEmpleado extends javax.swing.JFrame {
         getContentPane().add(L_Foto);
         L_Foto.setBounds(30, 210, 58, 28);
 
-        B_Registrar.setText("Registrar");
+        B_Registrar.setText("Modificar");
         B_Registrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 B_RegistrarActionPerformed(evt);
             }
         });
         getContentPane().add(B_Registrar);
-        B_Registrar.setBounds(380, 230, 110, 40);
+        B_Registrar.setBounds(400, 250, 110, 40);
 
         Titulo_Registro_de_Empleado.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        Titulo_Registro_de_Empleado.setText("Registro de Empleado");
+        Titulo_Registro_de_Empleado.setText("Modificar  Empleado");
         getContentPane().add(Titulo_Registro_de_Empleado);
         Titulo_Registro_de_Empleado.setBounds(180, 20, 180, 22);
 
@@ -654,210 +636,20 @@ public class RegistroEmpleado extends javax.swing.JFrame {
         jLabel4.setBackground(new java.awt.Color(255, 255, 255));
         jLabel4.setOpaque(true);
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(0, 0, 560, 100);
+        jLabel4.setBounds(0, 0, 560, 140);
 
-        jButton3.setText("Modificar");
+        jButton3.setText("Volver");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
             }
         });
         getContentPane().add(jButton3);
-        jButton3.setBounds(380, 320, 110, 40);
+        jButton3.setBounds(400, 320, 110, 50);
 
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Registro/Fondo.jpg"))); // NOI18N
-        getContentPane().add(jLabel5);
-        jLabel5.setBounds(0, 90, 560, 350);
-
-        jMenuBar1.setBackground(new java.awt.Color(255, 255, 255));
-        jMenuBar1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jMenuBar1.setPreferredSize(new java.awt.Dimension(106, 50));
-
-        jMenu1.setBackground(new java.awt.Color(204, 255, 204));
-        jMenu1.setText("    Registro");
-        jMenu1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jMenu1.setFocusPainted(true);
-        jMenu1.setFont(new java.awt.Font("MS Reference Sans Serif", 1, 13)); // NOI18N
-        jMenu1.setPreferredSize(new java.awt.Dimension(180, 19));
-
-        Re_Actividad.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.CTRL_MASK));
-        Re_Actividad.setText("Actividad");
-        Re_Actividad.setName("Regis_curso"); // NOI18N
-        Re_Actividad.setPreferredSize(new java.awt.Dimension(137, 40));
-        Re_Actividad.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Re_ActividadActionPerformed(evt);
-            }
-        });
-        jMenu1.add(Re_Actividad);
-
-        Re_Curso1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.CTRL_MASK));
-        Re_Curso1.setText("Clase");
-        Re_Curso1.setName("Regis_curso"); // NOI18N
-        Re_Curso1.setPreferredSize(new java.awt.Dimension(137, 40));
-        Re_Curso1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Re_Curso1ActionPerformed(evt);
-            }
-        });
-        jMenu1.add(Re_Curso1);
-
-        Re_desercion1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_D, java.awt.event.InputEvent.CTRL_MASK));
-        Re_desercion1.setText("Deserción");
-        Re_desercion1.setPreferredSize(new java.awt.Dimension(137, 40));
-        Re_desercion1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Re_desercion1ActionPerformed(evt);
-            }
-        });
-        jMenu1.add(Re_desercion1);
-
-        Re_Empleado1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.CTRL_MASK));
-        Re_Empleado1.setText("Empleado");
-        Re_Empleado1.setPreferredSize(new java.awt.Dimension(137, 40));
-        Re_Empleado1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Re_Empleado1ActionPerformed(evt);
-            }
-        });
-        jMenu1.add(Re_Empleado1);
-
-        Re_Evento1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_N, java.awt.event.InputEvent.CTRL_MASK));
-        Re_Evento1.setText("Evento");
-        Re_Evento1.setPreferredSize(new java.awt.Dimension(137, 40));
-        Re_Evento1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Re_Evento1ActionPerformed(evt);
-            }
-        });
-        jMenu1.add(Re_Evento1);
-
-        Re_Persona3.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.CTRL_MASK));
-        Re_Persona3.setText("Persona");
-        Re_Persona3.setPreferredSize(new java.awt.Dimension(137, 40));
-        Re_Persona3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Re_Persona3ActionPerformed(evt);
-            }
-        });
-        jMenu1.add(Re_Persona3);
-
-        Re_Persona1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.CTRL_MASK));
-        Re_Persona1.setText("Usuario");
-        Re_Persona1.setPreferredSize(new java.awt.Dimension(137, 40));
-        Re_Persona1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Re_Persona1ActionPerformed(evt);
-            }
-        });
-        jMenu1.add(Re_Persona1);
-
-        jMenuBar1.add(jMenu1);
-
-        jMenu13.setText("     Administrar");
-        jMenu13.setFont(new java.awt.Font("MS Reference Sans Serif", 1, 13)); // NOI18N
-        jMenu13.setPreferredSize(new java.awt.Dimension(180, 35));
-
-        Admi_Curso3.setText("Curso");
-        Admi_Curso3.setFocusCycleRoot(true);
-        Admi_Curso3.setPreferredSize(new java.awt.Dimension(140, 30));
-        Admi_Curso3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Admi_Curso3ActionPerformed(evt);
-            }
-        });
-        jMenu13.add(Admi_Curso3);
-
-        Admi_Puesto3.setText("Puesto");
-        Admi_Puesto3.setPreferredSize(new java.awt.Dimension(140, 30));
-        Admi_Puesto3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Admi_Puesto3ActionPerformed(evt);
-            }
-        });
-        jMenu13.add(Admi_Puesto3);
-
-        Admi_tipoEvento1.setText("Tipo Evento");
-        Admi_tipoEvento1.setPreferredSize(new java.awt.Dimension(140, 30));
-        Admi_tipoEvento1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Admi_tipoEvento1ActionPerformed(evt);
-            }
-        });
-        jMenu13.add(Admi_tipoEvento1);
-
-        jMenu5.setText("Lugar");
-
-        jMenuItem1.setText("País");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
-            }
-        });
-        jMenu5.add(jMenuItem1);
-
-        jMenuItem2.setText("Provincia");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
-            }
-        });
-        jMenu5.add(jMenuItem2);
-
-        jMenuItem3.setText("Canton");
-        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem3ActionPerformed(evt);
-            }
-        });
-        jMenu5.add(jMenuItem3);
-
-        jMenuItem4.setText("Distrito");
-        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem4ActionPerformed(evt);
-            }
-        });
-        jMenu5.add(jMenuItem4);
-
-        jMenu13.add(jMenu5);
-
-        jMenuItem5.setText("Horario");
-        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem5ActionPerformed(evt);
-            }
-        });
-        jMenu13.add(jMenuItem5);
-
-        jMenuBar1.add(jMenu13);
-
-        jMenu12.setText("       Sesión");
-        jMenu12.setFont(new java.awt.Font("MS Reference Sans Serif", 1, 13)); // NOI18N
-        jMenu12.setPreferredSize(new java.awt.Dimension(180, 35));
-
-        Admi_Curso1.setText("Modo Usuario");
-        Admi_Curso1.setFocusCycleRoot(true);
-        Admi_Curso1.setPreferredSize(new java.awt.Dimension(140, 30));
-        Admi_Curso1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Admi_Curso1ActionPerformed(evt);
-            }
-        });
-        jMenu12.add(Admi_Curso1);
-
-        Admi_Puesto1.setText("Cerrar Sesión");
-        Admi_Puesto1.setPreferredSize(new java.awt.Dimension(140, 30));
-        Admi_Puesto1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Admi_Puesto1ActionPerformed(evt);
-            }
-        });
-        jMenu12.add(Admi_Puesto1);
-
-        jMenuBar1.add(jMenu12);
-
-        setJMenuBar(jMenuBar1);
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Registro/Fondo.jpg"))); // NOI18N
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(0, 130, 560, 360);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -1085,9 +877,22 @@ public class RegistroEmpleado extends javax.swing.JFrame {
                 cstmt3.setInt(2,aux);
                 cstmt3.execute();
                 TF_Apellido2.setText(cstmt3.getString(1));
-                con.close();
+                con=dbConnection.conectDB();
+                CallableStatement cstmt4 = con.prepareCall("{call get_DatosEmpleado(?,?)}");
+                int identificacion=Integer.parseInt(CB_Identificacion.getSelectedItem().toString());
+                cstmt4.registerOutParameter(1, oracle.jdbc.OracleTypes.CURSOR);
+                cstmt4.setInt(2, identificacion);
+                cstmt4.execute();
+                ResultSet rs = (ResultSet)cstmt4.getObject(1);
+                while(rs.next()){
+                    CB_Puesto.setSelectedItem(rs.getString(2));
+                    direccionArchivo= rs.getString(1); 
+                }
+               
+                ImageIcon image= new ImageIcon(direccionArchivo);
+                jLabel1.setIcon(image);   
             } catch (SQLException ex) {
-                Logger.getLogger(RegistroEmpleado.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(ModificarEmpleado.class.getName()).log(Level.SEVERE, null, ex);
             }
             }
     }//GEN-LAST:event_jButton2ActionPerformed
@@ -1108,108 +913,6 @@ public class RegistroEmpleado extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_B_Escoger_ImagenActionPerformed
 
-    private void Re_ActividadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Re_ActividadActionPerformed
-        // TODO add your handling code here:
-        new Interfaz.Registro.RegistroActividad().setVisible(true);
-        dispose();
-    }//GEN-LAST:event_Re_ActividadActionPerformed
-
-    private void Re_Curso1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Re_Curso1ActionPerformed
-        // TODO add your handling code here:
-        new Interfaz.Registro.RegistroClase().setVisible(true);
-        dispose();
-    }//GEN-LAST:event_Re_Curso1ActionPerformed
-
-    private void Re_desercion1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Re_desercion1ActionPerformed
-        // TODO add your handling code here:
-        new Interfaz.Registro.RegistroDesercion().setVisible(true);
-        dispose();
-    }//GEN-LAST:event_Re_desercion1ActionPerformed
-
-    private void Re_Empleado1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Re_Empleado1ActionPerformed
-        // TODO add your handling code here:
-        new Interfaz.Registro.RegistroEmpleado().setVisible(true);
-        dispose();
-    }//GEN-LAST:event_Re_Empleado1ActionPerformed
-
-    private void Re_Evento1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Re_Evento1ActionPerformed
-        // TODO add your handling code here:
-        new Interfaz.Registro.RegistroEvento().setVisible(true);
-        dispose();
-    }//GEN-LAST:event_Re_Evento1ActionPerformed
-
-    private void Re_Persona3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Re_Persona3ActionPerformed
-        // TODO add your handling code here:
-        new Interfaz.Registro.RegistroPersonas().setVisible(true);
-        dispose();
-    }//GEN-LAST:event_Re_Persona3ActionPerformed
-
-    private void Re_Persona1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Re_Persona1ActionPerformed
-        // TODO add your handling code here:
-        new Administrador.RegistroUsuario().setVisible(true);
-        dispose();
-    }//GEN-LAST:event_Re_Persona1ActionPerformed
-
-    private void Admi_Curso3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Admi_Curso3ActionPerformed
-        // TODO add your handling code here:
-        new Interfaz.Registro.RegistroCurso().setVisible(true);
-        dispose();
-    }//GEN-LAST:event_Admi_Curso3ActionPerformed
-
-    private void Admi_Puesto3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Admi_Puesto3ActionPerformed
-        // TODO add your handling code here:
-        new Administrador.RegistroPais().setVisible(true);
-        dispose();
-    }//GEN-LAST:event_Admi_Puesto3ActionPerformed
-
-    private void Admi_tipoEvento1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Admi_tipoEvento1ActionPerformed
-        // TODO add your handling code here:
-        new Interfaz.Registro.RegistroTipoEvento().setVisible(true);
-        dispose();
-    }//GEN-LAST:event_Admi_tipoEvento1ActionPerformed
-
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        // TODO add your handling code here:
-        new Administrador.RegistroPais().setVisible(true);
-        dispose();
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
-
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-        // TODO add your handling code here:
-        new Administrador.RegistroProvincia().setVisible(true);
-        dispose();
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
-
-    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
-        // TODO add your handling code here:
-        new Administrador.RegistroCanton().setVisible(true);
-        dispose();
-    }//GEN-LAST:event_jMenuItem3ActionPerformed
-
-    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
-        // TODO add your handling code here:
-        new Administrador.RegistroDistrito().setVisible(true);
-        dispose();
-    }//GEN-LAST:event_jMenuItem4ActionPerformed
-
-    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
-        // TODO add your handling code here:
-        new Administrador.RegistroHorario().setVisible(true);
-        dispose();
-    }//GEN-LAST:event_jMenuItem5ActionPerformed
-
-    private void Admi_Curso1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Admi_Curso1ActionPerformed
-        // TODO add your handling code here:
-        new Interfaz.Registro.InscripcionClase().setVisible(true);
-        dispose();
-    }//GEN-LAST:event_Admi_Curso1ActionPerformed
-
-    private void Admi_Puesto1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Admi_Puesto1ActionPerformed
-        // TODO add your handling code here:
-        new Interfaz.Inicio().setVisible(true);
-        dispose();
-    }//GEN-LAST:event_Admi_Puesto1ActionPerformed
-
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
         if (TF_Nombre.getText().length()>0 || TF_Apellido1.getText().length()>0 || TF_Apellido2.getText().length()>0 ){
@@ -1218,7 +921,7 @@ public class RegistroEmpleado extends javax.swing.JFrame {
                 case JOptionPane.NO_OPTION:
                 break;
                 case JOptionPane.YES_OPTION:
-                new Interfaz.Modificaciones.ModificarEmpleado().setVisible(true);
+                new Interfaz.Registro.RegistroEmpleado().setVisible(true);
                 dispose();
                 break;
                 case JOptionPane.CLOSED_OPTION:
@@ -1228,7 +931,7 @@ public class RegistroEmpleado extends javax.swing.JFrame {
             }
 
         }else{
-            new Interfaz.Modificaciones.ModificarEmpleado().setVisible(true);
+            new Interfaz.Registro.RegistroEmpleado().setVisible(true);
             dispose();
         }
 
@@ -1251,14 +954,46 @@ public class RegistroEmpleado extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(RegistroEmpleado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ModificarEmpleado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(RegistroEmpleado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ModificarEmpleado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(RegistroEmpleado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ModificarEmpleado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(RegistroEmpleado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ModificarEmpleado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -1295,20 +1030,15 @@ public class RegistroEmpleado extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new RegistroEmpleado().setVisible(true);
+                new ModificarEmpleado().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem Admi_Curso;
-    private javax.swing.JMenuItem Admi_Curso1;
-    private javax.swing.JMenuItem Admi_Curso3;
     private javax.swing.JMenuItem Admi_Puesto;
-    private javax.swing.JMenuItem Admi_Puesto1;
-    private javax.swing.JMenuItem Admi_Puesto3;
     private javax.swing.JMenuItem Admi_tipoEvento;
-    private javax.swing.JMenuItem Admi_tipoEvento1;
     private javax.swing.JButton B_Escoger_Imagen;
     private javax.swing.JButton B_Registrar;
     private javax.swing.JComboBox<String> CB_Identificacion;
@@ -1333,19 +1063,12 @@ public class RegistroEmpleado extends javax.swing.JFrame {
     private javax.swing.JLabel L_Identificacion;
     private javax.swing.JLabel L_Nombre;
     private javax.swing.JLabel L_Puesto;
-    private javax.swing.JMenuItem Re_Actividad;
     private javax.swing.JMenuItem Re_Actividad1;
     private javax.swing.JMenuItem Re_Curso;
-    private javax.swing.JMenuItem Re_Curso1;
     private javax.swing.JMenuItem Re_Empleado;
-    private javax.swing.JMenuItem Re_Empleado1;
     private javax.swing.JMenuItem Re_Evento;
-    private javax.swing.JMenuItem Re_Evento1;
     private javax.swing.JMenuItem Re_Persona;
-    private javax.swing.JMenuItem Re_Persona1;
-    private javax.swing.JMenuItem Re_Persona3;
     private javax.swing.JMenuItem Re_desercion;
-    private javax.swing.JMenuItem Re_desercion1;
     private javax.swing.JTextField TF_Apellido1;
     private javax.swing.JTextField TF_Apellido2;
     private javax.swing.JTextField TF_Nombre;
@@ -1359,27 +1082,17 @@ public class RegistroEmpleado extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu10;
     private javax.swing.JMenu jMenu11;
-    private javax.swing.JMenu jMenu12;
-    private javax.swing.JMenu jMenu13;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
-    private javax.swing.JMenu jMenu5;
     private javax.swing.JMenu jMenu7;
     private javax.swing.JMenu jMenu8;
     private javax.swing.JMenu jMenu9;
-    private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuBar jMenuBar2;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JMenuItem jMenuItem5;
     // End of variables declaration//GEN-END:variables
 }
