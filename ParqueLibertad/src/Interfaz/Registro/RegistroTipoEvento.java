@@ -102,7 +102,7 @@ public class RegistroTipoEvento extends javax.swing.JFrame {
         jMenuBar1.setPreferredSize(new java.awt.Dimension(106, 50));
 
         jMenu1.setBackground(new java.awt.Color(204, 255, 204));
-        jMenu1.setText("     Registro");
+        jMenu1.setText("    Registro");
         jMenu1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jMenu1.setFocusPainted(true);
         jMenu1.setFont(new java.awt.Font("MS Reference Sans Serif", 1, 13)); // NOI18N
@@ -182,7 +182,7 @@ public class RegistroTipoEvento extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu1);
 
-        jMenu10.setText("    Administrar");
+        jMenu10.setText("     Administrar");
         jMenu10.setFont(new java.awt.Font("MS Reference Sans Serif", 1, 13)); // NOI18N
         jMenu10.setPreferredSize(new java.awt.Dimension(180, 35));
 
@@ -251,6 +251,11 @@ public class RegistroTipoEvento extends javax.swing.JFrame {
         jMenu10.add(jMenu2);
 
         jMenuItem5.setText("Horario");
+        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem5ActionPerformed(evt);
+            }
+        });
         jMenu10.add(jMenuItem5);
 
         jMenuBar1.add(jMenu10);
@@ -348,6 +353,8 @@ public class RegistroTipoEvento extends javax.swing.JFrame {
 
     private void Re_Persona1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Re_Persona1ActionPerformed
         // TODO add your handling code here:
+        new Administrador.RegistroUsuario().setVisible(true);
+        dispose();
     }//GEN-LAST:event_Re_Persona1ActionPerformed
 
     private void Admi_CursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Admi_CursoActionPerformed
@@ -391,6 +398,12 @@ public class RegistroTipoEvento extends javax.swing.JFrame {
         new Administrador.RegistroDistrito().setVisible(true);
         dispose();
     }//GEN-LAST:event_jMenuItem4ActionPerformed
+
+    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+        // TODO add your handling code here:
+        new Administrador.RegistroHorario().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jMenuItem5ActionPerformed
 
     private void Admi_Curso1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Admi_Curso1ActionPerformed
         // TODO add your handling code here:

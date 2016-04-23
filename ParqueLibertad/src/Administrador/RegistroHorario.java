@@ -37,11 +37,11 @@ public class RegistroHorario extends javax.swing.JFrame {
     private void initComponents() {
 
         B_Registrar = new javax.swing.JButton();
-        Titulo_Registro_de_Puesto = new javax.swing.JLabel();
         CB_Curso2 = new javax.swing.JComboBox<>();
         Titulo_Registro_de_Puesto1 = new javax.swing.JLabel();
         Titulo_Registro_de_Puesto2 = new javax.swing.JLabel();
-        jFormattedTextField1 = new javax.swing.JFormattedTextField();
+        jFormattedTextField2 = new javax.swing.JFormattedTextField();
+        Titulo_Registro_de_Puesto3 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
@@ -82,11 +82,6 @@ public class RegistroHorario extends javax.swing.JFrame {
         getContentPane().add(B_Registrar);
         B_Registrar.setBounds(250, 170, 90, 40);
 
-        Titulo_Registro_de_Puesto.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        Titulo_Registro_de_Puesto.setText("Hora:");
-        getContentPane().add(Titulo_Registro_de_Puesto);
-        Titulo_Registro_de_Puesto.setBounds(70, 120, 40, 17);
-
         CB_Curso2.setBackground(new java.awt.Color(204, 255, 204));
         CB_Curso2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado", "Domingo" }));
         CB_Curso2.addActionListener(new java.awt.event.ActionListener() {
@@ -107,26 +102,36 @@ public class RegistroHorario extends javax.swing.JFrame {
         getContentPane().add(Titulo_Registro_de_Puesto2);
         Titulo_Registro_de_Puesto2.setBounds(80, 70, 40, 17);
 
-        jFormattedTextField1.setBackground(new java.awt.Color(153, 255, 153));
-        jFormattedTextField1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("##:##"))));
-        jFormattedTextField1.addActionListener(new java.awt.event.ActionListener() {
+        jFormattedTextField2.setBackground(new java.awt.Color(153, 255, 153));
+        try {
+            jFormattedTextField2.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##:## a ##:##")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        jFormattedTextField2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jFormattedTextField1ActionPerformed(evt);
+                jFormattedTextField2ActionPerformed(evt);
             }
         });
-        getContentPane().add(jFormattedTextField1);
-        jFormattedTextField1.setBounds(120, 120, 109, 20);
+        getContentPane().add(jFormattedTextField2);
+        jFormattedTextField2.setBounds(160, 120, 80, 20);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Registro/Fondo.jpg"))); // NOI18N
+        Titulo_Registro_de_Puesto3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        Titulo_Registro_de_Puesto3.setText("Hora:");
+        getContentPane().add(Titulo_Registro_de_Puesto3);
+        Titulo_Registro_de_Puesto3.setBounds(100, 120, 40, 17);
+
+        jLabel1.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel1.setOpaque(true);
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(0, 0, 390, 270);
+        jLabel1.setBounds(0, 0, 390, 280);
 
         jMenuBar1.setBackground(new java.awt.Color(255, 255, 255));
         jMenuBar1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jMenuBar1.setPreferredSize(new java.awt.Dimension(106, 50));
 
         jMenu1.setBackground(new java.awt.Color(204, 255, 204));
-        jMenu1.setText("     Registro");
+        jMenu1.setText("    Registro");
         jMenu1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jMenu1.setFocusPainted(true);
         jMenu1.setFont(new java.awt.Font("MS Reference Sans Serif", 1, 13)); // NOI18N
@@ -206,7 +211,7 @@ public class RegistroHorario extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu1);
 
-        jMenu10.setText("   Administrar");
+        jMenu10.setText("     Administrar");
         jMenu10.setFont(new java.awt.Font("MS Reference Sans Serif", 1, 13)); // NOI18N
         jMenu10.setPreferredSize(new java.awt.Dimension(180, 35));
 
@@ -317,7 +322,7 @@ public class RegistroHorario extends javax.swing.JFrame {
     
     public void InsertHorario(){
         Connection con= null;
-            String Horario=jFormattedTextField1.getText();
+            String Horario=jFormattedTextField2.getText();
             String dia=CB_Curso2.getSelectedItem().toString();
             con= parquelibertad.dbConnection.conectDB();
             try {
@@ -326,7 +331,7 @@ public class RegistroHorario extends javax.swing.JFrame {
                 proc.setString(2, Horario);
                 proc.execute();
                 JOptionPane.showMessageDialog(this, "Horario Agregado Exitosamente",null,JOptionPane.INFORMATION_MESSAGE);
-                jFormattedTextField1.setText("");
+                jFormattedTextField2.setText("");
                 con.close();
                 
             } catch (SQLException ex) {
@@ -336,7 +341,7 @@ public class RegistroHorario extends javax.swing.JFrame {
     }
     private void B_RegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_RegistrarActionPerformed
         // TODO add your handling code here:
-        if (jFormattedTextField1.getText().length()==0){
+        if (jFormattedTextField2.getText().length()==0){
             JOptionPane.showMessageDialog(this, "Debe de llenar todos los campos obligatorios.",null,JOptionPane.ERROR_MESSAGE); 
         }
         else{
@@ -354,9 +359,9 @@ public class RegistroHorario extends javax.swing.JFrame {
 
     }//GEN-LAST:event_CB_Curso2ActionPerformed
 
-    private void jFormattedTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormattedTextField1ActionPerformed
+    private void jFormattedTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormattedTextField2ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jFormattedTextField1ActionPerformed
+    }//GEN-LAST:event_jFormattedTextField2ActionPerformed
 
     private void Re_ActividadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Re_ActividadActionPerformed
         // TODO add your handling code here:
@@ -525,10 +530,10 @@ public class RegistroHorario extends javax.swing.JFrame {
     private javax.swing.JMenuItem Re_Persona;
     private javax.swing.JMenuItem Re_Persona1;
     private javax.swing.JMenuItem Re_desercion;
-    private javax.swing.JLabel Titulo_Registro_de_Puesto;
     private javax.swing.JLabel Titulo_Registro_de_Puesto1;
     private javax.swing.JLabel Titulo_Registro_de_Puesto2;
-    private javax.swing.JFormattedTextField jFormattedTextField1;
+    private javax.swing.JLabel Titulo_Registro_de_Puesto3;
+    private javax.swing.JFormattedTextField jFormattedTextField2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu10;

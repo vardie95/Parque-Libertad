@@ -5,6 +5,15 @@
  */
 package Interfaz.Registro;
 
+import java.sql.CallableStatement;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import parquelibertad.dbConnection;
+
 
 
 /**
@@ -12,12 +21,57 @@ package Interfaz.Registro;
  * @author Luis Diego
  */
 public class RegistroDesercion extends javax.swing.JFrame {
+    Connection con=null;
+    ArrayList llaves=new ArrayList();
+    
 
     /**
      * Creates new form RegistroCurso
      */
     public RegistroDesercion() {
         initComponents();
+        llenarClase();
+        llenaridentificacion();
+        
+    }
+    public final  void llenarClase()
+    {
+        CB_Curso.removeAllItems();
+        con= parquelibertad.dbConnection.conectDB();
+        CB_Curso.addItem("Seleccione un Curso");
+        llaves.clear();
+            try {
+                 
+                CallableStatement cstmt = con.prepareCall("{call get_Clase(?)}");
+                cstmt.registerOutParameter(1, oracle.jdbc.OracleTypes.CURSOR);
+                cstmt.execute();
+                ResultSet rs = (ResultSet)cstmt.getObject(1);
+                while(rs.next()){
+                   CB_Curso.addItem("Grupo: "+rs.getString(1)+"   "+rs.getString(2) );
+                   llaves.add(rs.getInt(1));
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(RegistroEstudiante.class.getName()).log(Level.SEVERE, null, ex);
+            }
+    }
+    
+    public final  void llenaridentificacion() {
+        con= parquelibertad.dbConnection.conectDB();
+        CB_Identificacion.removeAllItems();
+        CB_Identificacion.addItem("Seleccione Identificacion");
+            try {
+                 
+                CallableStatement cstmt = con.prepareCall("{call get_idEstudiante(?)}");
+                cstmt.registerOutParameter(1, oracle.jdbc.OracleTypes.CURSOR);
+                cstmt.execute();
+                ResultSet rs = (ResultSet)cstmt.getObject(1);
+                while(rs.next()){
+                   CB_Identificacion.addItem(rs.getString(1));
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(RegistroEmpleado.class.getName()).log(Level.SEVERE, null, ex);
+            
+    }
     }
 
     /**
@@ -44,6 +98,7 @@ public class RegistroDesercion extends javax.swing.JFrame {
         L_Nombre = new javax.swing.JLabel();
         L_Apellido1 = new javax.swing.JLabel();
         L_Apellido2 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
@@ -77,16 +132,16 @@ public class RegistroDesercion extends javax.swing.JFrame {
 
         CB_Identificacion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "123456789" }));
         getContentPane().add(CB_Identificacion);
-        CB_Identificacion.setBounds(200, 60, 164, 28);
+        CB_Identificacion.setBounds(154, 60, 210, 28);
 
         L_Identificacion.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         L_Identificacion.setText("Identificación:");
         getContentPane().add(L_Identificacion);
-        L_Identificacion.setBounds(90, 60, 100, 28);
+        L_Identificacion.setBounds(20, 60, 100, 28);
 
         CB_Curso.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nombre" }));
         getContentPane().add(CB_Curso);
-        CB_Curso.setBounds(130, 150, 146, 31);
+        CB_Curso.setBounds(130, 150, 350, 31);
 
         L_Curso.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         L_Curso.setText("Curso:");
@@ -150,16 +205,25 @@ public class RegistroDesercion extends javax.swing.JFrame {
         getContentPane().add(L_Apellido2);
         L_Apellido2.setBounds(340, 100, 90, 17);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Registro/Fondo.jpg"))); // NOI18N
+        jButton1.setText("Buscar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1);
+        jButton1.setBounds(380, 60, 80, 23);
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Registro/Fondo.png"))); // NOI18N
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(0, 0, 560, 350);
+        jLabel1.setBounds(0, 0, 540, 360);
 
         jMenuBar1.setBackground(new java.awt.Color(255, 255, 255));
         jMenuBar1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jMenuBar1.setPreferredSize(new java.awt.Dimension(106, 50));
 
-        jMenu1.setBackground(new java.awt.Color(204, 255, 204));
-        jMenu1.setText("     Registro");
+        jMenu1.setBackground(null);
+        jMenu1.setText("    Registro");
         jMenu1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jMenu1.setFocusPainted(true);
         jMenu1.setFont(new java.awt.Font("MS Reference Sans Serif", 1, 13)); // NOI18N
@@ -239,7 +303,8 @@ public class RegistroDesercion extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu1);
 
-        jMenu10.setText("    Administrar");
+        jMenu10.setBackground(null);
+        jMenu10.setText("     Administrar");
         jMenu10.setFont(new java.awt.Font("MS Reference Sans Serif", 1, 13)); // NOI18N
         jMenu10.setPreferredSize(new java.awt.Dimension(180, 35));
 
@@ -308,10 +373,16 @@ public class RegistroDesercion extends javax.swing.JFrame {
         jMenu10.add(jMenu2);
 
         jMenuItem5.setText("Horario");
+        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem5ActionPerformed(evt);
+            }
+        });
         jMenu10.add(jMenuItem5);
 
         jMenuBar1.add(jMenu10);
 
+        jMenu12.setBackground(null);
         jMenu12.setText("       Sesión");
         jMenu12.setFont(new java.awt.Font("MS Reference Sans Serif", 1, 13)); // NOI18N
         jMenu12.setPreferredSize(new java.awt.Dimension(180, 35));
@@ -386,6 +457,8 @@ public class RegistroDesercion extends javax.swing.JFrame {
 
     private void Re_Persona1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Re_Persona1ActionPerformed
         // TODO add your handling code here:
+        new Administrador.RegistroUsuario().setVisible(true);
+        dispose();
     }//GEN-LAST:event_Re_Persona1ActionPerformed
 
     private void Admi_CursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Admi_CursoActionPerformed
@@ -430,6 +503,12 @@ public class RegistroDesercion extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
+    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+        // TODO add your handling code here:
+        new Administrador.RegistroHorario().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jMenuItem5ActionPerformed
+
     private void Admi_Curso1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Admi_Curso1ActionPerformed
         // TODO add your handling code here:
         new Interfaz.Registro.InscripcionClase().setVisible(true);
@@ -441,6 +520,39 @@ public class RegistroDesercion extends javax.swing.JFrame {
         new Interfaz.Inicio().setVisible(true);
         dispose();
     }//GEN-LAST:event_Admi_Puesto1ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        con=dbConnection.conectDB();
+        if ((String)CB_Identificacion.getSelectedItem()!="Seleccione Identificacion")
+        {
+
+            try {
+                CallableStatement cstmt = con.prepareCall("{?=call consulta_nombre (?)}");
+                TF_Nombre.setText((String)CB_Identificacion.getSelectedItem());
+                cstmt.registerOutParameter(1, oracle.jdbc.OracleTypes.VARCHAR);
+                int aux=Integer.parseInt(TF_Nombre.getText());
+                cstmt.setInt(2,aux);
+                cstmt.execute();
+                TF_Nombre.setText(cstmt.getString(1));
+
+                CallableStatement cstmt2 = con.prepareCall("{?=call consulta_apellido1 (?)}");
+                cstmt2.registerOutParameter(1, oracle.jdbc.OracleTypes.VARCHAR);
+                cstmt2.setInt(2,aux);
+                cstmt2.execute();
+                TF_Apellido1.setText(cstmt2.getString(1));
+
+                CallableStatement cstmt3 = con.prepareCall("{?=call consulta_apellido2 (?)}");
+                cstmt3.registerOutParameter(1, oracle.jdbc.OracleTypes.VARCHAR);
+                cstmt3.setInt(2,aux);
+                cstmt3.execute();
+                TF_Apellido2.setText(cstmt3.getString(1));
+                con.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(RegistroEstudiante.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -507,6 +619,7 @@ public class RegistroDesercion extends javax.swing.JFrame {
     private javax.swing.JTextField TF_Apellido2;
     private javax.swing.JTextField TF_Nombre;
     private javax.swing.JLabel Titulo_Registro_de_Desercion;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu10;

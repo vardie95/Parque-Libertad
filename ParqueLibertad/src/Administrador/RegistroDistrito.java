@@ -331,7 +331,7 @@ public class RegistroDistrito extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu1);
 
-        jMenu10.setText("     Administrar");
+        jMenu10.setText("   Administrar");
         jMenu10.setFont(new java.awt.Font("MS Reference Sans Serif", 1, 13)); // NOI18N
         jMenu10.setPreferredSize(new java.awt.Dimension(180, 35));
 
@@ -449,6 +449,35 @@ public class RegistroDistrito extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_B_RegistrarActionPerformed
 
+    private void CB_PaisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CB_PaisActionPerformed
+        // TODO add your handling code here:
+        if(evt.getSource()==CB_Pais){
+            if(CB_Pais.getSelectedItem()!=null){
+                LlenarProvincia();
+            }
+        }
+        
+    }//GEN-LAST:event_CB_PaisActionPerformed
+
+    private void CB_ProvinciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CB_ProvinciaActionPerformed
+        // TODO add your handling code here:
+        if(evt.getSource()==CB_Provincia){
+            if(CB_Provincia.getSelectedItem()!=null){
+                LlenarCanton();
+            }
+        }
+    }//GEN-LAST:event_CB_ProvinciaActionPerformed
+
+    private void CB_CantonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CB_CantonActionPerformed
+        // TODO add your handling code here:
+        if(evt.getSource()==CB_Canton){
+            if(CB_Canton.getSelectedItem()!=null){
+                
+            }
+        }
+
+    }//GEN-LAST:event_CB_CantonActionPerformed
+
     private void Re_ActividadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Re_ActividadActionPerformed
         // TODO add your handling code here:
         new Interfaz.Registro.RegistroActividad().setVisible(true);
@@ -485,6 +514,12 @@ public class RegistroDistrito extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_Re_PersonaActionPerformed
 
+    private void Re_Persona1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Re_Persona1ActionPerformed
+        // TODO add your handling code here:
+        new Administrador.RegistroUsuario().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_Re_Persona1ActionPerformed
+
     private void Admi_CursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Admi_CursoActionPerformed
         // TODO add your handling code here:
         new Interfaz.Registro.RegistroCurso().setVisible(true);
@@ -502,47 +537,6 @@ public class RegistroDistrito extends javax.swing.JFrame {
         new Interfaz.Registro.RegistroTipoEvento().setVisible(true);
         dispose();
     }//GEN-LAST:event_Admi_tipoEventoActionPerformed
-
-    private void CB_PaisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CB_PaisActionPerformed
-        // TODO add your handling code here:
-        if(evt.getSource()==CB_Pais){
-            if(CB_Pais.getSelectedItem()!=null){
-                LlenarProvincia();
-            }
-        }
-        
-    }//GEN-LAST:event_CB_PaisActionPerformed
-
-    private void CB_ProvinciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CB_ProvinciaActionPerformed
-        // TODO add your handling code here:
-        if(evt.getSource()==CB_Provincia){
-            if(CB_Provincia.getSelectedItem()!=null){
-                LlenarCanton();
-            }
-        }
-    }//GEN-LAST:event_CB_ProvinciaActionPerformed
-
-    private void CB_CantonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CB_CantonActionPerformed
-        // TODO add your handling code here:
-        if(evt.getSource()==CB_Canton){
-            if(CB_Canton.getSelectedItem()!=null){
-                
-            }
-        }
-
-    }//GEN-LAST:event_CB_CantonActionPerformed
-
-    private void Admi_Curso1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Admi_Curso1ActionPerformed
-        // TODO add your handling code here:
-        new Interfaz.Registro.InscripcionClase().setVisible(true);
-        dispose();
-    }//GEN-LAST:event_Admi_Curso1ActionPerformed
-
-    private void Admi_Puesto1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Admi_Puesto1ActionPerformed
-        // TODO add your handling code here:
-        new Interfaz.Inicio().setVisible(true);
-        dispose();
-    }//GEN-LAST:event_Admi_Puesto1ActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         // TODO add your handling code here:
@@ -568,17 +562,23 @@ public class RegistroDistrito extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
-    private void Re_Persona1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Re_Persona1ActionPerformed
-        // TODO add your handling code here:
-        new Administrador.RegistroUsuario().setVisible(true);
-        dispose();
-    }//GEN-LAST:event_Re_Persona1ActionPerformed
-
     private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
         // TODO add your handling code here:
         new Administrador.RegistroHorario().setVisible(true);
         dispose();
     }//GEN-LAST:event_jMenuItem5ActionPerformed
+
+    private void Admi_Curso1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Admi_Curso1ActionPerformed
+        // TODO add your handling code here:
+        new Interfaz.Registro.InscripcionClase().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_Admi_Curso1ActionPerformed
+
+    private void Admi_Puesto1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Admi_Puesto1ActionPerformed
+        // TODO add your handling code here:
+        new Interfaz.Inicio().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_Admi_Puesto1ActionPerformed
 
     /**
      * @param args the command line arguments

@@ -133,7 +133,7 @@ public class Inicio extends javax.swing.JFrame {
         
         if (ComprobarUsuario()) {
             if(tipo_Usuario.equals("Administrador")){
-                new Administrador.RegistroDistrito().setVisible(true);
+                new Interfaz.Registro.RegistroPersonas().setVisible(true);
                 dispose();
             }else{
                 new Interfaz.Registro.InscripcionClase().setVisible(true);

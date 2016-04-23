@@ -277,11 +277,11 @@ public class RegistroPersonas extends javax.swing.JFrame {
         Admi_Puesto = new javax.swing.JMenuItem();
         Admi_tipoEvento = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
+        jMenuItem7 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenuItem4 = new javax.swing.JMenuItem();
         jMenuItem5 = new javax.swing.JMenuItem();
-        jMenuItem6 = new javax.swing.JMenuItem();
         jMenu12 = new javax.swing.JMenu();
         Admi_Curso1 = new javax.swing.JMenuItem();
         Admi_Puesto1 = new javax.swing.JMenuItem();
@@ -486,7 +486,7 @@ public class RegistroPersonas extends javax.swing.JFrame {
         jMenuBar1.setPreferredSize(new java.awt.Dimension(106, 50));
 
         jMenu1.setBackground(new java.awt.Color(204, 255, 204));
-        jMenu1.setText("     Registro");
+        jMenu1.setText("    Registro");
         jMenu1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jMenu1.setFocusPainted(true);
         jMenu1.setFont(new java.awt.Font("MS Reference Sans Serif", 1, 13)); // NOI18N
@@ -566,9 +566,9 @@ public class RegistroPersonas extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu1);
 
-        jMenu10.setText("    Administrar");
+        jMenu10.setText("     Administrar");
         jMenu10.setFont(new java.awt.Font("MS Reference Sans Serif", 1, 13)); // NOI18N
-        jMenu10.setPreferredSize(new java.awt.Dimension(200, 35));
+        jMenu10.setPreferredSize(new java.awt.Dimension(200, 19));
 
         Admi_Curso.setText("Curso");
         Admi_Curso.setFocusCycleRoot(true);
@@ -600,7 +600,15 @@ public class RegistroPersonas extends javax.swing.JFrame {
 
         jMenu2.setText("Lugar");
 
-        jMenuItem2.setText("País");
+        jMenuItem7.setText("País");
+        jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem7ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem7);
+
+        jMenuItem2.setText("Provincia");
         jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem2ActionPerformed(evt);
@@ -608,7 +616,7 @@ public class RegistroPersonas extends javax.swing.JFrame {
         });
         jMenu2.add(jMenuItem2);
 
-        jMenuItem3.setText("Provincia");
+        jMenuItem3.setText("Canton");
         jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem3ActionPerformed(evt);
@@ -616,7 +624,7 @@ public class RegistroPersonas extends javax.swing.JFrame {
         });
         jMenu2.add(jMenuItem3);
 
-        jMenuItem4.setText("Canton");
+        jMenuItem4.setText("Distrito");
         jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem4ActionPerformed(evt);
@@ -624,24 +632,21 @@ public class RegistroPersonas extends javax.swing.JFrame {
         });
         jMenu2.add(jMenuItem4);
 
-        jMenuItem5.setText("Distrito");
+        jMenu10.add(jMenu2);
+
+        jMenuItem5.setText("Horario");
         jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem5ActionPerformed(evt);
             }
         });
-        jMenu2.add(jMenuItem5);
-
-        jMenu10.add(jMenu2);
-
-        jMenuItem6.setText("Horario");
-        jMenu10.add(jMenuItem6);
+        jMenu10.add(jMenuItem5);
 
         jMenuBar1.add(jMenu10);
 
         jMenu12.setText("       Sesión");
         jMenu12.setFont(new java.awt.Font("MS Reference Sans Serif", 1, 13)); // NOI18N
-        jMenu12.setPreferredSize(new java.awt.Dimension(180, 35));
+        jMenu12.setPreferredSize(new java.awt.Dimension(200, 19));
 
         Admi_Curso1.setText("Modo Usuario");
         Admi_Curso1.setFocusCycleRoot(true);
@@ -764,6 +769,8 @@ public class RegistroPersonas extends javax.swing.JFrame {
 
     private void Re_Persona1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Re_Persona1ActionPerformed
         // TODO add your handling code here:
+        new Administrador.RegistroUsuario().setVisible(true);
+        dispose();
     }//GEN-LAST:event_Re_Persona1ActionPerformed
 
     private void Admi_CursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Admi_CursoActionPerformed
@@ -784,27 +791,33 @@ public class RegistroPersonas extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_Admi_tipoEventoActionPerformed
 
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+    private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
         // TODO add your handling code here:
         new Administrador.RegistroPais().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jMenuItem7ActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        // TODO add your handling code here:
+        new Administrador.RegistroProvincia().setVisible(true);
         dispose();
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
         // TODO add your handling code here:
-        new Administrador.RegistroProvincia().setVisible(true);
+        new Administrador.RegistroCanton().setVisible(true);
         dispose();
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
         // TODO add your handling code here:
-        new Administrador.RegistroCanton().setVisible(true);
+        new Administrador.RegistroDistrito().setVisible(true);
         dispose();
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
         // TODO add your handling code here:
-        new Administrador.RegistroDistrito().setVisible(true);
+        new Administrador.RegistroHorario().setVisible(true);
         dispose();
     }//GEN-LAST:event_jMenuItem5ActionPerformed
 
@@ -907,7 +920,7 @@ public class RegistroPersonas extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
-    private javax.swing.JMenuItem jMenuItem6;
+    private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JTextArea jTextArea1;
     // End of variables declaration//GEN-END:variables
 }

@@ -7,18 +7,51 @@ package Interfaz.Consultas;
 
 import Interfaz.Estadisticas.*;
 import Interfaz.Consultas.*;
+import java.sql.CallableStatement;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import net.proteanit.sql.DbUtils;
 
 /**
  *
  * @author Luis Diego
  */
 public class ConsultaEmpleadoNombre extends javax.swing.JFrame {
-
+       Connection con= null;
     /**
      * Creates new form ConsultaFecha
      */
     public ConsultaEmpleadoNombre() {
         initComponents();
+    }
+    private void UpdateTable(){
+        CallableStatement cstmt =null;
+        con = parquelibertad.dbConnection.conectDB();
+        try {
+            String opcion=jComboBox1.getSelectedItem().toString();
+            if("Nombre".equals(opcion)){
+                cstmt =con.prepareCall("{call consultaNombreEmpleado(?,?)}");
+            }else if("Apellido 1".equals(opcion)){
+                cstmt =con.prepareCall("{call consultaapellido1Empleado(?,?)}");
+            }else{
+                cstmt =con.prepareCall("{call consultaapellido2Empleado(?,?)}");
+            
+            }
+            String dato=jTextField1.getText();
+            cstmt.setString(1,dato);
+            cstmt.registerOutParameter(2, oracle.jdbc.OracleTypes.CURSOR);
+            cstmt.execute();
+            ResultSet rs = (ResultSet)cstmt.getObject(2);
+            jTable1.setModel(DbUtils.resultSetToTableModel(rs));
+            con.close();
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(ConsultaNombre.class.getName()).log(Level.SEVERE, null, ex);
+        }
+  
     }
 
     /**
@@ -392,6 +425,7 @@ public class ConsultaEmpleadoNombre extends javax.swing.JFrame {
 
     private void BT_BuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BT_BuscarActionPerformed
         // TODO add your handling code here:
+        UpdateTable();
     }//GEN-LAST:event_BT_BuscarActionPerformed
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed

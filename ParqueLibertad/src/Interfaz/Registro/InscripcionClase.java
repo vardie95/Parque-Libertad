@@ -5,6 +5,16 @@
  */
 package Interfaz.Registro;
 
+import java.sql.CallableStatement;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import parquelibertad.dbConnection;
+
 
 
 /**
@@ -12,12 +22,73 @@ package Interfaz.Registro;
  * @author Luis Diego
  */
 public class InscripcionClase extends javax.swing.JFrame {
+    Connection con=null;
+    ArrayList llaves=new ArrayList();
 
     /**
      * Creates new form RegistroCurso
      */
     public InscripcionClase() {
         initComponents();
+        llenaridentificacion();
+        llenarClase();
+    }
+    public final  void llenaridentificacion() {
+        con= parquelibertad.dbConnection.conectDB();
+        CB_Identificacion.removeAllItems();
+        CB_Identificacion.addItem("Seleccione Identificacion");
+            try {
+                 
+                CallableStatement cstmt = con.prepareCall("{call get_idEstudiante(?)}");
+                cstmt.registerOutParameter(1, oracle.jdbc.OracleTypes.CURSOR);
+                cstmt.execute();
+                ResultSet rs = (ResultSet)cstmt.getObject(1);
+                while(rs.next()){
+                   CB_Identificacion.addItem(rs.getString(1));
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(RegistroEmpleado.class.getName()).log(Level.SEVERE, null, ex);
+            
+    }
+    }
+    
+    public final  void llenarClase()
+    {
+        CB_Curso.removeAllItems();
+        CB_Curso.addItem("Seleccione un Curso");
+        llaves.clear();
+            try {
+                 
+                CallableStatement cstmt = con.prepareCall("{call get_Clase(?)}");
+                cstmt.registerOutParameter(1, oracle.jdbc.OracleTypes.CURSOR);
+                cstmt.execute();
+                ResultSet rs = (ResultSet)cstmt.getObject(1);
+                while(rs.next()){
+                   CB_Curso.addItem("Grupo: "+rs.getString(1)+"  "+rs.getString(2)+"\t  Costo:  "+rs.getString(3)+"       Mercado: "+rs.getString(4) );
+                   llaves.add(rs.getInt(1));
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(RegistroEstudiante.class.getName()).log(Level.SEVERE, null, ex);
+            }
+    }
+    private void InscribirCurso(){
+         Connection con= null;
+            int identificacion=Integer.parseInt(CB_Identificacion.getSelectedItem().toString());
+            int indice=CB_Curso.getSelectedIndex()-1;
+            con= parquelibertad.dbConnection.conectDB();
+            try {
+                CallableStatement proc= con.prepareCall("{call insertClasexPersona(?,?)}");
+                proc.setInt(1, identificacion);
+                proc.setInt(2, indice);
+                proc.execute();
+                JOptionPane.showMessageDialog(this, "Persona Matriculada Exitosamente",null,JOptionPane.INFORMATION_MESSAGE);
+                con.close();
+                
+            } catch (SQLException ex) {
+           JOptionPane.showMessageDialog(this, "Error: "+ex,null,JOptionPane.ERROR_MESSAGE);
+
+            }
+
     }
 
     /**
@@ -41,7 +112,8 @@ public class InscripcionClase extends javax.swing.JFrame {
         L_Nombre = new javax.swing.JLabel();
         L_Apellido1 = new javax.swing.JLabel();
         L_Apellido2 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu11 = new javax.swing.JMenu();
         Ins_Actividad = new javax.swing.JMenuItem();
@@ -75,7 +147,7 @@ public class InscripcionClase extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Parque la Libertad");
         setLocation(new java.awt.Point(450, 125));
-        setMinimumSize(new java.awt.Dimension(511, 390));
+        setMinimumSize(new java.awt.Dimension(521, 400));
         setResizable(false);
         getContentPane().setLayout(null);
 
@@ -92,12 +164,12 @@ public class InscripcionClase extends javax.swing.JFrame {
         CB_Curso.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nombre" }));
         CB_Curso.setBorder(null);
         getContentPane().add(CB_Curso);
-        CB_Curso.setBounds(130, 200, 330, 31);
+        CB_Curso.setBounds(20, 200, 470, 31);
 
         L_Curso.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         L_Curso.setText("Curso:");
         getContentPane().add(L_Curso);
-        L_Curso.setBounds(30, 200, 40, 28);
+        L_Curso.setBounds(30, 170, 40, 28);
 
         B_Registrar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         B_Registrar.setText("Registrar");
@@ -108,7 +180,7 @@ public class InscripcionClase extends javax.swing.JFrame {
             }
         });
         getContentPane().add(B_Registrar);
-        B_Registrar.setBounds(330, 250, 100, 40);
+        B_Registrar.setBounds(370, 250, 100, 40);
 
         Titulo_Registro_de_Desercion.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         Titulo_Registro_de_Desercion.setText("Inscripción Curso");
@@ -119,43 +191,53 @@ public class InscripcionClase extends javax.swing.JFrame {
         TF_Nombre.setBackground(new java.awt.Color(153, 255, 153));
         TF_Nombre.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         getContentPane().add(TF_Nombre);
-        TF_Nombre.setBounds(30, 150, 139, 30);
+        TF_Nombre.setBounds(30, 130, 139, 30);
 
         TF_Apellido1.setEditable(false);
         TF_Apellido1.setBackground(new java.awt.Color(153, 255, 153));
         TF_Apellido1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         getContentPane().add(TF_Apellido1);
-        TF_Apellido1.setBounds(180, 150, 139, 30);
+        TF_Apellido1.setBounds(180, 130, 139, 30);
 
         TF_Apellido2.setEditable(false);
         TF_Apellido2.setBackground(new java.awt.Color(153, 255, 153));
         TF_Apellido2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         getContentPane().add(TF_Apellido2);
-        TF_Apellido2.setBounds(340, 150, 139, 30);
+        TF_Apellido2.setBounds(340, 130, 139, 30);
 
         L_Nombre.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         L_Nombre.setText("Nombre: ");
         getContentPane().add(L_Nombre);
-        L_Nombre.setBounds(30, 130, 90, 15);
+        L_Nombre.setBounds(30, 110, 90, 15);
 
         L_Apellido1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         L_Apellido1.setText("Apellido 1:");
         getContentPane().add(L_Apellido1);
-        L_Apellido1.setBounds(180, 130, 80, 15);
+        L_Apellido1.setBounds(180, 110, 80, 15);
 
         L_Apellido2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         L_Apellido2.setText("Apellido 2: ");
         getContentPane().add(L_Apellido2);
-        L_Apellido2.setBounds(340, 130, 90, 15);
+        L_Apellido2.setBounds(340, 110, 90, 15);
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Registro/Fondo.jpg"))); // NOI18N
-        getContentPane().add(jLabel2);
-        jLabel2.setBounds(0, 0, 550, 330);
+        jButton1.setText("Buscar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1);
+        jButton1.setBounds(370, 60, 80, 23);
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Registro/Fondo.jpg"))); // NOI18N
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(0, 0, 570, 340);
 
         jMenuBar1.setBackground(new java.awt.Color(255, 255, 255));
         jMenuBar1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jMenuBar1.setPreferredSize(new java.awt.Dimension(106, 50));
 
+        jMenu11.setBackground(new java.awt.Color(255, 255, 255));
         jMenu11.setText("       Inscripción");
         jMenu11.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 13)); // NOI18N
         jMenu11.setMinimumSize(new java.awt.Dimension(100, 100));
@@ -182,6 +264,7 @@ public class InscripcionClase extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu11);
 
+        jMenu4.setBackground(new java.awt.Color(255, 255, 255));
         jMenu4.setText("  Consulta");
         jMenu4.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 13)); // NOI18N
         jMenu4.setPreferredSize(new java.awt.Dimension(180, 19));
@@ -308,6 +391,7 @@ public class InscripcionClase extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu4);
 
+        jMenu3.setBackground(new java.awt.Color(255, 255, 255));
         jMenu3.setText("   Estadística");
         jMenu3.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 13)); // NOI18N
         jMenu3.setPreferredSize(new java.awt.Dimension(180, 19));
@@ -374,6 +458,7 @@ public class InscripcionClase extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu3);
 
+        jMenu12.setBackground(new java.awt.Color(255, 255, 255));
         jMenu12.setText("      Sesión");
         jMenu12.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 13)); // NOI18N
         jMenu12.setPreferredSize(new java.awt.Dimension(180, 35));
@@ -406,8 +491,10 @@ public class InscripcionClase extends javax.swing.JFrame {
 
     private void B_RegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_RegistrarActionPerformed
         // TODO add your handling code here:
-        dispose();
-        new MenuInscripcion().setVisible(true);
+        if(TF_Nombre.getText().equals("")|| CB_Curso.getSelectedIndex()==0 ||CB_Identificacion.getSelectedIndex()==0  ){
+            JOptionPane.showMessageDialog(this, "Por favor seleccionar una persona y una actividad para inscribir",null,JOptionPane.ERROR_MESSAGE);
+        }else{
+        InscribirCurso();}
     }//GEN-LAST:event_B_RegistrarActionPerformed
 
     private void Ins_ActividadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Ins_ActividadActionPerformed
@@ -536,6 +623,39 @@ public class InscripcionClase extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_Admi_Puesto1ActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        con=dbConnection.conectDB();
+        if ((String)CB_Identificacion.getSelectedItem()!="Seleccione Identificacion")
+        {
+
+            try {
+                CallableStatement cstmt = con.prepareCall("{?=call consulta_nombre (?)}");
+                TF_Nombre.setText((String)CB_Identificacion.getSelectedItem());
+                cstmt.registerOutParameter(1, oracle.jdbc.OracleTypes.VARCHAR);
+                int aux=Integer.parseInt(TF_Nombre.getText());
+                cstmt.setInt(2,aux);
+                cstmt.execute();
+                TF_Nombre.setText(cstmt.getString(1));
+
+                CallableStatement cstmt2 = con.prepareCall("{?=call consulta_apellido1 (?)}");
+                cstmt2.registerOutParameter(1, oracle.jdbc.OracleTypes.VARCHAR);
+                cstmt2.setInt(2,aux);
+                cstmt2.execute();
+                TF_Apellido1.setText(cstmt2.getString(1));
+
+                CallableStatement cstmt3 = con.prepareCall("{?=call consulta_apellido2 (?)}");
+                cstmt3.registerOutParameter(1, oracle.jdbc.OracleTypes.VARCHAR);
+                cstmt3.setInt(2,aux);
+                cstmt3.execute();
+                TF_Apellido2.setText(cstmt3.getString(1));
+                con.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(RegistroEstudiante.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -620,7 +740,8 @@ public class InscripcionClase extends javax.swing.JFrame {
     private javax.swing.JMenuItem TopDeserciones;
     private javax.swing.JMenuItem con_Empleado_Fecha;
     private javax.swing.JMenuItem con_persona_Fecha;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu11;
     private javax.swing.JMenu jMenu12;
     private javax.swing.JMenu jMenu3;

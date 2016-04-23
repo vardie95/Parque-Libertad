@@ -10,8 +10,10 @@ import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import parquelibertad.dbConnection;
 
 /**
@@ -20,6 +22,7 @@ import parquelibertad.dbConnection;
  */
 public class InscripcionActividad extends javax.swing.JFrame {
        Connection con=null;
+       ArrayList llaves=new ArrayList();
     /**
      * Creates new form RegistroCurso
      */
@@ -39,7 +42,7 @@ public class InscripcionActividad extends javax.swing.JFrame {
         CB_Identificacion.addItem("Seleccione Identificacion");
             try {
                  
-                CallableStatement cstmt = con.prepareCall("{?=call consulta_persona}");
+                CallableStatement cstmt = con.prepareCall("{call get_idPersona(?)}");
                 cstmt.registerOutParameter(1, oracle.jdbc.OracleTypes.CURSOR);
                 cstmt.execute();
                 ResultSet rs = (ResultSet)cstmt.getObject(1);
@@ -47,25 +50,48 @@ public class InscripcionActividad extends javax.swing.JFrame {
                    CB_Identificacion.addItem(rs.getString(1));
                 }
             } catch (SQLException ex) {
-                Logger.getLogger(RegistroEstudiante.class.getName()).log(Level.SEVERE, null, ex);
-            }
+                Logger.getLogger(RegistroEmpleado.class.getName()).log(Level.SEVERE, null, ex);
+            
     }
-    
-    public final  void llenaractividad() {
+    }
+    public final  void llenaractividad()
+    {
         CB_Actividad.removeAllItems();
         CB_Actividad.addItem("Seleccione una Actividad");
+        llaves.clear();
             try {
                  
-                CallableStatement cstmt = con.prepareCall("{?=call consulta_actividad}");
+                CallableStatement cstmt = con.prepareCall("{call get_actividad(?)}");
                 cstmt.registerOutParameter(1, oracle.jdbc.OracleTypes.CURSOR);
                 cstmt.execute();
                 ResultSet rs = (ResultSet)cstmt.getObject(1);
                 while(rs.next()){
-                   CB_Actividad.addItem(rs.getString(1));
+                   CB_Actividad.addItem(rs.getString(1)+"  "+rs.getString(2)+"\t  Fecha:  "+rs.getString(3));
+                   llaves.add(rs.getInt(1));
                 }
             } catch (SQLException ex) {
                 Logger.getLogger(RegistroEstudiante.class.getName()).log(Level.SEVERE, null, ex);
             }
+    }
+    
+    private void InscribirActividad(){
+         Connection con= null;
+            int identificacion=Integer.parseInt(CB_Identificacion.getSelectedItem().toString());
+            int indice=CB_Actividad.getSelectedIndex()-1;
+            con= parquelibertad.dbConnection.conectDB();
+            try {
+                CallableStatement proc= con.prepareCall("{call insertActividadxPersona(?,?)}");
+                proc.setInt(1, identificacion);
+                proc.setInt(2, indice);
+                proc.execute();
+                JOptionPane.showMessageDialog(this, "Persona Inscrita Exitosamente",null,JOptionPane.INFORMATION_MESSAGE);
+                con.close();
+                
+            } catch (SQLException ex) {
+           JOptionPane.showMessageDialog(this, "Error:"+ex,null,JOptionPane.ERROR_MESSAGE);
+
+            }
+
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -136,7 +162,7 @@ public class InscripcionActividad extends javax.swing.JFrame {
 
         CB_Actividad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nombre" }));
         getContentPane().add(CB_Actividad);
-        CB_Actividad.setBounds(130, 180, 146, 31);
+        CB_Actividad.setBounds(90, 180, 370, 31);
 
         L_Curso.setText("Actividad:");
         getContentPane().add(L_Curso);
@@ -183,14 +209,14 @@ public class InscripcionActividad extends javax.swing.JFrame {
         getContentPane().add(L_Apellido2);
         L_Apellido2.setBounds(340, 110, 90, 14);
 
-        jButton2.setText("Ok");
+        jButton2.setText("Buscar");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
         getContentPane().add(jButton2);
-        jButton2.setBounds(380, 60, 60, 23);
+        jButton2.setBounds(380, 60, 80, 23);
 
         Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Registro/Fondo.jpg"))); // NOI18N
         getContentPane().add(Fondo);
@@ -450,8 +476,10 @@ public class InscripcionActividad extends javax.swing.JFrame {
 
     private void B_RegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_RegistrarActionPerformed
         // TODO add your handling code here:
-        dispose();
-        new MenuInscripcion().setVisible(true);
+        if(TF_Nombre.getText().equals("")|| CB_Actividad.getSelectedIndex()==0 ||CB_Identificacion.getSelectedIndex()==0  ){
+            JOptionPane.showMessageDialog(this, "Por favor seleccionar una persona y una actividad para inscribir",null,JOptionPane.ERROR_MESSAGE);
+        }else{
+        InscribirActividad();}
     }//GEN-LAST:event_B_RegistrarActionPerformed
 
     private void Ins_ActividadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Ins_ActividadActionPerformed
