@@ -437,7 +437,7 @@ public class ModificarPersonas extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton3);
-        jButton3.setBounds(450, 400, 110, 40);
+        jButton3.setBounds(450, 390, 110, 40);
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Registro/Fondo.jpg"))); // NOI18N
         getContentPane().add(jLabel4);

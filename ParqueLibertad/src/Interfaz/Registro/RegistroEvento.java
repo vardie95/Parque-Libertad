@@ -114,7 +114,8 @@ public class RegistroEvento extends javax.swing.JFrame {
         CB_Dia = new javax.swing.JComboBox<>();
         CB_Mes = new javax.swing.JComboBox<>();
         CB_Año = new javax.swing.JComboBox<>();
-        jLabel2 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         Re_Actividad = new javax.swing.JMenuItem();
@@ -171,7 +172,7 @@ public class RegistroEvento extends javax.swing.JFrame {
             }
         });
         getContentPane().add(B_Registrar);
-        B_Registrar.setBounds(380, 310, 90, 40);
+        B_Registrar.setBounds(380, 220, 90, 40);
 
         Titulo_Registro_de_Evento.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         Titulo_Registro_de_Evento.setText("Registro de Evento");
@@ -189,7 +190,7 @@ public class RegistroEvento extends javax.swing.JFrame {
         SP_Descripcion.setViewportView(jTextArea1);
 
         getContentPane().add(SP_Descripcion);
-        SP_Descripcion.setBounds(40, 210, 310, 100);
+        SP_Descripcion.setBounds(40, 220, 310, 100);
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel4.setText("dd     /   mm       /  aa");
@@ -217,9 +218,18 @@ public class RegistroEvento extends javax.swing.JFrame {
         getContentPane().add(CB_Año);
         CB_Año.setBounds(240, 140, 70, 20);
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Registro/Fondo.jpg"))); // NOI18N
-        getContentPane().add(jLabel2);
-        jLabel2.setBounds(0, 0, 530, 370);
+        jButton1.setText("Modificar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1);
+        jButton1.setBounds(380, 270, 90, 40);
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Registro/Fondo.jpg"))); // NOI18N
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(0, 0, 510, 370);
 
         jMenuBar1.setBackground(new java.awt.Color(255, 255, 255));
         jMenuBar1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -532,6 +542,29 @@ public class RegistroEvento extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_Admi_Puesto1ActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        if (jTextArea1.getText().length()>0 ){
+            int response = JOptionPane.showConfirmDialog(null, "Se perderán todo los datos desea continuar?", "Confirmación",JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+            switch (response) {
+                case JOptionPane.NO_OPTION:
+                break;
+                case JOptionPane.YES_OPTION:
+                new Interfaz.Modificaciones.ModificarEvento().setVisible(true);
+                dispose();
+                break;
+                case JOptionPane.CLOSED_OPTION:
+                break;
+                default:
+                break;
+            }
+
+        }else{
+            new Interfaz.Modificaciones.ModificarEvento().setVisible(true);
+            dispose();
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -592,7 +625,8 @@ public class RegistroEvento extends javax.swing.JFrame {
     private javax.swing.JMenuItem Re_desercion;
     private javax.swing.JScrollPane SP_Descripcion;
     private javax.swing.JLabel Titulo_Registro_de_Evento;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu10;
