@@ -12,6 +12,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import parquelibertad.dbConnection;
 
 
@@ -74,6 +75,32 @@ public class RegistroDesercion extends javax.swing.JFrame {
     }
     }
 
+    public void RegistrarDesercion(){
+    Connection con= null;
+            int identificacion=Integer.parseInt(CB_Identificacion.getSelectedItem().toString());
+            String motivo=jTextArea1.getText();
+            int indice=CB_Curso.getSelectedIndex()-1;
+            String periodo=(String)llaves.get(indice);
+            con= parquelibertad.dbConnection.conectDB();
+            try {
+                CallableStatement proc= con.prepareCall("{call insertDesercion(?,?,?,?)}");
+                proc.setInt(1, identificacion);
+               
+                proc.execute();
+                JOptionPane.showMessageDialog(this, "Persona Inscrita Exitosamente",null,JOptionPane.INFORMATION_MESSAGE);
+                con.close();
+                
+            } catch (SQLException ex) {
+           JOptionPane.showMessageDialog(this, "Error:"+ex,null,JOptionPane.ERROR_MESSAGE);
+
+            }
+    
+    
+    
+    
+    
+    
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -141,17 +168,17 @@ public class RegistroDesercion extends javax.swing.JFrame {
 
         CB_Curso.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nombre" }));
         getContentPane().add(CB_Curso);
-        CB_Curso.setBounds(130, 150, 350, 31);
+        CB_Curso.setBounds(40, 180, 440, 31);
 
         L_Curso.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         L_Curso.setText("Curso:");
         getContentPane().add(L_Curso);
-        L_Curso.setBounds(40, 150, 70, 28);
+        L_Curso.setBounds(30, 150, 70, 28);
 
         L_Motivo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         L_Motivo.setText("Motivo:");
         getContentPane().add(L_Motivo);
-        L_Motivo.setBounds(70, 180, 58, 28);
+        L_Motivo.setBounds(60, 230, 58, 28);
 
         B_Registrar.setText("Registrar");
         B_Registrar.addActionListener(new java.awt.event.ActionListener() {
@@ -173,7 +200,7 @@ public class RegistroDesercion extends javax.swing.JFrame {
         SP_Descripcion.setViewportView(jTextArea1);
 
         getContentPane().add(SP_Descripcion);
-        SP_Descripcion.setBounds(70, 210, 270, 60);
+        SP_Descripcion.setBounds(80, 260, 280, 70);
 
         TF_Nombre.setEditable(false);
         TF_Nombre.setBackground(new java.awt.Color(153, 255, 153));
@@ -222,7 +249,6 @@ public class RegistroDesercion extends javax.swing.JFrame {
         jMenuBar1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jMenuBar1.setPreferredSize(new java.awt.Dimension(106, 50));
 
-        jMenu1.setBackground(null);
         jMenu1.setText("    Registro");
         jMenu1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jMenu1.setFocusPainted(true);
@@ -303,7 +329,6 @@ public class RegistroDesercion extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu1);
 
-        jMenu10.setBackground(null);
         jMenu10.setText("     Administrar");
         jMenu10.setFont(new java.awt.Font("MS Reference Sans Serif", 1, 13)); // NOI18N
         jMenu10.setPreferredSize(new java.awt.Dimension(180, 35));
@@ -382,7 +407,6 @@ public class RegistroDesercion extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu10);
 
-        jMenu12.setBackground(null);
         jMenu12.setText("       Sesión");
         jMenu12.setFont(new java.awt.Font("MS Reference Sans Serif", 1, 13)); // NOI18N
         jMenu12.setPreferredSize(new java.awt.Dimension(180, 35));

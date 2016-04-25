@@ -6,18 +6,44 @@
 package Interfaz.Estadisticas;
 
 import Interfaz.Consultas.*;
+import java.sql.CallableStatement;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import net.proteanit.sql.DbUtils;
 
 /**
  *
  * @author Luis Diego
  */
 public class Top10Personas extends javax.swing.JFrame {
+           Connection con=null;
 
     /**
      * Creates new form ConsultaFecha
      */
     public Top10Personas() {
         initComponents();
+        UpdateTable();
+    }
+    
+    
+    private void UpdateTable(){
+        CallableStatement cstmt =null;
+        con = parquelibertad.dbConnection.conectDB();
+        try {
+            cstmt =con.prepareCall("{call estadistica_top10(?)}");
+            cstmt.registerOutParameter(1, oracle.jdbc.OracleTypes.CURSOR);
+            cstmt.execute();
+            ResultSet rs = (ResultSet)cstmt.getObject(1);
+            jTable1.setModel(DbUtils.resultSetToTableModel(rs));
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(ConsultaNombre.class.getName()).log(Level.SEVERE, null, ex);
+        }
+  
     }
 
     /**

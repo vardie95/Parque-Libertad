@@ -79,7 +79,7 @@ public class InscripcionClase extends javax.swing.JFrame {
             try {
                 CallableStatement proc= con.prepareCall("{call insertClasexPersona(?,?)}");
                 proc.setInt(1, identificacion);
-                proc.setInt(2, indice);
+                proc.setInt(2, (int) llaves.get(indice));
                 proc.execute();
                 JOptionPane.showMessageDialog(this, "Persona Matriculada Exitosamente",null,JOptionPane.INFORMATION_MESSAGE);
                 con.close();

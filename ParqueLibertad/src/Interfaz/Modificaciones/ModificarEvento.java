@@ -12,12 +12,15 @@ import java.sql.Connection;
 import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import static org.eclipse.persistence.expressions.ExpressionOperator.currentDate;
+import parquelibertad.dbConnection;
 
 /**
  *
@@ -25,6 +28,8 @@ import static org.eclipse.persistence.expressions.ExpressionOperator.currentDate
  */
 public class ModificarEvento extends javax.swing.JFrame {
             Connection con= null;
+            ArrayList llaves=new ArrayList();
+            
     /**
      * Creates new form RegistroCurso
      */
@@ -32,6 +37,7 @@ public class ModificarEvento extends javax.swing.JFrame {
         initComponents();
         con= parquelibertad.dbConnection.conectDB();
         llenarTipo_evento();
+        llenarTipo_evento2();
                 try {
                     con.close();
                 } catch (SQLException ex) {
@@ -43,12 +49,27 @@ public class ModificarEvento extends javax.swing.JFrame {
     public final  void llenarTipo_evento() {
         CB_Tipo.removeAllItems();
             try {
+               CallableStatement cstmt =con.prepareCall("{call get_Eventos(?)}");
+                cstmt.registerOutParameter(1, oracle.jdbc.OracleTypes.CURSOR);
+                cstmt.execute();
+                ResultSet rs = (ResultSet)cstmt.getObject(1);
+                while(rs.next()){
+                   CB_Tipo.addItem(rs.getString(2)+"   Fecha:    "+rs.getDate(3));
+                   llaves.add(rs.getInt(1));
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(RegistroEmpleado.class.getName()).log(Level.SEVERE, null, ex);
+            }
+    }
+    public final  void llenarTipo_evento2() {
+        CB_Tipo1.removeAllItems();
+            try {
                CallableStatement cstmt =con.prepareCall("{call get_TipoEvento(?)}");
                 cstmt.registerOutParameter(1, oracle.jdbc.OracleTypes.CURSOR);
                 cstmt.execute();
                 ResultSet rs = (ResultSet)cstmt.getObject(1);
                 while(rs.next()){
-                   CB_Tipo.addItem(rs.getString(1));
+                   CB_Tipo1.addItem(rs.getString(1));
                 }
             } catch (SQLException ex) {
                 Logger.getLogger(RegistroEmpleado.class.getName()).log(Level.SEVERE, null, ex);
@@ -67,19 +88,23 @@ public class ModificarEvento extends javax.swing.JFrame {
                 try {
                     con= parquelibertad.dbConnection.conectDB();
                     cstmt = con.prepareCall("{?=call consulta_idTipoEvento (?)}");
-                    String descripcion = CB_Tipo.getSelectedItem().toString();
+                    String descripcion = CB_Tipo1.getSelectedItem().toString();
                     cstmt.setString(2,descripcion);
                     cstmt.registerOutParameter(1, oracle.jdbc.OracleTypes.INTEGER);
                     cstmt.execute();
+                    int indice = CB_Tipo.getSelectedIndex();
+                    int Identificacion=(int)llaves.get(indice);
                     int idTipo = cstmt.getInt(1);
                     String fecha=fecha();
                     SimpleDateFormat formato=new SimpleDateFormat("ddMMyy"); 
                     try {
+                        con= parquelibertad.dbConnection.conectDB();
                         java.util.Date parsed = formato.parse(fecha);
                         java.sql.Date sql= new java.sql.Date(parsed.getTime());
-                        CallableStatement proc= con.prepareCall("{call insertRegEvento(?,?)}");
-                    proc.setInt(1, idTipo);
-                    proc.setDate(2, sql);
+                        CallableStatement proc= con.prepareCall("{call modificarEvento(?,?,?)}");
+                    proc.setInt(1, Identificacion);
+                    proc.setInt(2, idTipo);
+                    proc.setDate(3, sql);
                     proc.execute();
                     JOptionPane.showMessageDialog(this, "Evento Agregado Exitosamente",null,JOptionPane.INFORMATION_MESSAGE);
                     con.close();
@@ -92,6 +117,38 @@ public class ModificarEvento extends javax.swing.JFrame {
          
     
     }
+    
+    
+    public void llenarCampos(){
+        try {
+            con=dbConnection.conectDB();
+            CallableStatement cstmt4 = con.prepareCall("{call get_DatoEvento(?,?)}");
+            int indice=CB_Tipo.getSelectedIndex();
+            Date fecha;
+            String Fecha;
+            cstmt4.registerOutParameter(1, oracle.jdbc.OracleTypes.CURSOR);
+            cstmt4.setInt(2, (int)llaves.get(indice));
+            cstmt4.execute();
+            ResultSet rs = (ResultSet)cstmt4.getObject(1);
+            while(rs.next()){
+                fecha=rs.getDate(2);
+                Fecha=Convertirfecha(fecha);
+                CB_Tipo1.setSelectedItem(rs.getString(1));
+                CB_Dia.setSelectedItem(Fecha.substring(0,2));
+                CB_Mes.setSelectedItem(Fecha.substring(2,4));
+                CB_Año.setSelectedItem(Fecha.substring(4,6));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ModificarActividad.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    public String Convertirfecha(Date pfecha){
+        String Fecha;
+        DateFormat df = new SimpleDateFormat("ddMMyy");
+        Fecha= df.format(pfecha);
+        return Fecha;
+    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -106,16 +163,16 @@ public class ModificarEvento extends javax.swing.JFrame {
         L_Fecha = new javax.swing.JLabel();
         B_Registrar = new javax.swing.JButton();
         Titulo_Registro_de_Evento = new javax.swing.JLabel();
-        L_Descripcion = new javax.swing.JLabel();
-        SP_Descripcion = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
         jLabel4 = new javax.swing.JLabel();
         CB_Dia = new javax.swing.JComboBox<>();
         CB_Mes = new javax.swing.JComboBox<>();
         CB_Año = new javax.swing.JComboBox<>();
         jButton6 = new javax.swing.JButton();
         CB_Tipo = new javax.swing.JComboBox<>();
-        jLabel2 = new javax.swing.JLabel();
+        CB_Tipo1 = new javax.swing.JComboBox<>();
+        L_Tipo1 = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Parque la Libertad");
@@ -132,7 +189,7 @@ public class ModificarEvento extends javax.swing.JFrame {
         L_Fecha.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         L_Fecha.setText("Fecha:");
         getContentPane().add(L_Fecha);
-        L_Fecha.setBounds(50, 110, 58, 30);
+        L_Fecha.setBounds(40, 190, 58, 30);
 
         B_Registrar.setText("Modificar");
         B_Registrar.addActionListener(new java.awt.event.ActionListener() {
@@ -141,42 +198,29 @@ public class ModificarEvento extends javax.swing.JFrame {
             }
         });
         getContentPane().add(B_Registrar);
-        B_Registrar.setBounds(380, 240, 90, 50);
+        B_Registrar.setBounds(90, 290, 110, 50);
 
         Titulo_Registro_de_Evento.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         Titulo_Registro_de_Evento.setText("Modificar Evento");
         getContentPane().add(Titulo_Registro_de_Evento);
         Titulo_Registro_de_Evento.setBounds(180, 20, 160, 22);
 
-        L_Descripcion.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        L_Descripcion.setText("Descripción:");
-        getContentPane().add(L_Descripcion);
-        L_Descripcion.setBounds(40, 190, 90, 17);
-
-        jTextArea1.setBackground(new java.awt.Color(153, 255, 153));
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        SP_Descripcion.setViewportView(jTextArea1);
-
-        getContentPane().add(SP_Descripcion);
-        SP_Descripcion.setBounds(40, 210, 310, 100);
-
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel4.setText("dd     /   mm       /  aa");
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(130, 110, 130, 20);
+        jLabel4.setBounds(120, 200, 130, 20);
 
         CB_Dia.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" }));
         getContentPane().add(CB_Dia);
-        CB_Dia.setBounds(100, 140, 70, 20);
+        CB_Dia.setBounds(90, 230, 70, 20);
 
         CB_Mes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", " " }));
         getContentPane().add(CB_Mes);
-        CB_Mes.setBounds(180, 140, 60, 20);
+        CB_Mes.setBounds(170, 230, 60, 20);
 
         CB_Año.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", " ", " " }));
         getContentPane().add(CB_Año);
-        CB_Año.setBounds(240, 140, 70, 20);
+        CB_Año.setBounds(230, 230, 70, 20);
 
         jButton6.setText("Volver");
         jButton6.addActionListener(new java.awt.event.ActionListener() {
@@ -185,7 +229,7 @@ public class ModificarEvento extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton6);
-        jButton6.setBounds(380, 310, 90, 50);
+        jButton6.setBounds(270, 290, 110, 50);
 
         CB_Tipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nombre" }));
         CB_Tipo.addActionListener(new java.awt.event.ActionListener() {
@@ -194,12 +238,35 @@ public class ModificarEvento extends javax.swing.JFrame {
             }
         });
         getContentPane().add(CB_Tipo);
-        CB_Tipo.setBounds(100, 60, 310, 30);
+        CB_Tipo.setBounds(90, 60, 310, 30);
 
-        jLabel2.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel2.setOpaque(true);
-        getContentPane().add(jLabel2);
-        jLabel2.setBounds(0, 0, 520, 420);
+        CB_Tipo1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nombre" }));
+        CB_Tipo1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CB_Tipo1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(CB_Tipo1);
+        CB_Tipo1.setBounds(100, 120, 220, 30);
+
+        L_Tipo1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        L_Tipo1.setText("Tipo:");
+        getContentPane().add(L_Tipo1);
+        L_Tipo1.setBounds(40, 120, 47, 30);
+
+        jButton2.setText("Ok");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton2);
+        jButton2.setBounds(410, 70, 60, 23);
+
+        jLabel1.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel1.setOpaque(true);
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(0, 0, 600, 430);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -212,7 +279,6 @@ public class ModificarEvento extends javax.swing.JFrame {
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
-        if (jTextArea1.getText().length()>0 ){
             int response = JOptionPane.showConfirmDialog(null, "Se perderán todo los datos desea continuar?", "Confirmación",JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
             switch (response) {
                 case JOptionPane.NO_OPTION:
@@ -227,15 +293,25 @@ public class ModificarEvento extends javax.swing.JFrame {
                 break;
             }
 
-        }else{
-            new Interfaz.Registro.RegistroEvento().setVisible(true);
-            dispose();
-        }
+        
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void CB_TipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CB_TipoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_CB_TipoActionPerformed
+
+    private void CB_Tipo1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CB_Tipo1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CB_Tipo1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        con=dbConnection.conectDB();
+        if ((String)CB_Tipo.getSelectedItem()!="Seleccione una Actividad")
+        {
+            llenarCampos();
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -281,14 +357,14 @@ public class ModificarEvento extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> CB_Dia;
     private javax.swing.JComboBox<String> CB_Mes;
     private javax.swing.JComboBox<String> CB_Tipo;
-    private javax.swing.JLabel L_Descripcion;
+    private javax.swing.JComboBox<String> CB_Tipo1;
     private javax.swing.JLabel L_Fecha;
     private javax.swing.JLabel L_Tipo;
-    private javax.swing.JScrollPane SP_Descripcion;
+    private javax.swing.JLabel L_Tipo1;
     private javax.swing.JLabel Titulo_Registro_de_Evento;
+    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton6;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JTextArea jTextArea1;
     // End of variables declaration//GEN-END:variables
 }

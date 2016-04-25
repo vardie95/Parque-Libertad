@@ -27,15 +27,20 @@ public class RegistroUsuario extends javax.swing.JFrame {
     }
     public void InsertUsuario(){
         Connection con= null;
-            String puesto=TF_Nombre.getText();
-            
+            String usuario=TF_Nombre.getText();
+            String contraseña=jPasswordField2.getText();
+            String tipo=jComboBox1.getSelectedItem().toString();
             con= parquelibertad.dbConnection.conectDB();
             try {
-                CallableStatement proc= con.prepareCall("{call insertPais(?)}");
-                proc.setString(1, puesto);
+                CallableStatement proc= con.prepareCall("{call insertUsuario(?,?,?)}");
+                proc.setString(1,usuario);
+                proc.setString(2,contraseña);
+                proc.setString(3,tipo);
                 proc.execute();
-                JOptionPane.showMessageDialog(this, "País Agregado Exitosamente",null,JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Usuario Agregado Exitosamente",null,JOptionPane.INFORMATION_MESSAGE);
                 TF_Nombre.setText("");
+                jPasswordField1.setText("");
+                jPasswordField2.setText("");
                 con.close();
                 
             } catch (SQLException ex) {
@@ -57,11 +62,11 @@ public class RegistroUsuario extends javax.swing.JFrame {
         B_Registrar = new javax.swing.JButton();
         Titulo_Registro_de_Puesto = new javax.swing.JLabel();
         TF_Nombre = new javax.swing.JTextField();
-        TF_Nombre1 = new javax.swing.JTextField();
         L_Nombre1 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox<>();
-        TF_Nombre2 = new javax.swing.JTextField();
         L_Nombre2 = new javax.swing.JLabel();
+        jPasswordField1 = new javax.swing.JPasswordField();
+        jPasswordField2 = new javax.swing.JPasswordField();
         jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
@@ -116,10 +121,6 @@ public class RegistroUsuario extends javax.swing.JFrame {
         getContentPane().add(TF_Nombre);
         TF_Nombre.setBounds(110, 70, 180, 30);
 
-        TF_Nombre1.setBackground(new java.awt.Color(153, 255, 153));
-        getContentPane().add(TF_Nombre1);
-        TF_Nombre1.setBounds(110, 110, 180, 30);
-
         L_Nombre1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         L_Nombre1.setText("Usuario:");
         getContentPane().add(L_Nombre1);
@@ -129,16 +130,21 @@ public class RegistroUsuario extends javax.swing.JFrame {
         getContentPane().add(jComboBox1);
         jComboBox1.setBounds(110, 200, 120, 20);
 
-        TF_Nombre2.setBackground(new java.awt.Color(153, 255, 153));
-        getContentPane().add(TF_Nombre2);
-        TF_Nombre2.setBounds(110, 150, 180, 30);
-
         L_Nombre2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         L_Nombre2.setText("Contraseña:");
         getContentPane().add(L_Nombre2);
         L_Nombre2.setBounds(20, 110, 80, 28);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Registro/Fondo.jpg"))); // NOI18N
+        jPasswordField1.setBackground(new java.awt.Color(153, 255, 153));
+        getContentPane().add(jPasswordField1);
+        jPasswordField1.setBounds(110, 150, 180, 30);
+
+        jPasswordField2.setBackground(new java.awt.Color(153, 255, 153));
+        getContentPane().add(jPasswordField2);
+        jPasswordField2.setBounds(110, 110, 180, 30);
+
+        jLabel1.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel1.setOpaque(true);
         getContentPane().add(jLabel1);
         jLabel1.setBounds(0, 0, 400, 310);
 
@@ -337,11 +343,15 @@ public class RegistroUsuario extends javax.swing.JFrame {
 
     private void B_RegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_RegistrarActionPerformed
         // TODO add your handling code here:
-        if (TF_Nombre.getText().length()==0){
+        if (TF_Nombre.getText().length()<6 ||jPasswordField1.getText().length()==0 || jPasswordField2.getText().length()==0  ){
             JOptionPane.showMessageDialog(this, "Debe de llenar todos los campos obligatorios.",null,JOptionPane.ERROR_MESSAGE); 
         }
         else{
-            InsertUsuario();
+            if(jPasswordField1.getText().equals(jPasswordField2.getText())){
+              InsertUsuario();}
+            else{
+                JOptionPane.showMessageDialog(this, "La confirmación de contraseña y la contraseña son diferentes",null,JOptionPane.ERROR_MESSAGE);    
+            }
         }
     }//GEN-LAST:event_B_RegistrarActionPerformed
 
@@ -515,8 +525,6 @@ public class RegistroUsuario extends javax.swing.JFrame {
     private javax.swing.JMenuItem Re_Persona1;
     private javax.swing.JMenuItem Re_desercion;
     private javax.swing.JTextField TF_Nombre;
-    private javax.swing.JTextField TF_Nombre1;
-    private javax.swing.JTextField TF_Nombre2;
     private javax.swing.JLabel Titulo_Registro_de_Puesto;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
@@ -530,5 +538,7 @@ public class RegistroUsuario extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
+    private javax.swing.JPasswordField jPasswordField1;
+    private javax.swing.JPasswordField jPasswordField2;
     // End of variables declaration//GEN-END:variables
 }

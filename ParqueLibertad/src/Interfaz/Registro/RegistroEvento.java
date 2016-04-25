@@ -106,11 +106,7 @@ public class RegistroEvento extends javax.swing.JFrame {
         L_Fecha = new javax.swing.JLabel();
         B_Registrar = new javax.swing.JButton();
         Titulo_Registro_de_Evento = new javax.swing.JLabel();
-        L_Descripcion = new javax.swing.JLabel();
-        SP_Descripcion = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
         jLabel4 = new javax.swing.JLabel();
-        B_Otro = new javax.swing.JButton();
         CB_Dia = new javax.swing.JComboBox<>();
         CB_Mes = new javax.swing.JComboBox<>();
         CB_Año = new javax.swing.JComboBox<>();
@@ -142,7 +138,7 @@ public class RegistroEvento extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Parque la Libertad");
         setLocation(new java.awt.Point(500, 125));
-        setMinimumSize(new java.awt.Dimension(550, 423));
+        setMinimumSize(new java.awt.Dimension(450, 423));
         setResizable(false);
         getContentPane().setLayout(null);
 
@@ -172,39 +168,17 @@ public class RegistroEvento extends javax.swing.JFrame {
             }
         });
         getContentPane().add(B_Registrar);
-        B_Registrar.setBounds(380, 220, 90, 40);
+        B_Registrar.setBounds(70, 220, 90, 40);
 
         Titulo_Registro_de_Evento.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         Titulo_Registro_de_Evento.setText("Registro de Evento");
         getContentPane().add(Titulo_Registro_de_Evento);
         Titulo_Registro_de_Evento.setBounds(170, 20, 160, 22);
 
-        L_Descripcion.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        L_Descripcion.setText("Descripción:");
-        getContentPane().add(L_Descripcion);
-        L_Descripcion.setBounds(40, 190, 90, 17);
-
-        jTextArea1.setBackground(new java.awt.Color(153, 255, 153));
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        SP_Descripcion.setViewportView(jTextArea1);
-
-        getContentPane().add(SP_Descripcion);
-        SP_Descripcion.setBounds(40, 220, 310, 100);
-
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel4.setText("dd     /   mm       /  aa");
         getContentPane().add(jLabel4);
         jLabel4.setBounds(130, 110, 130, 20);
-
-        B_Otro.setText("Otro");
-        B_Otro.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                B_OtroActionPerformed(evt);
-            }
-        });
-        getContentPane().add(B_Otro);
-        B_Otro.setBounds(350, 60, 70, 23);
 
         CB_Dia.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" }));
         getContentPane().add(CB_Dia);
@@ -225,7 +199,7 @@ public class RegistroEvento extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton1);
-        jButton1.setBounds(380, 270, 90, 40);
+        jButton1.setBounds(250, 220, 90, 40);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Registro/Fondo.jpg"))); // NOI18N
         getContentPane().add(jLabel1);
@@ -434,12 +408,6 @@ public class RegistroEvento extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_CB_TipoActionPerformed
 
-    private void B_OtroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_OtroActionPerformed
-        // TODO add your handling code here:
-        dispose();
-        new RegistroTipoEvento().setVisible(true);
-    }//GEN-LAST:event_B_OtroActionPerformed
-
     private void Re_ActividadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Re_ActividadActionPerformed
         // TODO add your handling code here:
         new Interfaz.Registro.RegistroActividad().setVisible(true);
@@ -544,7 +512,7 @@ public class RegistroEvento extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        if (jTextArea1.getText().length()>0 ){
+        
             int response = JOptionPane.showConfirmDialog(null, "Se perderán todo los datos desea continuar?", "Confirmación",JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
             switch (response) {
                 case JOptionPane.NO_OPTION:
@@ -559,10 +527,7 @@ public class RegistroEvento extends javax.swing.JFrame {
                 break;
             }
 
-        }else{
-            new Interfaz.Modificaciones.ModificarEvento().setVisible(true);
-            dispose();
-        }
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -607,13 +572,11 @@ public class RegistroEvento extends javax.swing.JFrame {
     private javax.swing.JMenuItem Admi_Puesto;
     private javax.swing.JMenuItem Admi_Puesto1;
     private javax.swing.JMenuItem Admi_tipoEvento;
-    private javax.swing.JButton B_Otro;
     private javax.swing.JButton B_Registrar;
     private javax.swing.JComboBox<String> CB_Año;
     private javax.swing.JComboBox<String> CB_Dia;
     private javax.swing.JComboBox<String> CB_Mes;
     private javax.swing.JComboBox<String> CB_Tipo;
-    private javax.swing.JLabel L_Descripcion;
     private javax.swing.JLabel L_Fecha;
     private javax.swing.JLabel L_Tipo;
     private javax.swing.JMenuItem Re_Actividad;
@@ -623,7 +586,6 @@ public class RegistroEvento extends javax.swing.JFrame {
     private javax.swing.JMenuItem Re_Persona;
     private javax.swing.JMenuItem Re_Persona1;
     private javax.swing.JMenuItem Re_desercion;
-    private javax.swing.JScrollPane SP_Descripcion;
     private javax.swing.JLabel Titulo_Registro_de_Evento;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
@@ -638,6 +600,5 @@ public class RegistroEvento extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
-    private javax.swing.JTextArea jTextArea1;
     // End of variables declaration//GEN-END:variables
 }

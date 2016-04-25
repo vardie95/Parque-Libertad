@@ -82,7 +82,7 @@ public class InscripcionActividad extends javax.swing.JFrame {
             try {
                 CallableStatement proc= con.prepareCall("{call insertActividadxPersona(?,?)}");
                 proc.setInt(1, identificacion);
-                proc.setInt(2, indice);
+                proc.setInt(2, (int)llaves.get(indice));
                 proc.execute();
                 JOptionPane.showMessageDialog(this, "Persona Inscrita Exitosamente",null,JOptionPane.INFORMATION_MESSAGE);
                 con.close();
