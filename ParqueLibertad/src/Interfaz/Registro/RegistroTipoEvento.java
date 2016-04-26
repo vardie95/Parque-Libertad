@@ -24,6 +24,24 @@ public class RegistroTipoEvento extends javax.swing.JFrame {
     public RegistroTipoEvento() {
         initComponents();
     }
+    
+    public void ModificarEvento(){
+        Connection con= null;
+            String Puesto=TF_Nombre.getText();
+            String Modificar= JOptionPane.showInputDialog("Digite La modificacion del Tipo Evento: ");
+            con= parquelibertad.dbConnection.conectDB();
+            try {
+                CallableStatement proc= con.prepareCall("{call ModificarTipoEvento(?,?)}");
+                proc.setString(1, Puesto);
+                proc.setString(2, Modificar);
+                proc.execute();
+                JOptionPane.showMessageDialog(this, "Tipo de Evento Modificado Exitosamente",null,JOptionPane.INFORMATION_MESSAGE);
+                TF_Nombre.setText("");
+                con.close();
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(this, "Error:"+ex,null,JOptionPane.ERROR_MESSAGE);
+            }
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -38,7 +56,8 @@ public class RegistroTipoEvento extends javax.swing.JFrame {
         B_Registrar = new javax.swing.JButton();
         Titulo_Registro_de_Actividad = new javax.swing.JLabel();
         TF_Nombre = new javax.swing.JTextField();
-        Fondo = new javax.swing.JLabel();
+        B_Registrar1 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         Re_Actividad = new javax.swing.JMenuItem();
@@ -82,7 +101,7 @@ public class RegistroTipoEvento extends javax.swing.JFrame {
             }
         });
         getContentPane().add(B_Registrar);
-        B_Registrar.setBounds(250, 150, 100, 40);
+        B_Registrar.setBounds(230, 150, 90, 40);
 
         Titulo_Registro_de_Actividad.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         Titulo_Registro_de_Actividad.setText("Registro Tipo de Evento");
@@ -93,9 +112,19 @@ public class RegistroTipoEvento extends javax.swing.JFrame {
         getContentPane().add(TF_Nombre);
         TF_Nombre.setBounds(120, 90, 180, 30);
 
-        Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Registro/Fondo.jpg"))); // NOI18N
-        getContentPane().add(Fondo);
-        Fondo.setBounds(0, 0, 400, 260);
+        B_Registrar1.setText("Modificar");
+        B_Registrar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                B_Registrar1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(B_Registrar1);
+        B_Registrar1.setBounds(60, 150, 90, 40);
+
+        jLabel1.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel1.setOpaque(true);
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(0, 0, 400, 270);
 
         jMenuBar1.setBackground(new java.awt.Color(255, 255, 255));
         jMenuBar1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -308,7 +337,7 @@ public class RegistroTipoEvento extends javax.swing.JFrame {
                 con.close();
                 
             } catch (SQLException ex) {
-                Logger.getLogger(RegistroTipoEvento.class.getName()).log(Level.SEVERE, null, ex);
+                JOptionPane.showMessageDialog(this, "Error:"+ex,null,JOptionPane.ERROR_MESSAGE);
             }
             
             
@@ -417,6 +446,17 @@ public class RegistroTipoEvento extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_Admi_Puesto1ActionPerformed
 
+    private void B_Registrar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_Registrar1ActionPerformed
+        // TODO add your handling code here:
+        if (TF_Nombre.getText().length()==0){
+            JOptionPane.showMessageDialog(this, "Digite un Tipo de Evento que desee Modificar.",null,JOptionPane.ERROR_MESSAGE);
+        }
+        else{
+            ModificarEvento();
+            TF_Nombre.setText("");
+        }
+    }//GEN-LAST:event_B_Registrar1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -462,7 +502,7 @@ public class RegistroTipoEvento extends javax.swing.JFrame {
     private javax.swing.JMenuItem Admi_Puesto1;
     private javax.swing.JMenuItem Admi_tipoEvento;
     private javax.swing.JButton B_Registrar;
-    private javax.swing.JLabel Fondo;
+    private javax.swing.JButton B_Registrar1;
     private javax.swing.JLabel L_Nombre;
     private javax.swing.JMenuItem Re_Actividad;
     private javax.swing.JMenuItem Re_Curso;
@@ -473,6 +513,7 @@ public class RegistroTipoEvento extends javax.swing.JFrame {
     private javax.swing.JMenuItem Re_desercion;
     private javax.swing.JTextField TF_Nombre;
     private javax.swing.JLabel Titulo_Registro_de_Actividad;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu10;
     private javax.swing.JMenu jMenu12;

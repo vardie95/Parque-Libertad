@@ -5,17 +5,63 @@
  */
 package Interfaz.Consultas;
 
+import Interfaz.Registro.RegistroEmpleado;
+import java.sql.CallableStatement;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import net.proteanit.sql.DbUtils;
+
 /**
  *
  * @author Luis Diego
  */
 public class ConsultaDesertaPersona extends javax.swing.JFrame {
+           Connection con= null;
 
     /**
      * Creates new form ConsultaFecha
      */
     public ConsultaDesertaPersona() {
         initComponents();
+        llenarCurso();
+        
+    }
+    private  void llenarCurso(){
+        CB_Curso.removeAllItems();
+        con= parquelibertad.dbConnection.conectDB();
+            try {
+               CallableStatement cstmt =con.prepareCall("{call get_Curso(?)}");
+                cstmt.registerOutParameter(1, oracle.jdbc.OracleTypes.CURSOR);
+                cstmt.execute();
+                ResultSet rs = (ResultSet)cstmt.getObject(1);
+                while(rs.next()){
+                   CB_Curso.addItem(rs.getString(1));
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(RegistroEmpleado.class.getName()).log(Level.SEVERE, null, ex);
+            }
+    }
+    
+    
+    private void UpdateTable(){
+        CallableStatement cstmt =null;
+        con = parquelibertad.dbConnection.conectDB();
+        String curso=CB_Curso.getSelectedItem().toString();
+        try {
+            cstmt =con.prepareCall("{call ConsultaDesercion(?,?)}");
+            cstmt.setString(1, curso);
+            cstmt.registerOutParameter(2, oracle.jdbc.OracleTypes.CURSOR);
+            cstmt.execute();
+            ResultSet rs = (ResultSet)cstmt.getObject(2);
+            jTable1.setModel(DbUtils.resultSetToTableModel(rs));
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(ConsultaNombre.class.getName()).log(Level.SEVERE, null, ex);
+        }
+  
     }
 
     /**
@@ -98,7 +144,7 @@ public class ConsultaDesertaPersona extends javax.swing.JFrame {
 
         CB_Curso.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Curso" }));
         getContentPane().add(CB_Curso);
-        CB_Curso.setBounds(130, 50, 99, 22);
+        CB_Curso.setBounds(130, 50, 130, 22);
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel4.setText("Curso: ");
@@ -370,6 +416,7 @@ public class ConsultaDesertaPersona extends javax.swing.JFrame {
 
     private void BT_BuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BT_BuscarActionPerformed
         // TODO add your handling code here:
+        UpdateTable();
     }//GEN-LAST:event_BT_BuscarActionPerformed
 
     private void Ins_ActividadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Ins_ActividadActionPerformed

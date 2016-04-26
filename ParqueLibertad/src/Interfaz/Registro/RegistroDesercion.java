@@ -76,31 +76,64 @@ public class RegistroDesercion extends javax.swing.JFrame {
     }
 
     public void RegistrarDesercion(){
-    Connection con= null;
+            Connection con= null;
             int identificacion=Integer.parseInt(CB_Identificacion.getSelectedItem().toString());
             String motivo=jTextArea1.getText();
             int indice=CB_Curso.getSelectedIndex()-1;
-            String periodo=(String)llaves.get(indice);
+            String periodo=(String)llaves.get(indice).toString();
             con= parquelibertad.dbConnection.conectDB();
             try {
-                CallableStatement proc= con.prepareCall("{call insertDesercion(?,?,?,?)}");
-                proc.setInt(1, identificacion);
-               
+                CallableStatement proc= con.prepareCall("{call insertDesercion(?,?,?)}");
+                proc.setString(1, motivo);
+                proc.setString(2, periodo);
+                proc.setInt(3, identificacion);
                 proc.execute();
-                JOptionPane.showMessageDialog(this, "Persona Inscrita Exitosamente",null,JOptionPane.INFORMATION_MESSAGE);
+                int idDesercion=getIDDesercion();
+                int idClase=(int) llaves.get(indice);
+                con= parquelibertad.dbConnection.conectDB();
+                CallableStatement proc1= con.prepareCall("{call insertDesercionxClase(?,?)}");
+                proc1.setInt(1, idDesercion);
+                proc1.setInt(2, idClase);
+                proc1.execute();
+                JOptionPane.showMessageDialog(this, "Deserción Inscrita Exitosamente",null,JOptionPane.INFORMATION_MESSAGE);
                 con.close();
                 
             } catch (SQLException ex) {
-           JOptionPane.showMessageDialog(this, "Error:"+ex,null,JOptionPane.ERROR_MESSAGE);
+                  JOptionPane.showMessageDialog(this, "Error:"+ex,null,JOptionPane.ERROR_MESSAGE);
 
             }
-    
-    
-    
-    
-    
+
     
     }
+    
+    
+    public int getIDDesercion(){
+        int idDesercion=0;
+        int identificacion=Integer.parseInt(CB_Identificacion.getSelectedItem().toString());
+        String motivo=jTextArea1.getText();
+        int indice=CB_Curso.getSelectedIndex()-1;
+        String periodo=(String)llaves.get(indice).toString();
+        con= parquelibertad.dbConnection.conectDB();
+        try {
+                CallableStatement proc= con.prepareCall("{? = call consulta_IdDesercion(?,?,?)}");
+                proc.setString(3, motivo);
+                proc.setString(4, periodo);
+                proc.registerOutParameter(1, oracle.jdbc.OracleTypes.INTEGER);
+                proc.setInt(2, identificacion);
+                proc.execute();
+                idDesercion=proc.getInt(1);
+                System.out.println(idDesercion);
+                
+                
+            } catch (SQLException ex) {
+                  JOptionPane.showMessageDialog(this, "Error:"+ex,null,JOptionPane.ERROR_MESSAGE);
+
+            }
+        
+        
+        return idDesercion;
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -439,7 +472,13 @@ public class RegistroDesercion extends javax.swing.JFrame {
 
     private void B_RegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_RegistrarActionPerformed
         // TODO add your handling code here:
-        dispose();
+        if(CB_Curso.getSelectedIndex()>0 && CB_Identificacion.getSelectedIndex()>0){
+            RegistrarDesercion();
+        }else{
+            
+          JOptionPane.showMessageDialog(this, "Seleccione una persona y Curso",null,JOptionPane.ERROR_MESSAGE);
+        
+        }
         
     }//GEN-LAST:event_B_RegistrarActionPerformed
 

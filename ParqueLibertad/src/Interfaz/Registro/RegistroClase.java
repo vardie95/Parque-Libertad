@@ -159,12 +159,12 @@ public class RegistroClase extends javax.swing.JFrame {
                 proc.setDate(5,Finaldate);
                 proc.execute();
                 RegistrarHorario(idMercado, idCurso, Integer.parseInt(costo));
-                System.out.println("Registro Exitoso");
+                JOptionPane.showMessageDialog(this, "Registro de Clase exitoso",null,JOptionPane.INFORMATION_MESSAGE);
                 
             } catch (ParseException ex) {
                 Logger.getLogger(RegistroClase.class.getName()).log(Level.SEVERE, null, ex);
             } catch (SQLException ex) {
-                Logger.getLogger(RegistroClase.class.getName()).log(Level.SEVERE, null, ex);
+                JOptionPane.showMessageDialog(this, "Error:"+ex,null,JOptionPane.ERROR_MESSAGE);
             }
             
     
@@ -287,8 +287,9 @@ public class RegistroClase extends javax.swing.JFrame {
         CB_Dia2 = new javax.swing.JComboBox<>();
         CB_Mes2 = new javax.swing.JComboBox<>();
         CB_Año2 = new javax.swing.JComboBox<>();
-        jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        B_Registrar1 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         Re_Actividad = new javax.swing.JMenuItem();
@@ -367,7 +368,7 @@ public class RegistroClase extends javax.swing.JFrame {
             }
         });
         getContentPane().add(B_Registrar);
-        B_Registrar.setBounds(330, 310, 100, 40);
+        B_Registrar.setBounds(380, 310, 100, 40);
 
         Titulo_Registro_de_Curso.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         Titulo_Registro_de_Curso.setText("Registro de Clase");
@@ -442,16 +443,23 @@ public class RegistroClase extends javax.swing.JFrame {
         getContentPane().add(CB_Año2);
         CB_Año2.setBounds(360, 240, 50, 20);
 
-        jLabel1.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Registro/Fondo.jpg"))); // NOI18N
-        jLabel1.setOpaque(true);
-        getContentPane().add(jLabel1);
-        jLabel1.setBounds(0, 20, 520, 400);
-
         jLabel2.setBackground(new java.awt.Color(255, 255, 255));
         jLabel2.setOpaque(true);
         getContentPane().add(jLabel2);
         jLabel2.setBounds(0, 0, 510, 40);
+
+        B_Registrar1.setText("Modificar");
+        B_Registrar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                B_Registrar1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(B_Registrar1);
+        B_Registrar1.setBounds(260, 310, 100, 40);
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Registro/Fondo.jpg"))); // NOI18N
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(0, 40, 510, 350);
 
         jMenuBar1.setBackground(new java.awt.Color(255, 255, 255));
         jMenuBar1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -777,6 +785,29 @@ public class RegistroClase extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_Admi_Puesto1ActionPerformed
 
+    private void B_Registrar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_Registrar1ActionPerformed
+        // TODO add your handling code here:
+        if (TF_Costo.getText().length()>0 ){
+            int response = JOptionPane.showConfirmDialog(null, "Se perderán todo los datos desea continuar?", "Confirmación",JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+            switch (response) {
+                case JOptionPane.NO_OPTION:
+                break;
+                case JOptionPane.YES_OPTION:
+                new Interfaz.Modificaciones.ModificarClase().setVisible(true);
+                dispose();
+                break;
+                case JOptionPane.CLOSED_OPTION:
+                break;
+                default:
+                break;
+            }
+
+        }else{
+            new Interfaz.Modificaciones.ModificarClase().setVisible(true);
+            dispose();
+        }
+    }//GEN-LAST:event_B_Registrar1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -820,6 +851,7 @@ public class RegistroClase extends javax.swing.JFrame {
     private javax.swing.JMenuItem Admi_Puesto1;
     private javax.swing.JMenuItem Admi_tipoEvento;
     private javax.swing.JButton B_Registrar;
+    private javax.swing.JButton B_Registrar1;
     private javax.swing.JComboBox<String> CB_Año;
     private javax.swing.JComboBox<String> CB_Año1;
     private javax.swing.JComboBox<String> CB_Año2;

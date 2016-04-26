@@ -46,6 +46,24 @@ public class RegistroCurso extends javax.swing.JFrame {
                 Logger.getLogger(RegistroTipoEvento.class.getName()).log(Level.SEVERE, null, ex);
             }
     }
+    
+    public void ModificarCurso(){
+        Connection con= null;
+            String Curso=TF_Nombre.getText();
+            String Modificar= JOptionPane.showInputDialog("Digite La modificacion del curso: ");
+            con= parquelibertad.dbConnection.conectDB();
+            try {
+                CallableStatement proc= con.prepareCall("{call ModificarCurso(?,?)}");
+                proc.setString(1, Curso);
+                proc.setString(2, Modificar);
+                proc.execute();
+                JOptionPane.showMessageDialog(this, "Curso Modificado Exitosamente",null,JOptionPane.INFORMATION_MESSAGE);
+                TF_Nombre.setText("");
+                con.close();
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(this, "Error:"+ex,null,JOptionPane.ERROR_MESSAGE);
+            }
+    }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -91,14 +109,14 @@ public class RegistroCurso extends javax.swing.JFrame {
         getContentPane().add(L_Nombre);
         L_Nombre.setBounds(60, 90, 60, 28);
 
-        B_Registrar.setText("Modificar");
+        B_Registrar.setText("Registrar");
         B_Registrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 B_RegistrarActionPerformed(evt);
             }
         });
         getContentPane().add(B_Registrar);
-        B_Registrar.setBounds(40, 170, 90, 40);
+        B_Registrar.setBounds(230, 170, 90, 40);
 
         Titulo_Registro_de_Curso.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         Titulo_Registro_de_Curso.setText("Registro de Curso");
@@ -109,14 +127,14 @@ public class RegistroCurso extends javax.swing.JFrame {
         getContentPane().add(TF_Nombre);
         TF_Nombre.setBounds(130, 90, 180, 30);
 
-        B_Registrar1.setText("Registrar");
+        B_Registrar1.setText("Modificar");
         B_Registrar1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 B_Registrar1ActionPerformed(evt);
             }
         });
         getContentPane().add(B_Registrar1);
-        B_Registrar1.setBounds(240, 170, 90, 40);
+        B_Registrar1.setBounds(50, 170, 90, 40);
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setOpaque(true);
@@ -431,6 +449,13 @@ public class RegistroCurso extends javax.swing.JFrame {
 
     private void B_Registrar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_Registrar1ActionPerformed
         // TODO add your handling code here:
+        if (TF_Nombre.getText().length()==0){
+            JOptionPane.showMessageDialog(this, "Digite un Curso que desee Modificar.",null,JOptionPane.ERROR_MESSAGE);
+        }
+        else{
+            ModificarCurso();
+            TF_Nombre.setText("");
+        }
     }//GEN-LAST:event_B_Registrar1ActionPerformed
 
     /**

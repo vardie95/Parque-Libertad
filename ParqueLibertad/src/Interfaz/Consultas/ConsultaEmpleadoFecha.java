@@ -461,6 +461,7 @@ public class ConsultaEmpleadoFecha extends javax.swing.JFrame {
 
     private void BT_BuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BT_BuscarActionPerformed
         // TODO add your handling code here:
+        UpdateTable();
     }//GEN-LAST:event_BT_BuscarActionPerformed
 
     private void Ins_ActividadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Ins_ActividadActionPerformed

@@ -354,7 +354,7 @@ public class ModificarPersonas extends javax.swing.JFrame {
             }
         });
         getContentPane().add(B_Registrar);
-        B_Registrar.setBounds(450, 340, 110, 40);
+        B_Registrar.setBounds(450, 320, 110, 40);
 
         L_Nombre.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         L_Nombre.setText("Nombre: ");
@@ -430,6 +430,7 @@ public class ModificarPersonas extends javax.swing.JFrame {
         getContentPane().add(L_Identificacion);
         L_Identificacion.setBounds(60, 60, 80, 28);
 
+        jButton3.setBackground(new java.awt.Color(255, 255, 255));
         jButton3.setText("Volver");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

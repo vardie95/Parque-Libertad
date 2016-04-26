@@ -93,6 +93,27 @@ public class InscripcionActividad extends javax.swing.JFrame {
             }
 
     }
+    
+    public final void IngresoPersona(){
+            con= parquelibertad.dbConnection.conectDB();
+            java.util.Date fecha=new java.util.Date();
+            java.sql.Date fechaIngreso=new java.sql.Date(fecha.getTime());
+            System.out.println(fechaIngreso);
+            int identificacion=Integer.parseInt(CB_Identificacion.getSelectedItem().toString());
+            CallableStatement proc;
+            try {
+                proc = con.prepareCall("{call insertIngresos(?,?,?)}");
+                proc.setInt(1, identificacion);
+                proc.setDate(2, fechaIngreso);
+                proc.setInt(3,1);
+                proc.execute();
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(this, "Error: "+ ex ,null,JOptionPane.ERROR_MESSAGE);
+                
+            }
+            
+    
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -479,7 +500,9 @@ public class InscripcionActividad extends javax.swing.JFrame {
         if(TF_Nombre.getText().equals("")|| CB_Actividad.getSelectedIndex()==0 ||CB_Identificacion.getSelectedIndex()==0  ){
             JOptionPane.showMessageDialog(this, "Por favor seleccionar una persona y una actividad para inscribir",null,JOptionPane.ERROR_MESSAGE);
         }else{
-        InscribirActividad();}
+        InscribirActividad();
+        IngresoPersona();
+        }
     }//GEN-LAST:event_B_RegistrarActionPerformed
 
     private void Ins_ActividadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Ins_ActividadActionPerformed

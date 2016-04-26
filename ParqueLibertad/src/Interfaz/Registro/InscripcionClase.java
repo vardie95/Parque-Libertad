@@ -90,6 +90,26 @@ public class InscripcionClase extends javax.swing.JFrame {
             }
 
     }
+    public final void IngresoPersona(){
+            con= parquelibertad.dbConnection.conectDB();
+            java.util.Date fecha=new java.util.Date();
+            java.sql.Date fechaIngreso=new java.sql.Date(fecha.getTime());
+            System.out.println(fechaIngreso);
+            int identificacion=Integer.parseInt(CB_Identificacion.getSelectedItem().toString());
+            CallableStatement proc;
+            try {
+                proc = con.prepareCall("{call insertIngresos(?,?,?)}");
+                proc.setInt(1, identificacion);
+                proc.setDate(2, fechaIngreso);
+                proc.setInt(3,1);
+                proc.execute();
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(this, "Error: "+ ex ,null,JOptionPane.ERROR_MESSAGE);
+                
+            }
+            
+    
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -154,7 +174,7 @@ public class InscripcionClase extends javax.swing.JFrame {
         CB_Identificacion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "123456789" }));
         CB_Identificacion.setBorder(null);
         getContentPane().add(CB_Identificacion);
-        CB_Identificacion.setBounds(190, 60, 164, 28);
+        CB_Identificacion.setBounds(190, 60, 190, 28);
 
         L_Identificacion.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         L_Identificacion.setText("Identificación:");
@@ -171,6 +191,7 @@ public class InscripcionClase extends javax.swing.JFrame {
         getContentPane().add(L_Curso);
         L_Curso.setBounds(30, 170, 40, 28);
 
+        B_Registrar.setBackground(new java.awt.Color(255, 255, 255));
         B_Registrar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         B_Registrar.setText("Registrar");
         B_Registrar.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -220,6 +241,7 @@ public class InscripcionClase extends javax.swing.JFrame {
         getContentPane().add(L_Apellido2);
         L_Apellido2.setBounds(340, 110, 90, 15);
 
+        jButton1.setBackground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Buscar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -227,7 +249,7 @@ public class InscripcionClase extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton1);
-        jButton1.setBounds(370, 60, 80, 23);
+        jButton1.setBounds(410, 70, 80, 23);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Registro/Fondo.jpg"))); // NOI18N
         getContentPane().add(jLabel1);
@@ -237,7 +259,6 @@ public class InscripcionClase extends javax.swing.JFrame {
         jMenuBar1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jMenuBar1.setPreferredSize(new java.awt.Dimension(106, 50));
 
-        jMenu11.setBackground(new java.awt.Color(255, 255, 255));
         jMenu11.setText("       Inscripción");
         jMenu11.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 13)); // NOI18N
         jMenu11.setMinimumSize(new java.awt.Dimension(100, 100));
@@ -264,7 +285,6 @@ public class InscripcionClase extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu11);
 
-        jMenu4.setBackground(new java.awt.Color(255, 255, 255));
         jMenu4.setText("  Consulta");
         jMenu4.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 13)); // NOI18N
         jMenu4.setPreferredSize(new java.awt.Dimension(180, 19));
@@ -391,7 +411,6 @@ public class InscripcionClase extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu4);
 
-        jMenu3.setBackground(new java.awt.Color(255, 255, 255));
         jMenu3.setText("   Estadística");
         jMenu3.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 13)); // NOI18N
         jMenu3.setPreferredSize(new java.awt.Dimension(180, 19));
@@ -458,7 +477,6 @@ public class InscripcionClase extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu3);
 
-        jMenu12.setBackground(new java.awt.Color(255, 255, 255));
         jMenu12.setText("      Sesión");
         jMenu12.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 13)); // NOI18N
         jMenu12.setPreferredSize(new java.awt.Dimension(180, 35));
@@ -494,7 +512,9 @@ public class InscripcionClase extends javax.swing.JFrame {
         if(TF_Nombre.getText().equals("")|| CB_Curso.getSelectedIndex()==0 ||CB_Identificacion.getSelectedIndex()==0  ){
             JOptionPane.showMessageDialog(this, "Por favor seleccionar una persona y una actividad para inscribir",null,JOptionPane.ERROR_MESSAGE);
         }else{
-        InscribirCurso();}
+        InscribirCurso();
+        IngresoPersona();
+        }
     }//GEN-LAST:event_B_RegistrarActionPerformed
 
     private void Ins_ActividadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Ins_ActividadActionPerformed

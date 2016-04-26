@@ -32,7 +32,7 @@ public class Top5Deserciones extends javax.swing.JFrame {
         CallableStatement cstmt =null;
         Connection con = parquelibertad.dbConnection.conectDB();
         try {
-            cstmt =con.prepareCall("{call estadistica_top5cursoD(?)}");
+            cstmt =con.prepareCall("{call estadistica_top5cursosD(?)}");
             cstmt.registerOutParameter(1, oracle.jdbc.OracleTypes.CURSOR);
             cstmt.execute();
             ResultSet rs = (ResultSet)cstmt.getObject(1);

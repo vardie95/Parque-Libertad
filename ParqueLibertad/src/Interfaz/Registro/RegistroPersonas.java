@@ -177,7 +177,7 @@ public class RegistroPersonas extends javax.swing.JFrame {
                 jTextArea1.setText("");
                 con.close();
             } catch (SQLException ex) {
-                Logger.getLogger(RegistroPersonas.class.getName()).log(Level.SEVERE, null, ex);
+                JOptionPane.showMessageDialog(this, "Error: "+ ex ,null,JOptionPane.ERROR_MESSAGE);
             }
   
     }
@@ -194,9 +194,9 @@ public class RegistroPersonas extends javax.swing.JFrame {
                 proc.setDate(2, fechaIngreso);
                 proc.setInt(3,1);
                 proc.execute();
-                System.out.println("Registro visita Exitoso");
             } catch (SQLException ex) {
-                Logger.getLogger(RegistroPersonas.class.getName()).log(Level.SEVERE, null, ex);
+                JOptionPane.showMessageDialog(this, "Error: "+ ex ,null,JOptionPane.ERROR_MESSAGE);
+                
             }
             
     
@@ -477,6 +477,7 @@ public class RegistroPersonas extends javax.swing.JFrame {
         getContentPane().add(jLabel2);
         jLabel2.setBounds(30, 390, 0, 0);
 
+        jButton1.setBackground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Modificar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -484,7 +485,7 @@ public class RegistroPersonas extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton1);
-        jButton1.setBounds(440, 350, 110, 50);
+        jButton1.setBounds(440, 350, 110, 40);
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Registro/Fondo.jpg"))); // NOI18N
         getContentPane().add(jLabel4);
@@ -692,6 +693,7 @@ public class RegistroPersonas extends javax.swing.JFrame {
         // TODO add your handling code here:
         tipo=1;
         
+        
     }//GEN-LAST:event_RB_CedulaActionPerformed
 
     private void B_RegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_RegistrarActionPerformed
@@ -738,6 +740,7 @@ public class RegistroPersonas extends javax.swing.JFrame {
     private void RB_PasaporteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RB_PasaporteActionPerformed
         // TODO add your handling code here:
         tipo=3;
+        
     }//GEN-LAST:event_RB_PasaporteActionPerformed
 
     private void RB_TIMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RB_TIMActionPerformed
@@ -795,7 +798,7 @@ public class RegistroPersonas extends javax.swing.JFrame {
 
     private void Admi_PuestoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Admi_PuestoActionPerformed
         // TODO add your handling code here:
-        new Administrador.RegistroPais().setVisible(true);
+        new Interfaz.Registro.RegistroPuesto().setVisible(true);
         dispose();
     }//GEN-LAST:event_Admi_PuestoActionPerformed
 
