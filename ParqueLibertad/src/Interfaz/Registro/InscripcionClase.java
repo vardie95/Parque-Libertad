@@ -138,6 +138,7 @@ public class InscripcionClase extends javax.swing.JFrame {
         jMenu11 = new javax.swing.JMenu();
         Ins_Actividad = new javax.swing.JMenuItem();
         Ins_Clase = new javax.swing.JMenuItem();
+        Ins_Clase1 = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
         jMenu8 = new javax.swing.JMenu();
         Con_persona_ID = new javax.swing.JMenuItem();
@@ -157,6 +158,7 @@ public class InscripcionClase extends javax.swing.JFrame {
         Es_persona_Fecha = new javax.swing.JMenuItem();
         Es_persona_lugar = new javax.swing.JMenuItem();
         Es_top_persona = new javax.swing.JMenuItem();
+        TopCurso1 = new javax.swing.JMenuItem();
         TopCurso = new javax.swing.JMenuItem();
         TopActividades = new javax.swing.JMenuItem();
         TopDeserciones = new javax.swing.JMenuItem();
@@ -282,6 +284,15 @@ public class InscripcionClase extends javax.swing.JFrame {
             }
         });
         jMenu11.add(Ins_Clase);
+
+        Ins_Clase1.setText("Visita");
+        Ins_Clase1.setPreferredSize(new java.awt.Dimension(140, 30));
+        Ins_Clase1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Ins_Clase1ActionPerformed(evt);
+            }
+        });
+        jMenu11.add(Ins_Clase1);
 
         jMenuBar1.add(jMenu11);
 
@@ -447,6 +458,15 @@ public class InscripcionClase extends javax.swing.JFrame {
         jMenu7.add(Es_top_persona);
 
         jMenu3.add(jMenu7);
+
+        TopCurso1.setText("Empleado");
+        TopCurso1.setPreferredSize(new java.awt.Dimension(137, 40));
+        TopCurso1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TopCurso1ActionPerformed(evt);
+            }
+        });
+        jMenu3.add(TopCurso1);
 
         TopCurso.setText("Top Cursos");
         TopCurso.setPreferredSize(new java.awt.Dimension(137, 40));
@@ -657,24 +677,48 @@ public class InscripcionClase extends javax.swing.JFrame {
                 cstmt.setInt(2,aux);
                 cstmt.execute();
                 TF_Nombre.setText(cstmt.getString(1));
+                cstmt.close();
 
                 CallableStatement cstmt2 = con.prepareCall("{?=call consulta_apellido1 (?)}");
                 cstmt2.registerOutParameter(1, oracle.jdbc.OracleTypes.VARCHAR);
                 cstmt2.setInt(2,aux);
                 cstmt2.execute();
                 TF_Apellido1.setText(cstmt2.getString(1));
-
+                cstmt2.close();
                 CallableStatement cstmt3 = con.prepareCall("{?=call consulta_apellido2 (?)}");
                 cstmt3.registerOutParameter(1, oracle.jdbc.OracleTypes.VARCHAR);
                 cstmt3.setInt(2,aux);
                 cstmt3.execute();
                 TF_Apellido2.setText(cstmt3.getString(1));
+                cstmt3.close();
                 con.close();
             } catch (SQLException ex) {
                 Logger.getLogger(RegistroEstudiante.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void Ins_Clase1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Ins_Clase1ActionPerformed
+        // TODO add your handling code here:
+        new Interfaz.Registro.RegistroVisita().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_Ins_Clase1ActionPerformed
+
+    private void TopCurso1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TopCurso1ActionPerformed
+        try {
+            // TODO add your handling code here:
+            int cantidad=0;
+            CallableStatement cstmt =null;
+            Connection con = parquelibertad.dbConnection.conectDB();
+            cstmt =con.prepareCall("{? = call EstadisticaEmpleado }");
+            cstmt.registerOutParameter(1, oracle.jdbc.OracleTypes.INTEGER);
+            cstmt.execute();
+            cantidad=cstmt.getInt(1);
+             JOptionPane.showMessageDialog(this, "La cantidad de empelado es: "+cantidad,null,JOptionPane.INFORMATION_MESSAGE);
+        } catch (SQLException ex) {
+            Logger.getLogger(InscripcionClase.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_TopCurso1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -746,6 +790,7 @@ public class InscripcionClase extends javax.swing.JFrame {
     private javax.swing.JMenuItem Es_top_persona;
     private javax.swing.JMenuItem Ins_Actividad;
     private javax.swing.JMenuItem Ins_Clase;
+    private javax.swing.JMenuItem Ins_Clase1;
     private javax.swing.JLabel L_Apellido1;
     private javax.swing.JLabel L_Apellido2;
     private javax.swing.JLabel L_Curso;
@@ -757,6 +802,7 @@ public class InscripcionClase extends javax.swing.JFrame {
     private javax.swing.JLabel Titulo_Registro_de_Desercion;
     private javax.swing.JMenuItem TopActividades;
     private javax.swing.JMenuItem TopCurso;
+    private javax.swing.JMenuItem TopCurso1;
     private javax.swing.JMenuItem TopDeserciones;
     private javax.swing.JMenuItem con_Empleado_Fecha;
     private javax.swing.JMenuItem con_persona_Fecha;
