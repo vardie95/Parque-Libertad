@@ -193,8 +193,8 @@ public class RegistroClase extends javax.swing.JFrame {
                 int idHorario=getidHorario();
                 con= parquelibertad.dbConnection.conectDB();
                 cstmt = con.prepareCall("{call insertClasexHorario (?,?)}");
-                cstmt.setInt(1,idCurso);
-                cstmt.setInt(2,idHorario);
+                cstmt.setInt(2,idCurso);
+                cstmt.setInt(1,idHorario);
                 cstmt.execute();
                 con.close();
                 

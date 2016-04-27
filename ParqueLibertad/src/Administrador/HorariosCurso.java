@@ -3,55 +3,100 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Interfaz.Registro;
+package Administrador;
 
+import Interfaz.Consultas.*;
+import Interfaz.Registro.RegistroClase;
+import Interfaz.Registro.RegistroEmpleado;
+import Interfaz.Registro.RegistroEstudiante;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-import parquelibertad.dbConnection;
-
-
+import net.proteanit.sql.DbUtils;
 
 /**
  *
  * @author Luis Diego
  */
-public class InscripcionClase extends javax.swing.JFrame {
-    Connection con=null;
-    ArrayList llaves=new ArrayList();
-
+public class HorariosCurso extends javax.swing.JFrame {
+         Connection con= null;
+        ArrayList llaves=new ArrayList();
     /**
-     * Creates new form RegistroCurso
+     * Creates new form ConsultaFecha
      */
-    public InscripcionClase() {
+    public HorariosCurso() {
         initComponents();
-        llenaridentificacion();
+        llenarHorario();
         llenarClase();
     }
-    public final  void llenaridentificacion() {
-        con= parquelibertad.dbConnection.conectDB();
-        CB_Identificacion.removeAllItems();
-        CB_Identificacion.addItem("Seleccione Identificacion");
+    private  void llenarHorario(){
+        CB_Curso1.removeAllItems();
             try {
-                 
-                CallableStatement cstmt = con.prepareCall("{call get_idEstudiante(?)}");
-                cstmt.registerOutParameter(1, oracle.jdbc.OracleTypes.CURSOR);
-                cstmt.execute();
-                ResultSet rs = (ResultSet)cstmt.getObject(1);
-                while(rs.next()){
-                   CB_Identificacion.addItem(rs.getString(1));
+               con= parquelibertad.dbConnection.conectDB();
+               String dia=CB_Curso2.getSelectedItem().toString();
+               CallableStatement cstmt =con.prepareCall("{call get_Horario(?,?)}");
+               cstmt.setString(1, dia);
+               cstmt.registerOutParameter(2,oracle.jdbc.OracleTypes.CURSOR);
+               cstmt.execute();
+               ResultSet rs = (ResultSet)cstmt.getObject(2);
+               while(rs.next()){
+                   CB_Curso1.addItem(rs.getString(1));
                 }
             } catch (SQLException ex) {
                 Logger.getLogger(RegistroEmpleado.class.getName()).log(Level.SEVERE, null, ex);
-            
+            }
     }
+    private int getidHorario(){
+        int id_horario = 0;    
+        try {
+                CallableStatement cstmt;
+                con= parquelibertad.dbConnection.conectDB();
+                String dia=CB_Curso2.getSelectedItem().toString();
+                String hora=CB_Curso1.getSelectedItem().toString();
+                cstmt = con.prepareCall("{?=call consulta_idHorario (?,?)}");
+                cstmt.setString(2,dia);
+                cstmt.setString(3,hora);
+                cstmt.registerOutParameter(1, oracle.jdbc.OracleTypes.INTEGER);
+                cstmt.execute();
+                id_horario=cstmt.getInt(1);
+                con.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(RegistroClase.class.getName()).log(Level.SEVERE, null, ex);
+            }
+    
+    
+    
+            return id_horario;
     }
     
+   
+    private void UpdateTable(){
+        CallableStatement cstmt =null;
+        con = parquelibertad.dbConnection.conectDB();
+        try {
+            int indice=CB_Curso.getSelectedIndex()-1;
+            int ID_Curso=(int) llaves.get(indice);
+            cstmt =con.prepareCall("{call consultaHorarioCurso(?,?)}");
+            cstmt.setInt(1,ID_Curso);
+            cstmt.registerOutParameter(2, oracle.jdbc.OracleTypes.CURSOR);
+            cstmt.execute();
+            ResultSet rs = (ResultSet)cstmt.getObject(2);
+            jTable1.setModel(DbUtils.resultSetToTableModel(rs));
+            con.close();
+            rs.close();
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(ConsultaNombre.class.getName()).log(Level.SEVERE, null, ex);
+        }
+  
+    }
     public final  void llenarClase()
     {
         CB_Curso.removeAllItems();
@@ -67,78 +112,98 @@ public class InscripcionClase extends javax.swing.JFrame {
                    CB_Curso.addItem("Grupo: "+rs.getString(1)+"  "+rs.getString(2)+"\t  Costo:  "+rs.getString(3)+"       Mercado: "+rs.getString(4) );
                    llaves.add(rs.getInt(1));
                 }
+                rs.close();
             } catch (SQLException ex) {
                 Logger.getLogger(RegistroEstudiante.class.getName()).log(Level.SEVERE, null, ex);
             }
     }
-    private void InscribirCurso(){
-         Connection con= null;
-            int identificacion=Integer.parseInt(CB_Identificacion.getSelectedItem().toString());
-            int indice=CB_Curso.getSelectedIndex()-1;
-            con= parquelibertad.dbConnection.conectDB();
+    private void RegistrarHorario(){
             try {
-                CallableStatement proc= con.prepareCall("{call insertClasexPersona(?,?)}");
-                proc.setInt(1, identificacion);
-                proc.setInt(2, (int) llaves.get(indice));
-                proc.execute();
-                JOptionPane.showMessageDialog(this, "Persona Matriculada Exitosamente",null,JOptionPane.INFORMATION_MESSAGE);
+                CallableStatement cstmt = null;
+                int indice=CB_Curso.getSelectedIndex()-1;
+                int idCurso=(int) llaves.get(indice);
+                int idHorario=getidHorario();
+                con= parquelibertad.dbConnection.conectDB();
+                System.out.println(idCurso+"   "+idHorario);
+                cstmt = con.prepareCall("{call insertClasexHorario(?,?)}");
+                cstmt.setInt(2,idCurso);
+                cstmt.setInt(1,idHorario);
+                cstmt.execute();
                 con.close();
                 
             } catch (SQLException ex) {
-           JOptionPane.showMessageDialog(this, "Error: "+ex,null,JOptionPane.ERROR_MESSAGE);
-
-            }
-
-    }
-    public final void IngresoPersona(){
-            con= parquelibertad.dbConnection.conectDB();
-            java.util.Date fecha=new java.util.Date();
-            java.sql.Date fechaIngreso=new java.sql.Date(fecha.getTime());
-            System.out.println(fechaIngreso);
-            int identificacion=Integer.parseInt(CB_Identificacion.getSelectedItem().toString());
-            CallableStatement proc;
-            try {
-                proc = con.prepareCall("{call insertIngresos(?,?,?)}");
-                proc.setInt(1, identificacion);
-                proc.setDate(2, fechaIngreso);
-                proc.setInt(3,1);
-                proc.execute();
-            } catch (SQLException ex) {
-                JOptionPane.showMessageDialog(this, "Error: "+ ex ,null,JOptionPane.ERROR_MESSAGE);
-                
+                Logger.getLogger(RegistroClase.class.getName()).log(Level.SEVERE, null, ex);
             }
             
     
+   
     }
+    
+    private void EliminarHorario(){
+             try {
+                 String dia=jTable1.getValueAt(jTable1.getSelectedRow(), 0).toString();
+                 String hora=jTable1.getValueAt(jTable1.getSelectedRow(), 1).toString();
+                 int idHorario=getidHorarioEliminar(dia, hora);
+                 int idClase=(int) llaves.get(CB_Curso.getSelectedIndex()-1);
+                 CallableStatement cstmt;
+                 con= parquelibertad.dbConnection.conectDB();
+                 cstmt = con.prepareCall("{call EliminarUsuarioClase (?,?)}");
+                 cstmt.setInt(1,idClase);
+                 cstmt.setInt(2,idHorario);
+                 cstmt.execute();
+                 
+             } catch (SQLException ex) {
+                 JOptionPane.showMessageDialog(this, "Error:"+ex,null,JOptionPane.ERROR_MESSAGE);
+             }
 
+    
+    }
+    private int getidHorarioEliminar(String dia,String hora){
+        int id_horario = 0;    
+        try {
+                CallableStatement cstmt;
+                con= parquelibertad.dbConnection.conectDB();
+                cstmt = con.prepareCall("{?=call consulta_idHorario (?,?)}");
+                cstmt.setString(2,dia);
+                cstmt.setString(3,hora);
+                cstmt.registerOutParameter(1, oracle.jdbc.OracleTypes.INTEGER);
+                cstmt.execute();
+                id_horario=cstmt.getInt(1);
+                cstmt.close();
+                con.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(RegistroClase.class.getName()).log(Level.SEVERE, null, ex);
+            }
+    
+    
+    
+            return id_horario;
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
      * regenerated by the Form Editor.
      */
     @SuppressWarnings("unchecked")
+
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        CB_Identificacion = new javax.swing.JComboBox<>();
-        L_Identificacion = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        Titulo_Menu = new javax.swing.JLabel();
         CB_Curso = new javax.swing.JComboBox<>();
-        L_Curso = new javax.swing.JLabel();
-        B_Registrar = new javax.swing.JButton();
-        Titulo_Registro_de_Desercion = new javax.swing.JLabel();
-        TF_Nombre = new javax.swing.JTextField();
-        TF_Apellido1 = new javax.swing.JTextField();
-        TF_Apellido2 = new javax.swing.JTextField();
-        L_Nombre = new javax.swing.JLabel();
-        L_Apellido1 = new javax.swing.JLabel();
-        L_Apellido2 = new javax.swing.JLabel();
+        L_Horario4 = new javax.swing.JLabel();
+        CB_Curso2 = new javax.swing.JComboBox<>();
+        L_Horario = new javax.swing.JLabel();
+        CB_Curso1 = new javax.swing.JComboBox<>();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu11 = new javax.swing.JMenu();
         Ins_Actividad = new javax.swing.JMenuItem();
         Ins_Clase = new javax.swing.JMenuItem();
-        Ins_Clase1 = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
         jMenu8 = new javax.swing.JMenu();
         Con_persona_ID = new javax.swing.JMenuItem();
@@ -158,7 +223,6 @@ public class InscripcionClase extends javax.swing.JFrame {
         Es_persona_Fecha = new javax.swing.JMenuItem();
         Es_persona_lugar = new javax.swing.JMenuItem();
         Es_top_persona = new javax.swing.JMenuItem();
-        TopCurso1 = new javax.swing.JMenuItem();
         TopCurso = new javax.swing.JMenuItem();
         TopActividades = new javax.swing.JMenuItem();
         TopDeserciones = new javax.swing.JMenuItem();
@@ -167,100 +231,91 @@ public class InscripcionClase extends javax.swing.JFrame {
         Admi_Puesto1 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Parque la Libertad");
-        setLocation(new java.awt.Point(450, 125));
-        setMinimumSize(new java.awt.Dimension(521, 400));
-        setResizable(false);
+        setLocation(new java.awt.Point(500, 125));
+        setMinimumSize(new java.awt.Dimension(580, 480));
         getContentPane().setLayout(null);
 
-        CB_Identificacion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "123456789" }));
-        CB_Identificacion.setBorder(null);
-        getContentPane().add(CB_Identificacion);
-        CB_Identificacion.setBounds(190, 60, 190, 28);
+        jTable1.setBackground(new java.awt.Color(204, 255, 204));
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
+            },
+            new String [] {
+                "Día", "Hora"
+            }
+        ));
+        jTable1.setGridColor(new java.awt.Color(51, 51, 51));
+        jScrollPane1.setViewportView(jTable1);
 
-        L_Identificacion.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        L_Identificacion.setText("Identificación:");
-        getContentPane().add(L_Identificacion);
-        L_Identificacion.setBounds(70, 60, 110, 28);
+        getContentPane().add(jScrollPane1);
+        jScrollPane1.setBounds(90, 110, 330, 150);
+
+        Titulo_Menu.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        Titulo_Menu.setText("Horarios");
+        getContentPane().add(Titulo_Menu);
+        Titulo_Menu.setBounds(240, 20, 80, 22);
 
         CB_Curso.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nombre" }));
         CB_Curso.setBorder(null);
-        getContentPane().add(CB_Curso);
-        CB_Curso.setBounds(20, 200, 470, 31);
-
-        L_Curso.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        L_Curso.setText("Curso:");
-        getContentPane().add(L_Curso);
-        L_Curso.setBounds(30, 170, 40, 28);
-
-        B_Registrar.setBackground(new java.awt.Color(255, 255, 255));
-        B_Registrar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        B_Registrar.setText("Registrar");
-        B_Registrar.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        B_Registrar.addActionListener(new java.awt.event.ActionListener() {
+        CB_Curso.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                B_RegistrarActionPerformed(evt);
+                CB_CursoActionPerformed(evt);
             }
         });
-        getContentPane().add(B_Registrar);
-        B_Registrar.setBounds(370, 250, 100, 40);
+        getContentPane().add(CB_Curso);
+        CB_Curso.setBounds(40, 60, 460, 31);
 
-        Titulo_Registro_de_Desercion.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        Titulo_Registro_de_Desercion.setText("Inscripción Curso");
-        getContentPane().add(Titulo_Registro_de_Desercion);
-        Titulo_Registro_de_Desercion.setBounds(190, 20, 180, 22);
+        L_Horario4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        L_Horario4.setText("Dia: ");
+        getContentPane().add(L_Horario4);
+        L_Horario4.setBounds(90, 270, 70, 28);
 
-        TF_Nombre.setEditable(false);
-        TF_Nombre.setBackground(new java.awt.Color(153, 255, 153));
-        TF_Nombre.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        getContentPane().add(TF_Nombre);
-        TF_Nombre.setBounds(30, 130, 139, 30);
+        CB_Curso2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado", "Domingo" }));
+        CB_Curso2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CB_Curso2ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(CB_Curso2);
+        CB_Curso2.setBounds(130, 270, 100, 28);
 
-        TF_Apellido1.setEditable(false);
-        TF_Apellido1.setBackground(new java.awt.Color(153, 255, 153));
-        TF_Apellido1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        getContentPane().add(TF_Apellido1);
-        TF_Apellido1.setBounds(180, 130, 139, 30);
+        L_Horario.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        L_Horario.setText("Hora:");
+        getContentPane().add(L_Horario);
+        L_Horario.setBounds(250, 270, 70, 28);
 
-        TF_Apellido2.setEditable(false);
-        TF_Apellido2.setBackground(new java.awt.Color(153, 255, 153));
-        TF_Apellido2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        getContentPane().add(TF_Apellido2);
-        TF_Apellido2.setBounds(340, 130, 139, 30);
-
-        L_Nombre.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        L_Nombre.setText("Nombre: ");
-        getContentPane().add(L_Nombre);
-        L_Nombre.setBounds(30, 110, 90, 15);
-
-        L_Apellido1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        L_Apellido1.setText("Apellido 1:");
-        getContentPane().add(L_Apellido1);
-        L_Apellido1.setBounds(180, 110, 80, 15);
-
-        L_Apellido2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        L_Apellido2.setText("Apellido 2: ");
-        getContentPane().add(L_Apellido2);
-        L_Apellido2.setBounds(340, 110, 90, 15);
+        CB_Curso1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Horario" }));
+        getContentPane().add(CB_Curso1);
+        CB_Curso1.setBounds(300, 270, 120, 28);
 
         jButton1.setBackground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Buscar");
+        jButton1.setText("Agregar Horario");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
         getContentPane().add(jButton1);
-        jButton1.setBounds(410, 70, 80, 23);
+        jButton1.setBounds(80, 320, 140, 30);
 
-        jButton2.setText("jButton2");
+        jButton2.setBackground(new java.awt.Color(255, 255, 255));
+        jButton2.setText("Eliminar Horario");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
         getContentPane().add(jButton2);
-        jButton2.setBounds(180, 270, 73, 23);
+        jButton2.setBounds(320, 320, 150, 30);
+
+        jLabel1.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Registro/Fondo.png"))); // NOI18N
+        jLabel1.setOpaque(true);
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(0, 0, 590, 400);
 
         jMenuBar1.setBackground(new java.awt.Color(255, 255, 255));
         jMenuBar1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -289,15 +344,6 @@ public class InscripcionClase extends javax.swing.JFrame {
             }
         });
         jMenu11.add(Ins_Clase);
-
-        Ins_Clase1.setText("Visita");
-        Ins_Clase1.setPreferredSize(new java.awt.Dimension(140, 30));
-        Ins_Clase1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Ins_Clase1ActionPerformed(evt);
-            }
-        });
-        jMenu11.add(Ins_Clase1);
 
         jMenuBar1.add(jMenu11);
 
@@ -464,15 +510,6 @@ public class InscripcionClase extends javax.swing.JFrame {
 
         jMenu3.add(jMenu7);
 
-        TopCurso1.setText("Empleado");
-        TopCurso1.setPreferredSize(new java.awt.Dimension(137, 40));
-        TopCurso1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TopCurso1ActionPerformed(evt);
-            }
-        });
-        jMenu3.add(TopCurso1);
-
         TopCurso.setText("Top Cursos");
         TopCurso.setPreferredSize(new java.awt.Dimension(137, 40));
         TopCurso.addActionListener(new java.awt.event.ActionListener() {
@@ -531,16 +568,6 @@ public class InscripcionClase extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void B_RegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_RegistrarActionPerformed
-        // TODO add your handling code here:
-        if(TF_Nombre.getText().equals("")|| CB_Curso.getSelectedIndex()==0 ||CB_Identificacion.getSelectedIndex()==0  ){
-            JOptionPane.showMessageDialog(this, "Por favor seleccionar una persona y una actividad para inscribir",null,JOptionPane.ERROR_MESSAGE);
-        }else{
-        InscribirCurso();
-        IngresoPersona();
-        }
-    }//GEN-LAST:event_B_RegistrarActionPerformed
 
     private void Ins_ActividadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Ins_ActividadActionPerformed
         // TODO add your handling code here:
@@ -668,67 +695,44 @@ public class InscripcionClase extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_Admi_Puesto1ActionPerformed
 
+    private void CB_Curso2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CB_Curso2ActionPerformed
+        // TODO add your handling code here:
+        if(evt.getSource()==CB_Curso2){
+            if(CB_Curso2.getSelectedItem()!=null){
+                llenarHorario();
+            }
+        }
+
+    }//GEN-LAST:event_CB_Curso2ActionPerformed
+
+    private void CB_CursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CB_CursoActionPerformed
+        // TODO add your handling code here:
+        if(evt.getSource()==CB_Curso){
+            if(CB_Curso.getSelectedItem()!=null){
+                if((int)CB_Curso.getSelectedIndex()>0){
+                    UpdateTable();
+                }
+            }
+        }
+    }//GEN-LAST:event_CB_CursoActionPerformed
+
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        con=dbConnection.conectDB();
-        if ((String)CB_Identificacion.getSelectedItem()!="Seleccione Identificacion")
-        {
-
-            try {
-                CallableStatement cstmt = con.prepareCall("{?=call consulta_nombre (?)}");
-                TF_Nombre.setText((String)CB_Identificacion.getSelectedItem());
-                cstmt.registerOutParameter(1, oracle.jdbc.OracleTypes.VARCHAR);
-                int aux=Integer.parseInt(TF_Nombre.getText());
-                cstmt.setInt(2,aux);
-                cstmt.execute();
-                TF_Nombre.setText(cstmt.getString(1));
-                cstmt.close();
-
-                CallableStatement cstmt2 = con.prepareCall("{?=call consulta_apellido1 (?)}");
-                cstmt2.registerOutParameter(1, oracle.jdbc.OracleTypes.VARCHAR);
-                cstmt2.setInt(2,aux);
-                cstmt2.execute();
-                TF_Apellido1.setText(cstmt2.getString(1));
-                cstmt2.close();
-                CallableStatement cstmt3 = con.prepareCall("{?=call consulta_apellido2 (?)}");
-                cstmt3.registerOutParameter(1, oracle.jdbc.OracleTypes.VARCHAR);
-                cstmt3.setInt(2,aux);
-                cstmt3.execute();
-                TF_Apellido2.setText(cstmt3.getString(1));
-                cstmt3.close();
-                con.close();
-            } catch (SQLException ex) {
-                Logger.getLogger(RegistroEstudiante.class.getName()).log(Level.SEVERE, null, ex);
-            }
+        if(CB_Curso.getSelectedIndex()>0){
+            RegistrarHorario();
+            UpdateTable();
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void Ins_Clase1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Ins_Clase1ActionPerformed
-        // TODO add your handling code here:
-        new Interfaz.Registro.RegistroVisita().setVisible(true);
-        dispose();
-    }//GEN-LAST:event_Ins_Clase1ActionPerformed
-
-    private void TopCurso1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TopCurso1ActionPerformed
-        try {
-            // TODO add your handling code here:
-            int cantidad=0;
-            CallableStatement cstmt =null;
-            Connection con = parquelibertad.dbConnection.conectDB();
-            cstmt =con.prepareCall("{? = call EstadisticaEmpleado }");
-            cstmt.registerOutParameter(1, oracle.jdbc.OracleTypes.INTEGER);
-            cstmt.execute();
-            cantidad=cstmt.getInt(1);
-             JOptionPane.showMessageDialog(this, "La cantidad de empelado es: "+cantidad,null,JOptionPane.INFORMATION_MESSAGE);
-        } catch (SQLException ex) {
-            Logger.getLogger(InscripcionClase.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_TopCurso1ActionPerformed
-
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        new Administrador.HorariosCurso().setVisible(true);
-        dispose();
+        if(jTable1.getSelectedRow()!=-1|| CB_Curso.getSelectedIndex()>0){
+            EliminarHorario();
+            UpdateTable();
+        }
+        else{
+           JOptionPane.showMessageDialog(this, "Error: Seleccione un Horario a Borrar ",null,JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
@@ -748,26 +752,14 @@ public class InscripcionClase extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(InscripcionClase.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(HorariosCurso.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(InscripcionClase.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(HorariosCurso.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(InscripcionClase.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(HorariosCurso.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(InscripcionClase.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(HorariosCurso.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -776,7 +768,7 @@ public class InscripcionClase extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new InscripcionClase().setVisible(true);
+                new HorariosCurso().setVisible(true);
             }
         });
     }
@@ -784,9 +776,9 @@ public class InscripcionClase extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem Admi_Curso1;
     private javax.swing.JMenuItem Admi_Puesto1;
-    private javax.swing.JButton B_Registrar;
     private javax.swing.JComboBox<String> CB_Curso;
-    private javax.swing.JComboBox<String> CB_Identificacion;
+    private javax.swing.JComboBox<String> CB_Curso1;
+    private javax.swing.JComboBox<String> CB_Curso2;
     private javax.swing.JMenuItem Con_Curso;
     private javax.swing.JMenuItem Con_Empleado_ID;
     private javax.swing.JMenuItem Con_Empleado_Name;
@@ -801,24 +793,17 @@ public class InscripcionClase extends javax.swing.JFrame {
     private javax.swing.JMenuItem Es_top_persona;
     private javax.swing.JMenuItem Ins_Actividad;
     private javax.swing.JMenuItem Ins_Clase;
-    private javax.swing.JMenuItem Ins_Clase1;
-    private javax.swing.JLabel L_Apellido1;
-    private javax.swing.JLabel L_Apellido2;
-    private javax.swing.JLabel L_Curso;
-    private javax.swing.JLabel L_Identificacion;
-    private javax.swing.JLabel L_Nombre;
-    private javax.swing.JTextField TF_Apellido1;
-    private javax.swing.JTextField TF_Apellido2;
-    private javax.swing.JTextField TF_Nombre;
-    private javax.swing.JLabel Titulo_Registro_de_Desercion;
+    private javax.swing.JLabel L_Horario;
+    private javax.swing.JLabel L_Horario4;
+    private javax.swing.JLabel Titulo_Menu;
     private javax.swing.JMenuItem TopActividades;
     private javax.swing.JMenuItem TopCurso;
-    private javax.swing.JMenuItem TopCurso1;
     private javax.swing.JMenuItem TopDeserciones;
     private javax.swing.JMenuItem con_Empleado_Fecha;
     private javax.swing.JMenuItem con_persona_Fecha;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu11;
     private javax.swing.JMenu jMenu12;
     private javax.swing.JMenu jMenu3;
@@ -827,5 +812,7 @@ public class InscripcionClase extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu8;
     private javax.swing.JMenu jMenu9;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }

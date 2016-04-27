@@ -276,6 +276,7 @@ public class RegistroPersonas extends javax.swing.JFrame {
         jMenu1 = new javax.swing.JMenu();
         Re_Actividad = new javax.swing.JMenuItem();
         Re_Curso = new javax.swing.JMenuItem();
+        Re_Persona3 = new javax.swing.JMenuItem();
         Re_desercion = new javax.swing.JMenuItem();
         Re_Empleado = new javax.swing.JMenuItem();
         Re_Evento = new javax.swing.JMenuItem();
@@ -533,6 +534,16 @@ public class RegistroPersonas extends javax.swing.JFrame {
             }
         });
         jMenu1.add(Re_Curso);
+
+        Re_Persona3.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_H, java.awt.event.InputEvent.CTRL_MASK));
+        Re_Persona3.setText("Horario");
+        Re_Persona3.setPreferredSize(new java.awt.Dimension(137, 40));
+        Re_Persona3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Re_Persona3ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(Re_Persona3);
 
         Re_desercion.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_D, java.awt.event.InputEvent.CTRL_MASK));
         Re_desercion.setText("Deserción");
@@ -927,6 +938,12 @@ public class RegistroPersonas extends javax.swing.JFrame {
 }
         
     }//GEN-LAST:event_Admi_Puesto2ActionPerformed
+
+    private void Re_Persona3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Re_Persona3ActionPerformed
+        // TODO add your handling code here:
+        new Administrador.HorariosCurso().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_Re_Persona3ActionPerformed
         
     /**
      * @param args the command line arguments
@@ -996,6 +1013,7 @@ public class RegistroPersonas extends javax.swing.JFrame {
     private javax.swing.JMenuItem Re_Persona;
     private javax.swing.JMenuItem Re_Persona1;
     private javax.swing.JMenuItem Re_Persona2;
+    private javax.swing.JMenuItem Re_Persona3;
     private javax.swing.JMenuItem Re_desercion;
     private javax.swing.JScrollPane SP_Direccion;
     private javax.swing.JTextField TF_Apellido1;
