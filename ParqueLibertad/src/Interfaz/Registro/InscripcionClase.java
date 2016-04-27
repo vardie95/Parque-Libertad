@@ -133,7 +133,7 @@ public class InscripcionClase extends javax.swing.JFrame {
         L_Apellido1 = new javax.swing.JLabel();
         L_Apellido2 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu11 = new javax.swing.JMenu();
         Ins_Actividad = new javax.swing.JMenuItem();
@@ -206,7 +206,7 @@ public class InscripcionClase extends javax.swing.JFrame {
         B_Registrar.setBounds(370, 250, 100, 40);
 
         Titulo_Registro_de_Desercion.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        Titulo_Registro_de_Desercion.setText("Inscripción Curso");
+        Titulo_Registro_de_Desercion.setText("Inscripción Clase");
         getContentPane().add(Titulo_Registro_de_Desercion);
         Titulo_Registro_de_Desercion.setBounds(190, 20, 180, 22);
 
@@ -253,18 +253,13 @@ public class InscripcionClase extends javax.swing.JFrame {
         getContentPane().add(jButton1);
         jButton1.setBounds(410, 70, 80, 23);
 
-        jButton2.setText("jButton2");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton2);
-        jButton2.setBounds(180, 270, 73, 23);
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Registro/Fondo.jpg"))); // NOI18N
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(0, 0, 560, 360);
 
         jMenuBar1.setBackground(new java.awt.Color(255, 255, 255));
         jMenuBar1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jMenuBar1.setPreferredSize(new java.awt.Dimension(106, 50));
+        jMenuBar1.setPreferredSize(new java.awt.Dimension(106, 60));
 
         jMenu11.setText("       Inscripción");
         jMenu11.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 13)); // NOI18N
@@ -542,6 +537,41 @@ public class InscripcionClase extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_B_RegistrarActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        con=dbConnection.conectDB();
+        if ((String)CB_Identificacion.getSelectedItem()!="Seleccione Identificacion")
+        {
+
+            try {
+                CallableStatement cstmt = con.prepareCall("{?=call consulta_nombre (?)}");
+                TF_Nombre.setText((String)CB_Identificacion.getSelectedItem());
+                cstmt.registerOutParameter(1, oracle.jdbc.OracleTypes.VARCHAR);
+                int aux=Integer.parseInt(TF_Nombre.getText());
+                cstmt.setInt(2,aux);
+                cstmt.execute();
+                TF_Nombre.setText(cstmt.getString(1));
+                cstmt.close();
+
+                CallableStatement cstmt2 = con.prepareCall("{?=call consulta_apellido1 (?)}");
+                cstmt2.registerOutParameter(1, oracle.jdbc.OracleTypes.VARCHAR);
+                cstmt2.setInt(2,aux);
+                cstmt2.execute();
+                TF_Apellido1.setText(cstmt2.getString(1));
+                cstmt2.close();
+                CallableStatement cstmt3 = con.prepareCall("{?=call consulta_apellido2 (?)}");
+                cstmt3.registerOutParameter(1, oracle.jdbc.OracleTypes.VARCHAR);
+                cstmt3.setInt(2,aux);
+                cstmt3.execute();
+                TF_Apellido2.setText(cstmt3.getString(1));
+                cstmt3.close();
+                con.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(RegistroEstudiante.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     private void Ins_ActividadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Ins_ActividadActionPerformed
         // TODO add your handling code here:
         new Interfaz.Registro.InscripcionActividad().setVisible(true);
@@ -553,6 +583,12 @@ public class InscripcionClase extends javax.swing.JFrame {
         new Interfaz.Registro.InscripcionClase().setVisible(true);
         dispose();
     }//GEN-LAST:event_Ins_ClaseActionPerformed
+
+    private void Ins_Clase1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Ins_Clase1ActionPerformed
+        // TODO add your handling code here:
+        new Interfaz.Registro.RegistroVisita().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_Ins_Clase1ActionPerformed
 
     private void Con_persona_IDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Con_persona_IDActionPerformed
         // TODO add your handling code here:
@@ -638,6 +674,22 @@ public class InscripcionClase extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_Es_top_personaActionPerformed
 
+    private void TopCurso1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TopCurso1ActionPerformed
+        try {
+            // TODO add your handling code here:
+            int cantidad=0;
+            CallableStatement cstmt =null;
+            Connection con = parquelibertad.dbConnection.conectDB();
+            cstmt =con.prepareCall("{? = call EstadisticaEmpleado }");
+            cstmt.registerOutParameter(1, oracle.jdbc.OracleTypes.INTEGER);
+            cstmt.execute();
+            cantidad=cstmt.getInt(1);
+            JOptionPane.showMessageDialog(this, "La cantidad de empleados es: "+cantidad,null,JOptionPane.INFORMATION_MESSAGE);
+        } catch (SQLException ex) {
+
+        }
+    }//GEN-LAST:event_TopCurso1ActionPerformed
+
     private void TopCursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TopCursoActionPerformed
         // TODO add your handling code here:
         new Interfaz.Estadisticas.Top5Cursos().setVisible(true);
@@ -667,69 +719,6 @@ public class InscripcionClase extends javax.swing.JFrame {
         new Interfaz.Inicio().setVisible(true);
         dispose();
     }//GEN-LAST:event_Admi_Puesto1ActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        con=dbConnection.conectDB();
-        if ((String)CB_Identificacion.getSelectedItem()!="Seleccione Identificacion")
-        {
-
-            try {
-                CallableStatement cstmt = con.prepareCall("{?=call consulta_nombre (?)}");
-                TF_Nombre.setText((String)CB_Identificacion.getSelectedItem());
-                cstmt.registerOutParameter(1, oracle.jdbc.OracleTypes.VARCHAR);
-                int aux=Integer.parseInt(TF_Nombre.getText());
-                cstmt.setInt(2,aux);
-                cstmt.execute();
-                TF_Nombre.setText(cstmt.getString(1));
-                cstmt.close();
-
-                CallableStatement cstmt2 = con.prepareCall("{?=call consulta_apellido1 (?)}");
-                cstmt2.registerOutParameter(1, oracle.jdbc.OracleTypes.VARCHAR);
-                cstmt2.setInt(2,aux);
-                cstmt2.execute();
-                TF_Apellido1.setText(cstmt2.getString(1));
-                cstmt2.close();
-                CallableStatement cstmt3 = con.prepareCall("{?=call consulta_apellido2 (?)}");
-                cstmt3.registerOutParameter(1, oracle.jdbc.OracleTypes.VARCHAR);
-                cstmt3.setInt(2,aux);
-                cstmt3.execute();
-                TF_Apellido2.setText(cstmt3.getString(1));
-                cstmt3.close();
-                con.close();
-            } catch (SQLException ex) {
-                Logger.getLogger(RegistroEstudiante.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void Ins_Clase1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Ins_Clase1ActionPerformed
-        // TODO add your handling code here:
-        new Interfaz.Registro.RegistroVisita().setVisible(true);
-        dispose();
-    }//GEN-LAST:event_Ins_Clase1ActionPerformed
-
-    private void TopCurso1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TopCurso1ActionPerformed
-        try {
-            // TODO add your handling code here:
-            int cantidad=0;
-            CallableStatement cstmt =null;
-            Connection con = parquelibertad.dbConnection.conectDB();
-            cstmt =con.prepareCall("{? = call EstadisticaEmpleado }");
-            cstmt.registerOutParameter(1, oracle.jdbc.OracleTypes.INTEGER);
-            cstmt.execute();
-            cantidad=cstmt.getInt(1);
-             JOptionPane.showMessageDialog(this, "La cantidad de empelado es: "+cantidad,null,JOptionPane.INFORMATION_MESSAGE);
-        } catch (SQLException ex) {
-            Logger.getLogger(InscripcionClase.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_TopCurso1ActionPerformed
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-        new Administrador.HorariosCurso().setVisible(true);
-        dispose();
-    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -818,7 +807,7 @@ public class InscripcionClase extends javax.swing.JFrame {
     private javax.swing.JMenuItem con_Empleado_Fecha;
     private javax.swing.JMenuItem con_persona_Fecha;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu11;
     private javax.swing.JMenu jMenu12;
     private javax.swing.JMenu jMenu3;

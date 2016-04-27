@@ -201,31 +201,27 @@ public class HorariosCurso extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu11 = new javax.swing.JMenu();
-        Ins_Actividad = new javax.swing.JMenuItem();
-        Ins_Clase = new javax.swing.JMenuItem();
-        jMenu4 = new javax.swing.JMenu();
-        jMenu8 = new javax.swing.JMenu();
-        Con_persona_ID = new javax.swing.JMenuItem();
-        Con_Persona_Name = new javax.swing.JMenuItem();
-        Con_persona_Lugar = new javax.swing.JMenuItem();
-        con_persona_Fecha = new javax.swing.JMenuItem();
-        Con_persona_deser = new javax.swing.JMenuItem();
-        jMenu9 = new javax.swing.JMenu();
-        Con_Empleado_ID = new javax.swing.JMenuItem();
-        Con_Empleado_Name = new javax.swing.JMenuItem();
-        con_Empleado_Fecha = new javax.swing.JMenuItem();
-        Con_actividad = new javax.swing.JMenuItem();
-        Con_Curso = new javax.swing.JMenuItem();
-        Con_Evento = new javax.swing.JMenuItem();
-        jMenu3 = new javax.swing.JMenu();
-        jMenu7 = new javax.swing.JMenu();
-        Es_persona_Fecha = new javax.swing.JMenuItem();
-        Es_persona_lugar = new javax.swing.JMenuItem();
-        Es_top_persona = new javax.swing.JMenuItem();
-        TopCurso = new javax.swing.JMenuItem();
-        TopActividades = new javax.swing.JMenuItem();
-        TopDeserciones = new javax.swing.JMenuItem();
+        jMenu1 = new javax.swing.JMenu();
+        Re_Actividad = new javax.swing.JMenuItem();
+        Re_Curso = new javax.swing.JMenuItem();
+        Re_desercion = new javax.swing.JMenuItem();
+        Re_Empleado = new javax.swing.JMenuItem();
+        Re_Evento = new javax.swing.JMenuItem();
+        Re_Persona3 = new javax.swing.JMenuItem();
+        Re_Persona = new javax.swing.JMenuItem();
+        Re_Persona1 = new javax.swing.JMenuItem();
+        Re_Persona2 = new javax.swing.JMenuItem();
+        jMenu10 = new javax.swing.JMenu();
+        Admi_Curso = new javax.swing.JMenuItem();
+        Admi_Puesto = new javax.swing.JMenuItem();
+        Admi_tipoEvento = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
+        jMenuItem7 = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
+        jMenuItem3 = new javax.swing.JMenuItem();
+        jMenuItem4 = new javax.swing.JMenuItem();
+        jMenuItem8 = new javax.swing.JMenuItem();
+        jMenuItem5 = new javax.swing.JMenuItem();
         jMenu12 = new javax.swing.JMenu();
         Admi_Curso1 = new javax.swing.JMenuItem();
         Admi_Puesto1 = new javax.swing.JMenuItem();
@@ -251,7 +247,7 @@ public class HorariosCurso extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTable1);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(90, 110, 330, 150);
+        jScrollPane1.setBounds(90, 110, 350, 150);
 
         Titulo_Menu.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         Titulo_Menu.setText("Horarios");
@@ -319,231 +315,199 @@ public class HorariosCurso extends javax.swing.JFrame {
 
         jMenuBar1.setBackground(new java.awt.Color(255, 255, 255));
         jMenuBar1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jMenuBar1.setPreferredSize(new java.awt.Dimension(106, 50));
+        jMenuBar1.setPreferredSize(new java.awt.Dimension(106, 60));
 
-        jMenu11.setText("       Inscripción");
-        jMenu11.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 13)); // NOI18N
-        jMenu11.setMinimumSize(new java.awt.Dimension(100, 100));
-        jMenu11.setPreferredSize(new java.awt.Dimension(180, 100));
+        jMenu1.setText("    Registro");
+        jMenu1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jMenu1.setFocusPainted(true);
+        jMenu1.setFont(new java.awt.Font("MS Reference Sans Serif", 1, 13)); // NOI18N
+        jMenu1.setPreferredSize(new java.awt.Dimension(200, 19));
 
-        Ins_Actividad.setText("Actividad");
-        Ins_Actividad.setFocusCycleRoot(true);
-        Ins_Actividad.setPreferredSize(new java.awt.Dimension(140, 30));
-        Ins_Actividad.addActionListener(new java.awt.event.ActionListener() {
+        Re_Actividad.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.CTRL_MASK));
+        Re_Actividad.setText("Actividad");
+        Re_Actividad.setName("Regis_curso"); // NOI18N
+        Re_Actividad.setPreferredSize(new java.awt.Dimension(137, 40));
+        Re_Actividad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Ins_ActividadActionPerformed(evt);
+                Re_ActividadActionPerformed(evt);
             }
         });
-        jMenu11.add(Ins_Actividad);
+        jMenu1.add(Re_Actividad);
 
-        Ins_Clase.setText("Clase");
-        Ins_Clase.setPreferredSize(new java.awt.Dimension(140, 30));
-        Ins_Clase.addActionListener(new java.awt.event.ActionListener() {
+        Re_Curso.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.CTRL_MASK));
+        Re_Curso.setText("Clase");
+        Re_Curso.setName("Regis_curso"); // NOI18N
+        Re_Curso.setPreferredSize(new java.awt.Dimension(137, 40));
+        Re_Curso.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Ins_ClaseActionPerformed(evt);
+                Re_CursoActionPerformed(evt);
             }
         });
-        jMenu11.add(Ins_Clase);
+        jMenu1.add(Re_Curso);
 
-        jMenuBar1.add(jMenu11);
-
-        jMenu4.setText("  Consulta");
-        jMenu4.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 13)); // NOI18N
-        jMenu4.setPreferredSize(new java.awt.Dimension(180, 19));
-
-        jMenu8.setBackground(new java.awt.Color(253, 253, 253));
-        jMenu8.setText("Persona");
-        jMenu8.setPreferredSize(new java.awt.Dimension(100, 35));
-
-        Con_persona_ID.setBackground(new java.awt.Color(253, 253, 253));
-        Con_persona_ID.setText("Identificación");
-        Con_persona_ID.setFocusCycleRoot(true);
-        Con_persona_ID.setPreferredSize(new java.awt.Dimension(140, 30));
-        Con_persona_ID.addActionListener(new java.awt.event.ActionListener() {
+        Re_desercion.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_D, java.awt.event.InputEvent.CTRL_MASK));
+        Re_desercion.setText("Deserción");
+        Re_desercion.setPreferredSize(new java.awt.Dimension(137, 40));
+        Re_desercion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Con_persona_IDActionPerformed(evt);
+                Re_desercionActionPerformed(evt);
             }
         });
-        jMenu8.add(Con_persona_ID);
+        jMenu1.add(Re_desercion);
 
-        Con_Persona_Name.setBackground(new java.awt.Color(253, 253, 253));
-        Con_Persona_Name.setText("Nombre");
-        Con_Persona_Name.setPreferredSize(new java.awt.Dimension(140, 30));
-        Con_Persona_Name.addActionListener(new java.awt.event.ActionListener() {
+        Re_Empleado.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.CTRL_MASK));
+        Re_Empleado.setText("Empleado");
+        Re_Empleado.setPreferredSize(new java.awt.Dimension(137, 40));
+        Re_Empleado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Con_Persona_NameActionPerformed(evt);
+                Re_EmpleadoActionPerformed(evt);
             }
         });
-        jMenu8.add(Con_Persona_Name);
+        jMenu1.add(Re_Empleado);
 
-        Con_persona_Lugar.setBackground(new java.awt.Color(253, 253, 253));
-        Con_persona_Lugar.setText("Lugar");
-        Con_persona_Lugar.setPreferredSize(new java.awt.Dimension(140, 30));
-        Con_persona_Lugar.addActionListener(new java.awt.event.ActionListener() {
+        Re_Evento.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_N, java.awt.event.InputEvent.CTRL_MASK));
+        Re_Evento.setText("Evento");
+        Re_Evento.setPreferredSize(new java.awt.Dimension(137, 40));
+        Re_Evento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Con_persona_LugarActionPerformed(evt);
+                Re_EventoActionPerformed(evt);
             }
         });
-        jMenu8.add(Con_persona_Lugar);
+        jMenu1.add(Re_Evento);
 
-        con_persona_Fecha.setBackground(new java.awt.Color(253, 253, 253));
-        con_persona_Fecha.setText("Fecha");
-        con_persona_Fecha.setPreferredSize(new java.awt.Dimension(140, 30));
-        con_persona_Fecha.addActionListener(new java.awt.event.ActionListener() {
+        Re_Persona3.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_H, java.awt.event.InputEvent.CTRL_MASK));
+        Re_Persona3.setText("Horario");
+        Re_Persona3.setPreferredSize(new java.awt.Dimension(137, 40));
+        Re_Persona3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                con_persona_FechaActionPerformed(evt);
+                Re_Persona3ActionPerformed(evt);
             }
         });
-        jMenu8.add(con_persona_Fecha);
+        jMenu1.add(Re_Persona3);
 
-        Con_persona_deser.setBackground(new java.awt.Color(253, 253, 253));
-        Con_persona_deser.setText("Deserciones");
-        Con_persona_deser.setPreferredSize(new java.awt.Dimension(140, 30));
-        Con_persona_deser.addActionListener(new java.awt.event.ActionListener() {
+        Re_Persona.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.CTRL_MASK));
+        Re_Persona.setText("Persona");
+        Re_Persona.setPreferredSize(new java.awt.Dimension(137, 40));
+        Re_Persona.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Con_persona_deserActionPerformed(evt);
+                Re_PersonaActionPerformed(evt);
             }
         });
-        jMenu8.add(Con_persona_deser);
+        jMenu1.add(Re_Persona);
 
-        jMenu4.add(jMenu8);
-
-        jMenu9.setText("Empleado");
-        jMenu9.setPreferredSize(new java.awt.Dimension(100, 35));
-
-        Con_Empleado_ID.setBackground(new java.awt.Color(252, 252, 252));
-        Con_Empleado_ID.setText("Identificación");
-        Con_Empleado_ID.setFocusCycleRoot(true);
-        Con_Empleado_ID.setPreferredSize(new java.awt.Dimension(140, 30));
-        Con_Empleado_ID.addActionListener(new java.awt.event.ActionListener() {
+        Re_Persona1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.CTRL_MASK));
+        Re_Persona1.setText("Usuario");
+        Re_Persona1.setPreferredSize(new java.awt.Dimension(137, 40));
+        Re_Persona1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Con_Empleado_IDActionPerformed(evt);
+                Re_Persona1ActionPerformed(evt);
             }
         });
-        jMenu9.add(Con_Empleado_ID);
+        jMenu1.add(Re_Persona1);
 
-        Con_Empleado_Name.setBackground(new java.awt.Color(252, 252, 252));
-        Con_Empleado_Name.setText("Nombre");
-        Con_Empleado_Name.setPreferredSize(new java.awt.Dimension(140, 30));
-        Con_Empleado_Name.addActionListener(new java.awt.event.ActionListener() {
+        Re_Persona2.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.CTRL_MASK));
+        Re_Persona2.setText("Estudiante");
+        Re_Persona2.setPreferredSize(new java.awt.Dimension(137, 40));
+        Re_Persona2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Con_Empleado_NameActionPerformed(evt);
+                Re_Persona2ActionPerformed(evt);
             }
         });
-        jMenu9.add(Con_Empleado_Name);
+        jMenu1.add(Re_Persona2);
 
-        con_Empleado_Fecha.setBackground(new java.awt.Color(252, 252, 252));
-        con_Empleado_Fecha.setText("Fecha");
-        con_Empleado_Fecha.setPreferredSize(new java.awt.Dimension(140, 30));
-        con_Empleado_Fecha.addActionListener(new java.awt.event.ActionListener() {
+        jMenuBar1.add(jMenu1);
+
+        jMenu10.setText("     Administrar");
+        jMenu10.setFont(new java.awt.Font("MS Reference Sans Serif", 1, 13)); // NOI18N
+        jMenu10.setPreferredSize(new java.awt.Dimension(200, 19));
+
+        Admi_Curso.setText("Curso");
+        Admi_Curso.setFocusCycleRoot(true);
+        Admi_Curso.setPreferredSize(new java.awt.Dimension(140, 30));
+        Admi_Curso.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                con_Empleado_FechaActionPerformed(evt);
+                Admi_CursoActionPerformed(evt);
             }
         });
-        jMenu9.add(con_Empleado_Fecha);
+        jMenu10.add(Admi_Curso);
 
-        jMenu4.add(jMenu9);
-
-        Con_actividad.setText("Actividad");
-        Con_actividad.setPreferredSize(new java.awt.Dimension(137, 30));
-        Con_actividad.addActionListener(new java.awt.event.ActionListener() {
+        Admi_Puesto.setText("Puesto");
+        Admi_Puesto.setPreferredSize(new java.awt.Dimension(140, 30));
+        Admi_Puesto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Con_actividadActionPerformed(evt);
+                Admi_PuestoActionPerformed(evt);
             }
         });
-        jMenu4.add(Con_actividad);
+        jMenu10.add(Admi_Puesto);
 
-        Con_Curso.setText("Curso");
-        Con_Curso.setPreferredSize(new java.awt.Dimension(137, 30));
-        Con_Curso.addActionListener(new java.awt.event.ActionListener() {
+        Admi_tipoEvento.setText("Tipo Evento");
+        Admi_tipoEvento.setPreferredSize(new java.awt.Dimension(140, 30));
+        Admi_tipoEvento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Con_CursoActionPerformed(evt);
+                Admi_tipoEventoActionPerformed(evt);
             }
         });
-        jMenu4.add(Con_Curso);
+        jMenu10.add(Admi_tipoEvento);
 
-        Con_Evento.setText("Evento");
-        Con_Evento.setPreferredSize(new java.awt.Dimension(137, 30));
-        Con_Evento.addActionListener(new java.awt.event.ActionListener() {
+        jMenu2.setText("Lugar");
+
+        jMenuItem7.setText("País");
+        jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Con_EventoActionPerformed(evt);
+                jMenuItem7ActionPerformed(evt);
             }
         });
-        jMenu4.add(Con_Evento);
+        jMenu2.add(jMenuItem7);
 
-        jMenuBar1.add(jMenu4);
-
-        jMenu3.setText("   Estadística");
-        jMenu3.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 13)); // NOI18N
-        jMenu3.setPreferredSize(new java.awt.Dimension(180, 19));
-
-        jMenu7.setBackground(new java.awt.Color(253, 253, 253));
-        jMenu7.setText("Persona");
-        jMenu7.setPreferredSize(new java.awt.Dimension(100, 35));
-
-        Es_persona_Fecha.setText("Fecha");
-        Es_persona_Fecha.setPreferredSize(new java.awt.Dimension(140, 30));
-        Es_persona_Fecha.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItem2.setText("Provincia");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Es_persona_FechaActionPerformed(evt);
+                jMenuItem2ActionPerformed(evt);
             }
         });
-        jMenu7.add(Es_persona_Fecha);
+        jMenu2.add(jMenuItem2);
 
-        Es_persona_lugar.setText("Lugar");
-        Es_persona_lugar.setPreferredSize(new java.awt.Dimension(140, 30));
-        Es_persona_lugar.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItem3.setText("Cantón");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Es_persona_lugarActionPerformed(evt);
+                jMenuItem3ActionPerformed(evt);
             }
         });
-        jMenu7.add(Es_persona_lugar);
+        jMenu2.add(jMenuItem3);
 
-        Es_top_persona.setText("Top 10");
-        Es_top_persona.setPreferredSize(new java.awt.Dimension(140, 30));
-        Es_top_persona.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItem4.setText("Distrito");
+        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Es_top_personaActionPerformed(evt);
+                jMenuItem4ActionPerformed(evt);
             }
         });
-        jMenu7.add(Es_top_persona);
+        jMenu2.add(jMenuItem4);
 
-        jMenu3.add(jMenu7);
-
-        TopCurso.setText("Top Cursos");
-        TopCurso.setPreferredSize(new java.awt.Dimension(137, 40));
-        TopCurso.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItem8.setText("Nacionalidad");
+        jMenuItem8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TopCursoActionPerformed(evt);
+                jMenuItem8ActionPerformed(evt);
             }
         });
-        jMenu3.add(TopCurso);
+        jMenu2.add(jMenuItem8);
 
-        TopActividades.setText("Top Actividades");
-        TopActividades.setPreferredSize(new java.awt.Dimension(137, 40));
-        TopActividades.addActionListener(new java.awt.event.ActionListener() {
+        jMenu10.add(jMenu2);
+
+        jMenuItem5.setText("Horario");
+        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TopActividadesActionPerformed(evt);
+                jMenuItem5ActionPerformed(evt);
             }
         });
-        jMenu3.add(TopActividades);
+        jMenu10.add(jMenuItem5);
 
-        TopDeserciones.setText("Top Deserciones");
-        TopDeserciones.setPreferredSize(new java.awt.Dimension(137, 40));
-        TopDeserciones.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TopDesercionesActionPerformed(evt);
-            }
-        });
-        jMenu3.add(TopDeserciones);
+        jMenuBar1.add(jMenu10);
 
-        jMenuBar1.add(jMenu3);
+        jMenu12.setText("       Sesión");
+        jMenu12.setFont(new java.awt.Font("MS Reference Sans Serif", 1, 13)); // NOI18N
+        jMenu12.setPreferredSize(new java.awt.Dimension(200, 19));
 
-        jMenu12.setText("      Sesión");
-        jMenu12.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 13)); // NOI18N
-        jMenu12.setPreferredSize(new java.awt.Dimension(180, 35));
-
-        Admi_Curso1.setText("Modo Administrador");
+        Admi_Curso1.setText("Modo Usuario");
         Admi_Curso1.setFocusCycleRoot(true);
         Admi_Curso1.setPreferredSize(new java.awt.Dimension(140, 30));
         Admi_Curso1.addActionListener(new java.awt.event.ActionListener() {
@@ -568,132 +532,6 @@ public class HorariosCurso extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void Ins_ActividadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Ins_ActividadActionPerformed
-        // TODO add your handling code here:
-        new Interfaz.Registro.InscripcionActividad().setVisible(true);
-        dispose();
-    }//GEN-LAST:event_Ins_ActividadActionPerformed
-
-    private void Ins_ClaseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Ins_ClaseActionPerformed
-        // TODO add your handling code here:
-        new Interfaz.Registro.InscripcionClase().setVisible(true);
-        dispose();
-    }//GEN-LAST:event_Ins_ClaseActionPerformed
-
-    private void Con_persona_IDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Con_persona_IDActionPerformed
-        // TODO add your handling code here:
-        new Interfaz.Consultas.ConsultaIndentificacionPersona().setVisible(true);
-        dispose();
-    }//GEN-LAST:event_Con_persona_IDActionPerformed
-
-    private void Con_Persona_NameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Con_Persona_NameActionPerformed
-        // TODO add your handling code here:
-        new Interfaz.Consultas.ConsultaNombre().setVisible(true);
-        dispose();
-    }//GEN-LAST:event_Con_Persona_NameActionPerformed
-
-    private void Con_persona_LugarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Con_persona_LugarActionPerformed
-        // TODO add your handling code here:
-        new Interfaz.Consultas.ConsultaLugarPersona().setVisible(true);
-        dispose();
-    }//GEN-LAST:event_Con_persona_LugarActionPerformed
-
-    private void con_persona_FechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_con_persona_FechaActionPerformed
-        // TODO add your handling code here:
-        new Interfaz.Consultas.ConsultaFecha().setVisible(true);
-        dispose();
-    }//GEN-LAST:event_con_persona_FechaActionPerformed
-
-    private void Con_persona_deserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Con_persona_deserActionPerformed
-        // TODO add your handling code here:
-        new Interfaz.Consultas.ConsultaDesertaPersona().setVisible(true);
-        dispose();
-    }//GEN-LAST:event_Con_persona_deserActionPerformed
-
-    private void Con_Empleado_IDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Con_Empleado_IDActionPerformed
-        // TODO add your handling code here:
-        new Interfaz.Consultas.ConsultaEmpleadoIdentificacion().setVisible(true);
-        dispose();
-    }//GEN-LAST:event_Con_Empleado_IDActionPerformed
-
-    private void Con_Empleado_NameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Con_Empleado_NameActionPerformed
-        // TODO add your handling code here:
-        new Interfaz.Consultas.ConsultaEmpleadoNombre().setVisible(true);
-        dispose();
-    }//GEN-LAST:event_Con_Empleado_NameActionPerformed
-
-    private void con_Empleado_FechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_con_Empleado_FechaActionPerformed
-        // TODO add your handling code here:
-        new Interfaz.Consultas.ConsultaEmpleadoFecha().setVisible(true);
-        dispose();
-    }//GEN-LAST:event_con_Empleado_FechaActionPerformed
-
-    private void Con_actividadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Con_actividadActionPerformed
-        // TODO add your handling code here:
-        new Interfaz.Consultas.ConsultaActividad().setVisible(true);
-        dispose();
-    }//GEN-LAST:event_Con_actividadActionPerformed
-
-    private void Con_CursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Con_CursoActionPerformed
-        // TODO add your handling code here:
-        new Interfaz.Consultas.ConsultaCurso().setVisible(true);
-        dispose();
-    }//GEN-LAST:event_Con_CursoActionPerformed
-
-    private void Con_EventoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Con_EventoActionPerformed
-        // TODO add your handling code here:
-        new Interfaz.Consultas.ConsultaEvento().setVisible(true);
-        dispose();
-    }//GEN-LAST:event_Con_EventoActionPerformed
-
-    private void Es_persona_FechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Es_persona_FechaActionPerformed
-        // TODO add your handling code here:
-        new Interfaz.Estadisticas.EstadisticaFecha().setVisible(true);
-        dispose();
-    }//GEN-LAST:event_Es_persona_FechaActionPerformed
-
-    private void Es_persona_lugarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Es_persona_lugarActionPerformed
-        // TODO add your handling code here:
-        new Interfaz.Estadisticas.EstadisticaLugar().setVisible(true);
-        dispose();
-    }//GEN-LAST:event_Es_persona_lugarActionPerformed
-
-    private void Es_top_personaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Es_top_personaActionPerformed
-        // TODO add your handling code here:
-        new Interfaz.Estadisticas.Top10Personas().setVisible(true);
-        dispose();
-    }//GEN-LAST:event_Es_top_personaActionPerformed
-
-    private void TopCursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TopCursoActionPerformed
-        // TODO add your handling code here:
-        new Interfaz.Estadisticas.Top5Cursos().setVisible(true);
-        dispose();
-    }//GEN-LAST:event_TopCursoActionPerformed
-
-    private void TopActividadesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TopActividadesActionPerformed
-        // TODO add your handling code here:
-        new Interfaz.Estadisticas.Top5Actividades().setVisible(true);
-        dispose();
-    }//GEN-LAST:event_TopActividadesActionPerformed
-
-    private void TopDesercionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TopDesercionesActionPerformed
-        // TODO add your handling code here:
-        new Interfaz.Estadisticas.Top5Deserciones().setVisible(true);
-        dispose();
-    }//GEN-LAST:event_TopDesercionesActionPerformed
-
-    private void Admi_Curso1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Admi_Curso1ActionPerformed
-        // TODO add your handling code here:
-        new Interfaz.Inicio().setVisible(true);
-        dispose();
-    }//GEN-LAST:event_Admi_Curso1ActionPerformed
-
-    private void Admi_Puesto1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Admi_Puesto1ActionPerformed
-        // TODO add your handling code here:
-        new Interfaz.Inicio().setVisible(true);
-        dispose();
-    }//GEN-LAST:event_Admi_Puesto1ActionPerformed
 
     private void CB_Curso2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CB_Curso2ActionPerformed
         // TODO add your handling code here:
@@ -735,6 +573,126 @@ public class HorariosCurso extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void Re_ActividadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Re_ActividadActionPerformed
+        // TODO add your handling code here:
+        new Interfaz.Registro.RegistroActividad().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_Re_ActividadActionPerformed
+
+    private void Re_CursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Re_CursoActionPerformed
+        // TODO add your handling code here:
+        new Interfaz.Registro.RegistroClase().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_Re_CursoActionPerformed
+
+    private void Re_desercionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Re_desercionActionPerformed
+        // TODO add your handling code here:
+        new Interfaz.Registro.RegistroDesercion().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_Re_desercionActionPerformed
+
+    private void Re_EmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Re_EmpleadoActionPerformed
+        // TODO add your handling code here:
+        new Interfaz.Registro.RegistroEmpleado().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_Re_EmpleadoActionPerformed
+
+    private void Re_EventoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Re_EventoActionPerformed
+        // TODO add your handling code here:
+        new Interfaz.Registro.RegistroEvento().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_Re_EventoActionPerformed
+
+    private void Re_Persona3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Re_Persona3ActionPerformed
+        // TODO add your handling code here:
+        new Administrador.HorariosCurso().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_Re_Persona3ActionPerformed
+
+    private void Re_PersonaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Re_PersonaActionPerformed
+        // TODO add your handling code here:
+        new Interfaz.Registro.RegistroPersonas().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_Re_PersonaActionPerformed
+
+    private void Re_Persona1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Re_Persona1ActionPerformed
+        // TODO add your handling code here:
+        new Administrador.RegistroUsuario().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_Re_Persona1ActionPerformed
+
+    private void Re_Persona2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Re_Persona2ActionPerformed
+        // TODO add your handling code here:
+        new Interfaz.Registro.RegistroEstudiante().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_Re_Persona2ActionPerformed
+
+    private void Admi_CursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Admi_CursoActionPerformed
+        // TODO add your handling code here:
+        new Interfaz.Registro.RegistroCurso().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_Admi_CursoActionPerformed
+
+    private void Admi_PuestoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Admi_PuestoActionPerformed
+        // TODO add your handling code here:
+        new Interfaz.Registro.RegistroPuesto().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_Admi_PuestoActionPerformed
+
+    private void Admi_tipoEventoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Admi_tipoEventoActionPerformed
+        // TODO add your handling code here:
+        new Interfaz.Registro.RegistroTipoEvento().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_Admi_tipoEventoActionPerformed
+
+    private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
+        // TODO add your handling code here:
+        new Administrador.RegistroPais().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jMenuItem7ActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        // TODO add your handling code here:
+        new Administrador.RegistroProvincia().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        // TODO add your handling code here:
+        new Administrador.RegistroCanton().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
+
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+        // TODO add your handling code here:
+        new Administrador.RegistroDistrito().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jMenuItem4ActionPerformed
+
+    private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
+        // TODO add your handling code here:
+        new Administrador.RegistroNacionalidad().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jMenuItem8ActionPerformed
+
+    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+        // TODO add your handling code here:
+        new Administrador.RegistroHorario().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jMenuItem5ActionPerformed
+
+    private void Admi_Curso1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Admi_Curso1ActionPerformed
+        // TODO add your handling code here:
+        new Interfaz.Registro.InscripcionClase().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_Admi_Curso1ActionPerformed
+
+    private void Admi_Puesto1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Admi_Puesto1ActionPerformed
+        // TODO add your handling code here:
+        new Interfaz.Inicio().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_Admi_Puesto1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -774,44 +732,40 @@ public class HorariosCurso extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem Admi_Curso;
     private javax.swing.JMenuItem Admi_Curso1;
+    private javax.swing.JMenuItem Admi_Puesto;
     private javax.swing.JMenuItem Admi_Puesto1;
+    private javax.swing.JMenuItem Admi_tipoEvento;
     private javax.swing.JComboBox<String> CB_Curso;
     private javax.swing.JComboBox<String> CB_Curso1;
     private javax.swing.JComboBox<String> CB_Curso2;
-    private javax.swing.JMenuItem Con_Curso;
-    private javax.swing.JMenuItem Con_Empleado_ID;
-    private javax.swing.JMenuItem Con_Empleado_Name;
-    private javax.swing.JMenuItem Con_Evento;
-    private javax.swing.JMenuItem Con_Persona_Name;
-    private javax.swing.JMenuItem Con_actividad;
-    private javax.swing.JMenuItem Con_persona_ID;
-    private javax.swing.JMenuItem Con_persona_Lugar;
-    private javax.swing.JMenuItem Con_persona_deser;
-    private javax.swing.JMenuItem Es_persona_Fecha;
-    private javax.swing.JMenuItem Es_persona_lugar;
-    private javax.swing.JMenuItem Es_top_persona;
-    private javax.swing.JMenuItem Ins_Actividad;
-    private javax.swing.JMenuItem Ins_Clase;
     private javax.swing.JLabel L_Horario;
     private javax.swing.JLabel L_Horario4;
+    private javax.swing.JMenuItem Re_Actividad;
+    private javax.swing.JMenuItem Re_Curso;
+    private javax.swing.JMenuItem Re_Empleado;
+    private javax.swing.JMenuItem Re_Evento;
+    private javax.swing.JMenuItem Re_Persona;
+    private javax.swing.JMenuItem Re_Persona1;
+    private javax.swing.JMenuItem Re_Persona2;
+    private javax.swing.JMenuItem Re_Persona3;
+    private javax.swing.JMenuItem Re_desercion;
     private javax.swing.JLabel Titulo_Menu;
-    private javax.swing.JMenuItem TopActividades;
-    private javax.swing.JMenuItem TopCurso;
-    private javax.swing.JMenuItem TopDeserciones;
-    private javax.swing.JMenuItem con_Empleado_Fecha;
-    private javax.swing.JMenuItem con_persona_Fecha;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JMenu jMenu11;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu10;
     private javax.swing.JMenu jMenu12;
-    private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenu jMenu4;
-    private javax.swing.JMenu jMenu7;
-    private javax.swing.JMenu jMenu8;
-    private javax.swing.JMenu jMenu9;
+    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem4;
+    private javax.swing.JMenuItem jMenuItem5;
+    private javax.swing.JMenuItem jMenuItem7;
+    private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables

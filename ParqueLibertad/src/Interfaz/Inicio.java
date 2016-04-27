@@ -138,7 +138,7 @@ public class Inicio extends javax.swing.JFrame {
                 new Interfaz.Registro.RegistroPersonas().setVisible(true);
                 dispose();
             }else{
-                new Interfaz.Registro.InscripcionClase().setVisible(true);
+                new Interfaz.Registro.RegistroVisita().setVisible(true);
                 dispose();
                 
             }

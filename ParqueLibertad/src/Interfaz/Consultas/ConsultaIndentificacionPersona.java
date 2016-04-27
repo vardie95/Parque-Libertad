@@ -13,6 +13,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import net.proteanit.sql.DbUtils;
 /**
  *
@@ -64,6 +65,7 @@ public class ConsultaIndentificacionPersona extends javax.swing.JFrame {
         jMenu11 = new javax.swing.JMenu();
         Ins_Actividad = new javax.swing.JMenuItem();
         Ins_Clase = new javax.swing.JMenuItem();
+        Ins_Clase1 = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
         jMenu8 = new javax.swing.JMenu();
         Con_persona_ID = new javax.swing.JMenuItem();
@@ -83,6 +85,7 @@ public class ConsultaIndentificacionPersona extends javax.swing.JFrame {
         Es_persona_Fecha = new javax.swing.JMenuItem();
         Es_persona_lugar = new javax.swing.JMenuItem();
         Es_top_persona = new javax.swing.JMenuItem();
+        TopCurso1 = new javax.swing.JMenuItem();
         TopCurso = new javax.swing.JMenuItem();
         TopActividades = new javax.swing.JMenuItem();
         TopDeserciones = new javax.swing.JMenuItem();
@@ -93,7 +96,7 @@ public class ConsultaIndentificacionPersona extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Parque la Libertad");
         setLocation(new java.awt.Point(500, 125));
-        setMinimumSize(new java.awt.Dimension(580, 460));
+        setMinimumSize(new java.awt.Dimension(580, 300));
         getContentPane().setLayout(null);
 
         Tabla_Identificacion.setBackground(new java.awt.Color(204, 255, 204));
@@ -109,7 +112,7 @@ public class ConsultaIndentificacionPersona extends javax.swing.JFrame {
         jScrollPane1.setViewportView(Tabla_Identificacion);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(10, 80, 540, 250);
+        jScrollPane1.setBounds(10, 80, 540, 80);
 
         PT_Identificacion.setBackground(new java.awt.Color(153, 255, 153));
         try {
@@ -125,6 +128,7 @@ public class ConsultaIndentificacionPersona extends javax.swing.JFrame {
         getContentPane().add(jLabel1);
         jLabel1.setBounds(30, 50, 110, 20);
 
+        BT_Buscar.setBackground(new java.awt.Color(255, 255, 255));
         BT_Buscar.setText("Buscar");
         BT_Buscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -146,7 +150,7 @@ public class ConsultaIndentificacionPersona extends javax.swing.JFrame {
 
         jMenuBar1.setBackground(new java.awt.Color(255, 255, 255));
         jMenuBar1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jMenuBar1.setPreferredSize(new java.awt.Dimension(106, 50));
+        jMenuBar1.setPreferredSize(new java.awt.Dimension(106, 60));
 
         jMenu11.setText("       Inscripción");
         jMenu11.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 13)); // NOI18N
@@ -171,6 +175,15 @@ public class ConsultaIndentificacionPersona extends javax.swing.JFrame {
             }
         });
         jMenu11.add(Ins_Clase);
+
+        Ins_Clase1.setText("Visita");
+        Ins_Clase1.setPreferredSize(new java.awt.Dimension(140, 30));
+        Ins_Clase1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Ins_Clase1ActionPerformed(evt);
+            }
+        });
+        jMenu11.add(Ins_Clase1);
 
         jMenuBar1.add(jMenu11);
 
@@ -337,6 +350,15 @@ public class ConsultaIndentificacionPersona extends javax.swing.JFrame {
 
         jMenu3.add(jMenu7);
 
+        TopCurso1.setText("Empleado");
+        TopCurso1.setPreferredSize(new java.awt.Dimension(137, 40));
+        TopCurso1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TopCurso1ActionPerformed(evt);
+            }
+        });
+        jMenu3.add(TopCurso1);
+
         TopCurso.setText("Top Cursos");
         TopCurso.setPreferredSize(new java.awt.Dimension(137, 40));
         TopCurso.addActionListener(new java.awt.event.ActionListener() {
@@ -414,6 +436,12 @@ public class ConsultaIndentificacionPersona extends javax.swing.JFrame {
         new Interfaz.Registro.InscripcionClase().setVisible(true);
         dispose();
     }//GEN-LAST:event_Ins_ClaseActionPerformed
+
+    private void Ins_Clase1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Ins_Clase1ActionPerformed
+        // TODO add your handling code here:
+        new Interfaz.Registro.RegistroVisita().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_Ins_Clase1ActionPerformed
 
     private void Con_persona_IDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Con_persona_IDActionPerformed
         // TODO add your handling code here:
@@ -499,6 +527,22 @@ public class ConsultaIndentificacionPersona extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_Es_top_personaActionPerformed
 
+    private void TopCurso1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TopCurso1ActionPerformed
+        try {
+            // TODO add your handling code here:
+            int cantidad=0;
+            CallableStatement cstmt =null;
+            Connection con = parquelibertad.dbConnection.conectDB();
+            cstmt =con.prepareCall("{? = call EstadisticaEmpleado }");
+            cstmt.registerOutParameter(1, oracle.jdbc.OracleTypes.INTEGER);
+            cstmt.execute();
+            cantidad=cstmt.getInt(1);
+            JOptionPane.showMessageDialog(this, "La cantidad de empleados es: "+cantidad,null,JOptionPane.INFORMATION_MESSAGE);
+        } catch (SQLException ex) {
+
+        }
+    }//GEN-LAST:event_TopCurso1ActionPerformed
+
     private void TopCursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TopCursoActionPerformed
         // TODO add your handling code here:
         new Interfaz.Estadisticas.Top5Cursos().setVisible(true);
@@ -583,11 +627,13 @@ public class ConsultaIndentificacionPersona extends javax.swing.JFrame {
     private javax.swing.JMenuItem Es_top_persona;
     private javax.swing.JMenuItem Ins_Actividad;
     private javax.swing.JMenuItem Ins_Clase;
+    private javax.swing.JMenuItem Ins_Clase1;
     private javax.swing.JFormattedTextField PT_Identificacion;
     private javax.swing.JTable Tabla_Identificacion;
     private javax.swing.JLabel Titulo_Menu;
     private javax.swing.JMenuItem TopActividades;
     private javax.swing.JMenuItem TopCurso;
+    private javax.swing.JMenuItem TopCurso1;
     private javax.swing.JMenuItem TopDeserciones;
     private javax.swing.JMenuItem con_Empleado_Fecha;
     private javax.swing.JMenuItem con_persona_Fecha;

@@ -276,10 +276,10 @@ public class RegistroPersonas extends javax.swing.JFrame {
         jMenu1 = new javax.swing.JMenu();
         Re_Actividad = new javax.swing.JMenuItem();
         Re_Curso = new javax.swing.JMenuItem();
-        Re_Persona3 = new javax.swing.JMenuItem();
         Re_desercion = new javax.swing.JMenuItem();
         Re_Empleado = new javax.swing.JMenuItem();
         Re_Evento = new javax.swing.JMenuItem();
+        Re_Persona3 = new javax.swing.JMenuItem();
         Re_Persona = new javax.swing.JMenuItem();
         Re_Persona1 = new javax.swing.JMenuItem();
         Re_Persona2 = new javax.swing.JMenuItem();
@@ -297,7 +297,6 @@ public class RegistroPersonas extends javax.swing.JFrame {
         jMenu12 = new javax.swing.JMenu();
         Admi_Curso1 = new javax.swing.JMenuItem();
         Admi_Puesto1 = new javax.swing.JMenuItem();
-        Admi_Puesto2 = new javax.swing.JMenuItem();
 
         jMenuItem1.setText("jMenuItem1");
 
@@ -535,16 +534,6 @@ public class RegistroPersonas extends javax.swing.JFrame {
         });
         jMenu1.add(Re_Curso);
 
-        Re_Persona3.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_H, java.awt.event.InputEvent.CTRL_MASK));
-        Re_Persona3.setText("Horario");
-        Re_Persona3.setPreferredSize(new java.awt.Dimension(137, 40));
-        Re_Persona3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Re_Persona3ActionPerformed(evt);
-            }
-        });
-        jMenu1.add(Re_Persona3);
-
         Re_desercion.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_D, java.awt.event.InputEvent.CTRL_MASK));
         Re_desercion.setText("Deserción");
         Re_desercion.setPreferredSize(new java.awt.Dimension(137, 40));
@@ -574,6 +563,16 @@ public class RegistroPersonas extends javax.swing.JFrame {
             }
         });
         jMenu1.add(Re_Evento);
+
+        Re_Persona3.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_H, java.awt.event.InputEvent.CTRL_MASK));
+        Re_Persona3.setText("Horario");
+        Re_Persona3.setPreferredSize(new java.awt.Dimension(137, 40));
+        Re_Persona3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Re_Persona3ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(Re_Persona3);
 
         Re_Persona.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.CTRL_MASK));
         Re_Persona.setText("Persona");
@@ -715,15 +714,6 @@ public class RegistroPersonas extends javax.swing.JFrame {
             }
         });
         jMenu12.add(Admi_Puesto1);
-
-        Admi_Puesto2.setText("Ayuda");
-        Admi_Puesto2.setPreferredSize(new java.awt.Dimension(140, 30));
-        Admi_Puesto2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Admi_Puesto2ActionPerformed(evt);
-            }
-        });
-        jMenu12.add(Admi_Puesto2);
 
         jMenuBar1.add(jMenu12);
 
@@ -929,16 +919,6 @@ public class RegistroPersonas extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_jMenuItem8ActionPerformed
 
-    private void Admi_Puesto2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Admi_Puesto2ActionPerformed
-        // TODO add your handling code here:
-        try {
-            File path = new File ("ParqueLibertad/ManualdeUsuario.pdf");
-            Desktop.getDesktop().open(path);
-        }catch (IOException ex) {
-}
-        
-    }//GEN-LAST:event_Admi_Puesto2ActionPerformed
-
     private void Re_Persona3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Re_Persona3ActionPerformed
         // TODO add your handling code here:
         new Administrador.HorariosCurso().setVisible(true);
@@ -985,7 +965,6 @@ public class RegistroPersonas extends javax.swing.JFrame {
     private javax.swing.JMenuItem Admi_Curso1;
     private javax.swing.JMenuItem Admi_Puesto;
     private javax.swing.JMenuItem Admi_Puesto1;
-    private javax.swing.JMenuItem Admi_Puesto2;
     private javax.swing.JMenuItem Admi_tipoEvento;
     private javax.swing.JButton B_Registrar;
     private javax.swing.JComboBox<String> CB_Canton;
