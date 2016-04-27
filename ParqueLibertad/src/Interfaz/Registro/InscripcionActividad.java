@@ -85,6 +85,9 @@ public class InscripcionActividad extends javax.swing.JFrame {
                 proc.setInt(2, (int)llaves.get(indice));
                 proc.execute();
                 JOptionPane.showMessageDialog(this, "Persona Inscrita Exitosamente",null,JOptionPane.INFORMATION_MESSAGE);
+                TF_Nombre.setText("");
+                TF_Apellido1.setText("");
+                TF_Apellido2.setText("");
                 con.close();
                 
             } catch (SQLException ex) {
@@ -521,7 +524,8 @@ public class InscripcionActividad extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Por favor seleccionar una persona y una actividad para inscribir",null,JOptionPane.ERROR_MESSAGE);
         }else{
         InscribirActividad();
-        IngresoPersona();
+        
+        
         }
     }//GEN-LAST:event_B_RegistrarActionPerformed
 

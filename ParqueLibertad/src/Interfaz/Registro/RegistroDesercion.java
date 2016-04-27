@@ -96,6 +96,9 @@ public class RegistroDesercion extends javax.swing.JFrame {
                 proc1.setInt(2, idClase);
                 proc1.execute();
                 JOptionPane.showMessageDialog(this, "Deserción Inscrita Exitosamente",null,JOptionPane.INFORMATION_MESSAGE);
+                TF_Nombre.setText("");
+                TF_Apellido1.setText("");
+                TF_Apellido2.setText("");
                 jTextArea1.setText("");
                 con.close();
                 
@@ -217,6 +220,7 @@ public class RegistroDesercion extends javax.swing.JFrame {
         getContentPane().add(L_Motivo);
         L_Motivo.setBounds(60, 220, 58, 28);
 
+        B_Registrar.setBackground(new java.awt.Color(255, 255, 255));
         B_Registrar.setText("Registrar");
         B_Registrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

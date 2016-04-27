@@ -9,6 +9,7 @@ import java.sql.CallableStatement;
 
 import java.lang.Object;
 import Interfaz.Registro.RegistroPuesto;
+import java.awt.Color;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -115,6 +116,10 @@ public class RegistroEmpleado extends javax.swing.JFrame {
                    proc.setString(4, direccionArchivo);
                    proc.execute();
                    JOptionPane.showMessageDialog(this, "Empleado Agregado Exitosamente",null,JOptionPane.INFORMATION_MESSAGE);
+                   TF_Nombre.setText("");
+                   TF_Apellido1.setText("");
+                   TF_Apellido2.setText("");
+                   jLabel1.setIcon(null);
                } catch (SQLException ex) {
                    JOptionPane.showMessageDialog(this, "Error: "+ ex ,null,JOptionPane.ERROR_MESSAGE);
                }

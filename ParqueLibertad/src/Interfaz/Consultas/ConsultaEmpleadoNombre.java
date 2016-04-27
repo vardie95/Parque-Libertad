@@ -108,7 +108,7 @@ public class ConsultaEmpleadoNombre extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Parque la Libertad");
         setLocation(new java.awt.Point(500, 125));
-        setMinimumSize(new java.awt.Dimension(540, 380));
+        setMinimumSize(new java.awt.Dimension(580, 390));
         setResizable(false);
         getContentPane().setLayout(null);
 
@@ -172,7 +172,7 @@ public class ConsultaEmpleadoNombre extends javax.swing.JFrame {
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Registro/Fondo.png"))); // NOI18N
         jLabel2.setOpaque(true);
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(0, 0, 560, 350);
+        jLabel2.setBounds(0, 0, 630, 350);
 
         jMenuBar1.setBackground(new java.awt.Color(255, 255, 255));
         jMenuBar1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));

@@ -135,7 +135,7 @@ public class ConsultaEmpleadoFecha extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Parque la Libertad");
         setLocation(new java.awt.Point(500, 125));
-        setMinimumSize(new java.awt.Dimension(540, 420));
+        setMinimumSize(new java.awt.Dimension(560, 440));
         setResizable(false);
         getContentPane().setLayout(null);
 
@@ -169,7 +169,7 @@ public class ConsultaEmpleadoFecha extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTable1);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(20, 120, 470, 230);
+        jScrollPane1.setBounds(20, 120, 470, 200);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel1.setText("Fecha Inicio: ");
@@ -209,7 +209,7 @@ public class ConsultaEmpleadoFecha extends javax.swing.JFrame {
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Registro/Fondo.jpg"))); // NOI18N
         jLabel3.setOpaque(true);
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(0, 0, 540, 370);
+        jLabel3.setBounds(0, 0, 590, 410);
 
         jMenuBar1.setBackground(new java.awt.Color(255, 255, 255));
         jMenuBar1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));

@@ -83,6 +83,9 @@ public class InscripcionClase extends javax.swing.JFrame {
                 proc.execute();
                 JOptionPane.showMessageDialog(this, "Persona Matriculada Exitosamente",null,JOptionPane.INFORMATION_MESSAGE);
                 con.close();
+                TF_Nombre.setText("");
+                TF_Apellido1.setText("");
+                TF_Apellido2.setText("");
                 
             } catch (SQLException ex) {
            JOptionPane.showMessageDialog(this, "Error: "+ex,null,JOptionPane.ERROR_MESSAGE);

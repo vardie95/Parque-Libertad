@@ -254,6 +254,7 @@ public class HorariosCurso extends javax.swing.JFrame {
         getContentPane().add(Titulo_Menu);
         Titulo_Menu.setBounds(240, 20, 80, 22);
 
+        CB_Curso.setBackground(new java.awt.Color(204, 255, 204));
         CB_Curso.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nombre" }));
         CB_Curso.setBorder(null);
         CB_Curso.addActionListener(new java.awt.event.ActionListener() {

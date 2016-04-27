@@ -119,6 +119,7 @@ public class ModificarEmpleado extends javax.swing.JFrame {
                    TF_Nombre.setText("");
                    TF_Apellido1.setText("");
                    TF_Apellido2.setText("");
+                   jLabel1.setIcon(null);
                } catch (SQLException ex) {
                    JOptionPane.showMessageDialog(this, "Error: "+ ex ,null,JOptionPane.ERROR_MESSAGE);
                }
