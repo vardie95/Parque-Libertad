@@ -77,6 +77,7 @@ public class Inicio extends javax.swing.JFrame {
         setResizable(false);
         getContentPane().setLayout(null);
 
+        B_Ingresar.setBackground(new java.awt.Color(255, 255, 255));
         B_Ingresar.setText("Ingresar");
         B_Ingresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -84,7 +85,7 @@ public class Inicio extends javax.swing.JFrame {
             }
         });
         getContentPane().add(B_Ingresar);
-        B_Ingresar.setBounds(240, 300, 90, 30);
+        B_Ingresar.setBounds(240, 290, 90, 40);
 
         TF_Usuario.setBackground(new java.awt.Color(153, 255, 153));
         getContentPane().add(TF_Usuario);
@@ -102,6 +103,7 @@ public class Inicio extends javax.swing.JFrame {
         getContentPane().add(L_Contraseña);
         L_Contraseña.setBounds(200, 260, 70, 14);
 
+        BT_Cancelar.setBackground(new java.awt.Color(255, 255, 255));
         BT_Cancelar.setText("Cancelar");
         BT_Cancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -109,7 +111,7 @@ public class Inicio extends javax.swing.JFrame {
             }
         });
         getContentPane().add(BT_Cancelar);
-        BT_Cancelar.setBounds(370, 300, 90, 30);
+        BT_Cancelar.setBounds(370, 290, 90, 40);
 
         Titulo_Menu.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         Titulo_Menu.setText("Bienvenido ");

@@ -43,7 +43,7 @@ public class RegistroCurso extends javax.swing.JFrame {
                 TF_Nombre.setText("");
                 con.close();
             } catch (SQLException ex) {
-                Logger.getLogger(RegistroTipoEvento.class.getName()).log(Level.SEVERE, null, ex);
+                JOptionPane.showMessageDialog(this, "Error: "+ ex ,null,JOptionPane.ERROR_MESSAGE);
             }
     }
     
@@ -109,6 +109,7 @@ public class RegistroCurso extends javax.swing.JFrame {
         getContentPane().add(L_Nombre);
         L_Nombre.setBounds(60, 90, 60, 28);
 
+        B_Registrar.setBackground(new java.awt.Color(255, 255, 255));
         B_Registrar.setText("Registrar");
         B_Registrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -127,6 +128,7 @@ public class RegistroCurso extends javax.swing.JFrame {
         getContentPane().add(TF_Nombre);
         TF_Nombre.setBounds(130, 90, 180, 30);
 
+        B_Registrar1.setBackground(new java.awt.Color(255, 255, 255));
         B_Registrar1.setText("Modificar");
         B_Registrar1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

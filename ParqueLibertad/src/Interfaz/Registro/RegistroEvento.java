@@ -161,6 +161,7 @@ public class RegistroEvento extends javax.swing.JFrame {
         getContentPane().add(L_Fecha);
         L_Fecha.setBounds(50, 110, 58, 30);
 
+        B_Registrar.setBackground(new java.awt.Color(255, 255, 255));
         B_Registrar.setText("Registrar");
         B_Registrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -192,6 +193,7 @@ public class RegistroEvento extends javax.swing.JFrame {
         getContentPane().add(CB_Año);
         CB_Año.setBounds(240, 140, 70, 20);
 
+        jButton1.setBackground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Modificar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

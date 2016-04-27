@@ -73,6 +73,7 @@ public class RegistroHorario extends javax.swing.JFrame {
         setResizable(false);
         getContentPane().setLayout(null);
 
+        B_Registrar.setBackground(new java.awt.Color(255, 255, 255));
         B_Registrar.setText("Registrar");
         B_Registrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

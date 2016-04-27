@@ -106,13 +106,13 @@ public class ModificarEvento extends javax.swing.JFrame {
                     proc.setInt(2, idTipo);
                     proc.setDate(3, sql);
                     proc.execute();
-                    JOptionPane.showMessageDialog(this, "Evento Agregado Exitosamente",null,JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(this, "Evento Modificado Exitosamente",null,JOptionPane.INFORMATION_MESSAGE);
                     con.close();
                 } catch (ParseException ex) {     
                 Logger.getLogger(ModificarEvento.class.getName()).log(Level.SEVERE, null, ex);
             }     
                 } catch (SQLException ex) {
-                    Logger.getLogger(ModificarEvento.class.getName()).log(Level.SEVERE, null, ex);
+                    JOptionPane.showMessageDialog(this, "Error: "+ ex ,null,JOptionPane.ERROR_MESSAGE);
                 }
          
     
@@ -191,6 +191,7 @@ public class ModificarEvento extends javax.swing.JFrame {
         getContentPane().add(L_Fecha);
         L_Fecha.setBounds(40, 190, 58, 30);
 
+        B_Registrar.setBackground(new java.awt.Color(255, 255, 255));
         B_Registrar.setText("Modificar");
         B_Registrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -203,7 +204,7 @@ public class ModificarEvento extends javax.swing.JFrame {
         Titulo_Registro_de_Evento.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         Titulo_Registro_de_Evento.setText("Modificar Evento");
         getContentPane().add(Titulo_Registro_de_Evento);
-        Titulo_Registro_de_Evento.setBounds(180, 20, 160, 22);
+        Titulo_Registro_de_Evento.setBounds(150, 20, 160, 22);
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel4.setText("dd     /   mm       /  aa");
@@ -222,6 +223,7 @@ public class ModificarEvento extends javax.swing.JFrame {
         getContentPane().add(CB_Año);
         CB_Año.setBounds(230, 230, 70, 20);
 
+        jButton6.setBackground(new java.awt.Color(255, 255, 255));
         jButton6.setText("Volver");
         jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -254,6 +256,7 @@ public class ModificarEvento extends javax.swing.JFrame {
         getContentPane().add(L_Tipo1);
         L_Tipo1.setBounds(40, 120, 47, 30);
 
+        jButton2.setBackground(new java.awt.Color(255, 255, 255));
         jButton2.setText("Ok");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

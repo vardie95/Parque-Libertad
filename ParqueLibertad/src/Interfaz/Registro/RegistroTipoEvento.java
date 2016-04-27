@@ -94,6 +94,7 @@ public class RegistroTipoEvento extends javax.swing.JFrame {
         getContentPane().add(L_Nombre);
         L_Nombre.setBounds(40, 90, 60, 28);
 
+        B_Registrar.setBackground(new java.awt.Color(255, 255, 255));
         B_Registrar.setText("Registrar");
         B_Registrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -101,7 +102,7 @@ public class RegistroTipoEvento extends javax.swing.JFrame {
             }
         });
         getContentPane().add(B_Registrar);
-        B_Registrar.setBounds(230, 150, 90, 40);
+        B_Registrar.setBounds(220, 150, 100, 40);
 
         Titulo_Registro_de_Actividad.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         Titulo_Registro_de_Actividad.setText("Registro Tipo de Evento");
@@ -112,6 +113,7 @@ public class RegistroTipoEvento extends javax.swing.JFrame {
         getContentPane().add(TF_Nombre);
         TF_Nombre.setBounds(120, 90, 180, 30);
 
+        B_Registrar1.setBackground(new java.awt.Color(255, 255, 255));
         B_Registrar1.setText("Modificar");
         B_Registrar1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -119,7 +121,7 @@ public class RegistroTipoEvento extends javax.swing.JFrame {
             }
         });
         getContentPane().add(B_Registrar1);
-        B_Registrar1.setBounds(60, 150, 90, 40);
+        B_Registrar1.setBounds(60, 150, 100, 40);
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setOpaque(true);

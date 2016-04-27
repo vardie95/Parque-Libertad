@@ -160,6 +160,7 @@ public class RegistroClase extends javax.swing.JFrame {
                 proc.execute();
                 RegistrarHorario(idMercado, idCurso, Integer.parseInt(costo));
                 JOptionPane.showMessageDialog(this, "Registro de Clase exitoso",null,JOptionPane.INFORMATION_MESSAGE);
+                TF_Costo.setText("");
                 
             } catch (ParseException ex) {
                 Logger.getLogger(RegistroClase.class.getName()).log(Level.SEVERE, null, ex);
@@ -274,7 +275,6 @@ public class RegistroClase extends javax.swing.JFrame {
         L_Horario = new javax.swing.JLabel();
         B_Registrar = new javax.swing.JButton();
         Titulo_Registro_de_Curso = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
         CB_Curso1 = new javax.swing.JComboBox<>();
         L_Horario1 = new javax.swing.JLabel();
         CB_Curso2 = new javax.swing.JComboBox<>();
@@ -327,17 +327,15 @@ public class RegistroClase extends javax.swing.JFrame {
         setResizable(false);
         getContentPane().setLayout(null);
 
-        CB_Curso.setBackground(new java.awt.Color(204, 255, 204));
         CB_Curso.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nombre" }));
         getContentPane().add(CB_Curso);
-        CB_Curso.setBounds(130, 60, 140, 28);
+        CB_Curso.setBounds(130, 60, 150, 28);
 
         L_Curso.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         L_Curso.setText("Curso: ");
         getContentPane().add(L_Curso);
         L_Curso.setBounds(57, 60, 60, 28);
 
-        CB_Mercado.setBackground(new java.awt.Color(204, 255, 204));
         CB_Mercado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Adultos" }));
         getContentPane().add(CB_Mercado);
         CB_Mercado.setBounds(130, 110, 146, 31);
@@ -361,6 +359,7 @@ public class RegistroClase extends javax.swing.JFrame {
         getContentPane().add(L_Horario);
         L_Horario.setBounds(220, 180, 70, 28);
 
+        B_Registrar.setBackground(new java.awt.Color(255, 255, 255));
         B_Registrar.setText("Registrar");
         B_Registrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -375,16 +374,6 @@ public class RegistroClase extends javax.swing.JFrame {
         getContentPane().add(Titulo_Registro_de_Curso);
         Titulo_Registro_de_Curso.setBounds(190, 10, 136, 22);
 
-        jButton1.setText("Otro");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton1);
-        jButton1.setBounds(320, 60, 73, 23);
-
-        CB_Curso1.setBackground(new java.awt.Color(204, 255, 204));
         CB_Curso1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Horario" }));
         getContentPane().add(CB_Curso1);
         CB_Curso1.setBounds(270, 180, 120, 28);
@@ -394,7 +383,6 @@ public class RegistroClase extends javax.swing.JFrame {
         getContentPane().add(L_Horario1);
         L_Horario1.setBounds(40, 150, 70, 28);
 
-        CB_Curso2.setBackground(new java.awt.Color(204, 255, 204));
         CB_Curso2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado", "Domingo" }));
         CB_Curso2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -448,6 +436,7 @@ public class RegistroClase extends javax.swing.JFrame {
         getContentPane().add(jLabel2);
         jLabel2.setBounds(0, 0, 510, 40);
 
+        B_Registrar1.setBackground(new java.awt.Color(255, 255, 255));
         B_Registrar1.setText("Modificar");
         B_Registrar1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -666,12 +655,6 @@ public class RegistroClase extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_B_RegistrarActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        dispose();
-        new RegistroCurso().setVisible(true);
-    }//GEN-LAST:event_jButton1ActionPerformed
-
     private void CB_Curso2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CB_Curso2ActionPerformed
         // TODO add your handling code here:
         if(evt.getSource()==CB_Curso2){
@@ -793,7 +776,7 @@ public class RegistroClase extends javax.swing.JFrame {
                 case JOptionPane.NO_OPTION:
                 break;
                 case JOptionPane.YES_OPTION:
-                new Interfaz.Modificaciones.ModificarClase().setVisible(true);
+                /*new Interfaz.Modificaciones.ModificarClase().setVisible(true);*/
                 dispose();
                 break;
                 case JOptionPane.CLOSED_OPTION:
@@ -803,7 +786,7 @@ public class RegistroClase extends javax.swing.JFrame {
             }
 
         }else{
-            new Interfaz.Modificaciones.ModificarClase().setVisible(true);
+            /*new Interfaz.Modificaciones.ModificarClase().setVisible(true);*/
             dispose();
         }
     }//GEN-LAST:event_B_Registrar1ActionPerformed
@@ -882,7 +865,6 @@ public class RegistroClase extends javax.swing.JFrame {
     private javax.swing.JMenuItem Re_desercion;
     private javax.swing.JFormattedTextField TF_Costo;
     private javax.swing.JLabel Titulo_Registro_de_Curso;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JMenu jMenu1;

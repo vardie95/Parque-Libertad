@@ -124,7 +124,7 @@ public class ModificarActividad extends javax.swing.JFrame {
                 Logger.getLogger(RegistroEvento.class.getName()).log(Level.SEVERE, null, ex);
             }     
                  catch (SQLException ex) {
-                    Logger.getLogger(RegistroEvento.class.getName()).log(Level.SEVERE, null, ex);
+                    JOptionPane.showMessageDialog(this, "Error: "+ ex ,null,JOptionPane.ERROR_MESSAGE);
                 }
      
     } 
@@ -448,6 +448,7 @@ public class ModificarActividad extends javax.swing.JFrame {
         getContentPane().add(L_Descripcion);
         L_Descripcion.setBounds(30, 180, 90, 28);
 
+        B_Registrar.setBackground(new java.awt.Color(255, 255, 255));
         B_Registrar.setText("Modificar");
         B_Registrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -455,7 +456,7 @@ public class ModificarActividad extends javax.swing.JFrame {
             }
         });
         getContentPane().add(B_Registrar);
-        B_Registrar.setBounds(60, 300, 90, 40);
+        B_Registrar.setBounds(50, 300, 100, 40);
 
         Titulo_Registro_de_Actividad.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         Titulo_Registro_de_Actividad.setText("Modificar  Actividad");
@@ -523,6 +524,7 @@ public class ModificarActividad extends javax.swing.JFrame {
         getContentPane().add(jButton5);
         jButton5.setBounds(450, 400, 110, 40);
 
+        jButton6.setBackground(new java.awt.Color(255, 255, 255));
         jButton6.setText("Volver");
         jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -530,8 +532,9 @@ public class ModificarActividad extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton6);
-        jButton6.setBounds(190, 300, 110, 40);
+        jButton6.setBounds(200, 300, 100, 40);
 
+        jButton2.setBackground(new java.awt.Color(255, 255, 255));
         jButton2.setText("Ok");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

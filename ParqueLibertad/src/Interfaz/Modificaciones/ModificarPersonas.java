@@ -200,7 +200,7 @@ public class ModificarPersonas extends javax.swing.JFrame {
                 jTextArea1.setText("");
                 con.close();
             } catch (SQLException ex) {
-                Logger.getLogger(ModificarPersonas.class.getName()).log(Level.SEVERE, null, ex);
+                JOptionPane.showMessageDialog(this, "Error: "+ ex ,null,JOptionPane.ERROR_MESSAGE);
             }
   
     }

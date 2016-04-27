@@ -96,6 +96,7 @@ public class RegistroDesercion extends javax.swing.JFrame {
                 proc1.setInt(2, idClase);
                 proc1.execute();
                 JOptionPane.showMessageDialog(this, "Deserción Inscrita Exitosamente",null,JOptionPane.INFORMATION_MESSAGE);
+                jTextArea1.setText("");
                 con.close();
                 
             } catch (SQLException ex) {
@@ -190,6 +191,7 @@ public class RegistroDesercion extends javax.swing.JFrame {
         setResizable(false);
         getContentPane().setLayout(null);
 
+        CB_Identificacion.setBackground(null);
         CB_Identificacion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "123456789" }));
         getContentPane().add(CB_Identificacion);
         CB_Identificacion.setBounds(154, 60, 210, 28);
@@ -199,6 +201,7 @@ public class RegistroDesercion extends javax.swing.JFrame {
         getContentPane().add(L_Identificacion);
         L_Identificacion.setBounds(20, 60, 100, 28);
 
+        CB_Curso.setBackground(null);
         CB_Curso.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nombre" }));
         getContentPane().add(CB_Curso);
         CB_Curso.setBounds(40, 180, 440, 31);
@@ -213,6 +216,7 @@ public class RegistroDesercion extends javax.swing.JFrame {
         getContentPane().add(L_Motivo);
         L_Motivo.setBounds(60, 230, 58, 28);
 
+        B_Registrar.setBackground(null);
         B_Registrar.setText("Registrar");
         B_Registrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -233,7 +237,7 @@ public class RegistroDesercion extends javax.swing.JFrame {
         SP_Descripcion.setViewportView(jTextArea1);
 
         getContentPane().add(SP_Descripcion);
-        SP_Descripcion.setBounds(80, 260, 280, 70);
+        SP_Descripcion.setBounds(70, 260, 290, 70);
 
         TF_Nombre.setEditable(false);
         TF_Nombre.setBackground(new java.awt.Color(153, 255, 153));
@@ -265,6 +269,7 @@ public class RegistroDesercion extends javax.swing.JFrame {
         getContentPane().add(L_Apellido2);
         L_Apellido2.setBounds(340, 100, 90, 17);
 
+        jButton1.setBackground(null);
         jButton1.setText("Buscar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -274,6 +279,7 @@ public class RegistroDesercion extends javax.swing.JFrame {
         getContentPane().add(jButton1);
         jButton1.setBounds(380, 60, 80, 23);
 
+        jLabel1.setBackground(null);
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Registro/Fondo.png"))); // NOI18N
         getContentPane().add(jLabel1);
         jLabel1.setBounds(0, 0, 540, 360);

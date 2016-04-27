@@ -477,6 +477,7 @@ public class RegistroEstudiante extends javax.swing.JFrame {
         getContentPane().add(L_Identificacion);
         L_Identificacion.setBounds(90, 60, 110, 28);
 
+        B_Registrar.setBackground(new java.awt.Color(255, 255, 255));
         B_Registrar.setText("Registrar");
         B_Registrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -731,6 +732,7 @@ public class RegistroEstudiante extends javax.swing.JFrame {
         // TODO add your handling code here:
         Connection con= null;
         con = parquelibertad.dbConnection.conectDB();
+        if(TF_Nombre.getText().length()>0){
         int Identificacion=Integer.parseInt(CB_Identificacion.getSelectedItem().toString());
         try {
                 CallableStatement proc= con.prepareCall("{call insertEstudiante(?)}");
@@ -742,9 +744,12 @@ public class RegistroEstudiante extends javax.swing.JFrame {
                 TF_Apellido2.setText("");
                 con.close();
             } catch (SQLException ex) {
-                Logger.getLogger(RegistroTipoEvento.class.getName()).log(Level.SEVERE, null, ex);
+                JOptionPane.showMessageDialog(this, "Error: "+ ex ,null,JOptionPane.ERROR_MESSAGE);
             }
+       }else{
+              JOptionPane.showMessageDialog(this, "Seleccione a una persona" ,null,JOptionPane.ERROR_MESSAGE);
         
+        }
     }//GEN-LAST:event_B_RegistrarActionPerformed
 
     private void CB_IdentificacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CB_IdentificacionActionPerformed

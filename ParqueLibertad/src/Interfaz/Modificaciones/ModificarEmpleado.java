@@ -120,7 +120,7 @@ public class ModificarEmpleado extends javax.swing.JFrame {
                    TF_Apellido1.setText("");
                    TF_Apellido2.setText("");
                } catch (SQLException ex) {
-                   Logger.getLogger(ModificarEmpleado.class.getName()).log(Level.SEVERE, null, ex);
+                   JOptionPane.showMessageDialog(this, "Error: "+ ex ,null,JOptionPane.ERROR_MESSAGE);
                }
            
            }
@@ -185,7 +185,6 @@ public class ModificarEmpleado extends javax.swing.JFrame {
         L_Nombre = new javax.swing.JLabel();
         L_Apellido1 = new javax.swing.JLabel();
         L_Apellido2 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -552,6 +551,7 @@ public class ModificarEmpleado extends javax.swing.JFrame {
         getContentPane().add(L_Foto);
         L_Foto.setBounds(30, 210, 58, 28);
 
+        B_Registrar.setBackground(new java.awt.Color(255, 255, 255));
         B_Registrar.setText("Modificar");
         B_Registrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -559,7 +559,7 @@ public class ModificarEmpleado extends javax.swing.JFrame {
             }
         });
         getContentPane().add(B_Registrar);
-        B_Registrar.setBounds(400, 250, 110, 40);
+        B_Registrar.setBounds(390, 260, 110, 40);
 
         Titulo_Registro_de_Empleado.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         Titulo_Registro_de_Empleado.setText("Modificar  Empleado");
@@ -605,15 +605,6 @@ public class ModificarEmpleado extends javax.swing.JFrame {
         getContentPane().add(L_Apellido2);
         L_Apellido2.setBounds(340, 100, 90, 15);
 
-        jButton1.setText("Otro");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton1);
-        jButton1.setBounds(240, 160, 73, 23);
-
         jButton2.setText("Ok");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -638,6 +629,7 @@ public class ModificarEmpleado extends javax.swing.JFrame {
         getContentPane().add(jLabel4);
         jLabel4.setBounds(0, 0, 560, 140);
 
+        jButton3.setBackground(new java.awt.Color(255, 255, 255));
         jButton3.setText("Volver");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -645,7 +637,7 @@ public class ModificarEmpleado extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton3);
-        jButton3.setBounds(400, 330, 110, 40);
+        jButton3.setBounds(390, 320, 110, 40);
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Registro/Fondo.jpg"))); // NOI18N
         getContentPane().add(jLabel2);
@@ -656,7 +648,11 @@ public class ModificarEmpleado extends javax.swing.JFrame {
 
     private void B_RegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_RegistrarActionPerformed
         // TODO add your handling code here:
-        registrarEmpleado();
+        if(TF_Nombre.getText().length()>0){
+        registrarEmpleado();}
+        else{
+        JOptionPane.showMessageDialog(this, "Seleccione un Empleado a modificar" ,null,JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_B_RegistrarActionPerformed
 
     private void CB_IdentificacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CB_IdentificacionActionPerformed
@@ -664,12 +660,6 @@ public class ModificarEmpleado extends javax.swing.JFrame {
            
         
     }//GEN-LAST:event_CB_IdentificacionActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        dispose();
-        new RegistroPuesto().setVisible(true);
-    }//GEN-LAST:event_jButton1ActionPerformed
 
     private void CB_PuestoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CB_PuestoActionPerformed
         // TODO add your handling code here:
@@ -1078,7 +1068,6 @@ public class ModificarEmpleado extends javax.swing.JFrame {
     private javax.swing.JMenuItem TopDeserciones;
     private javax.swing.JMenuItem con_Empleado_Fecha;
     private javax.swing.JMenuItem con_persona_Fecha;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;

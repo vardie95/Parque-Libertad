@@ -103,6 +103,7 @@ public class RegistroUsuario extends javax.swing.JFrame {
         getContentPane().add(L_Nombre);
         L_Nombre.setBounds(30, 150, 80, 28);
 
+        B_Registrar.setBackground(new java.awt.Color(255, 255, 255));
         B_Registrar.setText("Registrar");
         B_Registrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
