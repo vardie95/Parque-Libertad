@@ -731,8 +731,10 @@ public class RegistroPersonas extends javax.swing.JFrame {
 
     private void B_RegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_RegistrarActionPerformed
         // TODO add your handling code here:
-        if (TF_Nombre.getText().length()==0 || TF_Apellido1.getText().length()==0 || TF_Apellido2.getText().length()==0 || TF_Identificacion.getText().length()>0){
+        if (TF_Nombre.getText().length()==0 || TF_Apellido1.getText().length()==0 || TF_Apellido2.getText().length()==0){
             JOptionPane.showMessageDialog(this, "Debe de llenar todos los campos obligatorios.",null,JOptionPane.ERROR_MESSAGE);
+        }else if(TF_Identificacion.getText().length() < 8 || TF_Identificacion.equals("") ){
+            JOptionPane.showMessageDialog(this, "Digite una Identificacion valida.",null,JOptionPane.ERROR_MESSAGE);
         }
         else{
             RegistrarPersona();

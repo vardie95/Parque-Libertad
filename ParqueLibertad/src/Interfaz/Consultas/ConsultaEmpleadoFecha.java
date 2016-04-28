@@ -134,6 +134,7 @@ public class ConsultaEmpleadoFecha extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Parque la Libertad");
+        setBackground(new java.awt.Color(255, 255, 255));
         setLocation(new java.awt.Point(500, 125));
         setMinimumSize(new java.awt.Dimension(560, 440));
         setResizable(false);

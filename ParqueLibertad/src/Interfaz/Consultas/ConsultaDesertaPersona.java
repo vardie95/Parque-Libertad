@@ -136,6 +136,7 @@ public class ConsultaDesertaPersona extends javax.swing.JFrame {
         getContentPane().add(jScrollPane1);
         jScrollPane1.setBounds(20, 90, 550, 250);
 
+        BT_Buscar.setBackground(new java.awt.Color(255, 255, 255));
         BT_Buscar.setText("Buscar");
         BT_Buscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

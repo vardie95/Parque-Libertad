@@ -138,6 +138,7 @@ public class ConsultaLugarPersona extends javax.swing.JFrame {
         getContentPane().add(PT_Ubicacion);
         PT_Ubicacion.setBounds(150, 70, 150, 20);
 
+        BT_Buscar.setBackground(new java.awt.Color(255, 255, 255));
         BT_Buscar.setText("Buscar");
         BT_Buscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

@@ -194,6 +194,7 @@ public class InscripcionActividad extends javax.swing.JFrame {
         getContentPane().add(L_Curso);
         L_Curso.setBounds(30, 180, 80, 28);
 
+        B_Registrar.setBackground(new java.awt.Color(255, 255, 255));
         B_Registrar.setText("Registrar");
         B_Registrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -235,6 +236,7 @@ public class InscripcionActividad extends javax.swing.JFrame {
         getContentPane().add(L_Apellido2);
         L_Apellido2.setBounds(340, 110, 90, 14);
 
+        jButton2.setBackground(new java.awt.Color(255, 255, 255));
         jButton2.setText("Buscar");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -771,7 +773,6 @@ public class InscripcionActividad extends javax.swing.JFrame {
     private javax.swing.JMenuItem Es_persona_lugar;
     private javax.swing.JMenuItem Es_top_persona;
     private javax.swing.JLabel Fondo;
-    private javax.swing.JMenuItem Ins_Actividad;
     private javax.swing.JMenuItem Ins_Actividad1;
     private javax.swing.JMenuItem Ins_Clase;
     private javax.swing.JMenuItem Ins_Clase1;
@@ -791,7 +792,6 @@ public class InscripcionActividad extends javax.swing.JFrame {
     private javax.swing.JMenuItem con_Empleado_Fecha;
     private javax.swing.JMenuItem con_persona_Fecha;
     private javax.swing.JButton jButton2;
-    private javax.swing.JMenu jMenu11;
     private javax.swing.JMenu jMenu12;
     private javax.swing.JMenu jMenu13;
     private javax.swing.JMenu jMenu3;
@@ -799,7 +799,6 @@ public class InscripcionActividad extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu7;
     private javax.swing.JMenu jMenu8;
     private javax.swing.JMenu jMenu9;
-    private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuBar jMenuBar2;
     // End of variables declaration//GEN-END:variables
 }

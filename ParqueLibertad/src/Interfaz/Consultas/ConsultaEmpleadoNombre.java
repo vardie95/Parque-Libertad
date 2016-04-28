@@ -112,6 +112,7 @@ public class ConsultaEmpleadoNombre extends javax.swing.JFrame {
         setResizable(false);
         getContentPane().setLayout(null);
 
+        BT_Buscar.setBackground(new java.awt.Color(255, 255, 255));
         BT_Buscar.setText("Buscar");
         BT_Buscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

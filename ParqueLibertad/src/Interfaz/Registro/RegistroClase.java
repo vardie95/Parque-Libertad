@@ -288,7 +288,6 @@ public class RegistroClase extends javax.swing.JFrame {
         CB_Mes2 = new javax.swing.JComboBox<>();
         CB_Año2 = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
-        B_Registrar1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
@@ -370,7 +369,7 @@ public class RegistroClase extends javax.swing.JFrame {
             }
         });
         getContentPane().add(B_Registrar);
-        B_Registrar.setBounds(380, 310, 100, 40);
+        B_Registrar.setBounds(320, 280, 100, 40);
 
         Titulo_Registro_de_Curso.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         Titulo_Registro_de_Curso.setText("Registro de Clase");
@@ -438,16 +437,6 @@ public class RegistroClase extends javax.swing.JFrame {
         jLabel2.setOpaque(true);
         getContentPane().add(jLabel2);
         jLabel2.setBounds(0, 0, 510, 40);
-
-        B_Registrar1.setBackground(new java.awt.Color(255, 255, 255));
-        B_Registrar1.setText("Modificar");
-        B_Registrar1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                B_Registrar1ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(B_Registrar1);
-        B_Registrar1.setBounds(260, 310, 100, 40);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Registro/Fondo.jpg"))); // NOI18N
         getContentPane().add(jLabel1);
@@ -696,29 +685,6 @@ public class RegistroClase extends javax.swing.JFrame {
      
     }//GEN-LAST:event_CB_Curso2ActionPerformed
 
-    private void B_Registrar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_Registrar1ActionPerformed
-        // TODO add your handling code here:
-        if (TF_Costo.getText().length()>0 ){
-            int response = JOptionPane.showConfirmDialog(null, "Se perderán todo los datos desea continuar?", "Confirmación",JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-            switch (response) {
-                case JOptionPane.NO_OPTION:
-                break;
-                case JOptionPane.YES_OPTION:
-                /*new Interfaz.Modificaciones.ModificarClase().setVisible(true);*/
-                dispose();
-                break;
-                case JOptionPane.CLOSED_OPTION:
-                break;
-                default:
-                break;
-            }
-
-        }else{
-            /*new Interfaz.Modificaciones.ModificarClase().setVisible(true);*/
-            dispose();
-        }
-    }//GEN-LAST:event_B_Registrar1ActionPerformed
-
     private void Re_ActividadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Re_ActividadActionPerformed
         // TODO add your handling code here:
         new Interfaz.Registro.RegistroActividad().setVisible(true);
@@ -882,7 +848,6 @@ public class RegistroClase extends javax.swing.JFrame {
     private javax.swing.JMenuItem Admi_Puesto1;
     private javax.swing.JMenuItem Admi_tipoEvento;
     private javax.swing.JButton B_Registrar;
-    private javax.swing.JButton B_Registrar1;
     private javax.swing.JComboBox<String> CB_Año;
     private javax.swing.JComboBox<String> CB_Año1;
     private javax.swing.JComboBox<String> CB_Año2;

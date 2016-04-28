@@ -404,6 +404,7 @@ public class EstadisticaLugar extends javax.swing.JFrame {
         getContentPane().add(jLabel2);
         jLabel2.setBounds(30, 90, 80, 20);
 
+        BT_Analizar.setBackground(new java.awt.Color(255, 255, 255));
         BT_Analizar.setText("Analizar");
         BT_Analizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
