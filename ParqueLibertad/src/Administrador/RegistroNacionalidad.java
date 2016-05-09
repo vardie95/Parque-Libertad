@@ -27,13 +27,13 @@ public class RegistroNacionalidad extends javax.swing.JFrame {
     }
     public void InsertPais(){
         Connection con= null;
-            String puesto=TF_Nombre.getText();
+            String nacionalidad=TF_Nombre.getText();
             con= parquelibertad.dbConnection.conectDB();
             try {
                 CallableStatement proc= con.prepareCall("{call insertNacionalidad(?)}");
-                proc.setString(1, puesto);
+                proc.setString(1,nacionalidad);
                 proc.execute();
-                JOptionPane.showMessageDialog(this, "Nacionalidad Agregado Exitosamente",null,JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Nacionalidad Agregada Exitosamente",null,JOptionPane.INFORMATION_MESSAGE);
                 TF_Nombre.setText("");
                 con.close();
                 

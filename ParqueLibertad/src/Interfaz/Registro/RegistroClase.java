@@ -385,7 +385,7 @@ public class RegistroClase extends javax.swing.JFrame {
         getContentPane().add(L_Horario1);
         L_Horario1.setBounds(40, 150, 70, 28);
 
-        CB_Curso2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado", "Domingo" }));
+        CB_Curso2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sábado", "Domingo" }));
         CB_Curso2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CB_Curso2ActionPerformed(evt);

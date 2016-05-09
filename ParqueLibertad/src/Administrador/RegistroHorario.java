@@ -87,7 +87,7 @@ public class RegistroHorario extends javax.swing.JFrame {
         B_Registrar.setBounds(250, 170, 90, 40);
 
         CB_Curso2.setBackground(new java.awt.Color(204, 255, 204));
-        CB_Curso2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado", "Domingo" }));
+        CB_Curso2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sábado", "Domingo" }));
         CB_Curso2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CB_Curso2ActionPerformed(evt);

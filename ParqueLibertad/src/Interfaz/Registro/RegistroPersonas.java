@@ -51,6 +51,7 @@ public class RegistroPersonas extends javax.swing.JFrame {
                 while(rs.next()){
                    CB_Pais.addItem(rs.getString(1));
                 }
+                rs.close();
             } catch (SQLException ex) {
                 Logger.getLogger(RegistroEmpleado.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -75,6 +76,7 @@ public class RegistroPersonas extends javax.swing.JFrame {
                    CB_Provincia.addItem(rs.getString(1));
                 } 
               con.close();
+              rs.close();
             } catch (SQLException ex) {
                 Logger.getLogger(RegistroPersonas.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -100,6 +102,7 @@ public class RegistroPersonas extends javax.swing.JFrame {
                    CB_Canton.addItem(rs.getString(1));
                 } 
                 con.close();
+                rs.close();
             } catch (SQLException ex) {
                 Logger.getLogger(RegistroPersonas.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -125,7 +128,9 @@ public class RegistroPersonas extends javax.swing.JFrame {
                 while(rs.next()){
                    CB_Distrito.addItem(rs.getString(1));
                 } 
+                rs.close();
                 con.close();
+            
             } catch (SQLException ex) {
                 Logger.getLogger(RegistroPersonas.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -217,7 +222,7 @@ public class RegistroPersonas extends javax.swing.JFrame {
                 cstmt.execute();
                 int idNacionalidad=cstmt.getInt(1);
                 CallableStatement proc;
-                proc = con.prepareCall("{call insertNacionalidad(?,?)}");
+                proc = con.prepareCall("{call insertNacionalidadxPersona(?,?)}");
                 proc.setInt(1, identificacion);
                 proc.setInt(2, idNacionalidad);
                 proc.execute();
@@ -473,6 +478,11 @@ public class RegistroPersonas extends javax.swing.JFrame {
 
         CB_Distrito.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         CB_Distrito.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Central" }));
+        CB_Distrito.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CB_DistritoActionPerformed(evt);
+            }
+        });
         getContentPane().add(CB_Distrito);
         CB_Distrito.setBounds(410, 220, 130, 21);
 
@@ -731,16 +741,16 @@ public class RegistroPersonas extends javax.swing.JFrame {
 
     private void B_RegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_RegistrarActionPerformed
         // TODO add your handling code here:
+  
         if (TF_Nombre.getText().length()==0 || TF_Apellido1.getText().length()==0 || TF_Apellido2.getText().length()==0){
             JOptionPane.showMessageDialog(this, "Debe de llenar todos los campos obligatorios.",null,JOptionPane.ERROR_MESSAGE);
-        }else if(TF_Identificacion.getText().length() < 8 || TF_Identificacion.equals("") ){
-            JOptionPane.showMessageDialog(this, "Digite una Identificacion valida.",null,JOptionPane.ERROR_MESSAGE);
+        }else if(TF_Identificacion.getText().length() < 8 || TF_Identificacion.equals("        ") || TF_Identificacion.getText()==null ){
+            JOptionPane.showMessageDialog(this, "Digite una Identificación Válida.",null,JOptionPane.ERROR_MESSAGE);
         }
         else{
             RegistrarPersona();
             IngresoPersona();
-            NacionalidadPersona();
-            
+            NacionalidadPersona(); 
         }
     }//GEN-LAST:event_B_RegistrarActionPerformed
     
@@ -926,6 +936,10 @@ public class RegistroPersonas extends javax.swing.JFrame {
         new Administrador.HorariosCurso().setVisible(true);
         dispose();
     }//GEN-LAST:event_Re_Persona3ActionPerformed
+
+    private void CB_DistritoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CB_DistritoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CB_DistritoActionPerformed
         
     /**
      * @param args the command line arguments
